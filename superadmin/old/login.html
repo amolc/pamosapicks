@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from webapplayers.com/inspinia_admin-v2.9.4/landing.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Jun 2022 03:39:49 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Iamstockbot – Automated Algo Stock Trading</title>
+    <link rel="shortcut icon" type="image/jpg" href="Iamstockbot.ico"/>
+    <!-- CSS files -->
+    <link href="/dist/css/tabler.min.css" rel="stylesheet" />
+    <link href="/dist/css/tabler-flags.min.css" rel="stylesheet" />
+    <link href="/dist/css/tabler-payments.min.css" rel="stylesheet" />
+    <link href="/dist/css/tabler-vendors.min.css" rel="stylesheet" />
+    <link href="/dist/css/demo.min.css" rel="stylesheet" />
+    <!-- 1. Add the following script to your page. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+    <script src="./angular/angular-storage.min.js"></script>
+    <script src="./angular/angular-payments.js"></script>
+    <script src="./angular/app.js"></script>
+    
+    <script src="./angular/service.js"></script>
+    <script src="./angular/loginCtrl.js"></script>
+    
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Animation CSS -->
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+<body id="page-top" class="landing-page no-skin-config" ng-app="website" ng-controller="toodlsCtrl" ng-init="init()">
+<div class="navbar-wrapper">
+        <nav class="navbar navbar-default navbar-fixed-top navbar-expand-md" role="navigation">
+            <div class="container">
+                <img src="img/iamstockbot.png" class="mr-3">
+                <div class="collapse navbar-collapse justify-content-start" id="navbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a class="nav-link page-scroll" href="index.html">Home</a></li>
+                <!--        <li><a class="nav-link page-scroll" href="strategies.html">Strategies</a></li>
+                        <li><a class="nav-link page-scroll" href="#features">Features</a></li>
+                        <li><a class="nav-link page-scroll" href="#team">Team</a></li>
+                        <li><a class="nav-link page-scroll" href="#testimonials">Testimonials</a></li>
+                        <li><a class="nav-link page-scroll" href="#pricing">Pricing</a></li> -->
+                        <li><a class="nav-link page-scroll" href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <a class="navbar-brand" href="login.html">LOGIN</a>
+                <a class="navbar-brand" href="register.html">REGISTER</a>
+                <div class="navbar-header page-scroll">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+</div>
+
+    <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+            <div class="container"></div>
+            <!-- Set background for slide in css -->
+            <img src="img/landing/header_two_a.jpg" style="height:125px; width:100%;">
+        </div>
+    </div>
+
+
+
+    <div class="container mt-5">
+        <div class="row mt-5 d-flex justify-content-center">
+            <div class="col-lg-5">
+                <div class="row justify-content-center rect">
+                    <div class="col-lg-12 text-center">
+                        <div class="navy-line"></div>
+                        <h1>Login Here</h1>
+                    </div>
+                   <!--login section starts-->
+                   <div class="login-form">
+
+                    <p class="Welcome-Back">
+                       
+                    </p>
+        
+
+                    <div ng-show="errorhightlight  > 0" style="background-color: #afe4e0;padding-top:5px">
+                        {{msg}}</div>
+                    
+
+
+                    <form>
+                        <div class="form-group">
+                            <span>Email</span>
+                            <input type="email" id="username" class="form-control" ng-model="data.email" required="required" >
+                            <div ng-show="validateemail > 0" style="background-color: #afe4e0;padding-top:5px">
+                                {{message}}</div>
+                                <div class="text-invalid mt-1 p-2" ng-show="invalidLoginMessage>0"
+                                    style="background-color: #afe4e0;padding-top:5px">{{message}}</div>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" id="password" class="form-control" ng-model="data.password" required="required" >
+                            <div ng-show="validatepassword > 0"
+                                style="background-color: #afe4e0;padding-top:5px">{{message}}</div>
+                        </div>
+                        <div class="checkbox">
+
+
+                            <label class="pull-right">
+                                <a href="#" ng-click="forgotpassword()"> Forgot password</a><p>
+
+                            </label>
+
+                        </div>
+                        <button type="submit" ng-click="login()" id="login-btn"
+                            class="btn btn-primary btn-flat m-b-30 m-t-30 mt-2" style="background-color:#ff5c35; color:#FFF">Login</button>
+
+                        <div class="register-link m-t-15 text-center mt-3">
+                            <p>Don't have account ? <a href="register.html"> Sign Up Here</a></p>
+
+                        </div>
+                    </form>
+
+                </div>
+            <!--login section ends-->
+                </div>
+            </div>
+    <!--        <div class="col-lg-6">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12 col-lg-offset-1 features-text">
+                        <small>Iamstockbot</small>
+                        
+                        <h2>Perfectly designed </h2>
+                        
+                        <p>Iamstockbot Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with.</p>
+                    </div>
+                </div>
+            </div>
+        -->
+        </div>
+    </div>
+
+
+
+    <section id="contact" class="gray-section contact">
+        <div class="container">
+            <div class="row m-b-lg">
+                <div class="col-lg-12 text-center">
+                    <div class="navy-line"></div>
+                    <h1>Contact Us</h1>
+                    
+                </div>
+            </div>
+            <div class="row m-b-lg justify-content-center">
+                <div class="col-lg-4" style="text-align:center;">
+                    <address>
+                        <strong><span class="navy">Iamstockbot.</span></strong><br/>
+                        <p class="text-color">Support: support@Iamstockbot.com</p>
+                        <p><a href="user_agreement.html"  class="agreement">Agreement</a> | <a href="privacy_policy.html" class="agreement">Privacy Policy</a></p>
+                    </address>
+                </div>
+            </div>
+                
+            
+            <div class="row mt-2">
+                <div class="col-lg-12 text-right">
+                    <p><strong>&copy; 2022-2023 Iamstockbot</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Mainly scripts -->
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
+<script src="js/plugins/wow/wow.min.js"></script>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        $('body').scrollspy({
+            target: '#navbar',
+            offset: 80
+        });
+
+        // Page scrolling feature
+        $('a.page-scroll').bind('click', function(event) {
+            var link = $(this);
+            $('html, body').stop().animate({
+                scrollTop: $(link.attr('href')).offset().top - 50
+            }, 500);
+            event.preventDefault();
+            $("#navbar").collapse('hide');
+        });
+    });
+
+    var cbpAnimatedHeader = (function() {
+        var docElem = document.documentElement,
+                header = document.querySelector( '.navbar-default' ),
+                didScroll = false,
+                changeHeaderOn = 200;
+        function init() {
+            window.addEventListener( 'scroll', function( event ) {
+                if( !didScroll ) {
+                    didScroll = true;
+                    setTimeout( scrollPage, 250 );
+                }
+            }, false );
+        }
+        function scrollPage() {
+            var sy = scrollY();
+            if ( sy >= changeHeaderOn ) {
+                $(header).addClass('navbar-scroll')
+            }
+            else {
+                $(header).removeClass('navbar-scroll')
+            }
+            didScroll = false;
+        }
+        function scrollY() {
+            return window.pageYOffset || docElem.scrollTop;
+        }
+        init();
+
+    })();
+
+    // Activate WOW.js plugin for animation on scrol
+    new WOW().init();
+
+</script>
+
+</body>
+
+<!-- Mirrored from webapplayers.com/inspinia_admin-v2.9.4/landing.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Jun 2022 03:41:10 GMT -->
+</html>

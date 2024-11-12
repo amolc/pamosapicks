@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Smartportfolios – Get atleast 20% more than your buy and hold strategy.</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link rel="../stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <script src="https://kit.fontawesome.com/b978cbdbfe.js" crossorigin="anonymous"></script>
+        <!-- <link rel="stylesheet" href="../css/custom.css"> -->
+        <link href="../font-awesome/css/font-awesome.css" rel="stylesheet">
+        <link href="../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+        <link href="../css/animate.css" rel="stylesheet">
+        <link href="../css/style.css" rel="stylesheet">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+    
+        <!-- Mainly scripts -->
+        <script src="../js/jquery-3.1.1.min.js"></script>
+        <script src="../js/popper.min.js"></script>
+        <script src="../js/bootstrap.js"></script>
+        <script src="../js/plugins/metisMenu/jquery.metisMenu.js"></script>
+        <script src="../js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="js/plugins/sparkline/jquery.sparkline.min.js"></script>
+        <!-- 1. Add the following script to your page. -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+        <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+        <script src="../angular/angular-storage.min.js"></script>
+        <script src="../angular/angular-payments.js"></script>
+        <script src="../angular/app.js"></script>
+        <script src="../angular/service.js"></script>
+
+           <!-- Mainly scripts -->
+
+
+        <script src="./angular/index.js"></script>
+
+    </head>
+
+<body ng-app="website"  ng-controller="index-ctrl" ng-init="init()" >
+
+            <div id="wrapper">
+                <div id="page-wrapper">
+              
+                    <div class="row border-bottom">
+                        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                            <div class="navbar-header">
+                                <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i
+                                        class="fa fa-bars"></i> </a>
+                                        <ul class="nav navbar-top-links navbar-left p-3">
+                                            <span style="padding-right: 20px;"><img src="/img/quantbots_dark.png" width="200px"  > </span>
+                                            <span><a style="text-decoration:none;cursor:hand;color: coral;font-weight:800;"
+                                                    href="index.html">HOME</a></span>
+                                            <span style="padding-left: 22px;"><a
+                                                    style="text-decoration:none;cursor:hand;color: coral;font-weight:800;"
+                                                    href="quant-portfolios.html">Quant Bots</a></span>
+                
+                                        </ul>     
+                            </div>
+                            
+        
+                            <ul class="nav navbar-top-links navbar-right p-3">
+                              
+                                <div ng-if="islogin == 1">
+                                    <span style="color:white;padding-right:20px;font-weight:600;"><a href="index.html" style="color:white;">Home</a> 
+                                    </span>
+
+                                    <span style="color:white;padding-right:20px;font-weight:600;"><a href="/signals/signals.html" style="color:white;">Signals</a> 
+                                    </span>
+
+
+                                    <span style="color:white;padding-right:20px;font-weight:600;"><a href="my-candidates.html" style="color:white;">My Porfolio</a> 
+                                    </span>
+
+                                </div>
+                                
+                                
+
+                              
+                                <div ng-if="islogin != 1">
+                                    <span style="color:white;padding-right:20px;font-weight:600;"><a href="index.html" style="color:white;">Home</a> 
+                                    </span>
+                                  
+                                  
+                                     <span style="color:white;padding-right:20px;font-weight:600;"><a href="register.html" style="color:white;">Login / Register</a></span>
+                                </div>
+                                <div ng-if="islogin == 1 ">
+                                    <div class="dropdown profile-element">
+                                        
+                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                        
+                                            <span style="color:white;"> Hello {{ name}}<b class="caret"></b></span>
+                                        </a>
+                                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                                            <li><a class="dropdown-item" ng-click="logout()">Logout</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                               
+
+                               
+                            </ul>
+                            
+                        </nav>
+                    </div>
+                
+
+                    
+
+                    
+
+                    
+
+
+                    
+                    
+
+                    
+                   
+                   
+                    <div class="wrapper wrapper-content">
+                        <div class="container">
+                        <div class="row" style="align-content:center;">
+                            <div class="col-lg-12" style="display: flex; justify-content: center; align-items: center;" >
+                                <h1 style="color:#e4f3fb">Quant Bots</h1>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="wrapper wrapper-content">
+                        <div class="container">
+                        <div class="row">
+                            <div class="col-lg-4" ng-repeat="data in portfoliolist">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="ibox" style="height:400px;">
+                                            <div class="ibox-title" >
+                                                <div class="ibox-tools" style="margin-top: 11px;">
+                                                  
+                                                    <span class="label label-success float-right;" style="font-size:0.8rem;" >ROI {{data.profitlossPercentage}}%</span>
+                                                   
+                                                </div> 
+                                                <h2 style="color: #e4f3fb;font-size: 1rem;margin-top: 9px; ">{{data.portfolio_name}} </h2>
+                                            </div>
+                                            <div class="ibox-content"  style="background-color: #e4f3fb;"  >
+                                                <div class="row">
+                                                  
+                                                    
+                                                    <div class="col-lg-12">
+                                                        <span>{{ data.portfolio_info }}
+                                                        </span>
+                                                       
+                                                        
+                                                    </div>
+                                                    <div class="col-lg-12" >
+                                                        <ul style="padding-left: 0px;margin-left: 0px;">
+                                                            <li class="bullets"><strong>Start Date : </strong> {{ data.portfolio_startdate | date: "dd/MM/yy" }}</li>
+                                                            <li class="bullets"><strong>Minimum Capital : </strong> {{data.portfolio_min_capital}}</li>
+                                                           
+                                                           
+                                                        </ul>
+                                                    </div>
+                                                    
+                                                    <div class="col-lg-12"  >
+                                                        <sparkLineChart data="{{data.portfolioroi}}"></sparkLineChart>
+                                                    </div>
+                                                    <div class="col-lg-5" style="margin-left: 0px;"   >
+                                                       
+                                                        <span style="width: 100px;"><a class="btn btn-primary mt-3 w-100"  style="text-decoration:none;cursor:hand;width:100px;"
+                                                            href="myinvestment-detail.html?myportfolioId={{data.id}}">Details</a></span>
+                                                    </div>
+                                                </div>
+                                                
+                                               
+                                                    
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                
+                                
+                                </div>
+                                
+                            </div>
+                            
+                            
+                            
+                        </div>
+                    </div>
+
+                    <div class="row border-up" style="background-color: #2f77bb;">
+                        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0 ; background-color: #2f77bb;">
+                            <div class="navbar-header">
+                                <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i
+                                        class="fa fa-bars"></i> </a>
+                                        <ul class="nav navbar-top-links navbar-left p-3">
+                                            <span style="padding-right: 20px;"><img src="/img/quantbots_dark.png" width="200px"  > </span>
+                                            <span><a style="text-decoration:none;cursor:hand;color: coral;font-weight:800;"
+                                                    href="index.html">HOME</a></span>
+                                            <span style="padding-left: 22px;"><a
+                                                    style="text-decoration:none;cursor:hand;color: coral;font-weight:800;"
+                                                    href="portfolios.html">SMART PORTFOLIO</a></span>
+                
+                                        </ul>     
+                            </div>
+                            
+        
+                            <ul class="nav navbar-top-links navbar-right p-3">
+                              
+                                <div >
+                                    <span style="color:white;padding-right:20px;font-weight:600;"><a href="index.html" style="color:white;">Home</a> 
+                                    </span>
+
+                                    <span style="color:white;padding-right:20px;font-weight:600;"><a href="/signals/signals.html" style="color:white;">Signals</a> 
+                                    </span>
+
+
+                                    <span style="color:white;padding-right:20px;font-weight:600;"><a href="my-candidates.html" style="color:white;">Quantportfolios - 2023 All Rights Reserved.</a> 
+                                    </span>
+
+                                </div>
+                                
+                                
+
+                              
+                                
+                               
+
+                               
+                            </ul>
+                            
+                        </nav>
+                    </div>
+                    </div>
+                    
+                    
+                </div>
+               
+
+   
+
+ 
+
+   
+
+    <!-- Custom and plugin javascript -->
+    <script src="js/inspinia.js"></script>
+    <!-- <script src="js/plugins/pace/pace.min.js"></script> -->
+    <script>
+
+        $(function () {
+                
+            var data1 = [0,3,5,7,5,4,3,4,2,2];
+            var data2 = [0,3,6,8,9,11,13,12,14,13];
+
+
+                    $('#spark-1').sparkline(data2, {
+                    height: 100,
+                    width: '20vh',
+                    changeRangeMin: -10, 
+                    chartRangeMax: 10,
+                    lineColor: "green",
+                    fillColor:false,
+                    
+                    
+                    });
+                    $('#spark-1').sparkline(data1, {
+                        height: 100,
+                        width: '20vh',
+                        changeRangeMin: -10, 
+                        chartRangeMax: 10,
+                        lineColor:"blue",
+                        fillColor:false,
+                        composite: true
+                    });
+
+            });    
+    </script>
+    <div id="pagecounter"></div>
+        </div>
+</body>
+
+
+<!-- Mirrored from webapplayers.com/inspinia_admin-v2.9.4/ecommerce_products_grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Jun 2022 03:36:24 GMT -->
+
+</html>

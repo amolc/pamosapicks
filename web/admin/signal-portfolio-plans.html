@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Smartportfolio - Portfolio</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  
+
+  <!-- Template Main CSS File -->
+  <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
+  <script src="js/main.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+  <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+
+
+  <script src='https://cdn.plot.ly/plotly-2.16.1.min.js'></script>
+  <script src="../angular/angular-storage.min.js"></script>
+  <script src="../angular/angular-payments.js"></script>
+  <script src="../angular/app.js"></script>
+  <script src="../angular/service.js"></script>
+  <script src="./angular/signals-portfolio-plans.js"></script>
+
+
+</head>
+
+<body ng-mouseover="amount()"  ng-app="website" ng-controller="robot-portfolio-plans-ctrl" ng-init="init()">
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top" style="background-color:  #143443;">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h1 class="logo"><a href="/app/"><img style="height: 80px;" src="../assets/img/quantbotslogo.png" alt=""></a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar">
+        <ul>
+            <li><a class="nav-link scrollto active" href="/app/">Home</a></li>
+                <li><a class="nav-link scrollto active" href="pricing.html">Pricing</a></li>
+                <li><a class="nav-link scrollto active" href="screener.html">Demo</a></li>
+                <li><a class="nav-link scrollto active" href="signal-portfolio.html">Signals</a></li>
+                <li><a class="nav-link scrollto active" href="robots.html">Robots</a></li>
+                <li><a class="nav-link scrollto active" href="connectors.html">Connectors</a></li>
+
+                <li><a class="nav-link scrollto active" href="ready-portfolio.html">Ready Portfolio</a></li>
+                <li><a class="nav-link scrollto active" href="backtesting/modelportfolio.html">My Portfolio</a></li>
+                <div class="dropdown profile-element">
+
+                  <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+
+                      <span class="text-muted text-xs block">{{name | uppercase}} <b class="caret"></b></span>
+                  </a>
+                  <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                      <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                      <li><a class="dropdown-item" ng-click="logout()">Logout</a></li>
+                  </ul>
+              </div>
+            
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+        
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+<section  style="background-color: #143443;" >
+
+    <div class="container mt-5">
+        <div class="row mt-5">
+            <div class="col mt-5">
+             <h1 class="mt-5 text-light" style="font-weight: bold;"> Welcome {{name}}  
+                </h1>
+            </div>
+        </div>
+
+        <div class="row mt-3 justify-content-center">
+            <div class="col-md-12">
+                <!-- <h2 class="text-light">Quantbots Robots are automatically connected to leading brokers. All our signals can automatically generate buy
+                    and sell signals.  </h2> -->
+
+
+                <span style="color:#fff ; font-size: 1rem;">
+                    <p>Quantbots operates in stocks, bonds, currencies, and commodities.</p> The intelligent algorithm is able to detect intraday and swing trading actions for more than 4000
+                      stocks and counting.<p></p>
+                </span>
+            </div>
+        </div>
+      </div>
+
+      
+    <div class="container mb-5">
+
+    <div class="row">
+      
+
+
+
+
+      <br><br><br><br><br><br>
+
+<!-- after -->
+    <div class="col-md-10">
+<section  class="section-bg">
+  <div class="container">
+    <div class="pricing-title">{{portfolioname}} Plans & Pricing</div>
+    <div class="row d-flex">
+      <div class="col-md-2 mt-5 cardbg">
+              <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col">
+                          <ul class="card-list">
+                              <div class="feed-element">
+                                  <h4 class="m-0">Free</h4>
+                                  <h3 class="m-0">$0.00/<span class="currency">USD</span></h3>
+                                  <h5 class="m-0 ">7 days</h5>
+                                 
+                                   </div>
+                                  <h6 class="m-0 pt-3 alerts">Alerts</h6>
+                                  <li class="">
+                                   <span>Email</span>
+                                   </li>
+                                  <li>
+                                     <span class="m-l-xs">Telegram</span>
+                                   </li>
+                                  <li>
+                                    <span class="m-l-xs">Whatsapp</span>
+                                  </li>
+                             </ul>
+                             <button ng-click="apply(data,'0',data.capital,'Free')" >Subscribe</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+      </div>
+      <div class="col-md-2 mt-5 cardbg">
+              <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col">
+                          <ul class="card-list">
+                              <div class="feed-element">
+                                  <h4 class="m-0">Monthly</h4>
+                                  <h3 class="m-0">$50.00/<span class="currency">USD</span></h3>
+                                  <h5 class="m-0 ">30 days</h5>
+                                 
+                                   </div>
+                                  <h6 class="m-0 pt-3 alerts">Alerts</h6>
+                                  <li class="">
+                                   <span>Email</span>
+                                   </li>
+                                  <li>
+                                     <span class="m-l-xs">Telegram</span>
+                                   </li>
+                                  <li>
+                                    <span class="m-l-xs">Whatsapp</span>
+                                  </li>
+                             </ul>
+                             <button ng-click="apply(data,'1',data.capital,'Monthly')" >Subscribe</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+      </div>
+      <div class="col-md-2 mt-5 cardbg">
+              <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col">
+                          <ul class="card-list">
+                              <div class="feed-element">
+                                  <h4 class="m-0">Quarterly</h4>
+                                  <h3 class="m-0">$135.00/<span class="currency">USD</span></h3>
+                                  <h5 class="m-0 ">90 days</h5>
+                                 
+                                   </div>
+                                  <h6 class="m-0 pt-3 alerts">Alerts</h6>
+                                  <li class="">
+                                   <span>Email</span>
+                                   </li>
+                                  <li>
+                                     <span class="m-l-xs">Telegram</span>
+                                   </li>
+                                  <li>
+                                    <span class="m-l-xs">Whatsapp</span>
+                                  </li>
+                             </ul>
+                             <button ng-click="apply(data,'4',data.capital,'Quarterly')" >Subscribe</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+      </div>
+      <div class="col-md-2 mt-5 cardbg">
+              <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col">
+                          <ul class="card-list">
+                              <div class="feed-element">
+                                  <h4 class="m-0">Half-yearly</h4>
+                                  <h3 class="m-0">$240.00/<span class="currency">USD</span></h3>
+                                  <h5 class="m-0 ">180 days</h5>
+                                 
+                                   </div>
+                                  <h6 class="m-0 pt-3 alerts">Alerts</h6>
+                                  <li class="">
+                                   <span>Email</span>
+                                   </li>
+                                  <li>
+                                     <span class="m-l-xs">Telegram</span>
+                                   </li>
+                                  <li>
+                                    <span class="m-l-xs">Whatsapp</span>
+                                  </li>
+                             </ul>
+                             <button ng-click="apply(data,'6',data.capital,'Half-yearly')" >Subscribe</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+      </div>
+      <div class="col-md-2 mt-5 cardbg">
+              <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col">
+                          <ul class="card-list">
+                              <div class="feed-element">
+                                  <h4 class="m-0">Yearly</h4>
+                                  <h3 class="m-0">$400.00/<span class="currency">USD</span></h3>
+                                  <h5 class="m-0 ">365 days</h5>
+                                 
+                                   </div>
+                                  <h6 class="m-0 pt-3 alerts">Alerts</h6>
+                                  <li class="">
+                                   <span>Email</span>
+                                   </li>
+                                  <li>
+                                     <span class="m-l-xs">Telegram</span>
+                                   </li>
+                                  <li>
+                                    <span class="m-l-xs">Whatsapp</span>
+                                  </li>
+                             </ul>
+                             <button ng-click="apply(data,'12',data.capital,'Yearly')" >Subscribe</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- before -->
+
+    <!-- start -->
+
+    <!-- <div class="wrapper wrapper-content   animated fadeInRight mt-3">
+        <div class="row ml-5 mt-6 pt-6">
+          
+            
+                    <div class="col-lg-10" >
+                        <div class="ibox " style="font-size: 1rem;">
+                            <div class="ibox-title" style="background-color: #cdd1d5;">
+                                <div class="ibox-tools">
+                                    
+                                </div>
+                            
+                                 
+                                <h2 style="color: #3e3e3e; "> Investment Plans</h2>
+                            </div>
+                            <div class="ibox-content">
+                                <div class="row ">
+
+
+
+                                    <div class="col-md-4">
+                                   
+                                        <label class="form-label p-1 mt-1" for="form3Example3"><strong>Portfolio Name</strong></label>
+                                    
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                    
+                                        <label class="form-label p-1 mt-1" for="form3Example3"><strong>{{ data.portfolio_name }} {{portfolioDetails.portfolio_name}}</strong></label>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                   
+                                </div>
+
+
+
+                                <div class="col-md-4">
+                                   
+                                        <label class="form-label p-1 mt-1" for="form3Example3"><strong>Per Unit Cost </strong></label>
+                                    
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                    
+                                        <label class="form-label p-1 mt-1" for="form3Example3"><strong>{{ data.unitprice }}</strong></label>
+                                        <span class="error pl-1" ng-show="!registerForm.capital.$valid && (registerForm.capital.$touched || submitted)"></span>
+                                        <div class="help-block with-errors"></div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                   
+                                </div>
+                                <div class="col-md-4">
+                                   
+                                        <label class="form-label p-1 mt-1" for="form3Example3"><strong>Qty</strong></label>
+                                    
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                    
+                                        <input type="text"  name="capital" class="form-control"  ng-model="data.qty" tabindex="6" style="width: 100px;"  ng-change="updatecapital(data)" >
+                                        <span class="error pl-1" ng-show="!registerForm.capital.$valid && (registerForm.capital.$touched || submitted)"></span>
+                                        <div class="help-block with-errors"></div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                   
+                                </div>
+
+                                <div class="col-md-4">
+                                   
+                                    <label class="form-label p-1 mt-1" for="form3Example3"><strong>Capital</strong></label>
+                                
+                                 </div>
+                                <div class="col-md-4">
+                                <div class="form-group">
+                                
+                                    <input type="text"  name="capital" class="form-control"  ng-model="data.capital" tabindex="6" style="width: 100px;"   >
+                                    <span class="error pl-1" ng-show="!registerForm.capital.$valid && (registerForm.capital.$touched || submitted)"></span>
+                                    <div class="help-block with-errors"></div>
+
+                                </div>
+                                </div>
+                                 <div class="col-md-4">
+                               
+                                </div>
+                                <div class="col-md-4">
+                                   
+                                   
+                                
+                                 </div>
+                                <div class="col-md-8">
+                                <div class="form-group">
+                                
+                                   
+                                    <span class="error pl-1" ng-if="alertmessage" style="background-color: lightcoral;"> {{ message }} </span>
+                                   
+
+                                </div>
+                                </div>
+                                
+                            
+                            
+                    
+
+                          
+
+
+                                
+                               
+                                    <div class="col-lg-10" >
+                                        <table class="table table-striped table-bordered table-hover dataTables-example">
+                                            <tbody>
+                                                <tr>  
+                                                   
+                                                   
+                                                    <th>Free </th>
+                                                    <th>Monthly</th>
+                                                    <th>Quarterly</th>
+                                                    <th>6 Months</th>
+                                                    <th>12 Months</th>
+                                                </tr>
+                                            </tbody>
+                                          
+                                            <tbody>
+                                                <tr>
+                                                    
+                                                    <th>{{data.freecapital}} Free  </th>
+                                                    <th>{{data.capital}} USD</th>
+                                                    <th>{{data.monthlycapital}} USD</th>
+                                                    <th>{{data.quarterlycapital}} USD</th>
+                                                    <th>{{data.halfyearlycapital}} USD</th>
+                                                    <th>{{data.yearlycapital}} USD</th>
+                                                </tr>
+                                                <tr>
+                                                   
+                                                   
+                                                    <th>AUM - 0.5</th>
+                                                    <th>AUM - 1.5%</th>
+                                                    <th>AUM - 1.0%</th>
+                                                    <th>AUM - 0.8%</th>
+                                                    <th>AUM - 0.6%</th>
+                                                   
+                                                  
+                                                </tr>
+                                                <tr>
+                                                    <th>Min Term  - 3 Months</th>
+                                                    <th>Min Term  - 12 Months</th>
+                                                    <th>Min Term  - 12 Months</th>
+                                                    <th>Min Term  - 12 Months</th>
+                                                    <th>Min Term  - 12 Months</th>
+                                                   
+                                                   
+                                                </tr>
+                                                <tr>
+                                                   
+                                                   
+                                                    <th>Early Termination - 15%</th>
+                                                    <th>Early Termination - 15%</th>
+                                                    <th>Early Termination - 15%</th>
+                                                    <th>Early Termination - 15%</th>
+                                                    <th>Early Termination - 15%</th>
+                                                </tr>
+                                               
+                                                <tr>
+                                                    <tr>
+                                                       
+                                                        <th><button type="submit" ng-click="apply(data,'0',data.capital,'Free')"  class="btn btn-primary block w-60 m-b" style="background-color:#ff5c35; color:#FFF">Buy</button></th>
+                                                        <th><button type="submit" ng-click="apply(data,'1',data.capital)"  class="btn btn-primary block w-60 m-b" style="background-color:#ff5c35; color:#FFF">Buy</button></th>
+                                                        <th><button type="submit" ng-click="apply(data,'4',data.capital,'Quarterly')"  class="btn btn-primary block w-60 m-b" style="background-color:#ff5c35; color:#FFF">Buy</button></th>
+                                                        <th><button type="submit" ng-click="apply(data,'6',data.capital)"  class="btn btn-primary block w-60 m-b" style="background-color:#ff5c35; color:#FFF">Buy</button></th>
+                                                        <th><button type="submit" ng-click="apply(data,'12',data.capital,'Yearly')"  class="btn btn-primary block w-60 m-b" style="background-color:#ff5c35; color:#FFF">Buy</button></th>
+                                                 
+                                                        
+                                                    </tr>
+                                                    
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                         
+                            </div>
+                        </div>
+
+                    </div>
+                    
+              
+                
+            
+          
+           
+            
+        </div>
+      
+       
+
+
+    </div>
+ -->
+
+    <!-- endd -->
+
+
+
+
+
+
+</div>
+
+
+
+    </section>
+   
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" style="background-color: #143443;">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>Quantbots</h3>
+            <p>
+              Our vision is to provide convenience and help increase your sales business.
+            </p>
+            <div class="social-links text-left text-md-right pt-3 pt-md-0 mt-4">
+              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>About</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">How it work</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Featured</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Partnership</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Business Relation</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Community</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Events</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Blog</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Pod Cast</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Invite a Friend</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Social</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Discord</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Instagram</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Twitter</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Facebook</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+
+
+    <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/644f791631ebfa0fe7fb52e9/1gvb7202o';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->
+
+
+
+  
+  <!-- Vendor JS Files -->
+  <script src="js/jquery-3.1.1.min.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>
+
+<style>
+
+.ibox {
+  clear: both;
+  margin-bottom: 25px;
+  margin-top: 0;
+  padding: 0;
+}
+.ibox.collapsed .ibox-content {
+  display: none;
+}
+.ibox.collapsed .fa.fa-chevron-up:before {
+  content: "\f078";
+}
+.ibox.collapsed .fa.fa-chevron-down:before {
+  content: "\f077";
+}
+.ibox:after,
+.ibox:before {
+  display: table;
+}
+.ibox-title {
+  background-color: #2e76bb;
+  border-color: #c5d3df;
+  border-image: none;
+  border-style: solid solid none;
+  border-width: 2px;
+  color: inherit;
+  margin-bottom: 0;
+  padding: 15px 90px 8px 15px;
+  min-height: 48px;
+  position: relative;
+  clear: both;
+  -webkit-border-radius: 3px 3px 0 0;
+  -moz-border-radius: 3px 3px 0 0;
+  border-radius: 10px 10px 0 0;
+
+}
+.ibox-content {
+  background-color: #ffffff;
+  color: inherit;
+  padding: 15px 20px 20px 20px;
+  border-color: #e7eaec;
+  border-image: none;
+  border-style: solid;
+  border-width: 2px;
+}
+.ibox-footer {
+  color: inherit;
+  border-top: 2 px solid #e7eaec;
+  font-size: 90%;
+  background: #ffffff;
+  padding: 10px 15px;
+}
+
+.bullets {
+    margin: 0px;
+    list-style: none;
+    font-weight: 500;
+}
+.ibox-tools {
+    display: block;
+    float: none;
+    margin-top: 0;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 0;
+    text-align: right;
+}
+.label-success, .badge-success {
+    background-color: #2eca79;
+    color: #ffffff;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    padding: 3px 8px;
+    text-shadow: none;
+    border-radius: 0.25em;
+    line-height: 1;
+    white-space: nowrap;
+    font-size: 0.8rem;
+}
+.table {
+    background-color: #e3f2fb;
+    border-radius: 3px;
+}
+.table-bordered {
+    border: 1px solid #ebebeb;}
+    h3 {
+    font-family: Candara, Calibri, Segoe, Segoe UI, Optima, Arial, sans-serif;
+    font-size: 19px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+    line-height: 27.15px;
+    color: #dfe6f4;
+}
+label {
+    color:#000;
+}
+
+  .section-bg{
+    background-color: #E6F3FB;
+    padding-top: 15px;
+    padding-bottom: 20px;
+  }  
+
+.cardbg .card {
+  border-radius: 5px;
+  border: 1px solid #000;
+  background: #FBFEFF;
+}
+.cardbg .card:hover {
+  border-radius: 5px;
+  border: 1px solid #CDC1C1;
+  background: #FBFEFF;
+}
+ 
+
+    .col-md-2{
+    flex: 0 0 auto;
+    width: 20%;
+    }
+
+  .cardbg button{
+  border-radius: 10px;
+  background: #F45E39;
+  box-shadow: none;
+  color: #FFF;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 5px 20px;
+  border: none;
+  text-align: center;
+  }
+  .card-list h4 {
+  color: #1B0B0B;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.card-list h3 {
+  color: #1B0B0B;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.feed-element h5{
+   color: #1B0B0B;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+  .card-list .currency{
+  color: #1B0B0B;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+ }
+ .card-list {
+  padding-left: 0;
+  margin-left: 10px;
+}
+  .card-list li {
+    padding-left: 10px;
+  list-style: none;
+  color: #675858;
+  font-family: Inter;
+  font-size: 14px;
+ font-weight: 500;
+}
+.alerts {
+  color: #000;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.pricing-title {
+  border-radius: 10px;
+  background: #4076BC;
+  color: #FFFDFD;
+  font-family: Inter;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding: 10px;
+}
+</style>

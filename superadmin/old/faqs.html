@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from webapplayers.com/inspinia_admin-v2.9.4/landing.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Jun 2022 03:39:49 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Toodls – Automated Algo Stock Trading</title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    <!-- CSS files -->
+    <link href="/dist/css/tabler.min.css" rel="stylesheet" />
+    <link href="/dist/css/tabler-flags.min.css" rel="stylesheet" />
+    <link href="/dist/css/tabler-payments.min.css" rel="stylesheet" />
+    <link href="/dist/css/tabler-vendors.min.css" rel="stylesheet" />
+    <link href="/dist/css/demo.min.css" rel="stylesheet" />
+    <!-- 1. Add the following script to your page. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+    <script src="./angular/angular-storage.min.js"></script>
+    <script src="./angular/angular-payments.js"></script>
+    <script src="./angular/app.js"></script>
+    
+    <script src="./angular/service.js"></script>
+    <script src="./angular/toodlsCtrl.js"></script>
+    
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Animation CSS -->
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/custom.css">
+
+
+</head>
+<body id="page-top" class="landing-page no-skin-config" ng-app="website" ng-controller="toodlsCtrl" ng-init="init()">
+<div class="navbar-wrapper">
+        <nav class="navbar navbar-default navbar-fixed-top navbar-expand-md" role="navigation">
+            <div class="container">
+                <img src="img/iamstockbot.png" class="mr-3">
+                <div class="collapse navbar-collapse justify-content-start" id="navbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a class="nav-link page-scroll" href="index.html">Home</a></li>
+                <!--        <li><a class="nav-link page-scroll" href="strategies.html">Strategies</a></li>
+                        <li><a class="nav-link page-scroll" href="#features">Features</a></li>
+                        <li><a class="nav-link page-scroll" href="#team">Team</a></li>
+                        <li><a class="nav-link page-scroll" href="#testimonials">Testimonials</a></li>
+                        <li><a class="nav-link page-scroll" href="#pricing">Pricing</a></li> -->
+                        <li><a class="nav-link page-scroll" href="contact.html">Contact</a></li>
+                        <li><a class="nav-link page-scroll" href="contact.html">info@iamstockbot.com</a></li>
+                    </ul>
+                </div>
+                <a class="navbar-brand" href="login.html">LOGIN</a>
+                <a class="navbar-brand" href="register.html">REGISTER</a>
+                <div class="navbar-header page-scroll">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+</div>
+
+    <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+            <div class="container"></div>
+            <!-- Set background for slide in css -->
+            <img src="img/landing/header_two_a.jpg" style="height:80px; width:100%;">
+        </div>
+    </div>
+
+    <section  class="container features">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="navy-line"></div>
+                <h1>Frequently Asked Questions</h1>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="content">
+        <div class="container">
+            <h2>FAQ's</h2>
+            
+            <div class="panel-group">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" href="#collapse1">How do I get started?</a>
+                  </h4>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse">
+                  <ul class="list-group">
+                    <li class="list-group-item">- Set up your brokerage account with a partner broker</li>
+                    <li class="list-group-item">- Register with Iamstockbot  and set up integration with the brokerage (this takes a couple of minutes)</li>
+                    <li class="list-group-item">- Start Paper Trading and evaluate the service</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="panel-group">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapse2">What brokerages does Iamstockbot work with?</a>
+                    </h4>
+                  </div>
+                  <div id="collapse2" class="panel-collapse collapse">
+                    <ul class="list-group">
+                      <li class="list-group-item">- We currently work with Alpaca (https://alpaca.markets/) and are working on integrating Interactive Brokers (https://www.interactivebrokers.com/) soon.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-group">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapse3">What stocks does Iamstockbot trade?</a>
+                    </h4>
+                  </div>
+                  <div id="collapse3" class="panel-collapse collapse">
+                    <ul class="list-group">
+                      <li class="list-group-item">- TQQQ, SQQQ, SOXL, SOXS. We are working on adding more 3x ETFs and Stocks.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-group">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapse4">Does Iamstockbot facilitate day trading, swing trading, or both?</a>
+                    </h4>
+                  </div>
+                  <div id="collapse4" class="panel-collapse collapse">
+                    <ul class="list-group">
+                      <li class="list-group-item">- Currently, our algos are designed strictly for day trading. We will add additional options as we develop new strategies.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-group">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapse5">Can I allocate funds to my choice of stock/ETF?</a>
+                    </h4>
+                  </div>
+                  <div id="collapse5" class="panel-collapse collapse">
+                    <ul class="list-group">
+                      <li class="list-group-item">- You can set your portfolio to your preference and allocate a percentage to each stock/ETF based of your liking.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-group">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapse6">Is there a minimum capital requirement?</a>
+                    </h4>
+                  </div>
+                  <div id="collapse6" class="panel-collapse collapse">
+                    <ul class="list-group">
+                      <li class="list-group-item">No, we do not have any capital requirement, but you would need to deposit at least $30,000 ($25,000 + $5,000 as a buffer) in your broker's account to permit multiple day trades due to PDT rules. See Alpaca Pattern Day Trader Requirements.</li>
+                      <li class="list-group-item">That being said, you could trade any amount as low as $1,000 and then increase your allocation as you seem fit.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-group">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapse7">Are my funds locked in a contract?</a>
+                    </h4>
+                  </div>
+                  <div id="collapse7" class="panel-collapse collapse">
+                    <ul class="list-group">
+                      <li class="list-group-item">- You are always in control of your funds. You can start/stop trading and add/withdraw funds without giving any notice - no contracts or commitments.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-group">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapse8">Is there a fee to use Iamstockbot?</a>
+                    </h4>
+                  </div>
+                  <div id="collapse8" class="panel-collapse collapse">
+                    <ul class="list-group">
+                      <li class="list-group-item">Yes, we will charge a Service Fee for Live Trading.</li>
+                      <li class="list-group-item">Please contact us for more information - info@iamstockbot.com</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-group">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapse9">What is the Toodls Algorithm strategy?</a>
+                    </h4>
+                  </div>
+                  <div id="collapse9" class="panel-collapse collapse">
+                    <ul class="list-group">
+                      <li class="list-group-item">We are not willing to discuss this and will modify the strategies from time to time to maximize returns.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-group">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapse10">What kind of performance expectations should a client have?</a>
+                    </h4>
+                  </div>
+                  <div id="collapse10" class="panel-collapse collapse">
+                    <ul class="list-group">
+                      <li class="list-group-item">Iamstockbot will not set expectations, nor make any forward-looking statement. We would like your paper trading to validate what the system is capable of.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+          </div>
+    </section>
+    
+
+
+
+    <section id="contact" class="gray-section contact">
+        <div class="container">
+            <div class="row m-b-lg">
+                <div class="col-lg-12 text-center">
+                    <div class="navy-line"></div>
+                    <h1>Contact Us</h1>
+                    
+                </div>
+            </div>
+            <div class="row m-b-lg justify-content-center">
+                <div class="col-lg-4" style="text-align:center;">
+                    <address>
+                        <strong><span class="navy">TOODLS.</span></strong><br/>
+                        <span class="text-color">Fremont, CA 94538, USA</span>
+                        <p class="text-color"><a href="mailto:support@toodls.com?subject=Toodls: Tech support">support@toodls.com</a></p>
+                        <p><a href="user_agreement.html"  class="agreement">Agreement</a> | <a href="privacy_policy.html" class="agreement">Privacy Policy</a></p>
+                    </address>
+                </div>
+            </div>
+                 
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p><small>Toodls is a software development company and does not provide investment or brokerage services. Toodls is neither a securities broker nor an FCM and offers automated algorithmic trading services that self-directed investors and traders can use to paper or live trade Equities, ETFs, Crypto, and Forex markets. Toodls is not a financial services company and is not a member of FINRA, SIP, CME, NFA, or any equities or futures exchanges, and does not offer Equities, Futures, Crypto, or Forex accounts.</small></p>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-lg-12 text-right">
+                    <p><strong>&copy; 2022-2023 TOODLS</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Mainly scripts -->
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
+<script src="js/plugins/wow/wow.min.js"></script>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        $('body').scrollspy({
+            target: '#navbar',
+            offset: 80
+        });
+
+        // Page scrolling feature
+        $('a.page-scroll').bind('click', function(event) {
+            var link = $(this);
+            $('html, body').stop().animate({
+                scrollTop: $(link.attr('href')).offset().top - 50
+            }, 500);
+            event.preventDefault();
+            $("#navbar").collapse('hide');
+        });
+    });
+
+    var cbpAnimatedHeader = (function() {
+        var docElem = document.documentElement,
+                header = document.querySelector( '.navbar-default' ),
+                didScroll = false,
+                changeHeaderOn = 200;
+        function init() {
+            window.addEventListener( 'scroll', function( event ) {
+                if( !didScroll ) {
+                    didScroll = true;
+                    setTimeout( scrollPage, 250 );
+                }
+            }, false );
+        }
+        function scrollPage() {
+            var sy = scrollY();
+            if ( sy >= changeHeaderOn ) {
+                $(header).addClass('navbar-scroll')
+            }
+            else {
+                $(header).removeClass('navbar-scroll')
+            }
+            didScroll = false;
+        }
+        function scrollY() {
+            return window.pageYOffset || docElem.scrollTop;
+        }
+        init();
+
+    })();
+
+    // Activate WOW.js plugin for animation on scrol
+    new WOW().init();
+
+</script>
+
+</body>
+
+<!-- Mirrored from webapplayers.com/inspinia_admin-v2.9.4/landing.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Jun 2022 03:41:10 GMT -->
+</html>

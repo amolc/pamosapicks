@@ -1,0 +1,918 @@
+/* sample style 1 */
+.yellow-header {
+    font-size: 35px;
+    font-weight: bold;
+    background: linear-gradient(135deg, #FFA500, #FFFF00);
+    /* Orange-yellow gradient background */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 20px 0;
+    color: transparent; /* Make the text color transparent */
+}
+
+/* sample style 2 */
+.white-header {
+    font-size: 35px;
+    font-weight: 500 ;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    white-space: nowrap;
+}
+
+/* sample style 3 */
+.white-sub-header {
+    font-size: 1.5rem;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    white-space: nowrap;
+}
+
+.white-thank-you {
+    font-size: 25px;
+    font-weight: 100;
+    font-family: 'Poppins';
+    color: #EFFBFC;
+    text-align: center;
+}
+
+/* sample-style-4 */
+.yellow-sub-header {
+    font-size: 24px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #FFA500, #FFFF00);
+    -webkit-background-clip: text;
+    color: transparent; /* Make the text color transparent */
+    background-clip: text; /* For non-webkit browsers */
+}
+
+.light-purple-sub-header {
+    font-size: 24px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    color: #C6F0FE
+}
+
+/* sample-style-5 */
+.green-sub-header {
+    color: #00D100;
+    font-size: 24px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.circular {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 2px solid white;
+}
+
+
+.card-body {
+    padding: 20px;
+    border-radius: 25px;
+    flex-wrap: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #10242E, #347594);
+}
+
+.small-card-body {
+    padding: 10px;
+    /* border-radius: 25px; */
+    flex-wrap: nowrap;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #10242E, #347594);
+}
+
+.plan-card-body {
+    padding: 10px;
+    /* border-radius: 25px; */
+    flex-wrap: nowrap;
+    min-height: 230px;
+    max-height:230px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #10242E, #347594);
+}
+
+
+.ml-3 {
+    margin-left: 1rem;
+}
+
+.breadcrumb {
+    list-style: none;
+    background-color: #1A3949;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.breadcrumb-item {
+    display: inline-blocks;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: 'Poppins';
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    padding: 0px;
+    color: white;
+    content: "\2192";
+    margin-right: 15px;
+    font-family: 'boxicons';
+}
+
+.breadcrumb-item a {
+    color: white;
+    text-decoration: none;
+}
+
+
+.hr-custom {
+    margin-top: 0;
+    margin-bottom: 0;
+    border-width: 0;
+    height: 2px;
+    background-color: gray;
+}
+
+
+.tab-link {
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+
+.tab-custom-hover {
+    position: relative;
+    display: inline-block;
+    text-decoration: none !important;
+    transition: color 0.25s ease-out;
+    font-size: 30px;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+    color: white !important;
+}
+
+.tab-custom-hover::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 4px;
+    bottom: 0;
+    left: 0;
+    background-color: #FFCE00;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+
+}
+
+.tab-custom-hover:hover::after,
+.tab-custom-hover.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+
+}
+
+.tab-custom-hover:hover,
+.tab-custom-hover.active {
+    color: #FFCE00 !important;
+}
+
+
+
+/* Slider styles */
+
+.slider-container {
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    margin: 0 auto;
+    /* Center align the container */
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 65%;
+    /* Adjust width to fill the container */
+    height: 4px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 1;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider-label {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: flex;
+    /* Use flexbox to align items */
+    justify-content: space-between;
+    /* Align items with space between them */
+    width: 65%;
+    /* Set width to match the slider */
+    margin: 0 auto;
+    /* Center align the labels */
+}
+
+
+.slider-label-style {
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: linear-gradient(to right, #FF9C05, #FFCE00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+
+
+
+.btn-yellow-pill {
+    color: white !important;
+    font-weight: 500 !important;
+    border-radius: 80px !important;
+    text-align: center !important;  /* Center text */
+    padding: auto;
+    width: 155%;
+    max-width: 155px;
+    margin-top: 15px;
+    background: linear-gradient(135deg, #FF8C00, #FFD700);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Subtle shadow for depth */
+    transition: background 0.3s ease, transform 0.3s ease;  /* Smooth transitions */
+}
+
+.btn-yellow-pill:hover {
+    background: linear-gradient(135deg, #FF8C00, #FFD700);
+    transform: scale(1.05);  /* Slightly enlarge on hover */
+    color: white;
+    }
+
+
+.btn-yellow-pill:focus {
+        outline: none;  /* Remove default focus outline */
+        box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.5);  /* Custom focus outline for accessibility */
+    }
+
+.btn-yellow {
+    background:  #FFD700 !important;
+    color: white !important;
+}
+
+.btn-yellow:hover {
+    background: linear-gradient(135deg, #FF8C00, #FFD700) !important;
+    color: white;
+}
+
+.btn-outline-yellow {
+    color: #FFD700 !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border-color: #FFD700 !important;
+}
+
+.btn-outline-yellow:hover {
+    background: linear-gradient(135deg, #FF8C00, #FFD700) !important;
+    color: white !important;
+}
+
+.text-light {
+    color: white !important;
+}
+
+
+.grey-sub-header {
+    color: #B4B4B4;
+    font-size: 24px;
+    font-weight: 400;
+
+}
+
+.grey-text {
+    color: #C5C7C7 !important;
+}
+
+
+.white-text {
+    color: #ffffff !important;
+    font-size: 20px;
+}
+
+.yellow-text {
+    font-size: 18px;
+    font-weight: 300;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #FFA500, #FFD700);
+    -webkit-background-clip: text;
+    color: transparent; /* Make the text color transparent */
+    background-clip: text; /* For non-webkit browsers */
+}
+
+
+.grey-big-text {
+    color: #C5C7C7 !important;
+    font-size: 19px;
+    font-weight: 500;
+}
+
+.light-purple-big-text {
+    color: #C6F0FE !important;
+    font-size: 19px;
+    font-weight: 500;
+    
+}
+
+
+.white-big-text {
+    color: #ffffff !important;
+    font-size: 19px;
+    font-weight: 500;
+}
+
+.flex-inline {
+    display: flex;
+    align-items: center;
+  }
+  .bg-verified {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 5px 10px;
+    border-radius: 4px;
+    display: inline-block;
+  }
+
+  .bg-not-verified {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 5px 10px;
+    border-radius: 4px;
+    display: inline-block;
+  }
+
+.sec-3-header {
+    font-size: 60px;
+    font-weight: 700;
+    background: linear-gradient(to right, #FFA500, #FFA304);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-family: 'Poppins', sans-serif;
+    margin: 0 !important;
+}
+
+
+.pointer {
+    cursor: pointer;
+}
+
+
+.sub-achor:hover {
+    color: #FFCC00;
+}
+
+
+.list-achor {
+    color: #fff;
+}
+
+.list-achor:hover {
+    color: #132935 !important;
+}
+
+
+.card-img-top {
+    width: 100%;
+    height: 150px; /* Fixed height */
+    object-fit: contain; /* Ensures the image maintains aspect ratio */
+    background-color: #132935; /* Light background for better contrast */
+}
+
+/* radio box css*/
+/* Custom styles for .form-check div */
+.custom-form-check {
+    display: flex; /* Flexbox for better alignment */
+    align-items: center; /* Center vertically */
+    gap: 0.5rem; /* Space between radio button and label */
+    padding: 0.5rem; /* Padding inside the container */
+    /* border: 1px solid #ccc; Optional border for visual separation */
+    border-radius: 5px; /* Slightly rounded corners */
+    /* background-color: #f9f9f9; Background color */
+}
+
+/* Custom styles for radio input */
+.custom-form-check-input {
+    appearance: none; /* Remove default styles */
+    width: 20px; /* Custom size */
+    height: 20px;
+    border: 2px solid #FFD700; /* Border color */
+    border-radius: 50%; /* Make it circular */
+    background-color: #fff; /* Background color */
+    outline: none; /* Remove outline on focus */
+    cursor: pointer; /* Pointer cursor */
+    transition: background-color 0.2s, border-color 0.2s; /* Smooth transitions */
+}
+
+/* Custom checked state */
+.custom-form-check-input:checked {
+    background-color: #FFD700; /* Checked background color */
+    border-color: #FFD700; /* Checked border color */
+}
+
+/* Focus styles */
+.custom-form-check-input:focus {
+    border-color: #FFD700; /* Focus border color */
+    outline: 2px solid #FFD700; /* Optional outline */
+}
+
+/* Custom styles for the label */
+.custom-form-check-label {
+    color: white; /* Text color */
+    font-size: 1rem; /* Font size */
+    cursor: pointer; /* Pointer cursor for label */
+    user-select: none; /* Prevent text selection */
+    transition: color 0.2s; /* Smooth transition for color */
+}
+
+/* Hover effect for label */
+.custom-form-check-label:hover {
+    color: #FFD700; /* Hover color */
+}
+
+/* Styles for when the input is checked */
+.custom-form-check-label {
+    color: white; /* Color change when checked */
+    font-weight: bold; /* Optional bold text */
+}
+/* radio box css*/
+
+
+
+/* Base styles for the portfolio card */
+.portfolio-card {
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Ensure child elements respect the card's border radius */
+  }
+  
+  /* Card header styling */
+  .portfolio-card-header {
+    padding: 15px;
+    background-color: #132935;
+    border-top-left-radius: 25px; /* Rounded corner for top left */
+    border-top-right-radius: 25px; /* Rounded corner for top right */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Card body styling with scrollbar */
+  .portfolio-card-body {
+    padding: 20px;
+    background: linear-gradient(135deg, #347594, #10242E);
+    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: 250px; /* Limit the height of the card body */
+    min-height: 250px; /* Limit the height of the card body */
+    scrollbar-width: thin; /* Width of the scrollbar (supported in Firefox) */
+    scrollbar-color: #ffff #132935; /* Color of the scrollbar (thumb and track) */
+  }
+  
+  /* Custom scrollbar for WebKit based browsers (Chrome, Safari) */
+  .portfolio-card-body::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+  }
+  
+  .portfolio-card-body::-webkit-scrollbar-track {
+    background: #132935; /* Color of the scrollbar track */
+  }
+  
+  .portfolio-card-body::-webkit-scrollbar-thumb {
+    background-color: #237D97; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Rounded corners for the thumb */
+  }
+  
+  .portfolio-card-footer {
+    padding: 15px;
+    background-color: #132935;
+    border-bottom-left-radius: 25px; /* Rounded corner for bottom left */
+    border-bottom-right-radius: 25px; /* Rounded corner for bottom right */
+  }
+  
+  .portfolio-card-footer .white-text {
+    color: #ffffff; /* Text color */
+    font-weight: bold; /* Font weight */
+  }
+  
+  .portfolio-card-footer .arrow-icon {
+    width: 16px; /* Icon width */
+    height: 16px; /* Icon height */
+    margin-left: 5px; /* Adjust spacing between text and icon */
+  }
+  
+  
+  
+  /* Base styles for the portfolio card */
+.portfolio-border-card {
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  /* Card header styling */
+  .portfolio-border-card-header {
+    padding: 15px;
+    background-color: #132935;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+
+  .portfolio-border-card-footer {
+    padding: 15px;
+    background-color: #132935;
+  }
+  
+  .portfolio-border-card-footer .white-text {
+    color: #ffffff; /* Text color */
+    font-weight: bold; /* Font weight */
+  }
+  
+  .portfolio-border-card-footer .arrow-icon {
+    width: 16px; /* Icon width */
+    height: 16px; /* Icon height */
+    margin-left: 5px; /* Adjust spacing between text and icon */
+  }
+  
+  
+  /* Arrow icon styling */
+  .arrow-icon {
+    width: 40px;
+    height: 40px;
+    margin-left: 5px; /* Adjust spacing between text and icon */
+  }
+  
+  /* Styling for text inside stock cards */
+  .stock-card .text-white {
+    color: #ffffff; /* Text color */
+    font-size: 14px; /* Font size */
+    font-weight: bold; /* Font weight */
+    padding: auto;
+  }
+
+.pointer {
+    cursor: pointer;
+}
+
+
+ .circle-active {
+    background: linear-gradient(135deg, #FFA500, #FFD700) !important;
+}
+
+.form-input {
+    border-radius: var(--br-5xs) !important;
+    background-color:  #366176  !important;
+    font-family: var(--font-poppins);
+    width: 458px;
+    height: 60px;
+    color: white !important;
+    border: none !important;
+  }
+  
+  .form-input:focus,
+  .form-input:active,
+  .form-input:focus-visible,
+  .form-input:focus-within {
+    outline: none;
+    border: none;
+    box-shadow: none;
+    background-color: #366176 !important;
+  }
+
+
+  .select-input {
+    border-radius: var(--br-5xs) !important;
+    background-color: #366176 !important;
+    font-family: var(--font-poppins);
+    width: 458px;
+    height: 60px;
+    color: white !important;
+    border: none !important;
+    appearance: none;
+    padding: 10px; /* Optional: add padding to align text better */
+    -moz-appearance: none; /* Firefox */
+    -webkit-appearance: none; /* Safari and Chrome */
+  }
+  
+  .select-input:focus,
+  .select-input:active,
+  .select-input:focus-visible,
+  .select-input:focus-within {
+    outline: none;
+    border: none;
+    box-shadow: none;
+    background-color: #366176 !important;
+    
+  }
+  
+  .select-wrapper {
+    position: relative;
+  }
+  
+  .select-wrapper::after {
+    content: "▼";
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: white;
+  }
+  
+
+  .icon-warning {
+    font-size: 2.5rem; /* Larger font size for emphasis */
+    color: #FFD700; /* Yellow color to catch attention */
+    text-align: center; /* Center alignment */
+    margin: 0 auto 10px; /* Margin for spacing */
+    width: 5.5rem;
+    padding: 10px;
+    border: 3px solid #FF8C00; /* Border around the icon */
+    border-radius: 50%; /* Circular shape */
+    display: flex; /* Flexbox to center content */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+  }
+
+ 
+
+
+.custom-modal-header {
+    background-color: #132935;
+
+}
+
+.custom-modal-body {
+    background-color: #1A3949;
+
+}
+
+.round-pill-badge {
+    display: inline-block;
+    padding: 0.40em 0.75em;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 50rem; /* Round-pill shape */
+}
+
+.round-pill-badge.green {
+    background-color: #028559; /* Dull green background */
+}
+
+.round-pill-badge.telegram {
+    background-color: #24A1DE; /* Dull green background */
+}
+
+
+
+.light-green{
+    color: #0EFF0E; /* Light green color for the secondary text */
+}
+
+/* For tablets and below (max-width: 991px) */
+@media (max-width: 1191px) {
+
+    .card-body {
+        flex-direction: row;
+        text-align: left;
+    }
+
+    .card-body .text-right {
+        text-align: right;
+        margin-top: 0;
+    }
+
+    .col-auto img {
+        width: 120px;
+    }
+
+    .ml-3 {
+        margin-left: 15px;
+    }
+
+
+    .white-header {
+        font-size: 32px;
+        /* Reduce font size */
+    }
+
+
+    
+    .white-sub-header {
+        font-size: 18px;
+        /* Reduce font size */
+        white-space: normal;
+        /* Allow wrapping */
+    }
+
+
+    .yellow-sub-header {
+        font-size: 20px;
+        /* Reduce font size */
+    }
+
+    .green-sub-header {
+        font-size: 20px;
+        /* Reduce font size */
+    }
+
+}
+
+/* For tablets and below (max-width: 768px) */
+@media (max-width: 768px) {
+    .yellow-header {
+        font-size: 28px;
+        /* Reduce font size */
+        margin: 15px 0;
+        /* Adjust margin */
+    }
+
+    .white-header {
+        font-size: 32px;
+        /* Reduce font size */
+    }
+
+    .white-sub-header {
+        font-size: 18px;
+        /* Reduce font size */
+        white-space: normal;
+        /* Allow wrapping */
+    }
+
+    .yellow-sub-header {
+        font-size: 20px;
+        /* Reduce font size */
+    }
+
+    .green-sub-header {
+        font-size: 20px;
+        /* Reduce font size */
+    }
+
+    .breadcrumb-item {
+        font-size: 18px;
+        /* Reduce font size */
+    }
+
+    .breadcrumb-item+.breadcrumb-item::before {
+        margin-right: 10px;
+        /* Adjust margin */
+    }
+
+    .tab-custom-hover {
+        font-size: 24px;
+        /* Reduce font size */
+    }
+
+
+    
+    .card-body {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .card-body .text-right {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .col-auto img {
+        width: 100px;
+    }
+
+    .ml-3 {
+        margin-left: 0;
+    }
+
+
+    
+
+}
+
+/* For mobile phones (max-width: 576px) */
+@media (max-width: 576px) {
+    .yellow-header {
+        font-size: 24px;
+        /* Further reduce font size */
+        margin: 10px 0;
+        /* Adjust margin */
+    }
+
+    .white-header {
+        font-size: 26px;
+        /* Further reduce font size */
+        white-space: normal;
+        /* Allow wrapping */
+    }
+
+    .white-sub-header {
+        font-size: 16px;
+        /* Further reduce font size */
+    }
+
+    .yellow-sub-header {
+        font-size: 18px;
+        /* Further reduce font size */
+    }
+
+    .green-sub-header {
+        font-size: 18px;
+        /* Further reduce font size */
+    }
+
+    .breadcrumb {
+        flex-direction: column;
+        /* Stack items vertically */
+    }
+
+    .breadcrumb-item {
+        font-size: 16px;
+        /* Further reduce font size */
+    }
+
+    .breadcrumb-item+.breadcrumb-item::before {
+        margin-right: 5px;
+        /* Adjust margin */
+    }
+
+    .card-body {
+        flex-direction: column;
+        /* Stack elements vertically */
+        text-align: center;
+        /* Center-align text */
+    }
+
+    .card-body .text-right {
+        text-align: center;
+        /* Center-align text */
+        margin-top: 10px;
+        /* Add margin to separate sections */
+    }
+
+    .d-flex {
+        flex-direction: column;
+        /* Stack items vertically */
+        align-items: center;
+        /* Center-align items */
+    }
+
+    .ml-3 {
+        margin-left: 0;
+        /* Reset left margin */
+        margin-top: 10px;
+        /* Add top margin */
+    }
+
+    .tab-custom-hover {
+        font-size: 18px;
+        /* Further reduce font size */
+    }
+
+    .yellow-sub-header {
+        font-size: 18px;
+        /* Further reduce font size */
+        margin-left: 0;
+        /* Remove left margin */
+        text-align: center;
+        /* Center text */
+    }
+
+
+
+}

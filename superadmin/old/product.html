@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from webapplayers.com/inspinia_admin-v2.9.4/landing.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Jun 2022 03:39:49 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Iamstockbot – Automated Algo Stock Trading</title>
+    <link rel="shortcut icon" type="image/jpg" href="Iamstockbot.ico"/>
+     <!-- CSS files -->
+    <link href="/dist/css/tabler.min.css" rel="stylesheet" />
+    <link href="/dist/css/tabler-flags.min.css" rel="stylesheet" />
+    <link href="/dist/css/tabler-payments.min.css" rel="stylesheet" />
+    <link href="/dist/css/tabler-vendors.min.css" rel="stylesheet" />
+    <link href="/dist/css/demo.min.css" rel="stylesheet" />
+    <!-- 1. Add the following script to your page. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+	<script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+    <script src="./angular/angular-storage.min.js"></script>
+    <script src="./angular/angular-payments.js"></script>
+    <script src="./angular/app.js"></script>
+    <!-- <script src="./angular/service.local.js"></script> -->
+    <script src="./angular/service.js"></script>
+    <script src="./angular/registerCtrl.js"></script>
+    <!-- <script src="./angular/services.js"></script>-->
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Animation CSS -->
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+<body id="page-top" class="landing-page no-skin-config"  ng-app="website" ng-controller="registerCtrl" ng-init="init()">
+<div class="navbar-wrapper">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-expand-md" role="navigation">
+        <div class="container">
+            <img src="img/iamstockbot.png" class="mr-3">
+            <div class="collapse navbar-collapse justify-content-start" id="navbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="nav-link page-scroll" href="index.html">Home</a></li>
+                    <li><a class="nav-link page-scroll active" href="product.html">Product</a></li>
+                    <li><a class="nav-link page-scroll" href="funding.html">Funding</a></li>
+                    <li><a class="nav-link page-scroll" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <a class="navbar-brand" href="login.html">LOGIN</a>
+            <a class="navbar-brand" href="register.html">REGISTER</a>
+            <div class="navbar-header page-scroll">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div class="carousel-inner" role="listbox">
+    <div class="carousel-item active">
+        <div class="container"></div>
+        <!-- Set background for slide in css -->
+        <img src="img/landing/header_two_a.jpg" style="height:125px; width:100%;">
+    </div>
+</div>
+
+<section>
+    <div class="container">
+        <div class="row mt-5 d-flex" >
+            <div class="col-lg-11">
+            
+                <h1> The Product</h1>
+                <p>
+
+                    Our team has been working on algorithms and artificial intelligence since 2016. After about 6 years , we are ready to launch our 
+                    first automatic system which isable to trade in any stock markets. A complete team of fundamental researchers, technical traders, programmers
+                    and daily users have contributed in the development of our software and we are proud about there 
+                    contributions and hope to see this project becoming the first financial unicorn which empowers 
+                    people to generate auto-income..
+                </p>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row mt-5 d-flex" >
+           
+
+            <!-- <div class="col-lg-8">
+            
+                <div class="form rect p-3">
+                    <div class="row p-3">
+                        <h1> ETF Portfolio</h1>
+                        <p>
+
+                            We invest in leverage ETF which have high volatility to produce desire gains in the near term. 
+                            Our minimum investment starts at US$1000 and we are able to scale our portfolios as per the demands of our customers.
+        
+                            
+                        </p>
+                        
+
+                        <span ><strong> Notes</strong></span>
+                        <span> Monthly Withdrawals  </span>
+                        <span> Profit Share would be at 80:20  </span>
+                        <span> Investment can be downsized only once a month. </span>
+                        <span> Funding Eligible.</span>
+                        
+                        <p><a class="btn btn-lg btn-primary mt-4" href="product-etf.html" role="button">Apply Now</a></p>
+                    </div>
+                
+                
+                </div>
+
+
+            </div> -->
+
+            <section id="features" class="container services mt-5">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+        
+                        <h1>POPULAR PORTFOLIOS</h1>
+                        <div class="navy-line"></div>
+        
+                    </div>
+                </div>
+                <div class="row" >
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-lg-6" ng-repeat="data in dataset">
+                                <div class="ibox ">
+                                    <div class="ibox-title" style="background-color: #e5e5e5;">
+            
+                                      
+                                        <div class="row" >
+                                            <div class="col-lg-6">
+                                                <h2 style="color: #708090;"><strong><a href="robot_detail.html?modelportfolioId={{data.id}}" >{{data.portfolio_name}}</a></strong></h2>
+                                              
+                                            </div>
+    
+                                           
+                                        </div>
+                                       
+                                        <div class="ibox-tools">
+                                            <span style="padding-top: 30px;"><strong >Monthly ROI</strong></span>
+                                           
+                                           
+                                            <button type="button" style="height:30px !important;width:40px !important;font-weight:bold" class="btn btn-primary">{{data.roi}}%</button>
+                                       
+                                        </div>
+                                           
+                                               
+                                          
+                                           
+                                        
+                                        
+                                       
+                                    </div>
+                                    <div class="ibox-content" >
+                                        <strong>{{data.portfolio_name}} Portfolio</strong>
+                                        
+                                        <br>
+                                           Based on fundamental research, we have selected the top performing assets from the basket of US ETF for trading.
+                                            
+                                        
+                                        <p></p>
+                                        <p><strong>Features: </strong></p>
+                                        <ul class="">
+                                          
+                                          
+                                            <li>{{data.info}}</li>
+                                            <li>{{data.briefintro}}</li>
+                                        </ul>
+                                        <p><strong>Start Date </strong> 1 AUG 2022</p>
+                                        <p><strong>Fund Manager : </strong></p>
+                                        <ul>
+                                           
+                                            <li>Iamstockbot Team.</li>
+                                          
+                                           
+                                            
+                                        </ul>
+                                        <div>
+                                                <a href="product-detail.html?modelportfolioId={{data.id}}" class="btn btn-w-m btn-primary mt-3"><strong>Invest Now</strong></a> 
+                                          
+                                             
+            
+                                        </div>
+                                    </div>
+            
+                                </div>
+                            </div>
+                    </div>
+    
+    
+    
+    
+                    </div>
+                </div>
+
+
+
+                <!-- <div class="row">
+                    <div class="col-sm-4">
+                        <span class="feature-text">ETF Portfolio</span>
+                        <p class="text-height mt-2">Invest in leading leverage <strong>ETF</strong> like <strong>TQQQ,SOXU,
+                                SOXL</strong> and others to generate auto income and benefit from the growth of these leading
+                            ETF</p>
+                        <p><a class="btn btn-lg btn-primary mt-4" href="product-etf.html?modelportfolioId=1" role="button">Start
+                                Now</a></p>
+                    </div>
+                    <div class="col-sm-4">
+                        <span class="feature-text">Crypto Portfolio</span>
+                        <p class="text-height  mt-2">We work hard to make it easy to understand <strong> Crypto
+                                Portfolios</strong>and generate income naturally. <br></p>
+                        <p><a class="btn btn-lg btn-primary mt-4" href="product-etf.html?modelportfolioId=3" role="button">Start
+                                Now</a></p>
+                    </div>
+                    <div class="col-sm-4">
+                        <span class="feature-text">US Stocks Portfolio</span>
+                        <p class="text-height  mt-2">Invest in <strong>APPLE, MSFT AND AMAZON with the assurance of proper
+                                robotic risk management.</p>
+                        <p><a class="btn btn-lg btn-primary mt-4" href="product-etf.html?modelportfolioId=2" role="button">Start
+                                Now</a></p>
+                    </div>
+                </div>
+                <div class="navy-line"></div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <span class="feature-text">Gold Portfolio</span>
+                        <p class="text-height  mt-2">Invest in world's best commodity , <strong>GOLD</strong>without issues.</p>
+                        <p><a class="btn btn-lg btn-primary mt-4" href="product-etf.html?modelportfolioId=4" role="button">Start
+                                Now</a></p>
+                    </div>
+                    <div class="col-sm-4">
+                        <span class="feature-text">Global Indices</span>
+                        <p class="text-height  mt-2">Invest in <strong>NASDAQ 100, SPX500,HK33 , DE30</strong>and other
+                            sectorial indices which have global coverage.</p>
+                        <p><a class="btn btn-lg btn-primary mt-4" href="product-etf.html?modelportfolioId=5" role="button">Start
+                                Now</a></p>
+                    </div>
+                    <div class="col-sm-4">
+                        <span class="feature-text">India Portfolio</span>
+                        <p class="text-height  mt-2">Invest in Indian Stocks with us and enjoy the benefits.</p>
+                        <p><a class="btn btn-lg btn-primary mt-4" href="product-etf.html?modelportfolioId=6" role="button">Start
+                                Now</a></p>
+                    </div>
+                </div> -->
+        
+                </div>
+            </section>
+
+            
+            
+            
+        </div>
+
+
+    </div>
+</section>
+
+<!--register section starts-->
+<!-- <section>
+   <div class="container">
+     
+        <div class="row mt-5 d-flex justify-content-center" >
+            <div class="col-lg-5">
+                <div class="row" >
+                    <div class="col-lg-12">
+                        
+                     
+                       
+                  <div class="form rect p-3">
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <div class="navy-line"></div>
+                            <h1>Register Here</h1>
+                        </div>
+                    </div>
+                        <form name="registerForm">
+                            <div class="m-t" role="form" >
+                                <div class="controls">
+                                    <div class="row">
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-label p-1 mt-1" for="form3Example3"><strong>NAME</strong></label>
+                                                <input type="text" name="username" class="form-control" placeholder="Name" ng-model="data.name" tabindex="1" required>
+                                                <span class="error  pl-1" ng-show="!registerForm.username.$valid && (registerForm.username.$touched || submitted)"></span>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="row">
+                                          <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-label p-1 mt-1" for="form3Example3"><strong>EMAIL</strong></label>
+                                                <input type="email" name="email" class="form-control" placeholder="Email" ng-model="data.email" tabindex="3" required>
+                                                <span class="error  pl-1" ng-show="!registerForm.email.$valid && registerForm.email.$touched"></span>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-label p-1 mt-1" for="form3Example3"><strong>PHONE NUMBER</strong></label>
+                                                <input type="name" class="form-control" placeholder="Phone number" ng-model="data.phone" tabindex="4" required>
+                                                <span class="error  pl-1" ng-show="!registerForm.phone.$valid && registerForm.phone.$touched"></span>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-label p-1 mt-1" for="form3Example3"><strong>PASSWORD</strong></label>
+                                                <input type="password"  name="password" class="form-control" placeholder="Password" ng-model="data.password" tabindex="5" required>
+                                                <span class="error pl-1" ng-show="!registerForm.password.$valid && (registerForm.password.$touched || submitted)"></span>
+                                                <div class="help-block with-errors"></div>
+
+                                            </div>
+                                        </div>
+
+                                        
+                                    </div>
+                                     <div class="row">
+                                         <div class="col-md-2" align="right">
+                                               <div class="form-group">
+                                                   <label></label>
+                                                   <p>
+                                                 <input type="checkbox"  name="password1"  ng-model="data.useragreement" tabindex="7" required>
+                                                   <span class="error pl-1" ng-show="!registerForm.useragreement.$valid && (registerForm.useragreement.$touched)"></span>
+                                                <div class="help-block with-errors"></div>
+                                               </div>
+                                         </div>
+                                        <div class="col-md-10">
+                                            <div class="form-group">
+                                                 <label class="form-label p-1 mt-1" for="form3Example3">You agree with our terms and conditions. Please check the attached <strong><a href="user_agreement.html" target="_blank" >User Agreement.</a></strong></label>
+                                            </div>
+                                         </div>
+
+
+                                    </div>
+
+                                    <div class="row justify-content-center mt-4">
+                                        <div class="button">
+                                            <button type="submit" ng-click="customersignup()" ng-disabled="registerForm.pristine || registerForm.$invalid
+                                             && ( registerForm.password.$modelValue != registerForm.confirmpassword.$modelValue )" class="btn btn-primary block full-width m-b" style="background-color:#ff5c35; color:#FFF">Register</button>
+                        
+                                        <p class="text-muted text-center"><small1>Already have an account?</small> <a href="login.html" class="link-danger">Login</a></p>
+                                        
+                                        </div>
+                                    </div>
+                                </div>
+                        </form>
+                       </div>
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-1"></div>
+
+        </div>
+    
+    </div>
+    </section> -->
+
+    <!-- Modal -->
+<div aria-hidden="true" role="dialog" tabindex="-1" id="welcome" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content text-left">
+            <div class="modal-header">
+                <h4 class="modal-title">Forgot Password</h4>
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button"><i class="ti-close"></i></button>
+            </div>
+
+            <div class="modal-body">
+                <div>
+                    <span>  </span>
+                </div>
+
+                <form class="form-horizontal">
+
+
+                    <div class="form-group">
+                        <div class="col-lg-10">
+                            <span>Recovery Email</span>
+                            <input type="text" class="form-control " ng-model="cardname">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            </span>
+                            <button class="btn btn-primary" type="submit" ng-click="sendnewpassword()">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+
+
+
+<section id="contact" class="gray-section contact">
+    <div class="container">
+        <div class="row m-b-lg">
+            <div class="col-lg-12 text-center">
+                <div class="navy-line"></div>
+                <h1>Contact Us</h1>
+                
+            </div>
+        </div>
+        <div class="row m-b-lg justify-content-center">
+            <div class="col-lg-4" style="text-align:center;">
+                <address>
+                    <strong><span class="navy">Iamstockbot Inc.</span></strong><br/>
+                    <p class="text-color">Support: support@Iamstockbot.com</p>
+                    <p><a href="user_agreement.html"  class="agreement">Agreement</a> | <a href="privacy_policy.html" class="agreement">Privacy Policy</a></p>
+                </address>
+            </div>
+        </div>
+             
+        
+        <div class="row mt-2">
+            <div class="col-lg-12 text-right">
+                <p><strong>&copy; 2022-2023 Iamstockbot</strong></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mainly scripts -->
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
+<script src="js/plugins/wow/wow.min.js"></script>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        $('body').scrollspy({
+            target: '#navbar',
+            offset: 80
+        });
+
+        // Page scrolling feature
+        $('a.page-scroll').bind('click', function(event) {
+            var link = $(this);
+            $('html, body').stop().animate({
+                scrollTop: $(link.attr('href')).offset().top - 50
+            }, 500);
+            event.preventDefault();
+            $("#navbar").collapse('hide');
+        });
+    });
+
+    var cbpAnimatedHeader = (function() {
+        var docElem = document.documentElement,
+                header = document.querySelector( '.navbar-default' ),
+                didScroll = false,
+                changeHeaderOn = 200;
+        function init() {
+            window.addEventListener( 'scroll', function( event ) {
+                if( !didScroll ) {
+                    didScroll = true;
+                    setTimeout( scrollPage, 250 );
+                }
+            }, false );
+        }
+        function scrollPage() {
+            var sy = scrollY();
+            if ( sy >= changeHeaderOn ) {
+                $(header).addClass('navbar-scroll')
+            }
+            else {
+                $(header).removeClass('navbar-scroll')
+            }
+            didScroll = false;
+        }
+        function scrollY() {
+            return window.pageYOffset || docElem.scrollTop;
+        }
+        init();
+
+    })();
+
+    // Activate WOW.js plugin for animation on scrol
+    new WOW().init();
+
+</script>
+<!-- Default Statcounter code for Investment Website - Iamstockbot
+https://www.iamstockbot.com -->
+<script type="text/javascript">
+    var sc_project=12825361; 
+    var sc_invisible=1; 
+    var sc_security="3b0de661"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics Made Easy -
+    Statcounter" href="https://statcounter.com/" target="_blank"><img
+    class="statcounter" src="https://c.statcounter.com/12825361/0/3b0de661/1/"
+    alt="Web Analytics Made Easy - Statcounter"
+    referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+    <!-- End of Statcounter Code -->
+</body>
+
+<!-- Mirrored from webapplayers.com/inspinia_admin-v2.9.4/landing.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Jun 2022 03:41:10 GMT -->
+</html>

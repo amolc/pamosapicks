@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        web\admin\css\bootstrap.min.css
+        <title>Smartportfolios – Get atleast 20% more than your buy and hold strategy.</title>
+        <link href="/web/admin/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="../stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <script src="https://kit.fontawesome.com/b978cbdbfe.js" crossorigin="anonymous"></script>
+        <!-- <link rel="stylesheet" href="../css/custom.css"> -->
+        <link href="../font-awesome/css/font-awesome.css" rel="stylesheet">
+        <link href="../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+        <link href="../css/animate.css" rel="stylesheet">
+        <link href="../css/style.css" rel="stylesheet">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+    
+        <!-- Mainly scripts -->
+        <script src="../js/jquery-3.1.1.min.js"></script>
+        <script src="../js/popper.min.js"></script>
+        <script src="../js/bootstrap.js"></script>
+        <script src="../js/plugins/metisMenu/jquery.metisMenu.js"></script>
+        <script src="../js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="js/plugins/sparkline/jquery.sparkline.min.js"></script>
+        <!-- 1. Add the following script to your page. -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+        <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+        <script src="../angular/angular-storage.min.js"></script>
+        <script src="../angular/angular-payments.js"></script>
+        <script src="../angular/app.js"></script>
+        <script src="../angular/service.js"></script>
+
+           <!-- Mainly scripts -->
+
+
+        <script src="./angular/registerCtrl.js"></script>
+
+    </head>
+
+<body ng-app="website"  ng-controller="registerCtrl" ng-init="init()" >
+
+            <div id="wrapper">
+                <div id="page-wrapper">
+                    <div class="row border-bottom">
+                        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                            <div class="navbar-header">
+                                <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i
+                                        class="fa fa-bars"></i> </a>
+                                        <ul class="nav navbar-top-links navbar-left p-3">
+                                            <span style="padding-right: 20px;"><img src="/img/quantbots_dark.png" width="200px"  > </span>
+                                            <span><a style="text-decoration:none;cursor:hand;color: coral;font-weight:800;"
+                                                    href="index.html">HOME</a></span>
+                                            <span style="padding-left: 22px;"><a
+                                                    style="text-decoration:none;cursor:hand;color: coral;font-weight:800;"
+                                                    href="portfolios.html">SMART PORTFOLIO</a></span>
+                
+                                        </ul>     
+                            </div>
+                            
+        
+                            <ul class="nav navbar-top-links navbar-right p-3">
+                              
+                                <div ng-if="islogin == 1">
+                                    <span style="color:white;padding-right:20px;font-weight:600;"><a href="index.html" style="color:white;">Home</a> 
+                                    </span>
+
+                                    <span style="color:white;padding-right:20px;font-weight:600;"><a href="/signals/signals.html" style="color:white;">Signals</a> 
+                                    </span>
+
+
+                                    <span style="color:white;padding-right:20px;font-weight:600;"><a href="my-candidates.html" style="color:white;">My Porfolio</a> 
+                                    </span>
+
+                                </div>
+                                
+                                
+
+                              
+                                <div ng-if="islogin != 1">
+                                    <span style="color:white;padding-right:20px;font-weight:600;"><a href="index.html" style="color:white;">Home</a> 
+                                    </span>
+                                  
+                                  
+                                     <span style="color:white;padding-right:20px;font-weight:600;"><a href="intro/register.html" style="color:white;">Login / Register</a></span>
+                                </div>
+                                <div ng-if="islogin == 1 ">
+                                    <div class="dropdown profile-element">
+                                        
+                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                        
+                                            <span style="color:white;"> Hello {{ name}}<b class="caret"></b></span>
+                                        </a>
+                                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                                            <li><a class="dropdown-item" ng-click="logout()">Logout</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                               
+
+                               
+                            </ul>
+                            
+                        </nav>
+                    </div>
+                
+
+                
+
+                   
+                    
+
+                    
+                   
+                   
+                    
+                   
+                    <div class="wrapper wrapper-content">
+                        <div class="row">
+                            <div class="col-lg-2"></div>
+                            <div class="col-lg-4 ">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="ibox" >
+                                                <div class="ibox-title" style="background-color:  #eceff4;">
+                                                    <div class="ibox-tools">
+                                                        
+                                                    </div>
+                                                    <h2 style="color: #3e3e3e; ">Login</h2>
+                                                </div>
+                                                <div class="ibox-content" style="background-color: #e5f4fb;">
+                                                
+                                                    <form>
+                                                        <div class="form-group">
+                                                            <label class="form-label p-1 mt-1" for="form3Example3"><strong>EMAIL</strong></label>
+                                                            <input type="email" id="username" class="form-control" ng-model="data.email" required="required" >
+                                                            <div ng-show="validateemail > 0" style="background-color: #afe4e0;padding-top:5px">
+                                                                {{message}}</div>
+                                                                <div class="text-invalid mt-1 p-2" ng-show="invalidLoginMessage>0"
+                                                                    style="background-color: #afe4e0;padding-top:5px">{{message}}</div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="form-label p-1 mt-1" for="form3Example3"><strong>PASSWORD</strong></label>
+                                                            <input type="password" id="password" class="form-control" ng-model="data.password" required="required" >
+                                                            <div ng-show="validatepassword > 0"
+                                                                style="background-color: #afe4e0;padding-top:5px">{{message}}</div>
+                                                        </div>
+                                                        <div class="checkbox d-inline-block">
+                                                    
+                                                    
+                                                            <label class="">
+                                                                <button type="submit" ng-click="login()" id="login-btn"
+                                                                class="btn btn-primary block full-width m-b" style="background-color:#ff5c35;">Login</button>
+                                                        
+                                                            </label>
+                                                    
+                                                        </div>
+                                                        
+                                                        
+                                                          
+                                                        <div class="pull-right d-inline-block">
+                                                            <a href="#" ng-click="forgotpassword()"> Forgot password</a><p>
+                                                   
+                                                        </div>
+                                                    </form>
+                                                      
+                                                    
+                                                </div>
+                                            </div>
+            
+                                        </div>
+                                        
+                                    </div>
+                                    
+                            </div>
+                        
+                            <div class="col-lg-4">
+                                <div class="ibox ">
+                                    <div class="ibox-title" style="background-color:  #eceff4;"">
+                                        <div class="ibox-tools">
+                                            
+                                        </div>
+                                        <h2 style="color: #3e3e3e; ">Register</h2>
+                                    </div>
+                                    <div class="ibox-content" style="background-color: #e5f4fb;">
+                                    
+                                        <div>
+                                            <form name="registerForm">
+                                                <div class="m-t" role="form" >
+                                                    <div class="controls">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label class="form-label p-1 mt-1" for="form3Example3"><strong>NAME</strong></label>
+                                                                    <input type="text" name="username" class="form-control" placeholder="Name" ng-model="data.name" tabindex="1" required>
+                                                                    <span class="error  pl-1" ng-show="!registerForm.username.$valid && (registerForm.username.$touched || submitted)"></span>
+                                                                    <div class="help-block with-errors"></div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label class="form-label p-1 mt-1" for="form3Example3"><strong>PHONE NUMBER</strong></label>
+                                                                    <input type="name" class="form-control" placeholder="Phone number" ng-model="data.phone" tabindex="2" required>
+                                                                    <span class="error  pl-1" ng-show="!registerForm.phone.$valid && registerForm.phone.$touched"></span>
+                                                                    <div class="help-block with-errors"></div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label class="form-label p-1 mt-1" for="form3Example3"><strong>EMAIL</strong></label>
+                                                                    <input type="email" name="email" class="form-control" placeholder="Email" ng-model="data.email" tabindex="3" required>
+                                                                    <span class="error  pl-1" ng-show="!registerForm.email.$valid && registerForm.email.$touched"></span>
+                                                                    <div class="help-block with-errors"></div>
+                                                                </div>
+                                                            </div>
+                                                    
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label class="form-label p-1 mt-1" for="form3Example3"><strong>PASSWORD</strong></label>
+                                                                    <input type="password"  name="password" class="form-control" placeholder="Password" ng-model="data.password" tabindex="4" required>
+                                                                    <span class="error pl-1" ng-show="!registerForm.password.$valid && (registerForm.password.$touched || submitted)"></span>
+                                                                    <div class="help-block with-errors"></div>
+                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    
+                                                        <div class="row">
+                                                            
+                                                            <div class="col-md-1" >
+                                                                <div class="form-group">
+                                                                    
+                                                                    <input type="checkbox"  name="password1"  ng-model="data.useragreement" tabindex="5" required>
+                                                                    <span class="error pl-1" ng-show="!registerForm.useragreement.$valid && (registerForm.useragreement.$touched)"></span>
+                                                                    <div class="help-block with-errors"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-11">
+                                                            
+                                                                    <label class="form-label p-1 mt-1" for="form3Example3">You agree with our terms and conditions. Please check the attached <strong><a href="user_agreement.html" target="_blank" >User Agreement.</a></strong></label>
+                                                            
+                                                            </div>
+                    
+                    
+                                                        </div>
+                    
+                                                        <div class="row  mt-4 ml-2">
+                                                            <div class="button">
+                                                                <button  tabindex="6" type="submit" ng-click="customersignup()" ng-disabled="registerForm.pristine || registerForm.$invalid
+                                                                && ( registerForm.password.$modelValue != registerForm.confirmpassword.$modelValue )" class="btn btn-primary block full-width m-b" style="background-color:#ff5c35; color:#FFF">Register</button>
+                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            </form>
+                                        </div>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2"></div>
+                            
+                        </div>
+                    </div>
+
+                </div>
+                <div class="footer" style="background-color: #D0D0D0;height: 23px;">
+                    
+                </div>
+            
+    
+
+   
+
+ 
+
+   
+
+    <!-- Custom and plugin javascript -->
+    <script src="js/inspinia.js"></script>
+    <!-- <script src="js/plugins/pace/pace.min.js"></script> -->
+    <script>
+
+        $(function () {
+                
+            var data1 = [0,3,5,7,5,4,3,4,2,2];
+            var data2 = [0,3,6,8,9,11,13,12,14,13];
+
+
+                    $('#spark-1').sparkline(data2, {
+                    height: 100,
+                    width: '20vh',
+                    changeRangeMin: -10, 
+                    chartRangeMax: 10,
+                    lineColor: "green",
+                    fillColor:false,
+                    
+                    
+                    });
+                    $('#spark-1').sparkline(data1, {
+                        height: 100,
+                        width: '20vh',
+                        changeRangeMin: -10, 
+                        chartRangeMax: 10,
+                        lineColor:"blue",
+                        fillColor:false,
+                        composite: true
+                    });
+
+            });    
+    </script>
+    <div id="pagecounter"></div>
+        </div>
+</body>
+
+
+<!-- Mirrored from webapplayers.com/inspinia_admin-v2.9.4/ecommerce_products_grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Jun 2022 03:36:24 GMT -->
+
+</html>

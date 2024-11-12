@@ -1,0 +1,56 @@
+
+body {
+    /* overflow: hidden; */
+    font-size: 18px;
+}
+.chart-wrapper {
+
+    position: absolute;
+    background-color: #132935; /* Change background color here */
+    width: 550px; /* Reduced width */
+    height: 350px; /* Reduced height */
+    display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 8px; /* Optional: Adds rounded corners */
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
+}
+path {
+    stroke: #132935;
+   /* stroke-width: 5px;
+    */
+    cursor: pointer;
+    transition: fill 250ms;
+}
+path:hover {
+   /* stroke-width: 10px;
+    */
+    fill: #fff;
+}
+text {
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+polyline {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 2px;
+    stroke-dasharray: 5px;
+}
+
+.mb-19 {
+        margin-bottom: 19.5rem;
+     }
+
+
+@media (max-width: 576px) {
+
+
+    .chart-wrapper {
+
+    width: 450px; /* Reduced width */
+    height: 350px; /* Reduced height */
+
+}
+}

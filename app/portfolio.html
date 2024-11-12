@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+
+
+  <title>Smartportfolio - Portfolio</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link rel="stylesheet" href="./global.css" />
+  <link rel="stylesheet" href="./index.css" />
+
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+
+  <!-- Template Main CSS File -->
+  <link href="../assets/css/style.css" rel="stylesheet">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+  <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+  <script src='https://cdn.plot.ly/plotly-2.16.1.min.js'></script>
+  <script src="./angular/angular-storage.min.js"></script>
+  <script src="./angular/angular-payments.js"></script>
+  <script src="./angular/app.js"></script>
+  <script src="./angular/service.js"></script>
+  <script src="./angular/portfolio.js"></script>
+</head>
+
+
+
+</head>
+
+<body ng-app="website" ng-controller="portfolio" ng-init="init()">
+  <div class="home-pages">
+
+    <!-- meta tag to referesh -->
+    <meta http-equiv="refresh" content="180">
+
+    <ng-include src="'header/navbar.html'"></ng-include>
+
+
+    <div id="myDiv">
+      <sparkLineChart data="{{portfolioDetails['portfolioroi']}}"></sparkLineChart>
+      <!-- <div id="analysisgraph" ></div> -->
+    </div>
+    <div class="frame-parent">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 ">
+            <div>
+              <div>
+                <div class="group-item">
+                  <div class="group-parent-tabs2">
+                    <div>
+                      <div>
+                        <img class="group-inner1" alt="" src="./public/group-1000004160.svg" />
+                      </div>
+                    </div>
+                    <div class="frame-group-main">
+                      <div class="smartportfolios-group2">
+                        <div class="smartportfolios1">{{ portfolioDetails['id']}}</div>
+                        <div class="smartportfolios1">-</div>
+                        <div class="smartportfolios1">{{ portfolioDetails['portfolio_name'] }} </div>
+                      </div>
+                      <div class="invest-in-rending">
+                        Invest in rending Stocks
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="group-div">
+                <h4 class="pt-2 font-bold" style="margin-left: 50px;">Statistics:</h4>
+                <div class="row d-flex text-center">
+                  <div class="col-3 mt-3">
+                    <p>Start Date</p>
+                    <hr>
+                    <p>{{portfolioDetails.portfolio_startDate}}</p>
+                  </div>
+                  <div class="col-3 mt-3">
+                    <p>End Date</p>
+                    <hr>
+                    <p>{{formattedEndDate}}</p>
+                  </div>
+                  <div class="col-3 mt-3">
+                    <p>Duration</p>
+                    <hr>
+                    <p>{{portfolioDetails.portfolio_duration}} days</p>
+                  </div>
+                  <div class="col-3 mt-3">
+                    <p>ROI</p>
+                    <hr>
+                    <p>{{portfolioDetails.roi}}</p>
+                  </div>
+                  </div>
+                <!-- <div class="lac-invesfed-for-5years-could-parent">
+                  <div class="lac-invesfed-for">
+                    $1 lac invested for 5 years could have been:
+                  </div>
+                  <div class="portfolio-parent">
+                    <div class="portfolio">Portfolio</div>
+                    <div class="div">₹10,30,853</div>
+                  </div>
+                  <div class="multicap-parent">
+                    <div class="portfolio">Multicap</div>
+                    <div class="div">₹10,30,853</div>
+                  </div>
+                  <div class="frame-wrapper">
+                    <li class="nav-item dropdown" style="list-style-type: none;">
+                      <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        5 year
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                        <li><a class="dropdown-item" href="#">About Us</a></li>
+                        <li><a class="dropdown-item" href="#">Mission</a></li>
+                        Add more dropdown items as needed
+                      </ul>
+                    </li>
+                  </div>
+                </div> -->
+                <div>
+                  <div>
+                    <div id="analysisgraph"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 ">
+            <div style="height: 100%;">
+              <div>
+
+                <!-- <div class="subscribe-now-wrapper">
+                  <a class="subscribe-now" ng-click="subscribe()">Subscribe Now</a>
+                </div> -->
+
+                <div ng-if="show== true">
+                  <div class="subscribe-now-wrapper">
+                    <a class="subscribe-now">Already Subscribed </a>
+                  </div>
+
+                </div>
+
+                <!-- <div ng-if="show == false">
+                  <div class="subscribe-now-wrapper">
+                    <a class="subscribe-now" ng-click="subscribe()">Subscribe Now</a>
+                  </div>
+
+                </div> -->
+
+              </div>
+
+
+
+              <div style="height: 20%;">
+                <div class="frame-parent-side" style="height: 100%;">
+                  <div class="logo-container">
+                   
+                    <div class="y-cagr-parent">
+                      <div class="y-cagr robot-css" ng-click="newsLetter()">
+              
+                          News-Letter Customers
+                      </div>
+                    </div>
+                    <div class="y-cagr-parent">
+                      <div class="y-cagr robot-css" ng-click="telegramCustomers()">
+                        
+                        Telegram Customers
+                      </div>
+                    </div>
+
+                    <div class="y-cagr-parent">
+                      <div class="y-cagr robot-css" ng-click="contatusCustomers()">
+                       Contact-Us Customer
+                      </div>
+                    </div>
+                    <!-- <div class="y-cagr-parent">
+                      <div class="y-cagr robot-css" ng-click="aliceblue()" >
+                        <img class="frame-child7" alt="" style="width: 34px; margin-right: 5px; height: 34px; "  src="./public/alpaca.png" /> 
+                        Subscribe Alice Blue
+                      </div>
+                    </div> -->
+
+
+
+                    <!-- <div class="y-cagr-parent">
+                      <div class="y-cagr">Start Date:</div>
+                      <div class="high-volatility">{{portfolioDetails.portfolio_startDate}}</div>
+                    </div>
+                    <div class="y-cagr-parent">
+                      <div class="y-cagr">End Date:</div>
+                      <div class="high-volatility">{{formattedEndDate}}</div>
+                    </div>
+                    <div class="y-cagr-parent">
+                      <div class="y-cagr">Duration:</div>
+                      <div class="high-volatility">{{portfolioDetails.portfolio_duration}} days</div>
+                    </div>
+                    <div class="y-cagr-parent">
+                      <div class="y-cagr">ROI :</div>
+                      <div class="high-volatility">{{portfolioDetails.roi}}</div>
+                    </div>
+                    <div class="y-cagr-parent">
+                      <div class="y-cagr">Investment</div>
+                      <div class="high-volatility">{{portfolioDetails.capital}}</div>
+                    </div>
+                  </div>
+                  <div class="more-insights-parent">
+                    <div class="more-insights">More Insights</div>
+                    <img class="path-12248-stroke" alt="" src="./public/path-12248-stroke.svg" />
+                  </div> -->
+                </div>
+              </div>
+
+
+
+
+
+              <!-- <div style="height: 83%;"> -->
+                <div class="frame-parent-side">
+                  <div class="logo-container">
+                    <!-- Add Robots link -->
+                    <div class="y-cagr-parent">
+
+                      <!-- <div class="y-cagr robot-css" ng-click="alpaca()" >
+                        <img class="frame-child7" alt="" style="width: 34px; margin-right: 5px; height: 34px; "  src="./public/alpaca.png" /> 
+                        Subscribe Alpaca
+                      </div>
+                    </div> -->
+                      <!-- <h1>{{portfolioname}}dfsdf {{ portfolioDetails['portfolio_name'] }}</h1> -->
+
+                      <!-- <div class="y-cagr-parent">
+                      <div class="y-cagr robot-css"  ng-click="ig()" >
+                        <img class="frame-child7" alt="" style="width: 34px; margin-right: 5px; height: 34px; "  src="./public/alpaca.png" /> 
+                        Subscribe IG
+                      </div>
+                    </div> -->
+                      <!-- <div class="y-cagr-parent">
+                      <div class="y-cagr robot-css" ng-click="aliceblue()" >
+                        <img class="frame-child7" alt="" style="width: 34px; margin-right: 5px; height: 34px; "  src="./public/alpaca.png" /> 
+                        Subscribe Alice Blue
+                      </div>
+                    </div> -->
+
+                      <!-- <div class="y-cagr-parent">
+                      <div class="y-cagr">Plan Name :</div>
+                      <div class="high-volatility">{{plan_name}}</div>
+                    </div>
+
+                    <div class="y-cagr-parent">
+                      <div class="y-cagr">Cost:</div>
+                      <div class="high-volatility">{{cost}} USD</div>
+                    </div>
+
+                    <div class="y-cagr-parent">
+                      <div class="y-cagr">Start Date:</div>
+                      <div class="high-volatility">{{startdate | date}}</div>
+                    </div>
+
+                    <div class="y-cagr-parent">
+                      <div class="y-cagr">End Date:</div>
+                      <div class="high-volatility">{{enddate  | date}}</div>
+                    </div> -->
+
+
+
+
+                      <!-- <div class="y-cagr-parent">
+                      <div class="y-cagr">Start Date:</div>
+                      <div class="high-volatility">{{portfolioDetails.portfolio_startDate}}</div>
+                    </div>
+                    <div class="y-cagr-parent">
+                      <div class="y-cagr">End Date:</div>
+                      <div class="high-volatility">{{formattedEndDate}}</div>
+                    </div>
+                    <div class="y-cagr-parent">
+                      <div class="y-cagr">Duration:</div>
+                      <div class="high-volatility">{{portfolioDetails.portfolio_duration}} days</div>
+                    </div>
+                    <div class="y-cagr-parent">
+                      <div class="y-cagr">ROI :</div>
+                      <div class="high-volatility">{{portfolioDetails.roi}}</div>
+                    </div>
+                    <div class="y-cagr-parent">
+                      <div class="y-cagr">Investment</div>
+                      <div class="high-volatility">{{portfolioDetails.capital}}</div>
+                    </div> -->
+                    </div>
+                    <!-- <div class="more-insights-parent">
+                    <div class="more-insights">More Insights</div>
+                    <img class="path-12248-stroke" alt="" src="./public/path-12248-stroke.svg" />
+                  </div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br><br>
+      <!-- <div class="d-flex justify-content-start">
+
+        <button class="btn-primary text-start" ng-click="addNewStock()">Add Stock</button>
+      </div> -->
+
+      <div class="d-flex justify-content-start">
+
+        <button class="btn-primary text-start" ng-click="addsimpleStock()">Add Stock</button>
+      </div>
+
+      <div class="container" style="background-color: #203E4C; width: 84%;">
+        <div class="row header">
+          <h3 class="mb-3">Stocks</h3>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-hover dataTables-example">
+            <thead class="text-center pt-5">
+              <tr>
+                <th class="whitefont">ID</th>
+                <th class="whitefont">Stock Name</th>
+                <th class="whitefont" >Stock Analysis </th>
+                <th class="whitefont">Percentage</th>
+                <th class="whitefont">Deviation Factor</th>
+                <th class="whitefont">Timing</th>
+                <!-- ng-if="customerId == portfolioCustomerId"  -->
+                <th class="whitefont">Edit</th>
+                <th class="whitefont">Delete</th>
+              </tr>
+            </thead>
+            <tbody class="text-center">
+              <tr ng-repeat="data in portfoliostocks">
+                <td>{{data.id}}</td>
+                <td><a href="stock-detail.html?stock={{data.stock}}&source={{data.source}}&portfolioId={{portfolioId}}&deviation={{data.deviationfactor}}&timing={{data.interval}}">{{data.stock}}</a></td>
+                <td><a href="stock-analysis.html?stock={{data.stock}}&source={{data.source}}&portfolioId={{portfolioId}}&deviation={{data.deviationfactor}}&timing=3">{{data.stock}}</a></td>
+                <td>{{data.percentage}}</td>
+                <td>{{data.deviationfactor}}</td>
+                <td>{{data.interval}}</td>
+                <!-- ng-if="customerId == portfolioCustomerId"  -->
+                <td ><a href="#" class="btn btn-primary"   data-bs-toggle="modal" data-bs-target="#" ng-click="editStockModal(data)">
+                  Edit
+                </a></td>
+                <td ><a href="#" class="btn btn-primary"   data-bs-toggle="modal" data-bs-target="#" ng-click="deletStock(data.id)">
+                  Delete
+                </a></td>
+              </tr>
+              <!-- <tr ng-if="!portfoliostocks || portfoliostocks.length === 0">
+                  <td colspan="3">No data available</td>
+              </tr> -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+      <!-- <div class="container">
+        <div class="frame-parent222">
+          <div class="row"> -->
+            <!-- <div class="col-md-6" ng-repeat="data in stockData">
+            <div class="frame-wrapper2" style="background-color: var(--color-gray-400); padding: 15px;">
+              <div class="stocks-tab-main">
+                <div class="stocks-tab">
+                  <img class="frame-img" alt="" src="./public/stockLogo.png" />
+                  <div class="google">{{data.stock}}</div>
+                </div>
+                <div class="technology">{{data.source}}</div>
+              </div>
+            </div>
+          </div> -->
+          <!-- </div>
+        </div>
+      </div> -->
+
+      <div class="container tabs-section">
+        <h2>Standard Deviation Signals</h2>
+        <!-- <table class="table table-bordered">
+        <thead>
+          <tr style="color: white;">
+            <th>Symbol</th>
+            <th>Portfolio Name</th>
+            <th>Signals</th>
+            <th>Close</th>
+            <th>Date Time</th>
+            <th>Profit/Loss</th>
+            <th *ngIf="showColumn('tp3')">TP3</th>
+            <th *ngIf="showColumn('lp3')">LP3</th>
+          </tr>
+        </thead>
+        <tbody style="color: white;">
+          <tr ng-repeat="signal in signals">
+            <td>{{ signal.symbol }}</td>
+            <td>{{ signal.portfolio_name }}</td>
+            <td>{{ signal.signals }}</td>
+            <td>{{ signal.close }}</td>
+            <td>{{ signal.datetime }}</td>
+            <td>{{ signal.profitloss }}</td>
+            <td *ngIf="showColumn('tp3')">{{ signal.tp3 }}</td>
+            <td *ngIf="showColumn('lp3')">{{ signal.lp3 }}</td>
+          </tr>
+        </tbody>
+      </table> -->
+
+        <div class="table-responsive mt-3">
+          <table class="table table-bordered table-hover dataTables-example">
+            <thead>
+              <tr>
+              <tr>
+                <th class="whitefont">Sr. Number</th>
+                <th class="whitefont">Stock Name</th>
+                <th class="whitefont" >Stock Analysis </th>
+                <!-- <th class="whitefont">Portfolio Name</th> -->
+                <th class="whitefont">Start Signals</th>
+                <th class="whitefont">Start Datetime</th>
+                <th class="whitefont">Start Price</th>
+                <th class="whitefont">End Signals</th>
+                <th class="whitefont">Stop Loss</th>
+                <th class="whitefont">Take Profit</th>
+                <th class="whitefont">End Datetime</th>
+                <th class="whitefont">End Price</th>
+                <th class="whitefont">Duration</th>
+                <!-- <th class="whitefont">TP1</th>
+                    <th class="whitefont">TP2</th> -->
+                <!-- <th class="whitefont">TP3</th> -->
+                <!-- <th class="whitefont">LP1</th>
+                    <th class="whitefont">LP2</th> -->
+
+
+
+
+
+                <!-- <th class="whitefont">LP3</th> -->
+                <!-- <th class="whitefont">Diffrence</th>
+                    
+                    <th class="whitefont">Slope</th>
+                    <th class="whitefont">Deviation Factor</th> -->
+
+                <th class="whitefont">Profit/Loss</th>
+                <th class="whitefont">Notes</th>
+                <!-- <th class="whitefont">Status</th>
+                    <th class="whitefont">Result</th> -->
+
+
+                <!-- <th class="whitefont" >Edit</th>
+                    <th class="whitefont">Delete</th> -->
+
+              </tr>
+
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="data in signals">
+                <td class="whitefont">{{$index + 1}} </td>
+                <td><a href="stock-detail.html?stock={{data.stock}}&source={{data.source}}&portfolioId={{portfolioId}}&deviation={{data.deviationfactor}}&timing=3">{{data.stock}}</a></td>
+                <td><a href="stock-analysis.html?stock={{data.stock}}&source={{data.source}}&portfolioId={{portfolioId}}&deviation={{data.deviationfactor}}&timing=3">{{data.stock}}</a></td>
+                <!-- <td class="whitefont" > {{data.stock}}</td> -->
+
+                <!-- <td class="whitefont" >{{data.source}}</td> -->
+                <!-- <td class="whitefont" >{{data.portfolio_name}}</td> -->
+                <td class="whitefont">{{data.start_signals}}</td>
+                <td class="whitefont">{{data.start_datetime | date:'short'}}</td>
+                <td class="whitefont">{{data.start_price}}</td>
+
+                <td class="whitefont">{{data.end_signals}}</td>
+                <td class="whitefont">{{data.stoploss}}</td> 
+                <td class="whitefont">{{data.takeprofit}}</td>
+                <td class="whitefont">{{data.end_datetime | date:'short'}}</td>
+                <td class="whitefont">{{data.end_price}}</td>
+
+                <td class="whitefont">{{data.duration}}</td>
+                <!-- <td class="whitefont" >{{data.tp3}}</td> -->
+                <!-- <td class="whitefont" >{{data.lp3}} </td> -->
+                <!-- <td class="whitefont" >{{data.tp3 - data.lp3}}</td> -->
+
+                <!-- <td class="whitefont" >{{data.slope}}</td>
+                <td class="whitefont" >{{data.deviationfactor}}</td> -->
+
+                <td class="whitefont">{{data.profitloss}}</td>
+                <td class="whitefont">{{data.notes}}</td>
+                <!-- <td class="whitefont" >{{data.status}}</td>
+                <td class="whitefont" >{{data.result}}</td> -->
+
+
+
+
+
+
+                <!-- <th class="whitefont" ><a href="#" ng-click="onedit(data)" >Edit</a></th>
+                <th class="whitefont" ><a href="#" ng-click="ondelete(data)" >Delete</a></th> -->
+
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="other-portfolios">Other Portfolio</div>
+        <div class="row">
+          <div class="col-md-6 col-lg-4 col-xs-12" ng-repeat="data in displayedItems">
+            <div class="rectangle-parent5 mb-4">
+              <div class="group-child4"></div>
+              <div class="group-child5" style="cursor: pointer;" ng-click="goToPortfolioPage(data.id)">
+                <a style="cursor: pointer; display: block; height: 100%;" ng-click="goToPortfolioPage(data.id)">
+                  <div class="view-portfolio-wrapper">
+                    <div class="viezh-robert">View Portfolio</div>
+                  </div>
+                </a>
+              </div>
+              <div class="group-parent2">
+                <div class="group-parent3">
+                  <div class="rectangle-wrapper">
+                    <div class="rectangle-wrapper">
+                      <div class="group-child6"></div>
+                    </div>
+                    <div class="frame-parent15">
+                      <div class="frame-wrapper">
+                        <div class="group-parent5">
+                          <img class="frame-child7" alt="" src="./public/group-1000004160.svg" />
+
+                          <div class="viezh-robert-parent">
+                            <div class="viezh-robert">{{data.portfolio_name}}</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="rectangle-parent6">
+                    <div class="group-child7"></div>
+                    <div class="frame-parent16">
+                      <div class="frame-wrapper1">
+                        <div class="group-parent5">
+                          <div class="viezh-robert">{{data.currency}} {{data.capital}}</div>
+                          <div class="min-investment">Min. Investment</div>
+                        </div>
+                      </div>
+                      <!-- <img class="frame-icon" alt="" src="./public/frame.svg" /> -->
+                      <sparkLineChart ata="{{data.portfolioroi}}"></sparkLineChart>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <div class="row-main">
+                      <div class="col-md-5 col-main first-col">
+                        <div class="row align-items-center mb-3">
+                          <div class="col">
+                            <div class="high-risk">Start Date</div>
+                            <div class="half-yearly">{{data.portfolio_startDate}}</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3 col-main first-col">
+                        <div class="row align-items-center mb-3">
+                          <div class="col">
+                            <div class="high-risk">ROI</div>
+                            <div class="half-yearly">{{data.roi}}%</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-main">
+                        <div class="row align-items-center mb-3">
+                          <div class="col">
+                            <div class="high-risk">Benchmark</div>
+                            <div class="half-yearly">50.6%</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rectangle-parent4">
+        <div class="">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-3 col-md-6 col-xs-12 mb-4 logo-parent">
+                <div class="logo"><a href="/fresh/index.html"><img class="frame-logo" alt="logo"
+                      src="./public/logo.png" /></a></div>
+                <div class="our-vision-is-to-provide-conve-parent">
+                  <div class="our-vision-is">
+                    Our vision is to provide convenience and help increase your
+                    sales business.
+                  </div>
+                  <div class="facebook-parent">
+                    <img class="facebook-icon" alt="" src="./public/facebook.svg" />
+
+                    <img class="facebook-icon" alt="" src="./public/twitter.svg" />
+
+                    <img class="facebook-icon" alt="" src="./public/linkedin.svg" />
+
+                    <img class="facebook-icon" alt="" src="./public/group.svg" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-xs-12 mb-4 logo-group">
+                <div class="div">About</div>
+                <div class="logo-container">
+                  <div class="start-investing"><a href="/how-it-work.html">How it work</a></How>
+                  </div>
+                  <div class="start-investing"><a href="/featured.html">Featured</a></div>
+                  <div class="start-investing"><a href="/partnership.html">Partnership</a></div>
+                  <div class="start-investing"><a href="/business-relation.html">Business Relation</a></div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-xs-12 mb-4 logo-group">
+                <div class="logo6">Community</div>
+                <div class="logo-container">
+                  <div class="start-investing"><a href="/event.html">Events</a></div>
+                  <div class="start-investing"><a href="/blog.html">Blog</a></div>
+                  <div class="start-investing"><a href="/podcast.html">Podcast</a></div>
+                  <div class="start-investing"><a href="/invite-friend.html">Invite a friend</a></div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-xs-12 mb-4 logo-group">
+                <div class="logo6">Socials</div>
+                <div class="logo-container">
+                  <div class="start-investing">Discord</div>
+                  <div class="start-investing">Instagram</div>
+                  <div class="start-investing">Twitter</div>
+                  <div class="start-investing">Facebook</div>
+                </div>
+              </div>
+            </div>
+            <div class="footer-line"></div>
+          </div>
+          <div class="smartportfolios-all-rights">
+            ©2023 SmartPortfolios. All rights reserved
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- edit stock start-->
+<div class="modal modal-blur fade" id="edit-stock" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <form ng-submit="editStockSubmit(data)">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-dark">Edit Stock </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="form">
+            <div class="row">
+              <div class="form-group col-md-4">
+                <label for="stockname" class="text-dark">Stock Name:</label>
+                <input type="text" class="form-control" ng-model="data.stock" name="stockname" disabled>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="stocksource" class="text-dark">Stock Source:</label>
+                <input type="text" class="form-control" ng-model="data.source" name="stocksource">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="currency_code" class="text-dark">Currency Code:</label>
+                <input type="text" class="form-control" ng-model="data.currency_code" name="currency_code" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-3">
+                <label for="percentage" class="text-dark">Percentage Allocation:</label>
+                <input type="text" class="form-control" id="percentage" ng-model="data.percentage" name="percentage">
+              </div>
+              <div class="form-group col-md-3">
+                <label for="allocatedqty" class="text-dark">Allocated Qty:</label>
+                <input type="text" class="form-control" id="allocatedqty" ng-model="data.allocatedqty" name="allocatedqty">
+              </div>
+              <div class="form-group col-md-3">
+                <label for="ig_epic" class="text-dark">Ig Epic:</label>
+                <input type="text" class="form-control" id="ig_epic" ng-model="data.ig_epic" name="ig_epic">
+              </div>
+              <div class="form-group col-md-3">
+                <label for="ct_trade_symbol" class="text-dark">CT Trade Symbol:</label>
+                <input type="text" class="form-control" id="ct_trade_symbol" ng-model="data.ct_trade_symbol" name="ct_trade_symbol">
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-3">
+                <label for="qty" class="text-dark">Qty:</label>
+                <input type="text" class="form-control" id="qty" ng-model="data.qty" name="qty">
+              </div>
+              <div class="form-group col-md-3">
+                <label for="margin" class="text-dark">Margin:</label>
+                <input type="text" class="form-control" ng-model="data.margin" name="margin" id="margin" required>
+              </div>
+              <div class="form-group col-md-3">
+                <label for="multiple_factor" class="text-dark">Multiple Factor:</label>
+                <input type="text" class="form-control" id="multiple_factor" ng-model="data.multiple_factor" name="multiple_factor">
+              </div>
+
+              <div class="form-group col-md-3">
+                <label for="ct_trade_multiple" class="text-dark">Ct Trade Multiple Factor:</label>
+                <input type="text" class="form-control" id="ct_trade_multiple" ng-model="data.ct_trade_multiple" name="ct_trade_multiple">
+              </div>
+             
+            </div>
+            <div class="row">
+
+              <div class="form-group col-md-3">
+                <label for="ct_trade_division_factor" class="text-dark">Ct Trade Division Factor:</label>
+                <input type="text" class="form-control" ng-model="data.ct_trade_division_factor" name="ct_trade_division_factor" required>
+              </div>
+
+              <div class="form-group col-md-3">
+                <label for="deviationfactor" class="text-dark">Deviation Factor:</label>
+                <input type="text" class="form-control" ng-model="data.deviationfactor" name="deviationfactor" required>
+              </div>
+
+              <div class="form-group col-md-3">
+                <label for="interval" class="text-dark">Interval (timing):</label>
+                <input type="text" class="form-control" ng-model="data.interval" name="interval" required>
+              </div>
+              <div class="form-group col-md-3">
+                <label for="miminum_size" class="text-dark">Minimum Size:</label>
+                <input type="text" class="form-control" ng-model="data.miminum_size" name="miminum_size" required>
+              </div>
+             
+            </div>
+            <div class="row">
+
+              <div class="form-group col-md-3">
+                <label for="status" class="text-dark">Status:</label>
+                <input type="text" class="form-control" ng-model="data.status" name="status" required>
+              </div>
+
+              <div class="form-group col-md-3">
+                <label for="buying_ratio" class="text-dark">Buying Ratio:</label>
+                <input type="text" class="form-control" id="buying_ratio" ng-model="data.buying_ratio" name="buying_ratio">
+              </div>
+              <div class="form-group col-md-3">
+                <label for="takeprofit" class="text-dark">Take Profit:</label>
+                <input type="text" class="form-control" ng-model="data.takeprofit" name="takeprofit" id="takeprofit" required>
+              </div>
+              <div class="form-group col-md-3">
+                <label for="stoploss" class="text-dark">Stop Loss:</label>
+                <input type="text" class="form-control" id="stoploss" ng-model="data.stoploss" name="stoploss">
+              </div>
+            </div>
+
+            <div class="row">
+            <div class="form-group col-md-6">
+              <label for="step_size" class="text-dark">Step Size:</label>
+              <input type="text" class="form-control" ng-model="data.step_size" name="step_size" required>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="lot_size" class="text-dark">Lot Size:</label>
+              <input type="text" class="form-control" id="lot_size" ng-model="data.lot_size" name="lot_size">
+            </div>
+          </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
+            Cancel
+          </a>
+          <button type="submit" class="btn btn-primary ms-auto">
+            Submit
+        </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- edit stock end -->
+
+
+
+
+<!-- add stock start short-->
+<div class="modal modal-blur fade" id="add-simplestock" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <form ng-submit="simpleStockSubmit(data)">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-dark">Add Stock </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="form">
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label for="percentage" class="text-dark">Stock:</label>
+                <select class="form-select"  ng-change="updatestocksource(data.stock)" ng-model="data.stock" required>
+                  <option value="" disabled></option>
+              <option ng-repeat="stock in stockdata_list" value="{{stock.stock}}">
+                {{stock.stock}}</option>
+                </select>
+
+
+              </div>
+              <div class="form-group col-md-12">
+                <label for="percentage" class="text-dark">Source:</label>
+                <select class="form-select" ng-model="data.source" required name="stockname">
+                  <option ng-repeat="stock in stockdata_list" ng-if="stock.stock === data.stock" value="{{stock.source}}">
+                      {{stock.source}}</option>
+
+              </select>
+              </div>
+              
+            </div>
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label for="percentage" class="text-dark">Percentage Allocation:</label>
+                <input type="text" class="form-control" id="percentage" ng-model="data.percentage" name="percentage">
+              </div>
+              <div class="form-group col-md-12">
+                <label for="status" class="text-dark">Status:</label>
+                <input type="text" class="form-control" ng-model="data.status" name="status" required>
+              </div>
+            
+            </div>
+
+           
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
+            Cancel
+          </a>
+          <button type="submit" class="btn btn-primary ms-auto" data-bs-dismiss="modal">
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- add stock end-->
+
+
+<!-- add stock start short-->
+<div class="modal modal-blur fade" id="add-new-stock" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <form ng-submit="addStockSubmit(data)">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-dark">Add Stock </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="form">
+            <div class="row">
+              <div class="form-group col-md-4">
+                <label for="stockname" class="text-dark">Stock Name:</label>
+                <input type="text" class="form-control" ng-model="data.stock" name="stockname" required>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="stocksource" class="text-dark">Stock Source:</label>
+                <input type="text" class="form-control" ng-model="data.source" name="stocksource" required>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="currency_code" class="text-dark">Currency Code:</label>
+                <input type="text" class="form-control" ng-model="data.currency_code" name="currency_code" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-4">
+                <label for="percentage" class="text-dark">Percentage Allocation:</label>
+                <input type="text" class="form-control" id="percentage" ng-model="data.percentage" name="percentage">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="allocatedqty" class="text-dark">Allocated Qty:</label>
+                <input type="text" class="form-control" id="allocatedqty" ng-model="data.allocatedqty" name="allocatedqty">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="ig_epic" class="text-dark">Ig Epic:</label>
+                <input type="text" class="form-control" id="ig_epic" ng-model="data.ig_epic" name="ig_epic">
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-3">
+                <label for="qty" class="text-dark">Qty:</label>
+                <input type="text" class="form-control" id="qty" ng-model="data.qty" name="qty">
+              </div>
+              <div class="form-group col-md-3">
+                <label for="margin" class="text-dark">Margin:</label>
+                <input type="text" class="form-control" ng-model="data.margin" name="margin" id="margin" required>
+              </div>
+              <div class="form-group col-md-3">
+                <label for="multiple_factor" class="text-dark">Multiple Factor:</label>
+                <input type="text" class="form-control" id="multiple_factor" ng-model="data.multiple_factor" name="multiple_factor">
+              </div>
+              <div class="form-group col-md-3">
+                <label for="deviationfactor" class="text-dark">Deviation Factor:</label>
+                <input type="text" class="form-control" ng-model="data.deviationfactor" name="deviationfactor" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-4">
+                <label for="interval" class="text-dark">Interval (timing):</label>
+                <input type="text" class="form-control" ng-model="data.interval" name="interval" required>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="miminum_size" class="text-dark">Minimum Size:</label>
+                <input type="text" class="form-control" ng-model="data.miminum_size" name="miminum_size" required>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="status" class="text-dark">Status:</label>
+                <input type="text" class="form-control" ng-model="data.status" name="status" required>
+              </div>
+            </div>
+            <div class="row">
+              
+              <div class="form-group col-md-4">
+                <label for="buying_ratio" class="text-dark">Buying Ratio:</label>
+                <input type="text" class="form-control" id="buying_ratio" ng-model="data.buying_ratio" name="buying_ratio">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="takeprofit" class="text-dark">Take Profit:</label>
+                <input type="text" class="form-control" ng-model="data.takeprofit" name="takeprofit" id="takeprofit" required>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="stoploss" class="text-dark">Stop Loss:</label>
+                <input type="text" class="form-control" id="stoploss" ng-model="data.stoploss" name="stoploss">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
+            Cancel
+          </a>
+          <button type="submit" class="btn btn-primary ms-auto" data-bs-dismiss="modal">
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- add stock end-->
+
+
+<!-- delete stock start-->
+<div class="modal modal-blur fade" id="delete-stock" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+    <form ng-submit="deleteStockSubmit(data)">
+      <div class="modal-content" style="margin-left: 15rem;">
+        <div class="modal-header">
+          <h5 class="modal-title text-dark">Delete Stock </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-dark">Are you sure you want to delete this stock?</p>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
+            Cancel
+          </a>
+          <button type="submit" class="btn btn-primary ms-auto" data-bs-dismiss="modal">
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- delete stock end-->
+
+
+
+
+</body>
+
+</html>
+<style>
+  .robot-css {
+    position: relative;
+    border-radius: var(--br-5xs);
+    background-color: #143443;
+    width: 100%;
+    text-align: center;
+    padding: 8px 18px;
+    cursor: pointer;
+  }
+</style>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+  (function () {
+    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/644f791631ebfa0fe7fb52e9/1gvb7202o';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    s0.parentNode.insertBefore(s1, s0);
+  })();
+</script>
+<!--End of Tawk.to Script-->

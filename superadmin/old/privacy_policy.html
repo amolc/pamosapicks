@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from webapplayers.com/inspinia_admin-v2.9.4/landing.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Jun 2022 03:39:49 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Iamstockbot – Automated Algo Stock Trading</title>
+    <link rel="shortcut icon" type="image/jpg" href="Iamstockbot.ico"/>
+    <!-- CSS files -->
+    <link href="/dist/css/tabler.min.css" rel="stylesheet" />
+    <link href="/dist/css/tabler-flags.min.css" rel="stylesheet" />
+    <link href="/dist/css/tabler-payments.min.css" rel="stylesheet" />
+    <link href="/dist/css/tabler-vendors.min.css" rel="stylesheet" />
+    <link href="/dist/css/demo.min.css" rel="stylesheet" />
+    <!-- 1. Add the following script to your page. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+    <script src="./angular/angular-storage.min.js"></script>
+    <script src="./angular/angular-payments.js"></script>
+    <script src="./angular/app.js"></script>
+    
+    <script src="./angular/service.js"></script>
+    <script src="./angular/IamstockbotCtrl.js"></script>
+    
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Animation CSS -->
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+<body id="page-top" class="landing-page no-skin-config" ng-app="website" ng-controller="IamstockbotCtrl" ng-init="init()">
+<div class="navbar-wrapper">
+        <nav class="navbar navbar-default navbar-fixed-top navbar-expand-md" role="navigation">
+            <div class="container">
+                <img src="img/iamstockbot.png" class="mr-3">
+                <div class="collapse navbar-collapse justify-content-start" id="navbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a class="nav-link page-scroll" href="index.html">Home</a></li>
+                <!--        <li><a class="nav-link page-scroll" href="strategies.html">Strategies</a></li>
+                        <li><a class="nav-link page-scroll" href="#features">Features</a></li>
+                        <li><a class="nav-link page-scroll" href="#team">Team</a></li>
+                        <li><a class="nav-link page-scroll" href="#testimonials">Testimonials</a></li>
+                        <li><a class="nav-link page-scroll" href="#pricing">Pricing</a></li> -->
+                        <li><a class="nav-link page-scroll" href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <a class="navbar-brand" href="login.html">LOGIN</a>
+                <a class="navbar-brand" href="register.html">REGISTER</a>
+                <div class="navbar-header page-scroll">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+</div>
+
+    <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+            <div class="container"></div>
+            <!-- Set background for slide in css -->
+            <img src="img/landing/header_two_a.jpg" style="height:80px; width:100%;">
+        </div>
+    </div>
+
+    <section  class="container features">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="navy-line"></div>
+                <h1>Iamstockbot Privacy Policy</h1>
+            </div>
+        </div>
+<!--        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h3>Please read the following carefully.</h3>
+                <h3>All terms and conditions must be agreed to prior to use of this software.</h3>
+            </div>
+        </div> -->
+        <div class="row">
+            <div class="col-lg-12 text-left">
+                <span class="user-text">This Privacy Policy describes Our policies and procedures on the collection, use, and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.</span>
+                <p class="user-text mt-2">We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy.</p>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-lg-12">
+                <span class="user-text"><strong>Interpretation and Definitions</strong></span>
+                <p class="user-text mt-2"><u><strong>Interpretation</strong></u></p>
+                <p class="user-text mt-2">The words in which the initial letter is capitalized have meanings defined under the following conditions.</p>
+                <p class="user-text mt-2">The following definitions shall have the same meaning regardless of whether they appear in singular or plural.</p>
+                <p class="user-text mt-2"><u><strong>Definitions</strong></u></p>
+                <p class="user-text mt-2">For the purposes of this Privacy Policy:</p>
+                <p>
+                    <ul class="user-text">
+                        <li><strong>You</strong> means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.</li>
+                        <li class="mt-2">Under GDPR (General Data Protection Regulation), You can be referred to as the Data Subject or as the User as you are the individual using the Service.</li>
+                        <li class="mt-2"><strong>Company</strong> (referred to as either "the Company", "We", "Us", or "Our" in this Agreement) refers to Iamstockbot.</li>
+                        <li class="mt-2">For the purpose of the GDPR, the Company is the Data Controller.</li>
+                        <li class="mt-2"><strong>Application</strong> means the software program provided by the Company downloaded, accessed, or used by You on any electronic device, named Iamstockbot or provided through its website.</li>
+                        <li class="mt-2"><strong>Affiliate</strong> means an entity that controls, is controlled by or is under common control with a party, where "control" means ownership of 50% or more of the shares, equity interest or other securities entitled to vote for the election of directors or other managing authority.</li>
+                        <li class="mt-2"><strong>Account</strong> means a unique account created for You to access our Service or parts of our Service.</li>
+                        <li class="mt-2"><strong>Service</strong>refers to the Application or Service being provided.</li>
+                        <li class="mt-2"><strong>Country</strong>refers to: California, United States</li>
+                        <li class="mt-2"><strong>Service Provider</strong> means any natural or legal person who processes the data on behalf of the Company. It refers to third-party companies or individuals employed by the Company to facilitate the Service, to provide the Service on behalf of the Company, to perform services related to the Service or to assist the Company in analyzing how the Service is used. For the purpose of the GDPR, Service Providers are considered Data Processors.</li>
+                        <li class="mt-2"><strong>Third-party</strong> Social Media Service refers to any website or any social network website through which a User can log in or create an account to use the Service.</li>
+                        <li class="mt-2"><strong>Personal Data</strong> is any information that relates to an identified or identifiable individual. For the purposes for GDPR, Personal Data means any information relating to You such as a name, an identification number, location data, online identifier or to one or more factors specific to the physical, physiological, genetic, mental, economic, cultural or social identity. For the purposes of the CCPA (California Consumer Privacy Act), Personal Data means any information that identifies, relates to, describes or is capable of being associated with, or could reasonably be linked, directly or indirectly, with You.</li>
+                        <li class="mt-2"><strong>Device</strong> means any device that can access the Service, such as a computer, a cellphone or a digital tablet.</li>
+                        <li class="mt-2"><strong>Usage Data</strong> refers to data collected automatically, either generated by the use of the Service or from the Service infrastructure itself (for example, the duration of a page visit).</li>
+                        <li class="mt-2"><strong>Data Controller</strong>, for the purposes of the GDPR (General Data Protection Regulation), refers to the Company as the legal person which alone or jointly with others determines the purposes and means of the processing of Personal Data.</li>
+                        <li class="mt-2"><strong>Do Not Track (DNT)</strong> is a concept that has been promoted by US regulatory authorities, in particular the U.S. Federal Trade Commission (FTC), for the Internet industry to develop and implement a mechanism for allowing internet users to control the tracking of their online activities across websites.</li>
+                        <li class="mt-2"><strong>Business</strong>, for the purpose of the CCPA (California Consumer Privacy Act), refers to the Company as the legal entity that collects Consumers' personal information and determines the purposes and means of the processing of Consumers' personal information, or on behalf of which such information is collected and that alone, or jointly with others, determines the purposes and means of the processing of consumers' personal information, that does business in the State of California.</li>
+                        <li class="mt-2"><strong>Consumer</strong>, for the purpose of the CCPA (California Consumer Privacy Act), means a natural person who is a California resident. A resident, as defined in the law, includes (1) every individual who is in the USA for other than a temporary or transitory purpose, and (2) every individual who is domiciled in the USA who is outside the USA for a temporary or transitory purpose.</li>
+                        <li class="mt-2"><strong>Sale</strong>, for the purpose of the CCPA (California Consumer Privacy Act), means selling, renting, releasing, disclosing, disseminating, making available, transferring, or otherwise communicating orally, in writing, or by electronic or other means, a Consumer's Personal information to another business or a third party for monetary or other valuable consideration.</li>
+                </ul>
+            </p>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-lg-12">
+                <span class="user-text"><strong>Collecting and Using Your Personal Data</strong></span>
+                <p class="user-text mt-2"><u><strong>Types Of Data Collected</strong></u></p>
+                <p class="user-text mt-2"><strong>Personal Data</strong></p>
+                <p class="user-text mt-2">While using Our Service, We may ask You to provide Us with certain personally identifiable information that can be used to contact or identify You. Personally identifiable information may include, but is not limited to:</p>
+                <p>
+                    <ul class="user-text">
+                        <li>Email Address</li>
+                        <li class="mt-2">First name and last name</li>
+                        <li class="mt-2">Phone Number</li>
+                        <li class="mt-2">Address, State, Province, ZIP/Postal code, City</li>
+                        <li class="mt-2">Usage Data</li>
+                    </ul>
+                </p>
+                <p class="user-text mt-2"><strong>Usage Data</strong></p>
+                <p class="user-text mt-2">Usage Data is collected automatically when using the Service.</p>
+                <p class="user-text mt-2">Usage Data may include information such as Your Device's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that You visit, the time and date of Your visit, the time spent on those pages, unique device identifiers and other diagnostic data.</p>
+                <p class="user-text mt-2">When You access the Service by or through a mobile device, We may collect certain information automatically, including, but not limited to, the type of mobile device You use, Your mobile device unique ID, the IP address of Your mobile device, Your mobile operating system, the type of mobile Internet browser You use, unique device identifiers and other diagnostic data.</p>
+                <p class="user-text mt-2">We may also collect information that Your browser sends whenever You visit our Service or when You access the Service by or through a mobile device.</p>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-lg-12">
+                <span class="user-text"><strong>Information Collected while Using the Application</strong></span>
+                <p class="user-text mt-2">While using Our Application, in order to provide features of Our Application, We may collect, with your prior permission:</p>
+                <p>
+                    <ul class="user-text">
+                        <li>Information regarding your location</li>
+                        <li class="mt-2">Information from your Device's phone book (contacts list)</li>
+                        <li class="user-text mt-2">Pictures and other information from your Device's camera and photo library</li>
+                    </ul>
+                </p>
+                <p class="user-text mt-2">We use this information to provide features of Our Service, to improve and customize Our Service. The information may be uploaded to the Company's servers and/or a Service Provider's server or it be simply stored on Your device.</p>
+                <p class="user-text mt-2">You can enable or disable access to this information at any time, through Your Device settings. You can also enable or disable location services when You use Our Service at any time, through Your Device settings.</p>
+                <p class="user-text mt-2"><strong><u>User Of Personal Data</u></strong></p>
+                <p class="user-text mt-2">The Company may use Personal Data for the following purposes:</p>
+                <p>
+                    <ul class="user-text">
+                        <li>To provide and maintain our Service, including to monitor the usage of our Service.</li>
+                        <li class="mt-2">To manage Your Account: to manage Your registration as a user of the Service. The Personal Data You provide can give You access to different functionalities of the Service that are available to You as a registered user.</li>
+                        <li class="mt-2">For the performance of a contract: the development, compliance and undertaking of the purchase contract for the products, items or services You have purchased or of any other contract with Us through the Service.</li>
+                        <li class="mt-2">To contact You: To contact You by email, telephone calls, SMS, or other equivalent forms of electronic communication, such as a mobile application's push notifications regarding updates or informative communications related to the functionalities, products or contracted services, including the security updates, when necessary or reasonable for their implementation.</li>
+                        <li class="mt-2">To provide You with news, special offers and general information about other goods, services and events which we offer that are similar to those that you have already purchased or enquired about unless You have opted not to receive such information.</li>
+                        <li class="mt-2">•	To manage Your requests: To attend and manage Your requests to Us.</li>
+                    </ul>
+                </p>
+                <p class="user-text mt2"><strong>We may share your personal information in the following situations:</strong></p>
+                <p>
+                    <ul class="user-text">
+                        <li>With Service Providers: We may share Your personal information with Service Providers to monitor and analyze the use of our Service, to show advertisements to You to help support and maintain Our Service, to contact You, to advertise on third party websites to You after You visited our Service or for payment processing.</li>
+                        <li class="user-text mt-2">For Business transfers: We may share or transfer Your personal information in connection with, or during negotiations of, any merger, sale of Company assets, financing, or acquisition of all or a portion of our business to another company.</li>
+                        <li class="user-text mt-2">With Affiliates: We may share Your information with Our affiliates, in which case we will require those affiliates to honor this Privacy Policy. Affiliates include Our parent company and any other subsidiaries, joint venture partners or other companies that We control or that are under common control with Us.</li>
+                        <li class="user-text mt-2">With Business partners: We may share Your information with Our business partners to offer You certain products, services or promotions.</li>
+                        <li class="user-text mt-2">With other users: when You share personal information or otherwise interact in the public areas with other users, such information may be viewed by all users and may be publicly distributed outside. If You interact with other users or register through a Third-Party Social Media Service, Your contacts on the Third-Party Social Media Service may see Your name, profile, pictures and description of Your activity. Similarly, other users will be able to view descriptions of Your activity, communicate with You and view Your profile.</li>
+                    </ul>
+                </p>
+                <p class="user-text"><strong><u>Retention of Your Personal Data</u></strong></p>
+                <p class="user-text">The Company will retain Your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use Your Personal Data to the extent necessary to comply with our legal obligations (for example, if we are required to retain your data to comply with applicable laws), resolve disputes, and enforce our legal agreements and policies.</p>
+                <p class="user-text">The Company will also retain Usage Data for internal analysis purposes. Usage Data is generally retained for a shorter period of time, except when this data is used to strengthen the security or to improve the functionality of Our Service, or We are legally obligated to retain this data for longer time periods.</p>
+                <p class="user-text"><strong><u>Transfer of Your Personal Data</u></strong></p>
+                <p class="user-text">Your information, including Personal Data, is processed at the Company's operating offices and in any other places where the parties involved in the processing are located. It means that this information may be transferred to — and maintained on — computers located outside of Your state, province, country or other governmental jurisdiction where the data protection laws may differ than those from Your jurisdiction.</p>
+                <p class="user-text">Your consent to this Privacy Policy followed by Your submission of such information represents Your agreement to that transfer.</p>
+                <p class="user-text">The Company will take all steps reasonably necessary to ensure that Your data is treated securely and in accordance with this Privacy Policy and no transfer of Your Personal Data will take place to an organization or a country unless there are adequate controls in place including the security of Your data and other personal information.</p>
+                <p class="user-text"><strong><u>Disclosure of Your Personal Data</u></strong></p>
+                <p class="user-text"><strong>Business Transactions</strong></p>
+                <p class="user-text">If the Company is involved in a merger, acquisition or asset sale, Your Personal Data may be transferred. We will provide notice before Your Personal Data is transferred and becomes subject to a different Privacy Policy.</p>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-lg-12">
+                <span class="user-text"><strong>Law enforcement</strong></span>
+                <p class="user-text">Under certain circumstances, the Company may be required to disclose Your Personal Data if required to do so by law or in response to valid requests by public authorities (e.g. a court or a government agency).</p>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-lg-12">
+                <span class="user-text"><strong>Other legal requirements</strong></span>
+                <p class="user-text">The Company may disclose Your Personal Data in the good faith belief that such action is necessary to:</p>
+                <p>
+                    <ul class="user-text">
+                        <li>Comply with a legal obligation</li>
+                        <li class="user-text mt-2">Protect and defend the rights or property of the Company</li>
+                        <li class="user-text mt-2">Prevent or investigate possible wrongdoing in connection with the Service</li>
+                        <li class="user-text mt-2">Protect the personal safety of Users of the Service or the public</li>
+                        <li class="user-text mt-2">Protect against legal liability</li>
+                    </ul>
+                </p>
+                <p class="user-text"><strong><u>Security of Your Personal Data</u></strong></p>
+                <p class="user-text">The security of Your Personal Data is important to Us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While We strive to use commercially acceptable means to protect Your Personal Data, We cannot guarantee its absolute security.</p>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-lg-12">
+                <spam class="user-text"><strong>Detailed Information on the Processing of Your Personal Data</strong></spam>
+                <p class="user-text">Service Providers have access to Your Personal Data only to perform their tasks on Our behalf and are obligated not to disclose or use it for any other purpose.</p>
+                <p class="user-text"><strong><u>Analytics</u></strong></p>
+                <p class="user-text">We may use third-party Service providers to monitor and analyze the use of our Service.</p>
+                <p>
+                    <ul class="user-text">
+                        <li><strong>Google Analytics</strong>
+                        <p class="mt-2">Google Analytics is a web analytics service offered by Google that tracks and reports website traffic. Google uses the data collected to track and monitor the use of our Service. This data is shared with other Google services. Google may use the collected data to contextualize and personalize the ads of its own advertising network.</p>
+                        <p class="mt-2">You may opt-out of certain Google Analytics features through your mobile device settings, such as your device advertising settings or by following the instructions provided by Google in their Privacy Policy: <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></p>
+                        <p class="mt-2">For more information on the privacy practices of Google, please visit the Google Privacy & Terms web page: <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a> </p>
+                        </li>
+                        <li class="mt-2"><strong>Firebase</strong>
+                        <p class="mt-2">Firebase is an analytics service provided by Google Inc.</p>
+                        <p class="mt-2">You may opt-out of certain Firebase features through your mobile device settings, such as your device advertising settings or by following the instructions provided by Google in their Privacy Policy: <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></p>
+                        <p class="mt-2">We also encourage you to review the Google's policy for safeguarding your data: <a href="https://support.google.com/analytics/answer/6004245">https://support.google.com/analytics/answer/6004245</a></p>
+                        <p class="mt-2">For more information on what type of information Firebase collects, please visit the Google Privacy & Terms web page: https://policies.google.com/privacy</p>
+                        </li>
+                    </ul>
+                </p>
+                <p class="user-text mt-2"><strong><u>Email Marketing</u></strong></p>
+                <p class="user-text">We may use Your Personal Data to contact You with newsletters, marketing or promotional materials and other information that may be of interest to You. You may opt-out of receiving any, or all, of these communications from Us by following the unsubscribe link or instructions provided in any email We send or by contacting Us.</p>
+                <p class="user-text">We may use Email Marketing Service Providers to manage and send emails to You.</p>
+                <p class="user-text"><strong><u>Payments</u></strong></p>
+                <p class="user-text">We may provide paid products and/or services within the Service. In that case, we may use third-party services for payment processing (e.g. payment processors).</p>
+                <p class="user-text">We will not store or collect Your payment card details. That information is provided directly to Our third-party payment processors whose use of Your personal information is governed by their Privacy Policy. These payment processors adhere to the standards set by PCI-DSS as managed by the PCI Security Standards Council, which is a joint effort of brands like Visa, Mastercard, American Express and Discover. PCI-DSS requirements help ensure the secure handling of payment information.</p>
+                <p>
+                    <ul class="user-text">
+                        <li>Apple Store In-App Payments
+                            <p class="mt-2">Their Privacy Policy can be viewed at <a href="https://www.apple.com/legal/privacy/en-ww/">https://www.apple.com/legal/privacy/en-ww/</a></p>
+                        </li>
+                        <li class="mt-2">Google Play In-App Payments
+                            <p class="mt-2">Their Privacy Policy can be viewed at <a href="https://www.google.com/policies/privacy/">https://www.google.com/policies/privacy/</a></p>
+                        </li>
+                    </ul>
+                </p>
+                <p class="user-text"><strong><u>Usage, Performance and Miscellaneous</u></strong></p>
+                <p class="user-text">We may use third-party Service Providers to provide better improvement of our Service.</p>
+                <p>
+                    <ul class="user-text">
+                        <li><strong>Google</strong>
+                            <p class="mt-2">Google Places is a service that returns information about places using HTTP requests. It is operated by Google. Google Places service may collect information from You and from Your Device for security purposes. The information gathered by Google Places is held in accordance with the Privacy Policy of Google: <a href="https://www.google.com/intl/en/policies/privacy/">https://www.google.com/intl/en/policies/privacy/</a></p>
+                        </li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-lg-12">
+                <span class="user-text"><strong>GDPR Privacy</strong></span>
+                <p class="user-text"><strong><u>Legal Basis for Processing Personal Data under GDPR</u></strong></p>
+                <p class="user-text">We may process Personal Data under the following conditions:</p>
+                <p>
+                    <ul class="user-text">
+                        <li>Consent: You have given Your consent for processing Personal Data for one or more specific purposes.</li>
+                        <li class="mt-2">Performance of a contract: Provision of Personal Data is necessary for the performance of an agreement with You and/or for any pre-contractual obligations thereof.</li>
+                        <li class="mt-2">Legal obligations: Processing Personal Data is necessary for compliance with a legal obligation to which the Company is subject.</li>
+                        <li class="mt-2">Vital interests: Processing Personal Data is necessary in order to protect Your vital interests or of another natural person.</li>
+                        <li class="mt-2">Public interests: Processing Personal Data is related to a task that is carried out in the public interest or in the exercise of official authority vested in the Company.</li>
+                        <li class="mt-2">Legitimate interests: Processing Personal Data is necessary for the purposes of the legitimate interests pursued by the Company.</li>
+                    </ul>
+                </p>
+                <p class="user-text">In any case, the Company will gladly help to clarify the specific legal basis that applies to the processing, and in particular whether the provision of Personal Data is a statutory or contractual requirement, or a requirement necessary to enter into a contract.</p>
+                <p class="user-text"><strong><u>Your Rights under the GDPR</u></strong></p>
+                <p class="user-text">The Company undertakes to respect the confidentiality of Your Personal Data and to guarantee You can exercise Your rights.</p>
+                <p class="user-text">You have the right under this Privacy Policy, and by law if You are within the EU, to:</p>
+                <p>
+                    <ul class="user-text">
+                        <li>Request access to Your Personal Data. The right to access, update or delete the information We have on You. Whenever made possible, you can access, update or request deletion of Your Personal Data directly within Your account settings section. If you are unable to perform these actions yourself, please contact Us to assist You. This also enables You to receive a copy of the Personal Data We hold about You.</li>
+                        <li class="mt-2">Request correction of the Personal Data that We hold about You. You have the right to have any incomplete or inaccurate information We hold about You corrected.</li>
+                        <li class="mt-2">Object to processing of Your Personal Data. This right exists where We are relying on a legitimate interest as the legal basis for Our processing and there is something about Your particular situation, which makes You want to object to our processing of Your Personal Data on this ground. You also have the right to object where We are processing Your Personal Data for direct marketing purposes.</li>
+                        <li class="mt-2">Request erasure of Your Personal Data. You have the right to ask Us to delete or remove Personal Data when there is no good reason for Us to continue processing it.</li>
+                        <li class="mt-2">Request the transfer of Your Personal Data. We will provide to You, or to a third-party You have chosen, Your Personal Data in a structured, commonly used, machine-readable format. Please note that this right only applies to automated information which You initially provided consent for Us to use or where We used the information to perform a contract with You.</li>
+                        <li class="mt-2">Withdraw Your consent. You have the right to withdraw Your consent on using your Personal Data. If You withdraw Your consent, We may not be able to provide You with access to certain specific functionalities of the Service.</li>
+                    </ul>
+                </p>
+                <p class="user-text"><strong><u>Exercising of Your GDPR Data Protection Rights</u></strong></p>
+                <p class="user-text">You may exercise Your rights of access, rectification, cancellation and opposition by contacting Us. Please note that we may ask You to verify Your identity before responding to such requests. If You make a request, We will try our best to respond to You as soon as possible.</p>
+                <p class="user-text">You have the right to complain to a Data Protection Authority about Our collection and use of Your Personal Data. For more information, if You are in the European Economic Area (EEA), please contact Your local data protection authority in the EEA.</p>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-lg-12">
+                <span class="user-text"><strong>CCPA Privacy</strong></span>
+                <p class="user-text"><strong><u>Your Rights under the CCPA</u></strong></p>
+                <p class="user-text">Under this Privacy Policy, and by law if You are a resident of California, You have the following rights:</p>
+                <p>
+                    <ul class="user-text">
+                        <li>The right to notice. You must be properly notified which categories of Personal Data are being collected and the purposes for which the Personal Data is being used.</li>
+                        <li class="mt-2">The right to access / the right to request. The CCPA permits You to request and obtain from the Company information regarding the disclosure of Your Personal Data that has been collected in the past 12 months by the Company or its subsidiaries to a third-party for the third party's direct marketing purposes.</li>
+                        <li class="mt-2">The right to say no to the sale of Personal Data. You also have the right to ask the Company not to sell Your Personal Data to third parties. You can submit such a request by visiting our "Do Not Sell My Personal Information" section or web page.</li>
+                        <li class="mt-2">The right to know about Your Personal Data. You have the right to request and obtain from the Company information regarding the disclosure of the following:
+                            <ol class="user-text">
+                                <li class="mt-2">The categories of Personal Data collected</li>
+                                <li class="mt-2">The sources from which the Personal Data was collected</li>
+                                <li class="mt-2">The business or commercial purpose for collecting or selling the Personal Data</li>
+                                <li class="mt-2">Categories of third parties with whom We share Personal Data</li>
+                                <li class="mt-2">The specific pieces of Personal Data we collected about You</li>
+                            </ol>    
+                        </li>
+                        <li class="mt-2">The right to delete Personal Data. You also have the right to request the deletion of Your Personal Data that have been collected in the past 12 months.</li>
+                        <li class="mt-2">The right not to be discriminated against. You have the right not to be discriminated against for exercising any of Your Consumer's rights, including by:
+                            <ol class="user-text">
+                                <li>Denying goods or services to You</li>
+                                <li class="mt-2">Charging different prices or rates for goods or services, including the use of discounts or other benefits or imposing penalties</li>
+                                <li class="mt-2">Providing a different level or quality of goods or services to You</li>
+                                <li class="mt-2">Suggesting that You will receive a different price or rate for goods or services or a different level or quality of goods or services.</li>
+                            </ol>
+                        </li>
+                    </ul>
+                </p>
+                <p class="user-text"><strong<u>Exercising Your CCPA Data Protection Rights</u></p>
+                <p class="user-text">In order to exercise any of Your rights under the CCPA, and if you are a California resident, You can email or call us or visit our "Do Not Sell My Personal Information" section or web page.</p>
+                <p class="user-text">The Company will disclose and deliver the required information free of charge within 45 days of receiving Your verifiable request. The time period to provide the required information may be extended once by an additional 45 days when reasonably necessary and with prior notice.</p>
+                <p class="user-text"><strong><u>Do Not Sell My Personal Information</u></strong></p>
+                <p class="user-text">We do not sell personal information. However, the Service Providers we partner with (for example, our advertising partners) may use technology on the Service that "sells" personal information as defined by the CCPA law.</p>
+                <p class="user-text">If you wish to opt out of the use of your personal information for interest-based advertising purposes and these potential sales as defined under CCPA law, you may do so by following the instructions below.</p>
+                <p class="user-text">Please note that any opt out is specific to the browser You use. You may need to opt out on every browser that you use.</p>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-lg-12">
+                <span class="user-text"><strong>Bold-Website</strong></span>
+                <p class="user-text">You can opt out of receiving ads that are personalized as served by our Service Providers by following our instructions presented on the Service:</p>
+                <p>
+                    <ul class="user-text">
+                        <li>From Our "Cookie Consent" notice banner</li>
+                        <li class="mt-2">Or from Our "CCPA Opt-out" notice banner</li>
+                        <li class="mt-2">Or from Our "Do Not Sell My Personal Information" notice banner</li>
+                        <li class="mt-2">Or from Our "Do Not Sell My Personal Information" link</li>
+                    </ul>
+                </p>
+                <p class="user-text">The opt out will place a cookie on Your computer that is unique to the browser You use to opt out. If you change browsers or delete the cookies saved by your browser, you will need to opt out again.</p>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-lg-12">
+                <span class="user-text"><strong>Mobile Devices</strong></span>
+                <p class="user-text">Your mobile device may give you the ability to opt out of the use of information about the apps you use in order to serve you ads that are targeted to your interests:</p>
+                <p>
+                    <ul class="user-text">
+                        <li>"Opt out of Interest-Based Ads" or "Opt out of Ads Personalization" on Android devices</li>
+                        <li class="mt-2">"Limit Ad Tracking" on iOS devices</li>
+                    </ul>
+                </p>
+                <p class="user-text">You can also stop the collection of location information from Your mobile device by changing the preferences on your mobile device.</p>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-lg-12">
+                <span class="user-text"><strong>"Do Not Track" Policy as Required by California Online Privacy Protection Act (CalOPPA)</strong></span>
+                <p class="user-text">Our Service does not respond to Do Not Track signals.</p>
+                <p class="user-text">However, some third party websites do keep track of Your browsing activities. If You are visiting such websites, You can set Your preferences in Your web browser to inform websites that You do not want to be tracked. You can enable or disable DNT by visiting the preferences or settings page of Your web browser.</p>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-lg-12">
+                <span class="user-text"><strong>Links to Other Websites</strong></span>
+                <p class="user-text">Our Service may contain links to other websites that are not operated by Us. If You click on a third party link, You will be directed to that third party's site. We strongly advise You to review the Privacy Policy of every site You visit.</p>
+                <p class="user-text">We have no control over and assume no responsibility for the content, privacy policies or practices of any third party sites or services.</p>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-lg-12">
+                <span class="user-text"><strong>Changes to this Privacy Policy</strong></span>
+                <p class="user-text">We may update our Privacy Policy from time to time. We will notify You of any changes by posting the new Privacy Policy on this page.</p>
+                <p class="user-text">We will let You know via email and/or a prominent notice on Our Service, prior to the change becoming effective and update the "Last updated" date at the top of this Privacy Policy.</p>
+                <p class="user-text">You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-lg-12">
+                <span class="user-text"><strong>Bold-Contact Us</strong></span>
+                <p class="user-text">If you have any questions about this Privacy Policy, You can contact us:</p>
+                <p>
+                    <ul class="user-text">
+                        <li>By visiting this page on our website: https://www.Iamstockbot.com</li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contact" class="gray-section contact">
+        <div class="container">
+            <div class="row m-b-lg">
+                <div class="col-lg-12 text-center">
+                    <div class="navy-line"></div>
+                    <h1>Contact Us</h1>
+                    
+                </div>
+            </div>
+            <div class="row m-b-lg justify-content-center">
+                <div class="col-lg-4" style="text-align:center;">
+                    <address>
+                        <strong><span class="navy">Iamstockbot Pvt Ltd.,</span></strong><br/>
+                        <span class="text-color">xxxxx, xxxx ,xx</span>
+                        <p class="text-color"><a href="mailto:support@Iamstockbot.com?subject=Iamstockbot: Tech support">support@Iamstockbot.com</a></p>
+                        <p><a href="user_agreement.html"  class="agreement">Agreement</a> | <a href="privacy_policy.html" class="agreement">Privacy Policy</a></p>
+                    </address>
+                </div>
+            </div>
+                 
+            
+            <div class="row mt-2">
+                <div class="col-lg-12 text-right">
+                    <p><strong>&copy; 2022-2023 Iamstockbot</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Mainly scripts -->
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
+<script src="js/plugins/wow/wow.min.js"></script>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        $('body').scrollspy({
+            target: '#navbar',
+            offset: 80
+        });
+
+        // Page scrolling feature
+        $('a.page-scroll').bind('click', function(event) {
+            var link = $(this);
+            $('html, body').stop().animate({
+                scrollTop: $(link.attr('href')).offset().top - 50
+            }, 500);
+            event.preventDefault();
+            $("#navbar").collapse('hide');
+        });
+    });
+
+    var cbpAnimatedHeader = (function() {
+        var docElem = document.documentElement,
+                header = document.querySelector( '.navbar-default' ),
+                didScroll = false,
+                changeHeaderOn = 200;
+        function init() {
+            window.addEventListener( 'scroll', function( event ) {
+                if( !didScroll ) {
+                    didScroll = true;
+                    setTimeout( scrollPage, 250 );
+                }
+            }, false );
+        }
+        function scrollPage() {
+            var sy = scrollY();
+            if ( sy >= changeHeaderOn ) {
+                $(header).addClass('navbar-scroll')
+            }
+            else {
+                $(header).removeClass('navbar-scroll')
+            }
+            didScroll = false;
+        }
+        function scrollY() {
+            return window.pageYOffset || docElem.scrollTop;
+        }
+        init();
+
+    })();
+
+    // Activate WOW.js plugin for animation on scrol
+    new WOW().init();
+
+</script>
+
+</body>
+
+<!-- Mirrored from webapplayers.com/inspinia_admin-v2.9.4/landing.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Jun 2022 03:41:10 GMT -->
+</html>

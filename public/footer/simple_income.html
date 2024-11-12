@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Footer</title>
+    <link rel="stylesheet" href="./global.css">
+    <link rel="stylesheet" href="./index.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    
+    <style>
+
+
+        .footer-para {
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+            color: #EFFBFC;
+            margin-bottom: -6px;
+            text-decoration: none; /* Remove underline */
+            display: block; /* Ensure it takes full width */
+        }
+
+        .footer-para:hover {
+            color: #C6F0FE;
+        }
+
+        .footer-email {
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+            color: #EFFBFC;
+            margin-bottom: 10px;
+            text-decoration: none; /* Remove underline */
+            display: block; /* Ensure it takes full width */
+        }
+
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #3E6375;
+            color: white;
+            margin: 5px;
+            font-size: 20px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .input-icon {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            color: white;
+            pointer-events: none;
+        }
+
+        .hr-custom {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-width: 0;
+            height: 2px;
+            background-color: white;
+        }
+
+        @media (max-width: 767.98px) {
+            .footer-top {
+                text-align: center;
+            }
+            .footer-para {
+                font-size: 12px;
+            }
+            .social-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 16px;
+            }
+            .form-control {
+                width: 100%;
+                height: 50px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <footer id="footer" style="background-color: #143443;">
+        <div class="footer-top" style="background-color: #143443 !important;">
+            <div class="container mt-5">
+                <div class="mb-4">
+                    <a href="#"><img style="height: 50px; margin-bottom: 10px;" src="/assets/img/quantbots-logo.png" alt="Logo"></a>
+                </div>
+                <div class="row text-center text-md-start">
+                    <div class="col-md-4 mb-3">
+                        <a class="footer-para" href="../Global_fund_overview.html">Global-Portfolio Tradebots</a>
+                        <br>
+                        <a class="footer-para" href="../usetf_fund_overview.html">USETFFUND</a>
+                        <br>
+                        <a class="footer-para" href="../crypto_fund_overview.html">CRYPTOFFUND</a>
+                        <!-- <a class="footer-para" href="../Global_fund_overview.html">MUTUALFUND</a> -->
+                        <!-- <a class="footer-para" href="../Global_fund_overview.html">FUNDS</a> -->
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <a class="footer-para" href="../index.html">Home</a>
+                        <br>
+                        <a class="footer-para" href="../about.html">About Us</a>
+                        <br>
+                        <a class="footer-para" href="../trade_bot.html">Tradebots</a>
+                    </div>
+                    <div class="col-md-4 mb-1">
+                        <p class="text-light" style="font-size: 24px; font-weight: 600; margin-bottom: 0;">Join Us</p>
+                        <p class="footer-email">Don't miss any updates</p>
+                        <div class="form-group position-relative">
+                            <input type="email" class="form-control"
+                                style="background-color: #366176; font-size: 18px; font-weight: 300;" id="email"
+                                aria-describedby="emailHelp" placeholder="Enter your email address">
+                            <i class='fa fa-paper-plane input-icon'></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <hr class="hr-custom">
+                <div class="d-flex justify-content-center">
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.google.com" target="_blank" class="social-icon"><i class="fab fa-google"></i></a>
+                        <a href="https://www.linkedin.com" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<!-- Default Statcounter code for Simpleincome
+https://www.simpleincome.co -->
+<script type="text/javascript">
+    var sc_project=13005606; 
+    var sc_invisible=1; 
+    var sc_security="01d51ab5"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics"
+    href="https://statcounter.com/" target="_blank"><img
+    class="statcounter"
+    src="https://c.statcounter.com/13005606/0/01d51ab5/1/"
+    alt="Web Analytics"
+    referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+    <!-- End of Statcounter Code -->
+</body>
+
+</html>

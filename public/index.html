@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuantBot - Automated Trading Solutions</title>
+  <meta name="description"
+    content="Discover the power of Data-Driven Bots at QuantBot. Utilize advanced algorithms and hedging strategies to maximize returns across global markets. Effortlessly trade in US, Crypto, and Indian markets for targeted portfolio growth.">
+  <meta name="keywords"
+    content="QuantBot, TradeBot, algorithmic trading, data-driven bots, global markets, US market, crypto market, Indian market, portfolio optimization, hedging strategies, maximize returns, automated trading">
+  <!-- Facebook Meta Tags -->
+  <meta property="og:title" content="QuantBot - Automated Trading Solutions">
+  <meta property="og:description"
+    content="Discover the power of Data-Driven Bots at QuantBot. Utilize advanced algorithms and hedging strategies to maximize returns across global markets. Effortlessly trade in US, Crypto, and Indian markets for targeted portfolio growth.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.quantbots.co">
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@quantbotsco">
+  <meta name="twitter:title" content="QuantBot - Automated Trading Solutions">
+  <meta name="twitter:description"
+    content="Discover the power of Data-Driven Bots at QuantBot. Utilize advanced algorithms and hedging strategies to maximize returns across global markets. Effortlessly trade in US, Crypto, and Indian markets for targeted portfolio growth.">
+
+
+  <!-- Favicons -->
+  <link href="../assets/img/favicon-quatbots.ico" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="../assets/css/portfolio.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/global.css" rel="stylesheet">
+  <link href="../assets/css/index.css" rel="stylesheet">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+  <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+
+
+  <script src='https://cdn.plot.ly/plotly-2.16.1.min.js'></script>
+  <script src="./angular/angular-storage.min.js"></script>
+  <script src="./angular/angular-payments.js"></script>
+  <script src="./angular/app.js"></script>
+  <script src="./angular/service.js"></script>
+  <script src="./angular/index.js"></script>
+
+
+
+</head>
+
+<body ng-app="website" ng-controller="publicindexCtrl" ng-init="init()">
+  <div class="im_loading" ng-show="imLoading"></div>
+  <!-- nav bar start-->
+  <div class="main1">
+    <div class="home1 w-100" style="box-shadow: 0px 15px 10px -15px #203E4C;">
+      <ng-include src="'./header/new_navbar.html'"></ng-include>
+    </div>
+  </div>
+  <!-- nav bar -->
+
+  <div class="home-pages">
+
+
+    <main id="main">
+      <section style="background-color: #1A3949;">
+        <div class="container">
+
+          <h1 class="yellow-header d-flex justify-content-center">Welcome to Quantbots</h1>
+
+
+          <div class="col-xs-12 d-flex justify-content-center">
+            <div class="white-sub-header" style="white-space: pre-line;">
+              Quantbots is an automated tool that leverages quantitative strategies to generate profitable trades
+              across various markets, including stocks, commodities, and indices.
+            </div>
+          </div>
+
+          <hr class="hr-custom">
+
+          <h2 class="yellow-header mt-3">Quant Strategies</h2>
+
+
+
+          {% for data in portfolioData %}
+          <div class="col-xs-12 mt-3">
+
+
+            <div class="row">
+              <div class="d-flex justify-content-center">
+                <div class="col-12 col-md-12 col-lg-12 mt-2">
+                  <div class="portfolio-card mb-4">
+
+                    <!-- Card Header -->
+                    <div class="portfolio-card-header d-flex justify-content-between align-items-center">
+                      <div class="white-sub-header"><a href="strategies_overview.html?portfolio={$ data.portfolio_name $}"
+                          class="tab-link tab-custom-hover" title="view details">{$ data.display_name $}</a></div>
+
+                      <div class="d-flex align-items-center">
+
+                        <span class="round-pill-badge green">
+                          <span class="grey-text">ROI </span>
+                          <span class="light-green">{$ data.portfolio_roi $}%</span>
+                        </span>
+
+                        <a type="button" class="btn btn-yellow-pill ms-3" title="get email signals"
+                          style="width: 155px !important; margin-top: 0% !important;"
+                          href="news-letter-plans.html?portfolio={$ data.id $}">Email Signals</a>
+                        <a type="button" class="btn btn-yellow-pill ms-3" title="get telegram signals"
+                          href="telegram-plans.html?portfolio={$ data.id $}"
+                          style="max-width: 181px !important; background: #24A1DE !important; margin-top: 0% !important;">Telegram
+                          Signals</a>
+
+                      </div>
+                    </div>
+
+
+
+
+                    <!-- Card Body -->
+                    <div class="portfolio-card-body">
+
+                      <div class="container">
+                        <div class="row">
+                          <!-- Left Side -->
+                          <div class="col-12 col-sm-6">
+                            <div class="stock-card flex-inline mt-2">
+                              <div class="grey-big-text">Start Date:</div>
+                              <span class="white-big-text ms-2">{$ data.portfolio_startDate $}
+                              </span>
+                            </div>
+                          </div>
+
+                          <!-- Right Side -->
+                          <div class="col-12 col-sm-6">
+                            <div class="stock-card text-end">
+                              <img src="/assets/img/portfolio/IG-pill-logo.png" alt="Arrow Icon" class="arrow-icon" />
+                              <img src="/assets/img/portfolio/alpaca-pill-logo.png" alt="Arrow Icon"
+                                class="arrow-icon" />
+                              <img src="/assets/img/portfolio/fxpro-pill-logo.png" alt="Arrow Icon"
+                                class="arrow-icon" />
+                            </div>
+
+                          </div>
+
+                          <div class="col-12 col-sm-12">
+                            <div class="stock-card mt-2">
+                              <!-- <div class="grey-big-text">Description:</div> -->
+                              <span class="white-big-text ms-2">{$ data.briefintro $}</span>
+
+                            </div>
+                            <div class="">
+                              <a type="button" class="btn btn-yellow-pill mt-2" title="View strategy details"
+                                style="width: 155px !important;"
+                                href="strategies_overview.html?portfolio={$ data.portfolio_name $}">View Details</a>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+
+
+
+                    </div>
+
+
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+        </div>
+      </section>
+    </main>
+
+
+    <!-- <div style="margin-bottom: 10px;"></div> -->
+
+    <ng-include src="'footer/simple_income.html'"></ng-include>
+
+
+  </div>
+
+
+
+  <script>
+    function togglePasswordVisibility() {
+      const passwordInput = document.getElementById("password");
+      const toggleIcon = document.querySelector(".toggle-password i");
+
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        toggleIcon.classList.remove("fa-eye-slash");
+        toggleIcon.classList.add("fa-eye");
+      } else {
+        passwordInput.type = "password";
+        toggleIcon.classList.remove("fa-eye");
+        toggleIcon.classList.add("fa-eye-slash");
+      }
+    }
+
+
+  </script>
+
+
+</body>
+
+</html>

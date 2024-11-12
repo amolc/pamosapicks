@@ -1,0 +1,246 @@
+
+
+
+
+
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Quantbots - The Ultimate Precision Stock Signal Generator</title>
+  <meta content="Quantbots generates real-time trading signals with unmatched precision for stocks, forex, and more, empowering traders with advanced technology." name="description">
+  <meta content="Quantbots, stock signal generator, trading signals, real-time signals, precision trading, advanced technology." name="keywords">
+
+ 
+
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Template Main CSS File -->
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../css/animate.css" rel="stylesheet">
+  <!-- <link href="./admin/css/style.css" rel="stylesheet"> -->
+
+  <link href="../css/style.css" rel="stylesheet">
+<!-- 1. Add the following script to your page. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+<script src="./angular/angular-storage.min.js"></script>
+<script src="./angular/angular-payments.js"></script>
+<script src="./angular/app.js"></script>
+<script src="./angular/service.js"></script>
+<script src="./angular/loginCtrl.js"></script>
+</head>
+
+<style>
+  .fa-circle-check{
+    color: rgb(35, 180, 35) !important;
+  }
+  ul {
+    list-style-type: none;
+}
+</style>
+<body ng-app="website" ng-controller="login-ctrl" ng-init="init()" style="background-color:#143443;" >
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top"  style="background-color: #143443;">
+    
+
+    <div class="container">
+
+   
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+        <div class="row">
+          <div class="col-md-4">
+            <h1 class="logo"><a href="index.html"><img style="height: 80px;" src="/assets/img/quantbotslogo.png" alt=""></a></h1>
+     
+            </div>
+          <div class="col-md-4">
+          </div>
+          <div class="col-md-4 " style="padding-top: 20px; ">
+            <!-- <ul id="menuitems">
+              <li><a class="getstarted scrollto" href="index.html">Home</a></li>
+              <li><a class="getstarted scrollto" href="register.html">Register</a></li>
+              <li> <a class="getstarted scrollto" href="/admin">Login</a></li>
+            </ul> -->
+
+            <ul id="menuitems">
+              <li><i class="bx bx-chevron-right"></i> <a href="/index.html" style="color:#ffffff" >Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/register.html" style="color:#ffffff" >Register</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/admin/index.html" style="color:#ffffff" >Login</a></li>
+             
+            </ul>
+          </div>
+
+        </div>
+    </div>
+     
+  </header>
+  <!-- End Header -->
+
+ 
+  
+
+  <main id="main">
+
+   <div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-5 mt-4">
+            <div class="card mt-5 p-0 mb-5">
+                <div class="card-body p-0 m-0 ">
+                   <div class="row m-0" style="background-color: #2487ce;">
+                    <div class="col">
+                     
+                 
+                        <h2 class="center py-3" style="color: white;"> Login</h2>
+                  
+                    </div>
+                   </div>
+        
+                   <div class="row mx-3 mt-5">
+                    <div class="col">
+                        <form>
+                            <div class="form-group">
+                                <span>Email</span>
+                                <input type="email" id="username" class="form-control mt-2" ng-model="data.email" required="required" >
+                                <div ng-show="validateemail > 0" style="background-color: #afe4e0;padding-top:5px">
+                                    {{message}}</div>
+                                    <div class="text-invalid mt-1 p-2" ng-show="invalidLoginMessage>0"
+                                        style="background-color: #afe4e0;padding-top:5px">{{message}}</div>
+                            </div>
+                            <div class="form-group mt-4">
+                                <label style="color: black !important;">Password</label>
+                                <input type="password" id="password" class="form-control mt-2" ng-model="data.password" required="required" >
+                                <div ng-show="validatepassword > 0"
+                                    style="background-color: #afe4e0;padding-top:5px">{{message}}</div>
+                            </div>
+                         
+                            <button type="submit" ng-click="login()" id="login-btn"
+                                class="btn btn-primary btn-flat m-b-30 m-t-30 mt-4" style="background-color:#ff5c35; color:#FFF">Login</button>
+                            
+                              
+                            <div class="m-t-15 mt-3">
+                                <a href="#" ng-click="forgotpassword()"> Forgot password</a><p>
+                        
+                            </div>
+                        </form>
+                      
+                    </div>
+                   </div>
+                </div>
+               </div>
+        </div>
+    </div>
+   </div>
+
+
+
+
+
+   
+</main>
+        <footer id="footer" style="background-color: #143443;">
+
+          <div class="footer-top">
+            <div class="container">
+              <div class="row">
+      
+                <div class="col-lg-3 col-md-6 footer-contact">
+                  <a href=""><img style="height: 90px;" src="../assets/img/LogoQuantbots.png" alt=""></a>
+
+                  <p>
+                    Quantbots helps find the best signals in stocks, forex , commodities and cryptos.
+
+                  </p>
+                  <div class="social-links text-left text-md-right pt-3 pt-md-0 mt-4">
+                    <a href="https://twitter.com/quantbots" class="twitter"><i class="bx bxl-twitter"></i></a>
+                    <a href="https://www.facebook.com/quantbots.co" class="facebook"><i class="bx bxl-facebook"></i></a>
+                    <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                  
+                  </div>
+                </div>
+      
+                <div class="col-lg-3 col-md-6 footer-links">
+                  <h4>About</h4>
+                  <ul>
+                    <li><i class="bx bx-chevron-right"></i> <a href="#">How it work</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="#">Brokers</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="#">Partnership</a></li>
+                  </ul>
+                </div>
+      
+                <div class="col-lg-3 col-md-6 footer-links">
+                  <h4>Community</h4>
+                  <ul>
+                    <li><i class="bx bx-chevron-right"></i> <a href="https://www.facebook.com/groups/quantbots.co">Facebook Group</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="#">Discord Group</a></li>
+                   
+                  </ul>
+                </div>
+      
+                <div class="col-lg-3 col-md-6 footer-links">
+                  <h4>Social</h4>
+                  <ul>
+                    <li><i class="bx bx-chevron-right"></i> <a href="#">Discord</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="#">Instagram</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="#">Twitter</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="#">Facebook</a></li>
+                  </ul>
+                </div>
+      
+              </div>
+            </div>
+          </div>
+      
+        </footer><!-- End Footer -->
+      
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+
+
+
+     <!-- Mainly scripts -->
+<!-- <script src="js/jquery-3.1.1.min.js"></script> -->
+<script src="../admin/js/jquery-3.1.1.min.js"></script>
+<script src="../assets/js/main.js"></script>
+
+<script src="../admin/js/popper.min.js"></script>
+    <script src="../admin/js/bootstrap.js"></script>
+<script src="../admin/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="../admin/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="../admin/js/inspinia.js"></script>
+<script src="../admin/js/plugins/pace/pace.min.js"></script>
+
+</body>
+
+
+<!-- Mirrored from webapplayers.com/inspinia_admin-v2.9.4/ecommerce_products_grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Jun 2022 03:36:24 GMT -->
+
+</html>

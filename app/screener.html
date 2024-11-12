@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Smartportfolio - Portfolio</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  
+ 
+  <link href="../assets/css/style.css" rel="stylesheet">
+  
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+  <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+
+
+  <script src='https://cdn.plot.ly/plotly-2.16.1.min.js'></script>
+  <script src="../angular/angular-storage.min.js"></script>
+  <script src="../angular/angular-payments.js"></script>
+  <script src="../angular/app.js"></script>
+  <script src="../angular/service.js"></script>
+  <script src="./angular/screener.js"></script>
+
+   <!-- Favicons -->
+   <link href="assets/img/favicon.png" rel="icon">
+   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+   <link rel="stylesheet" href="./global.css" />
+   <link rel="stylesheet" href="./index.css" />
+ 
+ 
+   <!-- Google Fonts -->
+   <link
+     href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+     rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
+   <!-- Vendor CSS Files -->
+   <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+   <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+   <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+   <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+   <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  </head>
+ 
+
+
+</head>
+
+<body ng-app="website" ng-controller="screener-ctrl" ng-init="init()"  >
+
+   <!-- ======= Header ======= -->
+   <header id="header" class="fixed-top" style="background-color:  #143443;">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h1 class="logo"><a href="/"><img style="height: 80px;" src="../assets/img/quantbotslogo.png" alt=""></a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar">
+        <ul>
+            <!-- <li><a class="nav-link scrollto active" href="/app/">Home</a></li>
+                <li><a class="nav-link scrollto active" href="pricing.html">Pricing</a></li>
+                <li><a class="nav-link scrollto active" href="screener.html">Demo</a></li>
+                <li><a class="nav-link scrollto active" href="signal-portfolio.html">Signals</a></li>
+                <li><a class="nav-link scrollto active" href="robots.html">Robots</a></li>
+                <li><a class="nav-link scrollto active" href="connectors.html">Connectors</a></li>
+                <li><a class="nav-link scrollto active" href="ready-portfolio.html">Ready Portfolio</a></li>
+                <li><a class="nav-link scrollto active" href="backtesting/modelportfolio.html">My Portfolio</a></li>
+                <div class="dropdown profile-element">
+
+                  <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+
+                      <span class="text-muted text-xs block">{{name | uppercase}} <b class="caret"></b></span>
+                  </a>
+                  <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                      <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                      <li><a class="dropdown-item" ng-click="logout()">Logout</a></li>
+                  </ul> -->
+
+                  <li class="nav-item">
+                    <a class="nav-link" href="smart-portfolio.html">Smart Portfolio</a>
+                  </li>
+                  <!-- <li class="nav-item">
+                    <a class="nav-link" href="/admin/robots.html">Robots</a>
+                  </li> -->
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Screeners</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Support</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="pricing.html">Pricing</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      About
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                      <li><a class="dropdown-item" href="#">About Us</a></li>
+                      <li><a class="dropdown-item" href="#">Mission</a></li>
+                      <!-- Add more dropdown items as needed -->
+                    </ul>
+                  </li>
+                  
+                  <li class="nav-item">
+                    <a class="nav-link" href="register.html">Register</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#" ng-click="login()">Sign In</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle start-investing-parent" href="#" id="investingDropdown" role="button"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+                      Start Investing
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="investingDropdown">
+                      <li><a class="dropdown-item" href="#">Option 1</a></li>
+                      <li><a class="dropdown-item" href="#">Option 2</a></li>
+                      <!-- Add more dropdown items as needed -->
+                    </ul>
+                  </li>
+              </div>
+           
+            
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+        
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+
+<body ng-app="website" ng-controller="index-ctrl" ng-init="init()" style="background-color:#143443;" >
+
+ 
+
+ 
+  
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    
+    <section id="portfolio" class="portfolio section-bg" style="background-color: #143443;">
+
+      <div class="container" >
+        <div class="section-title mt-4" style="padding-top: 40px;">
+        <h1 class="logo"><a href="index.html"><img  width="80%" src="assets/img/quantbotslogo.png" alt=""></a></h1>
+        </div>
+         <div class="section-title mt-4" >
+          <h3 class="mt-5">Quantbots generates real-time trading signals with unmatched precision for stocks,<br> forex, and more, empowering traders with advanced technology.</h3>
+        </div>
+      
+        
+      </div>
+    </section>
+    
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services section-bg" style="background-color: #143443;">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          
+          <h2>Backtest your stock.</h2>
+          </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box iconbox-blue w-100">
+              <div class="form" >
+                
+                <form name="brokersettings2">
+                  <div class="form-group" >
+                    <label>Select Stock</label>
+                      <input type="text" name="end_points" class="form-control" placeholder="APPL" ng-model="backtest.stock" value="{{backtest.stock}}" required>
+                     
+                  </div>
+                  <div class="form-group w-100">
+                    <label>Select Exchange</label>
+                      <input type="text" name="api_id" class="form-control" placeholder="NASDAQ" ng-model="backtest.source" value="{{backtest.source}}" required>
+                     
+                  </div>
+                  <button type="submit" ng-click="backtestrobot(backtest)" ng-disabled="brokerSettings2.$invalid" class="btn btn-primary block full-width m-b">Submit</button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" >
+           
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="row justify-content-center">
+        <div class="col-lg-9 text-center mt-5" data-aos="fade-up">
+          <h3>Easily track & manage your portfolio</h3>
+          <div class="row">
+            <div class="col-lg-1">
+              <img src="assets/img/circle.png">
+            </div>
+            <div class="col-lg-2 h6"><h6>Instant portfolio Notifications</h6></div>
+            <div class="col-lg-1">
+              <img src="assets/img/circle.png">
+            </div>
+            <div class="col-lg-2 h6"><h6>Instant portfolio Notifications</h6></div>
+            <div class="col-lg-1">
+              <img src="assets/img/circle.png">
+            </div>
+            <div class="col-lg-2 h6"><h6>Instant portfolio Notifications</h6></div>
+            <div class="col-lg-1">
+              <img src="assets/img/circle.png">
+            </div>
+            <div class="col-lg-2 h6"><h6>Instant portfolio Notifications</h6></div>
+          </div>
+        </div>
+      </div> -->
+    </section><!-- End Sevices Section -->
+
+    <div class="container ">
+      <div class="row mt-3" >
+        <div class="col-lg-4 " ng-repeat="data in dataset">
+<div class="  m-4" style="border-radius: 7px;">
+  <div class="card-body">
+    <div class="row border" style="background-color: #2e76bb; border-radius: 7px 7px 0 0;">
+      <div class="col-6">
+        <h3 class="mt-2"  style="color: white !important;"><strong><a style="color: white !important;" href="chart.html?stock={{data.stock}}"> {{data.stock}}</a></strong></h3>
+                    
+      </div>
+      <div class="col-6 text-end">
+        <p class="mt-3" style="color:coral"><strong>$40/USD</strong></p>
+      </div>
+
+      </div>
+    
+      <div class="row border bg-light">
+        <div class="col">
+          <ul class="todo-list m-t small-list">
+            <div class="feed-element mt-3">
+                <h5> Automated Robots</h5>
+                <li class="mt-3">
+                  <i class="fa-solid fa-circle-check"></i>
+                    <span class="m-l-xs">IG</span>
+    
+                </li>
+                <li>
+                  <i class="fa-solid fa-circle-check"></i>
+                    <span class="m-l-xs">Alpaca</span>
+    
+                </li>
+                <li>
+                  <i class="fa-solid fa-circle-check"></i>
+                    <span class="m-l-xs">Aliceblue</span>
+                </li>
+                <h5 class="mt-3"> Automated Signals</h5>
+                <!-- <h5>Alerts Available on the followin channels </h5> -->
+
+            
+            <li >
+              <i class="fa-solid fa-circle-check"></i>
+                <span class="m-l-xs">What's app</span>
+
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check"></i>
+                <span class="m-l-xs">Telegram</span>
+
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check"></i>
+                <span class="m-l-xs">Email</span>
+            </li>
+            
+        </ul>
+        </div>
+      </div>
+      <div class="row border  bg-light" style="border-radius: 0 0 7px 7px;">
+        <div class="col">
+
+          <button type="button" class="btn my-4" style="background-color: #2e76bb; "><a href="/robot-detail.html?stock={{data.stock}}&source={{data.source}}" style="color: white;">Details</a></button> 
+
+        </div>
+      </div>
+      web\robot-details.html
+    </div>
+  </div>
+</div>
+</div>
+
+            
+        </div>
+    </div>
+    </div>
+    
+    <!-- End About Section -->
+
+        <!-- ======= Services Section ======= -->
+        <section id="services" class="services section-bg" style="background-color: #143443;">
+          <!-- <div class="container" data-aos="fade-up">
+    
+            <div class="section-title">
+              <p>Get started in</p>
+              <h2>3 Simple Steps</h2>
+              </div>
+    
+            <div class="row">
+              <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                <div class="icon-box iconbox-blue w-100">
+                  <h4>01 Signup</a></h4>
+                  <p>Signup into the world of automated trading.</p>
+                </div>
+              </div>
+    
+              <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+                <div class="icon-box iconbox-orange w-100 ">
+                  <h4>02 Choose Broker</a></h4>
+                  <p>Connect your broker.</p>
+                </div>
+              </div>
+    
+              <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
+                <div class="icon-box iconbox-pink w-100">
+                  <h4>03 Add Stock And Automate</a></h4>
+                  <p>Add stocks to your portfolio and let our quantbots do the magic.</p>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- <div class="row justify-content-center">
+            <div class="col-lg-9 text-center mt-5" data-aos="fade-up">
+              <h3>Easily track & manage your portfolio</h3>
+              <div class="row">
+                <div class="col-lg-1">
+                  <img src="assets/img/circle.png">
+                </div>
+                <div class="col-lg-2 h6"><h6>Instant portfolio Notifications</h6></div>
+                <div class="col-lg-1">
+                  <img src="assets/img/circle.png">
+                </div>
+                <div class="col-lg-2 h6"><h6>Instant portfolio Notifications</h6></div>
+                <div class="col-lg-1">
+                  <img src="assets/img/circle.png">
+                </div>
+                <div class="col-lg-2 h6"><h6>Instant portfolio Notifications</h6></div>
+                <div class="col-lg-1">
+                  <img src="assets/img/circle.png">
+                </div>
+                <div class="col-lg-2 h6"><h6>Instant portfolio Notifications</h6></div>
+              </div>
+            </div>
+          </div> -->
+        </section><!-- End Sevices Section -->
+
+
+    <!--customer sections-->
+
+    <!-- ======= Testimonials Section ======= -->
+    <!-- <section id="testimonials" class="testimonials section-bg mt-5">
+      <div class="container">
+
+        <div class="section-title">
+          <h2 class="text-dark">Trusted by our customer</h2>
+           </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box iconbox-blue">
+              <div style="text-align: left;"><img src="assets/img/client.png"></div>
+              <h4>Arvind Mandal</h4>
+              <p>Singapore</p>
+              <p class="mt-3">We are excited to see the launch of quantbots and its income ideas. 
+                </p>
+              <p class="mt-3">4.0
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+            </p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box iconbox-blue">
+              <div style="text-align: left;"><img src="assets/img/client.png"></div>
+              <h4>Kate Win Mar</h4>
+              <p>Singapore
+              </p>
+              <p class="mt-3">I have been using quantbots since december and I am always surprised with the awesome results.</p>
+              <p class="mt-3">5.0
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+            </p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box iconbox-blue">
+              <div style="text-align: left;"><img src="assets/img/client.png"></div>
+              <h4>Paras Kumar</h4>
+              <p>Singapore
+              </p>
+              <p class="mt-3">I have just started using the product, it looks amazing.</p>
+              <p class="mt-3">5.0
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+            </p>
+            </div>
+          </div>
+
+        </div>
+    
+      </div></section> -->
+    </main>
+        <footer id="footer" style="background-color: #143443;">
+
+          <div class="footer-top">
+            <div class="container">
+              <div class="row">
+      
+                <div class="col-lg-3 col-md-6 footer-contact">
+                  <a href=""><img style="height: 90px;" src="./assets/img/LogoQuantbots.png" alt=""></a>
+                  <p>
+                    Quantbots helps find the best signals in stocks, forex , commodities and cryptos.
+
+                  </p>
+                  <div class="social-links text-left text-md-right pt-3 pt-md-0 mt-4">
+                    <a href="https://twitter.com/quantbots" class="twitter"><i class="bx bxl-twitter"></i></a>
+                    <a href="https://www.facebook.com/quantbots.co" class="facebook"><i class="bx bxl-facebook"></i></a>
+                    <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                  
+                  </div>
+                </div>
+      
+                <div class="col-lg-3 col-md-6 footer-links">
+                  <h4>About</h4>
+                  <ul>
+                    <li><i class="bx bx-chevron-right"></i><a href="how-it-work.html">How it work</a></li>
+                    <li><i class="bx bx-chevron-right"></i><a href="featured.html">Featured</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="partnership.html">Partnership</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="business-relation.html">Business Relation</a></li>
+                  </ul>
+                
+                
+                
+              
+                </div>
+      
+                <div class="col-lg-3 col-md-6 footer-links">
+                  <h4>Community</h4>
+                  <ul>
+                    <li><i class="bx bx-chevron-right"></i><a href="event.html">Events</a></li>
+                    <li><i class="bx bx-chevron-right"></i><a href="blog.html">Blog</a></li>
+                    <li><i class="bx bx-chevron-right"></i><a href="podcast.html">Podcast</a></li>
+                    <li><i class="bx bx-chevron-right"></i>  <a href="invite-friend.html">Invite a friend</a></li>
+                    
+                    
+                    
+                   
+                  </ul>
+
+
+                </div>
+      
+                <div class="col-lg-3 col-md-6 footer-links">
+                  <h4>Social</h4>
+                  <ul>
+                    <li><i class="bx bx-chevron-right"></i> <a href="#">Discord</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="#">Instagram</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="#">Twitter</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="#">Facebook</a></li>
+                  </ul>
+                </div>
+      
+              </div>
+            </div>
+          </div>
+      
+        </footer><!-- End Footer -->
+      
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+
+
+
+     <!-- Mainly scripts -->
+<!-- <script src="js/jquery-3.1.1.min.js"></script> -->
+<!-- <script src="./admin/js/jquery-3.1.1.min.js"></script>
+<script src="./assets/js/main.js"></script>
+
+<script src="./admin/js/popper.min.js"></script>
+    <script src="./admin/js/bootstrap.js"></script>
+<script src="./admin/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="./admin/js/plugins/slimscroll/jquery.slimscroll.min.js"></script> -->
+
+<!-- Custom and plugin javascript -->
+<script src="./admin/js/inspinia.js"></script>
+<script src="./admin/js/plugins/pace/pace.min.js"></script>
+
+
+</body>
+
+<!-- Default Statcounter code for Robot Software https://www.quantbots.co -->
+<script type="text/javascript">
+  var sc_project=12874849; 
+  var sc_invisible=1; 
+  var sc_security="463f05c9"; 
+  </script>
+  <script type="text/javascript"
+  src="https://www.statcounter.com/counter/counter.js" async></script>
+  <noscript><div class="statcounter"><a title="web stats"
+  href="https://statcounter.com/" target="_blank"><img class="statcounter"
+  src="https://c.statcounter.com/12874849/0/463f05c9/1/" alt="web stats"
+  referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/644f791631ebfa0fe7fb52e9/1gvb7202o';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->
+  <!-- End of Statcounter Code -->
+<!-- Mirrored from webapplayers.com/inspinia_admin-v2.9.4/ecommerce_products_grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Jun 2022 03:36:24 GMT -->
+
+</html>
+
+
+  
+  <!-- Vendor JS Files -->
+  <script src="js/jquery-3.1.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>

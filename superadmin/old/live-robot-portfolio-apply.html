@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+
+
+<!-- Mirrored from webapplayers.com/inspinia_admin-v2.9.4/ecommerce_products_grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Jun 2022 03:36:24 GMT -->
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smartportfolios – Get atleast 20% more than your buy and hold strategy.</title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+
+    <!-- CSS files -->
+    <link href="/dist/css/tabler.min.css" rel="stylesheet" />
+    <link href="/dist/css/tabler-flags.min.css" rel="stylesheet" />
+    <link href="/dist/css/tabler-payments.min.css" rel="stylesheet" />
+    <link href="/dist/css/tabler-vendors.min.css" rel="stylesheet" />
+    <link href="/dist/css/demo.min.css" rel="stylesheet" />
+
+
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Toastr style -->
+    <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/b978cbdbfe.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- 1. Add the following script to your page. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+    <script src="./angular/angular-storage.min.js"></script>
+    <script src="./angular/angular-payments.js"></script>
+    <script src="./angular/app.js"></script>
+    <script src="./angular/service.js"></script>
+    <script src="./angular/live-robot-portfolio-apply.js"></script>
+
+</head>
+
+<body ng-app="website" ng-controller="live-robot-portfolio-apply" ng-init="init()">
+
+    <div id="wrapper">
+
+        <div id="menu"></div>
+
+        <div id="page-wrapper">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i
+                                class="fa fa-bars"></i> </a>
+                                <ul class="nav navbar-top-links navbar-left p-3" >
+                                    <span ><a style="text-decoration:none;cursor:hand;color: coral;font-weight:800;" href="/intro//app/">HOME</a></span>
+                                
+                                </ul>
+                    </div>
+                   
+                    <ul class="nav navbar-top-links navbar-right p-3">
+                     
+                        <span style="color:white;padding-right:20px;font-weight:600;" >Real Balance {{livebalance}}</span>
+                        <span style="color:white;padding-right:20px;font-weight:600;" >Demo Balance {{demobalance}}</span>
+                        <div class="dropdown profile-element">
+
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                               
+                                <span class="text-muted text-xs block" style="color:white !important;font-weight:600;" >{{name}} <b class="caret"></b></span>
+                            </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                                <li><a class="dropdown-item" ng-click="logout()">Logout</a></li>
+                            </ul>
+                        </div>
+                    </ul>
+                </nav>
+            </div>
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-10">
+                    <h2>Robotic Portfolio</h2>
+                </div>
+            </div>
+
+            <div class="wrapper wrapper-content">
+
+            </div>
+            <div class="row mb-4" id="intro1">
+                <div class="col-lg-12">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="signals.html"><strong>Portfolios </strong></a>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="row" id="intro">
+                <div class="col-lg-8">
+                    <div class="ibox ">
+                        <div class="ibox-title">
+                            <h1 style="color:#8B8B81"><strong>Congratulations! You are about to generate auto income. </strong></h1>
+
+                            <div class="ibox-tools">
+                                  
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                           
+                            
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" >
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-lg-12" >
+                            <div class="ibox ">
+                                <div class="ibox-title" style="background-color: #e5e5e5;">
+        
+                                  
+                                    <div class="row" >
+                                        <div class="col-lg-6">
+                                            <h2 style="color: #708090;"><strong><a href="robot_detail.html?modelportfolioId={{data.id}}" >{{data.portfolio_name}} Portfolio</a></strong></h2>
+                                          
+                                        </div>
+
+                                       
+                                    </div>
+                                   
+                                    <div class="ibox-tools">
+                                        <span style="padding-top: 30px;"><strong >Monthly ROI</strong></span>
+                                       
+                                       
+                                        <button type="button" style="height:30px !important;width:40px !important;font-weight:bold" class="btn btn-primary">{{data.roi}}%</button>
+                                   
+                                    </div>
+                                       
+                                    
+                                   
+                                </div>
+                                <div class="ibox-content" >
+                                    <form name="registerForm">
+                                        <div class="m-t" role="form" >
+                                            <div class="controls">
+                                                <div class="row">
+                                                
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="form-label p-1 mt-1" for="form3Example3"><strong>NAME</strong></label>
+                                                            <input type="text" name="username" class="form-control" placeholder="Name" ng-model="data.name" tabindex="1" required>
+                                                            <span class="error  pl-1" ng-show="!registerForm.username.$valid && (registerForm.username.$touched || submitted)"></span>
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="form-label p-1 mt-1" for="form3Example3"><strong>PHONE NUMBER</strong></label>
+                                                            <input type="name" class="form-control" placeholder="Phone number" ng-model="data.phone" tabindex="2" required>
+                                                            <span class="error  pl-1" ng-show="!registerForm.phone.$valid && registerForm.phone.$touched"></span>
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+            
+                                                    
+                                                </div>
+                                                
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="form-label p-1 mt-1" for="form3Example3"><strong>EMAIL</strong></label>
+                                                            <input type="email" name="email"  readonly="readonly" class="form-control" placeholder="Email" ng-model="data.email" tabindex="3" required>
+                                                            <span class="error  pl-1" ng-show="!registerForm.email.$valid && registerForm.email.$touched"></span>
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="form-label p-1 mt-1" for="form3Example3"><strong>Select Portfolio</strong></label>
+                                                            <input type="name" class="form-control"  ng-model="data.portfolio_name" tabindex="2" readonly="readonly" >
+                                                            <span class="error  pl-1" ng-show="!registerForm.email.$valid && registerForm.email.$touched"></span>
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+                                                  
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="form-label p-1 mt-1" for="form3Example3"><strong>CAPITAL</strong></label>
+                                                            <input type="number"  name="capital" class="form-control" placeholder="Capital" ng-model="data.capital" tabindex="6"  ng-change="updatefunding(data)" required>
+                                                            <span class="error pl-1" ng-show="!registerForm.capital.$valid && (registerForm.capital.$touched || submitted)"></span>
+                                                            <div class="help-block with-errors"></div>
+            
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label p-1 mt-1" for="form3Example3"><strong>BALANCE</strong></label>
+                                                       
+                                                          <strong> USD {{data.balance}} </strong>
+                                                    </div>
+                                                  
+                                                </div>
+                                                <div class="row">
+                                                 <div class="col-md-12">
+                                                     <div class="form-group">
+                                                        <input type="checkbox"  name="isfundingrequired"  ng-model="data.fundingrequired" tabindex="7" >
+                                                        <p>Would you like to receive a 50:50 Percentage funding to your account. <a href="funding.html"> <strong>Check Details Here</strong></a> </p>
+                                                     </div>
+                                                  </div>
+            
+                                                    
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="form-label p-1 mt-1" for="form3Example3"><strong>FUNDING AMOUNT</strong></label>
+                                                            <input type="number"  name="capital" class="form-control" placeholder="" ng-model="data.fundingamount" tabindex="6"   required>
+                                                          
+                                                           
+                                                            <span class="error pl-1" ></span>
+                                                            <div class="help-block with-errors"></div>
+            
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="form-label p-1 mt-1" for="form3Example3"><strong>FUNDING TENURE</strong></label>
+                                                            <select class="custom-select" ng-model="data.fundingtenure" tabindex="9">
+                                                                <option value="" disabled>Select Tenure</option>
+                                                                <option value="6">6 Months</option>
+                                                                <option value="12">12 Months</option>
+                                                            </select>
+                                                            <span class="error pl-1" ></span>
+                                                            <div class="help-block with-errors"></div>
+            
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="row">
+                                                    
+            
+                                                    
+                                                </div>
+                                                 <div class="row">
+                                                   
+            
+            
+                                                </div>
+            
+                                                <div class="row justify-content-center mt-4">
+                                                    <div class="button">
+                                                        <button type="submit" ng-click="submitcreateform(data)"  class="btn btn-primary block full-width m-b" style="background-color:#ff5c35; color:#FFF">Buy</button>
+                                    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </form>
+                                </div>
+        
+                            </div>
+                        </div>
+                </div>
+
+
+                </div>
+            </div>
+            
+
+          
+
+            
+            
+
+            
+
+
+        </div>
+    </div>
+   
+
+    <!-- Modals for the webpage come here -->
+    <!-- modal starts-->
+    
+
+    <div id="modals"></div>
+
+    <!-- modal starts-->
+<div class="modal inmodal" id="portfolioconfirm" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated fadeIn">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span
+                        aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <img src="img/iamstockbot.png" style="width:120px; ">
+                <h4 class="modal-title">Iamstockbot</h4>
+
+            </div>
+            <div class="modal-body">
+                <!--modal form section starts-->
+                
+               
+                <p> {{msg}}</p>
+
+
+                <a href="live-myinvestment-detail.html?myportfolioId={{data.id}}" class="btn btn-primary block full-width m-b" >Details</a>
+                                    
+
+                
+
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Mainly scripts -->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="js/inspinia.js"></script>
+    <!-- <script src="js/plugins/pace/pace.min.js"></script> -->
+
+</body>
+
+
+<!-- Mirrored from webapplayers.com/inspinia_admin-v2.9.4/ecommerce_products_grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Jun 2022 03:36:24 GMT -->
+
+</html>

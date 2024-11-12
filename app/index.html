@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+
+
+  <title>Smartportfolio - Portfolio</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link rel="stylesheet" href="./global.css" />
+  <link rel="stylesheet" href="./index.css" />
+
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+
+  <!-- Template Main CSS File -->
+  <link href="../assets/css/style.css" rel="stylesheet">
+
+  <script src="js/plugins/sparkline/jquery.sparkline.min.js"></script>
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
+  <script src="js/main.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/angular-sparklines@1.0.0/angular-sparklines.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+  <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+
+
+  <script src='https://cdn.plot.ly/plotly-2.16.1.min.js'></script>
+  <script src="./angular/angular-storage.min.js"></script>
+  <script src="./angular/angular-payments.js"></script>
+  <script src="./angular/app.js"></script>
+  <script src="./angular/service.js"></script>
+  <script src="./angular/indexCtrl.js"></script>
+</head>
+
+
+
+</head>
+
+<body ng-app="website" ng-controller="indexCtrl" ng-init="init()" >
+
+  <div class="home-pages">
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="/app">
+          <img src="./public/logo.png" alt="Logo" class="img-fluid frame-logo">
+        </a>
+        <button class="navbar-toggler navbar-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/app">Home</a>
+            </li>
+           <li class="nav-item">
+              <a class="nav-link" href="/app/smart-portfolio.html">Smart Portfolio</a>
+             </li>
+              
+              <li class="nav-item">
+                <a class="nav-link" href="/app/alpaca-portfolio.html">Alpaca Robot</a>
+               </li>
+
+               <li class="nav-item">
+                <a class="nav-link" href="/app/ig-portfolio.html">Ig Robot</a>
+               </li>
+
+               
+               <li class="nav-item">
+                <a class="nav-link" href="/app/portfolio-ig-position-list.html">Ig Position List</a>
+               </li>
+               
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="/admin/robots.html">Robots</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Screeners</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Support</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Pricing</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                About
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                <li><a class="dropdown-item" href="#">About Us</a></li>
+                <li><a class="dropdown-item" href="#">Mission</a></li>
+              </ul>
+            </li> -->
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="#" ng-click="logout()">Logout</a>
+            </li> -->
+          
+           
+            <div class="dropdown">
+              <button
+                class="btn1 btn-primary dropdown-toggle hidden-arrow"
+                type="button"
+                id="dropdownMenuButton1"
+                data-mdb-toggle="dropdown"
+                aria-expanded="false"
+              >
+              <i class="fa fa-user" aria-hidden="true"></i>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <p class="text-white text-center" >{{name}}</p>               
+                 <li class="nav-item text-white " ><a class="nav-link" href="#" ng-click="logout()">Logout</a></li>
+              </ul>
+            </div>
+            <!-- <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="supportDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Support
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="supportDropdown">
+                <li><a class="dropdown-item" href="#">Contact</a></li>
+                <li><a class="dropdown-item" href="#">FAQ</a></li>
+              </ul>
+            </li> -->
+            <!-- <li class="nav-item">
+              <a class="nav-link" ng-click="login()" href="#">Sign In</a>
+            </li> -->
+            <!-- <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle start-investing-parent" href="#" id="investingDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Start Investing
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="investingDropdown">
+                <li><a class="dropdown-item" href="#">Option 1</a></li>
+                <li><a class="dropdown-item" href="#">Option 2</a></li>
+              </ul>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="home">
+      <div class="container pt-5 mt-5">
+        <!-- <h3 class="name-text2" style="margin-top: 100px;">Welcome {{name}}</h3> -->
+        <!-- <div class="app-frame11-main"> -->
+          <div class="">
+            <div class="maximize-your-returns-sub mt-5">
+              Quantbots operate in stocks, bonds, currencies, and commodities. The intelligent algorithm is able to
+              detect intraday and swing trading actions for more than 4000 stocks and counting.Maximize Your Returns
+              with Our AI-Driven Fund Management.
+            </div>
+          </div>
+        <!-- </div> -->
+      </div>
+    </div>
+
+    <div class="app-frame12">
+      <div class="frame-parent13">
+        <!-- <div class="frame-parent14">
+          <div class="all-parent">
+            <div class="viezh-robert">All</div>
+            <div class="frame-child6"></div>
+          </div>
+          <div class="start-investing">Equity</div>
+          <div class="start-investing">Stocks</div>
+          <div class="start-investing">Mutual Funds</div>
+          <div class="start-investing">Alternative</div>
+          <div class="view-all-wrapper">
+            <div class="start-investing">View All</div>
+          </div>
+        </div> -->
+      </div>
+      <div class="container mb-5">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 col-xs-12 mt-5">
+            <div class="card card-main">
+              <div class="card-body custom-card-body">
+                <div class="row">
+                  <div class="col text-center">
+                    <img src="./public/alpaca.png">
+                    <h3 class="text-light"><strong>My Portfolio</strong></h3>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col card-height" id="alpacastatus">
+                    <p>Get a smart portfolio of stocks, ETF and others to get alerts on telegram and email
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer plan-footer">
+                <a style="text-decoration: none; color: white;" href="smart-portfolio.html">Details</a>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- <div class="col-lg-3 col-md-6 col-xs-12 mt-5">
+            <div class="card card-main">
+              <div class="card-body custom-card-body">
+                <div class="row">
+                  <div class="col text-center">
+                    <img src="./public/alpaca.png">
+                    <h3 class="text-light"><strong>Signals & Alerts</strong></h3>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col card-height" id="alpacastatus">
+                    <p>Create a portfolio of stocks to get alerts on telegram and email. Alerts will be automatically
+                      generated.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer plan-footer">
+                <a style="text-decoration: none; color: white;" href="/admin/signal-portfolio.html">Details</a>
+              </div>
+            </div>
+          </div> -->
+          <!-- <div class="col-lg-3 col-md-6 col-xs-12 mt-5">
+            <div class="card card-main">
+              <div class="card-body custom-card-body">
+                <div class="row">
+                  <div class="col text-center">
+                    <img src="./public/alpaca.png">
+                    <h3 class="text-light"><strong>Robots</strong></h3>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col card-height" id="alpacastatus">
+                    <p>The ultimate automated robot connected to your broker account for autiomated trading.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer plan-footer">
+                <a style="text-decoration: none; color: white;" href="/admin/robots.html">Details</a>
+              </div>
+            </div>
+          </div> -->
+
+          <div class="col-lg-4 col-md-6 col-xs-12 mt-5">
+            <div class="card card-main">
+              <div class="card-body custom-card-body">
+                <div class="row">
+                  <div class="col text-center">
+                    <img src="./public/alpaca.png">
+                    <h3 class="text-light"><strong>Alapca Robots</strong></h3>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col card-height" id="alpacastatus">
+                    <p>The ultimate automated robot connected to your broker account for autiomated trading.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer plan-footer">
+                <a style="text-decoration: none; color: white;" href="/app/alpaca-portfolio.html">Details</a>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-4 col-md-6 col-xs-12 mt-5">
+            <div class="card card-main">
+              <div class="card-body custom-card-body">
+                <div class="row">
+                  <div class="col text-center">
+                    <img src="./public/alpaca.png">
+                    <h3 class="text-light"><strong>IG Robots</strong></h3>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col card-height" id="alpacastatus">
+                    <p>The ultimate automated robot connected to your broker account for autiomated trading.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer plan-footer">
+                <a style="text-decoration: none; color: white;" href="/app/ig-portfolio.html">Details</a>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- <div class="col-lg-3 col-md-6 col-xs-12 mt-5">
+          <div class="card card-main">
+              <div class="card-body custom-card-body">
+                <div class="row">
+                  <div class="col text-center">
+                    <img src="./public/alpaca.png">
+                    <h3 class="text-light"><strong>Connectors</strong></h3>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col card-height" id="alpacastatus">
+                    <p>Connect any broker by using the web-connector interface and start trading today.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer plan-footer">
+                <a style="text-decoration: none; color: white;" href="/admin/connectors.html">Details</a>
+              </div>
+            </div>
+          </div> -->
+
+
+        </div>
+      </div>
+
+    </div>
+
+    <ng-include src="'/app/footer/footer.html'"></ng-include>
+
+    <!-- <div class="rectangle-parent4">
+      <div class="">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 col-xs-12 mb-4 logo-parent">
+              <div class="logo"><a href="/fresh/index.html"><img class="frame-logo" alt="logo"
+                    src="./public/logo.png" /></a></div>
+              <div class="our-vision-is-to-provide-conve-parent">
+                <div class="our-vision-is">
+                  Our vision is to provide convenience and help increase your
+                  sales business.
+                </div>
+                <div class="facebook-parent">
+                  <img class="facebook-icon" alt="" src="./public/facebook.svg" />
+
+                  <img class="facebook-icon" alt="" src="./public/twitter.svg" />
+
+                  <img class="facebook-icon" alt="" src="./public/linkedin.svg" />
+
+                  <img class="facebook-icon" alt="" src="./public/group.svg" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-xs-12 mb-4 logo-group">
+              <div class="div">About</div>
+              <div class="logo-container">
+                <div class="start-investing"><a href="/how-it-work.html">How it work</a></How></div>
+                <div class="start-investing"><a href="/featured.html">Featured</a></div>
+                <div class="start-investing"><a href="/partnership.html">Partnership</a></div>
+                <div class="start-investing"><a href="/business-relation.html">Business Relation</a></div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-xs-12 mb-4 logo-group">
+              <div class="logo6">Community</div>
+              <div class="logo-container">
+                <div class="start-investing"><a href="/event.html">Events</a></div>
+                <div class="start-investing"><a href="/blog.html">Blog</a></div>
+                <div class="start-investing"><a href="/podcast.html">Podcast</a></div>
+                <div class="start-investing"><a href="/invite-friend.html">Invite a friend</a></div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-xs-12 mb-4 logo-group">
+              <div class="logo6">Socials</div>
+              <div class="logo-container">
+                <div class="start-investing">Discord</div>
+                <div class="start-investing">Instagram</div>
+                <div class="start-investing">Twitter</div>
+                <div class="start-investing">Facebook</div>
+              </div>
+            </div>
+          </div>
+          <div class="footer-line"></div>
+        </div>
+        <div class="smartportfolios-all-rights">
+          ©2023 SmartPortfolios. All rights reserved
+        </div>
+      </div>
+    </div> -->
+  </div>
+
+
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function () {
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/644f791631ebfa0fe7fb52e9/1gvb7202o';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script>
+  <!--End of Tawk.to Script-->
+
+
+
+
+  <!-- Vendor JS Files -->
+  <script src="js/jquery-3.1.1.min.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>

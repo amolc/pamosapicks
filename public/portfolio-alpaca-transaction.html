@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+
+
+  <title>Quantbots</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="../assets/img/favicon-quatbots.ico" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="../assets/css/global.css" rel="stylesheet">
+  <link href="../assets/css/index.css" rel="stylesheet">
+
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- CSS files -->
+  <link href="css/custom.css" rel="stylesheet">
+
+
+
+  <!-- Toastr style -->
+  <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+  <link href="css/animate.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/b978cbdbfe.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/custom.css">
+
+
+  <!-- Vendor CSS Files -->
+  <script src='https://cdn.plot.ly/plotly-2.16.1.min.js'></script>
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+  <!-- Toastr style -->
+  <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+  <link href="css/animate.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/b978cbdbfe.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/custom.css">
+
+
+  <!-- Template Main CSS File -->
+  <link href="../assets/css/portfolio.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+  <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+  <script src='https://cdn.plot.ly/plotly-2.16.1.min.js'></script>
+  <script src="./angular/angular-storage.min.js"></script>
+  <script src="./angular/angular-payments.js"></script>
+  <script src="./angular/app.js"></script>
+  <script src="./angular/service.js"></script>
+  <script src="./angular/portfolio-alpaca-transaction.js"></script>
+</head>
+
+
+
+
+
+</head>
+
+<body ng-app="website" ng-controller="portfolioDetail" ng-init="init()">
+  <div class="im_loading" ng-show="imLoading"></div>
+  <div class="home-pages">
+
+    <div class="main1">
+      <div class="home1 w-100" style="box-shadow: 0px 15px 10px -15px #203E4C;">
+        <ng-include src="'./header/navbar.html'"></ng-include>
+      </div>
+
+      
+      <main id="main">
+        <section style="background-color: #1A3949;">
+
+
+          <div class="container">
+            <h3 class="yellow-header" style="margin-top: 20px;">{{customerName}}'s Alpaca Portfolio</h3>
+
+
+
+            <div class="row">
+              <div class="d-flex justify-content-center">
+                <div class="col-12 col-md-12 col-lg-12 mt-3">
+                  <div class="portfolio-card mb-4">
+
+                    <!-- Card Header -->
+                    <div class="portfolio-card-header">
+                      <div class="white-sub-header">{{ portfolioDetails['portfolio_name'] }}</div>
+                      <div>
+                        <a type="button" class="btn btn-outline-yellow"
+                          href="portfolio-alpaca.html?id={{portfolioId}}" title="go to transactions"
+                          style="max-width: 200px !important;">
+                          Portfolio Breakdown</a>
+                          <a type="button" class="btn btn-outline-yellow"  ng-click="addAPIDetails()"
+                          title="Enter your broker api details" style="max-width: 180px !important;">
+                          API Info</a>
+
+                      </div>
+                    </div>
+
+                    <!-- Card Body -->
+                    <div class="portfolio-card-body">
+
+                      <div class="container">
+                        <div class="row">
+                          <!-- Left Side -->
+                          <div class="col-12 col-sm-6">
+                            <div class="stock-card flex-inline mt-2">
+                              <div class="grey-big-text">Start Date:</div>
+                              <span class="white-big-text ms-2"> {{portfolioDetails.startdate | date}}</span>
+                            </div>
+                            <div class="stock-card flex-inline mt-2">
+                              <div class="grey-big-text">Strategy Name:</div>
+                              <span class="white-big-text ms-2"> {{portfolioDetails.strategy_name}}</span>
+                            </div>
+                            <div class="stock-card flex-inline mt-2">
+                              <div class="grey-big-text">Is Verified:</div>
+                              <div class="bg-verified ms-2" ng-if="portfolioDetails.is_verified == true"> Verified</div>
+                              <div class="bg-not-verified ms-2" ng-if="portfolioDetails.is_verified == false"> Not
+                                Verified</div>
+                            </div>
+                            <div class="stock-card flex-inline mt-2">
+                              <div class="grey-big-text">Last Verified Date: </div>
+                              <span class="white-big-text ms-2">{{portfolioDetails.last_verified_date | date}}</span>
+                            </div>
+                          </div>
+
+                          <!-- Right Side -->
+                          <div class="col-12 col-sm-6">
+                            <div class="stock-card text-end">
+                              <div class="grey-big-text">Invested:</div>
+                              <span class="yellow-sub-header">${{portfolioDetails.investment_amount}}</span>
+                            </div>
+                            <div class="stock-card mt-3 text-end">
+                              <div class="grey-big-text">P&amp;L:</div>
+                              <span class="yellow-sub-header">${{portfolioDetails.robotalapca_profit_loss | number: 2}}
+                              </span>
+                            </div>
+                          </div>
+
+
+
+                        </div>
+
+
+
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+              </div>
+            </div>
+
+            <hr class="hr-custom mb-3">
+            <div class="row" style="margin-left: 3rem;">
+              <div class="col-12 col-md-8">
+                 
+                      <div class="d-flex justify-content-center"> <!-- Adjusted CSS class -->
+                        <div id="profitlossgraph" style="height:40vh" ></div>
+                       
+                      </div>
+              </div>
+
+              <div class="col-12 col-md-4 mt-5">
+                <div class="d-flex justify-content-center">
+                  <!-- <h5 class="mt-4">Winrate: {{ winratepercentage }}%</h5> -->
+                    <div id="winratediv" style="height:40vh"></div>
+                  </div>
+                
+              </div>
+
+              <!-- <div class="col-12 col-md-6 mb-19 mt-2">
+
+                          <div class="chart-wrapper" id="chart-wrapper"></div>
+
+              </div> -->
+          </div>
+          <hr class="hr-custom mb-3">
+
+          <div class="white-sub-header">Position & Transaction</div>
+
+          <div class="container mt-3">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="nav-item" role="presentation">
+                <a class="tab-link scrollto active tab-custom-hover" id="icon-tab-0" data-bs-toggle="tab" href="#Active-stocks" role="tab"
+                  aria-controls="Active-stocks" aria-selected="true"  style="font-size: 20px !important;"><i class="fa fa-spinner" aria-hidden="true"></i> Open Position</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="tab-link tab-custom-hover ms-3" id="icon-tab-1" data-bs-toggle="tab" href="#Inactive-stocks" role="tab"
+                  aria-controls="Inactive-stocks" aria-selected="false" style="font-size: 20px !important;"><i class="fa fa-money" aria-hidden="true"></i> Transactions</a>
+              </li>
+            </ul>
+    
+          </div>
+    
+    
+    
+         
+          <div class="tab-content" id="tab-content">
+            <div class="tab-pane active" id="Active-stocks" role="tabpanel" aria-labelledby="icon-tab-0">
+                <div class="container tabs-section">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="ibox">
+                                <div class="ibox-title">
+                                    <div class="row">
+                                        <div class="col-lg-8">
+                                            <h5></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ibox-content">
+                                    <div class="table-container">
+                                        <div class="table-responsive mt-3">
+                                            <table class="table">
+                                                <thead style="background-color: #132935;">
+                                                    <tr>
+                                                      <th class="grey-color">Asset Class</th>
+                                                      <th class="grey-color">Avg Entry Price</th>
+                                                      <th class="grey-color">Cost Basis</th>
+                                                      <th class="grey-color">Current Price</th>
+                                                      <th class="grey-color">Lastday Price</th>
+                                                      <th class="grey-color">Market Value</th>
+                                                      <th class="grey-color">Qty</th>
+                                                      <th class="grey-color">Qty Available</th>
+                                                      <th class="grey-color">Side</th>
+                                                      <th class="grey-color">Symbol</th>
+                                                      <th class="grey-color">Edit Order</th>
+                                                      <th class="grey-color">Close Order</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody style="background-color: #237D97;">
+                                                  <tr ng-repeat="position in igdashboarddata">
+                                                    <td>{{position.asset_class}}</td>
+                                                    <td>{{position.avg_entry_price}}</td>
+                                                    <td>{{position.cost_basis}}</td>
+                                                    <td>{{position.current_price}}</td>
+                                                    <td>{{position.lastday_price}}</td>
+                                                    <td>{{position.market_value}}</td>
+                                                    <td>{{position.qty}}</td>
+                                                    <td>{{position.qty_available}}</td>
+                                                    <td>{{position.side}}</td>
+                                                    <td>{{position.symbol}}</td>
+                                                    <td class="center"><a href="#" data-toggle="modal"
+                                                        ng-click="editIgPosition(position.dealId, position.stopLevel, position.limitLevel)">Edit
+                                                        Order</a></td>
+                                                        <td class="center"><a href="#" data-toggle="modal" ng-click="closePosition(position.symbol)">Close
+                                                          Order</a></td>
+                                                  </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="Inactive-stocks" role="tabpanel" aria-labelledby="icon-tab-1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="ibox">
+                                <div class="ibox-title"></div>
+                                <div class="ibox-content">
+                                    <div class="table-container">
+                                        <div class="table-responsive mt-3">
+                                            <table class="table">
+                                                <thead style="background-color: #132935;">
+                                                    <tr>
+                                                      <th class="grey-color">Sr. Number</th>
+                                                      <th class="grey-color">Date Time </th>
+                                                      <th class="grey-color">Deal Id</th>
+                                                      <th class="grey-color">Stock</th>
+                                                      <th class="grey-color">Signals</th>
+                                                      <th class="grey-color">Start Price</th>
+                                                      <th class="grey-color">End Price</th>
+                                                      <th class="grey-color">Qty</th>
+                                                      <th class="grey-color">Profit/Loss</th>
+                                                      <th class="grey-color">Duration</th>
+                                                        
+                                                    </tr>
+                                                </thead>
+                                                <tbody style="background-color: #237D97;">
+                                                  <tr ng-repeat="data in transactionData">
+                                                    <td>{{data.id}}</td>
+                                                    <td>{{data.datetime}}</td>
+                                                    <td>{{data.deal_id}}</td>
+                                                    <td>{{data.stock}}</td>
+                                                    <td>{{data.signals}}</td>
+                                                    <td>{{data.start_price | number : 2}}</td>
+                                                    <td>{{data.end_price | number : 2}}</td>
+                                                    <td>Qty: {{data.qty | number : 2}}</td>
+                                                    <td>{{data.profitloss | number : 2}}</td>
+                                                    <td>{{data.duration}}</td>
+                                                    <!-- <td>{{data.epic}}</td> -->
+                                                    <!-- <td>{{data.allocatedvalue | number : 2}}</td> -->
+                              
+                              
+                                                  </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+          </div>
+
+
+        </section>
+
+      </main>
+
+
+    <ng-include src="'footer/simple_income.html'"></ng-include>
+
+  </div>
+
+
+  
+          <!-- api details modal starts-->
+          <div class="modal inmodal" id="addAPIModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog custom-width modal-dialog-centered" role="document">
+              <div class="modal-content custom-modal-content animated fadeIn">
+                <div class="modal-header custom-modal-header d-flex justify-content-between" >
+                  <h5 class="modal-title text-center">Enter API Details</h5>
+                  <div class="text-white pointer" data-dismiss="modal" ng-click="closeModal('addAPIModal')" aria-label="Close"><i class="fa fa-times-circle" aria-hidden="true"></i>
+                  </div>
+                </div>
+                <div class="modal-body custom-modal-body">
+      
+               
+                  <div class="form">
+      
+                    <form name="myForm">
+      
+    
+                      <div class="row">
+                        <div class="form-group col-md-12">
+                          <label for="api_key" class="text-white">API Key:</label>
+                          <input type="text" class="form-control form-input mt-2" ng-model="addapidata.api_key" name="api_key"
+                            value="{{data.api_key}}">
+                        </div>
+    
+                        <div class="form-group col-md-12">
+                          <label for="api_secret" class="text-white">API Secret:</label>
+                          <input type="text" class="form-control form-input mt-2" ng-model="addapidata.api_secret" name="api_secret"
+                            value="{{data.api_secret}}">
+                        </div>
+    
+                        <div class="form-group col-md-12">
+                          <label for="api_endpoint" class="text-white">API Endpoint:</label>
+                          <input type="text" class="form-control form-input mt-2" ng-model="addapidata.api_endpoint" name="api_endpoint"
+                            value="{{data.api_endpoint}}">
+                        </div>
+    
+               
+                      </div>
+                      <div class="d-flex justify-content-center">
+                        <button type="submit" ng-click="onaddAPISubmit(addapidata)"
+                        class="btn btn-yellow-pill ">Submit</button>
+                      </div>
+                   
+                    </form>
+                  </div>
+                </div>
+            
+              </div>
+            </div>
+          </div>
+      <!-- api details modal end-->
+
+
+  <!-- modal starts-->
+  <div class="modal inmodal" id="addstock" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content animated fadeIn">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+              class="sr-only">Close</span></button>
+          <img src="img/botico.png" class="ml-3">
+          <h4 class="modal-title">Iamstockbot</h4>
+
+        </div>
+        <div class="modal-body">
+          <!--modal form section starts-->
+          <div class="form">
+            <h3> Add Stock</h3>
+            <p> Please select the stock for your portfolio.</p>
+            <form name="myForm">
+              <div class="form-group">
+                <label for="stockname">Stock Name:</label>
+                <select class="custom-select" ng-change="updatestocksource(addstock.stock)" ng-model="addstock.stock"
+                  required name="stockname">
+                  <option value="" disabled></option>
+                  <option ng-repeat="stock in stockdata_list" value="{{stock.stock}}">
+                    {{stock.stock}}</option>
+
+                </select>
+
+
+              </div>
+              <div class="form-group">
+                <label for="stockname">Stock Source:</label>
+
+                <select class="custom-select" ng-model="addstock.source" required name="stockname">
+                  <!-- <option value="" disabled></option> -->
+                  <option ng-repeat="stock in stockdata_list" ng-if="stock.stock === addstock.stock"
+                    value="{{stock.source}}">
+                    {{stock.source}}</option>
+
+                </select>
+
+
+              </div>
+
+
+              <div class="form-group">
+                <label for="stockpercentage">Percentage Allocation:</label>
+                <input type="number" min="0" max="100" class="form-control" ng-model="addstock.percentage"
+                  name="percentage" required>
+              </div>
+
+              <div class="form-group">
+                <label for="stockpercentage">Status:</label>
+                <input type="text" min="0" max="100" class="form-control" ng-model="addstock.status" name="status"
+                  required>
+              </div>
+              <button type="submit" ng-click="onaddstockSubmit(addstock)"
+                class="btn btn-primary block full-width m-b">Submit</button>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- modal starts-->
+  <div class="modal inmodal" id="closeOpenPositionMdl" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content animated fadeIn">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+              class="sr-only">Close</span></button>
+          <img src="Iamstockbot-Logo.png" style="width:120px; height:80px;">
+          <h4 class="modal-title">Iamstockbot</h4>
+
+        </div>
+        <div class="modal-body">
+          <!--modal form section starts-->
+          <div class="form">
+            <h3> Confirm Stock Delete</h3>
+
+            <form name="myForm">
+
+
+              <button type="submit" ng-click="confrimClosePosition()"
+                class="btn btn-primary btn-w-m block full-width m-b">Submit</button>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- edit position modal starts-->
+  <div class="modal inmodal" id="editpositionModel" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content animated fadeIn">
+        <div class="modal-header">
+          <div class="custom-close" data-dismiss="modal" ng-click="closeModal('editstock')" aria-label="Close"></div>
+          <h4 class="modal-title">Edit Stock</h4>
+        </div>
+        <div class="modal-body">
+
+          <!-- Modal form section starts -->
+          <div class="form">
+            <form name="myForm">
+              <div class="row">
+                
+
+                
+
+                <div class="form-group">
+                  <label for="stop_level" class="text-dark">stop level:</label>
+                  <input  min="0" max="100" class="form-control"
+                      ng-model="editpositionModel.stop_level" name="stop_level" required>
+              </div>
+
+              <div class="form-group">
+                  <label for="limit_level" class="text-dark">limit level:</label>
+                  <input  min="0" max="100" class="form-control"
+                      ng-model="editpositionModel.limit_level" name="limit_level" required>
+              </div>
+
+              </div>
+
+              <button type="submit" ng-click="editPositionSubmit(editpositionModel)"
+                class="btn btn-primary block full-width m-b">Submit</button>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- edit position modal ends-->
+
+
+  <!-- modal starts-->
+  <div class="modal inmodal" id="editstock" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog custom-width" role="document">
+      <div class="modal-content animated fadeIn">
+        <div class="modal-header">
+          <div class="custom-close" data-dismiss="modal" ng-click="closeModal('editstock')" aria-label="Close"></div>
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button> -->
+          <h4 class="modal-title">Edit Stock</h4>
+        </div>
+        <div class="modal-body">
+
+          <!-- Modal form section starts -->
+          <div class="form">
+
+            <form name="myForm">
+
+              <!-- Update Last Price Button and Switch Container in a single row aligned to the right -->
+              <div class="row align-items-center justify-content-end">
+                <div class="col-md-auto text-right">
+                  <button type="button" class="btn btn-secondary" ng-click="updateLastPrice(data.id)">
+                    <i class="fa fa-refresh"></i> Update Last Price
+                  </button>
+                </div>
+                <div class="col-md-auto text-right switch-container">
+                  <label for="statusSwitch" class="text-dark">Status:</label>
+                  <label class="switch">
+                    <input type="checkbox" id="stkStatus" {% if data.status==1 %} checked {% endif %}>
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-4">
+                  <label for="stockname" class="text-dark">Stock Name:</label>
+                  <input type="text" class="form-control" ng-model="data.stock" name="stockname" value="{{data.stock}}"
+                    disabled>
+                </div>
+
+                <div class="form-group col-md-4">
+                  <label for="stocksource" class="text-dark">Stock Source:</label>
+                  <input type="text" class="form-control" ng-model="data.source" name="stocksource"
+                    value="{{data.source}}" disabled>
+                </div>
+
+                <div class="form-group col-md-4">
+                  <label for="mininum_size" class="text-dark">Mininum Size:</label>
+                  <input type="text" class="form-control" ng-model="data.mininum_size" name="mininum_size"
+                    value="{{data.mininum_size}}" required>
+                </div>
+
+
+
+              </div>
+
+              <div class="row">
+
+                <div class="form-group col-md-4">
+                  <label for="investment_amount" class="text-dark">Investment:</label>
+                  <input type="text" class="form-control" id="investment_amount"
+                    ng-model="portfolioDetails['investment_amount'] " name="investment_amount">
+                </div>
+
+                <div class="form-group col-md-4">
+                  <label for="allocated_percentage" class="text-dark">Allocated Percentage:</label>
+                  <input type="text" class="form-control" id="allocated_percentage" ng-model="data.allocated_percentage"
+                    name="allocated_percentage" ng-keyup="calcAllocatedVal()">
+                </div>
+
+                <div class="form-group col-md-4">
+                  <label for="allocated_value" class="text-dark">Allocated Value:</label>
+                  <input type="text" class="form-control" id="allocated_value" ng-model="data.allocated_value"
+                    name="allocated_value">
+                </div>
+
+
+              </div>
+
+              <div class="row">
+
+                <div class="form-group col-md-4">
+                  <label for="lastprice" class="text-dark">Last Price:</label>
+                  <input type="text" class="form-control" id="lastprice" ng-model="data.lastprice" name="lastprice">
+                </div>
+
+                <div class="form-group col-md-4">
+                  <label for="margin_percentage" class="text-dark">Margin Percentage:</label>
+                  <input type="text" class="form-control" ng-model="data.margin_percentage" name="margin_percentage"
+                    ng-keyup="calcMarginVal()" id="margin_percentage" required>
+                </div>
+
+                <div class="form-group col-md-4">
+                  <label for="margin" class="text-dark">Margin:</label>
+                  <input type="text" class="form-control" ng-model="data.margin" name="margin" id="margin" required>
+                </div>
+
+              </div>
+              <div class="row">
+
+
+                <div class="form-group col-md-4">
+                  <label for="allocated_qty" class="text-dark">Allocated QTY:</label>
+                  <input type="text" class="form-control" ng-model="data.allocated_qty" name="allocated_qty"
+                    id="allocated_qty" ng-keyup="calcBuyingQTY()" required>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="buying_ratio" class="text-dark">Buying Ratio:</label>
+                  <input type="text" class="form-control" ng-model="data.buying_ratio" name="buying_ratio"
+                    id="buying_ratio" ng-keyup="calcBuyingQTY()" required>
+                </div>
+
+                <div class="form-group col-md-4">
+                  <label for="buying_qty" class="text-dark">Buying QTY:</label>
+                  <input type="text" class="form-control" ng-model="data.buying_qty" name="buying_qty" id="buying_qty"
+                    required>
+                </div>
+
+
+
+
+                <button type="submit" ng-click="editstockSumbit(data)"
+                  class="btn btn-primary block full-width m-b">Submit</button>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+</body>
+
+</html>
+<style>
+  .robot-css {
+    position: relative;
+    border-radius: var(--br-5xs);
+    background-color: #143443;
+    width: 100%;
+    text-align: center;
+    padding: 8px 18px;
+    cursor: pointer;
+  }
+</style>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="js/inspinia.js"></script>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+  (function () {
+    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/644f791631ebfa0fe7fb52e9/1gvb7202o';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    s0.parentNode.insertBefore(s1, s0);
+  })();
+</script>
+<!--End of Tawk.to Script-->

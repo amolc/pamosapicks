@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+
+
+<!-- Mirrored from webapplayers.com/inspinia_admin-v2.9.4/ecommerce_products_grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Jun 2022 03:36:24 GMT -->
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smartportfolios – Get atleast 20% more than your buy and hold strategy.</title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+
+    <!-- CSS files -->
+    <link href="/dist/css/tabler.min.css" rel="stylesheet" />
+    <link href="/dist/css/tabler-flags.min.css" rel="stylesheet" />
+    <link href="/dist/css/tabler-payments.min.css" rel="stylesheet" />
+    <link href="/dist/css/tabler-vendors.min.css" rel="stylesheet" />
+    <link href="/dist/css/demo.min.css" rel="stylesheet" />
+    <!-- 1. Add the following script to your page. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+    <script src="./angular/angular-storage.min.js"></script>
+    <script src="./angular/angular-payments.js"></script>
+    <script src="./angular/app.js"></script>
+    
+    <script src="./angular/service.js"></script>
+    <script src="./angular/brokerCtrl.js"></script>
+    
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Toastr style -->
+    <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/b978cbdbfe.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="css/custom.css">
+
+
+</head>
+
+<body ng-app="website" ng-controller="brokerCtrl" ng-init="init()" >
+
+<div id="wrapper">
+
+   <div id="menu"></div>
+    <div id="page-wrapper" class="#gray-bg">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i
+                            class="fa fa-bars"></i> </a>
+                            <ul class="nav navbar-top-links navbar-left p-3" >
+                                <span ><a style="text-decoration:none;cursor:hand;color: coral;font-weight:800;" href="/intro//app/">HOME</a></span>
+                            
+                            </ul>
+                </div>
+               
+                <ul class="nav navbar-top-links navbar-right p-3">
+                 
+                    <span style="color:white;padding-right:20px;font-weight:600;" >Real Balance {{livebalance}}</span>
+                    <span style="color:white;padding-right:20px;font-weight:600;" >Demo Balance {{demobalance}}</span>
+                    <div class="dropdown profile-element">
+
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                           
+                            <span class="text-muted text-xs block" style="color:white !important;font-weight:600;" >{{name}} <b class="caret"></b></span>
+                        </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><a class="dropdown-item" ng-click="logout()">Logout</a></li>
+                        </ul>
+                    </div>
+                </ul>
+            </nav>
+        </div>
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-10">
+                <h2>BROKER CONNECTIONS</h2>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="index-2.html">Home</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        <strong>Broker Connections</strong>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="row mt-5 ml-4"  >
+
+            <div class="col-lg-3">
+                <div class="card p-3">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img src="img/alpaca.png">
+                        </div>
+                        <div class="col-md-9 mt-3" style="text-align:center;">
+                            <h3><strong>Alpaca</strong></h3>
+                        </div>
+                    </div>
+                    <span class=""><hr></span>
+                    <div class="row">
+                       <div class="col-md-5">
+                                Connection Status
+                            </div>
+
+                        <div class="col-md-5 connectionbackground" id="connectionstatus">
+                           {{connectionstatus}}
+
+                        </div>
+                        <div class="col-md-5">
+                                Cash Balance
+                            </div>
+                        <div class="col-md-5 connectionbackground" id="connectionstatus" >
+                           {{alpaca_cash}} USD
+                        </div>
+
+                    </div>
+                    <span class=""><hr></span>
+
+                    <button type="button" class="btn btn-primary btn-xs" data-ng-click="editbrokersettingsmodal('alpaca',customerId)" >API SETTINGS</button>
+                </div>
+
+            </div>
+            <div class="col-lg-3" >
+                <div class="card p-3">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img src="img/ib.png">
+                        </div>
+                        <div class="col-md-9 mt-3" style="text-align:center;">
+                            <h3><strong>IG Brokers</strong></h3>
+                        </div>
+                    </div>
+                    <span class=""><hr></span>
+                    <div class="row">
+                        <div class="col-md-5">
+                                Connection Status
+                            </div>
+                            <div class="col-md-5 connectionbackground" id="igconnection">
+                                {{igstatus}}
+     
+                             </div>
+                             <div class="col-md-5">
+                                     Cash Balance
+                                 </div>
+                             <div class="col-md-5 connectionbackground" id="connectionstatus" >
+                                {{ig_account_cash}} USD
+                             </div>
+
+                    </div>
+                    <span class=""><hr></span>
+
+                    <button type="button" class="btn btn-primary btn-xs" data-ng-click="editbrokersettingsmodal('ig',customerId)" >API SETTINGS</button>
+
+                    </div>
+
+            </div>
+
+            <div class="col-lg-3">
+                <div class="card p-3">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img src="img/alpaca.png">
+                        </div>
+                        <div class="col-md-9 mt-3" style="text-align:center;">
+                            <h3><strong>Alice Blue</strong></h3>
+                        </div>
+                    </div>
+                    <span class=""><hr></span>
+                    <div class="row">
+                       <div class="col-md-5">
+                                Connection Status
+                            </div>
+
+                        <div class="col-md-5 connectionbackground" id="aliceblueconnection">
+                           {{alicebluesettingstatus}}
+
+                        </div>
+                        <div class="col-md-5">
+                                Cash Balance
+                            </div>
+                        <div class="col-md-5 connectionbackground" id="aliceblueconnection" >
+                            INR  {{alicebluecash }}
+                        </div>
+
+                    </div>
+                    <span class=""><hr></span>
+
+                    <button type="button" class="btn btn-primary btn-xs" data-ng-click="editbrokersettingsmodal('aliceblue',customerId)" >API SETTINGS</button>
+                </div>
+
+            </div>
+
+            
+        </div>
+
+
+
+        
+    
+    
+            <div class="footer">
+                <div class="float-right">
+
+                </div>
+                <div>
+                    <strong>Copyright</strong> Iamstockbot Inc &copy; 2022
+                </div>
+            </div>
+         </div>
+            </div>
+
+                <!-- Modals for the webpage come here -->
+                <!-- modal starts-->
+                 <div class="modal inmodal" id="alpacasetting" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog">
+                                <div class="modal-content animated fadeIn">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <img src="img/alpaca.png" style="width:80px; height:80px;">
+                                    <h4 class="modal-title">Alpaca</h4>
+
+                                </div>
+                                <div class="modal-body">
+                                      <!--modal form section starts-->
+                                      <div class="form">
+                                          <h3> Alpaca API Settings</h3>
+                                            <p> Please setup your api settings here. Please check the document link to find the settings from your alpaca account.</p>
+                                        <form name="brokersettings2">
+
+                                            <div class="form-group">
+                                                <input type="text" name="end_points" class="form-control" placeholder="End Points" ng-model="alpacasetting.api_endpoint"  value="alpacasetting['api_endpoint']" required>
+                                                <span class="error  pl-1" ng-show="!brokerSettings2.end_points.$valid && (brokerSettings2.end_points.$touched || submitted)">Endpoints Required </span>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" name="api_id" class="form-control" placeholder="API_ID" ng-model="alpacasetting.api_key" value="{{alpacasetting['api_key']}}" required>
+                                                <span class="error  pl-1" ng-show="!brokerSettings2.api_id.$valid && (brokerSettings2.api_id.$touched || submitted)">API Key Required </span>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" name="Secert_Key" class="form-control" placeholder="Secert Key" ng-model="alpacasetting.api_secret" value="{{alpacasetting['api_secret']}}" required>
+                                                <span class="error  pl-1" ng-show="!brokerSettings2.Secert_Key.$valid && (brokerSettings2.Secert_Key.$touched || submitted)">API Key Required </span>
+                                            </div>
+                                          
+                                            <button type="submit" ng-click="setbrokersetting('alpaca',customerId,alpacasetting)" ng-disabled="brokerSettings2.$invalid" class="btn btn-primary block full-width m-b">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                <!-- modal starts-->
+                <div class="modal inmodal" id="igsetting" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                            <div class="modal-content animated fadeIn">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                <img src="img/ig.png" style="width:80px; height:80px;">
+                                <h4 class="modal-title">IG Broker</h4>
+
+                            </div>
+                            <div class="modal-body">
+                                  <!--modal form section starts-->
+                                  <div class="form">
+                                      <h3> IG API Settings</h3>
+                                        <p> Please setup your api settings here. Please check the document link to find the settings from your alpaca account.</p>
+                                    <form name="igsetting">
+
+  
+
+                                        <div class="form-group">
+                                            <input type="text" name="username" class="form-control" placeholder="username" ng-model="igsettings.username" value="{{igsettings['username']}}" required>
+                                            <span class="error  pl-1" ng-show="!igsetting.username.$valid && (igsetting.username.$touched || submitted)">Username Required </span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name="password" class="form-control" placeholder="password" ng-model="igsettings.password" value="{{igsettings['password']}}" required>
+                                            <span class="error  pl-1" ng-show="!igsetting.password.$valid && (igsetting.password.$touched || submitted)"> Password </span>
+                                        </div>
+                                         <div class="form-group">
+                                            <input type="text" name="api_key" class="form-control" placeholder="api_key" ng-model="igsettings.api_key"  value="{{igsettings['api_key']}}" required>
+                                            <span class="error  pl-1" ng-show="!igsetting.api_key.$valid && (igsetting.api_key.$touched || submitted)">Endpoints Required </span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name="acc_type" class="form-control" placeholder="acc_type" ng-model="igsettings.acc_type"  value="{{igsettings['acc_type']}}" required>
+                                            <span class="error  pl-1" ng-show="!igsetting.acc_type.$valid && (igsetting.acc_type.$touched || submitted)">Account Type Required </span>
+                                        </div>
+                                        <button type="submit" ng-click="setigbrokersetting('ig',customerId,igsettings)" ng-disabled="igsetting.$invalid" class="btn btn-primary block full-width m-b">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- modal starts-->
+                <div class="modal inmodal" id="alicebluesetting" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                            <div class="modal-content animated fadeIn">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                <img src="img/aliceblue.jpg" style="width:80px; height:80px;">
+                                <h4 class="modal-title">Aliceblue Broker</h4>
+
+                            </div>
+                            <div class="modal-body">
+                                  <!--modal form section starts-->
+                                  <div class="form">
+                                      <h3> Aliceblue API Settings</h3>
+                                        <p> Please setup your api settings here. Please check the document link to find the settings from your alpaca account.</p>
+                                    <form name="alicebluesetting">
+
+                                        <div class="form-group">
+                                            <input type="text" name="username" class="form-control" placeholder="username" ng-model="alicebluesettings.username" value="{{alicebluesettings['username']}}" required>
+                                            <span class="error  pl-1" ng-show="!alicebluesetting.username.$valid && (alicebluesetting.username.$touched || submitted)">Username Required </span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name="password" class="form-control" placeholder="password" ng-model="alicebluesettings.password" value="{{alicebluesettings['password']}}" required>
+                                            <span class="error  pl-1" ng-show="!alicebluesetting.password.$valid && (alicebluesetting.password.$touched || submitted)"> Password </span>
+                                        </div>
+                                         <div class="form-group">
+                                            <input type="text" name="app_id" class="form-control" placeholder="app id" ng-model="alicebluesettings.app_id"  value="{{alicebluesettings['app_id']}}" required>
+                                            <span class="error  pl-1" ng-show="!alicebluesetting.app_id.$valid && (alicebluesetting.app_id.$touched || submitted)">Endpoints Required </span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name="api_secret" class="form-control" placeholder="api_secret" ng-model="alicebluesettings.api_secret"  value="{{alicebluesettings['api_secret']}}" required>
+                                            <span class="error  pl-1" ng-show="!alicebluesetting.api_secret.$valid && (alicebluesetting.api_secret.$touched || submitted)">Account Type Required </span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name="twoFA" class="form-control" placeholder="twoFA" ng-model="alicebluesettings.twoFA"  value="{{alicebluesettings['twoFA']}}" required>
+                                            <span class="error  pl-1" ng-show="!alicebluesetting.twoFA.$valid && (alicebluesetting.twoFA.$touched || submitted)">twoFA Required </span>
+                                        </div>
+                                        <button type="submit" ng-click="setalicebluebrokersetting('ig',customerId,alicebluesettings)" ng-disabled="alicebluesetting.$invalid" class="btn btn-primary block full-width m-b">Submit</button>
+                                    </form>
+
+
+
+                                    
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modals for the webpage come here -->
+                <!-- modal starts-->
+                 <div class="modal inmodal" id="alert" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog">
+                                <div class="modal-content animated fadeIn">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <img src="img/alpaca.png" style="width:80px; height:80px;">
+                                    <h4 class="modal-title">Alpaca</h4>
+
+                                </div>
+                                <div class="modal-body">
+                                      <!--modal form section starts-->
+                                      <div class="form">
+                                          <h3> Alert</h3>
+                                            <p> {{ alertmessage }}</p>
+
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+<!-- Mainly scripts -->
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
+
+</body>
+
+
+<!-- Mirrored from webapplayers.com/inspinia_admin-v2.9.4/ecommerce_products_grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Jun 2022 03:36:24 GMT -->
+</html>

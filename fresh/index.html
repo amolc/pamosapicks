@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+  <title>Quantbots </title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link rel="stylesheet" href="./global.css" />
+  <link rel="stylesheet" href="./index.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+
+
+  <!-- Template Main CSS File -->
+  <link href="../assets/css/style.css" rel="stylesheet">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+  <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+  <script src='https://cdn.plot.ly/plotly-2.16.1.min.js'></script>
+  <script src="./angular/angular-storage.min.js"></script>
+  <script src="./angular/angular-payments.js"></script>
+  <script src="./angular/app.js"></script>
+  <script src="./angular/service.js"></script>
+  <script src="./angular/indexCtrl.js"></script>
+</head>
+
+</head>
+
+<body ng-app="website" ng-controller="indexCtrl" ng-init="init()" style="overflow-x: hidden;">
+
+
+  <div class="home-pages">
+
+    <div ng-include="'/app/header/afterheader.html'"></div>
+    <ng-view></ng-view>
+
+
+    <!-- <nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <img src="./public/logo.png" alt="Logo" class="img-fluid frame-logo">
+    </a>
+     <button class="navbar-toggler  bg-light " type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <div class="collapse navbar-collapse text-white" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+      
+        <li class="nav-item">
+          <a class="nav-link" href="/app/smart-portfolio.html">Smart Portfolio</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/app/screener.html">Screeners</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/app/contact.html">Support</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/app/pricing.html">Pricing</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            About
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+            <li><a class="dropdown-item" href="#">About Us</a></li>
+            <li><a class="dropdown-item" href="#">Mission</a></li>
+          </ul>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="app/register.html">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" type="button" href="#" ng-click="login()">Sign In</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle start-investing-parent" href="#" id="investingDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Start Investing
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="investingDropdown">
+            <li><a class="dropdown-item" href="app/register.html">Register</a></li>
+
+            <li><a class="dropdown-item" href="#">Option 2</a></li>
+          </ul>
+          <li>
+            <a class="" type="button" href="app/register.html">Register</a>
+          </li>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav> -->
+
+
+
+
+    <!-- <div class="home">
+      <div class="frame-3-1"></div>
+      <div class="frame-parent11">
+        <div class="logo-group">
+          <div class="container">
+            <div class="maximize-your-returns">
+             <p> Maximize Your Returns with Our AI-Driven Fund Management.</p>
+            </div>
+            <div class="invest-with-confidence-container">
+              <span class="trusted-by-thousands-container1">
+                <span class="s">I</span>nvest with Confidence: Expertly Managed
+                Portfolios Powered by AI and Human Ingenuity
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="start-investing-now-parent">
+          <div class="viezh-robert">
+            <span class="s">S</span>tart Investing Now
+          </div>
+          <img class="right-1-icon" alt="" src="./public/right-1.svg" />
+        </div>
+
+        <div class="frame-parent233">
+          <div class="main-vectors">
+            <div class="vector-parent">
+              <div class="frame-parent30">
+                <div class="group-parent5">
+                  <div class="rectangle-parent13">
+                    <div class="group-child18"></div>
+                    <img class="light-1-icon2" alt="" src="./public/light-11.svg" />
+                  </div>
+                  <div class="viezh-robert-parent">
+                    <div class="viezh-robert2">Smart Portfolio</div>
+                    <div class="equity4">Equity</div>
+                  </div>
+                </div>
+                <a href="/app/smart-portfolio.html"><img class="arrow-angle-pointing-to-right-icon" alt=""
+                    src="./public/arrowanglepointingtoright-1.svg" /></a>
+              </div>
+            </div>
+            <div class="vector-group">
+              <div class="frame-parent30">
+                <div class="group-parent5">
+                  <div class="rectangle-parent13">
+                    <div class="group-child18"></div>
+                    <img class="light-1-icon2" alt="" src="./public/light-11.svg" />
+                  </div>
+                  <div class="viezh-robert-parent">
+                    <div class="start-investing2">Robot</div>
+                    <div class="mutual-funds1">Mutual Funds</div>
+                  </div>
+                </div>
+                <a href="#"><img class="arrow-angle-pointing-to-right-icon" alt=""
+                    src="./public/arrowanglepointingtoright-1.svg" /></a>
+              </div>
+            </div>
+            <div class="vector-container">
+
+          <div class="frame-parent30">
+            <div class="group-parent5">
+              <div class="rectangle-parent13">
+                <div class="group-child18"></div>
+                <img class="light-1-icon2" alt="" src="./public/light-11.svg" />
+              </div>
+              <div class="viezh-robert-parent">
+                <div class="balanced3">Balanced</div>
+                <div class="equity5">Equity</div>
+              </div>
+            </div>
+            <img class="arrow-angle-pointing-to-right-icon" alt="" src="./public/arrowanglepointingtoright-1.svg" />
+          </div>
+        </div>
+          </div>
+        </div>
+
+      </div>
+    </div> -->
+
+    <div class="frame-parent12">
+      <div class="frame-parent13">
+        <div class="trusted-by-thousands-of-happy-parent">
+          <div class="">
+            <span class="trusted-by-thousands-container1">
+              <p class="trusted-by-thousands fw-bold text-center">Welcome to SmartPortfolios</p>
+              <p class="trusted-by-thousands fw-bold">
+              </p>
+            </span>
+          </div>
+          <div class="discover-investment-portfolios text-center">
+            Discover investment portfolios that are designed for maximum
+            returns at low risk.Make <br>financial decisions backed by AI
+            and data science.
+          </div>
+        </div>
+        <!-- <div class="frame-parent14">
+      <div class="all-parent">
+        <div class="viezh-robert">All</div>
+        <div class="frame-child6"></div>
+      </div>
+      <div class="start-investing">Equity</div>
+      <div class="start-investing">Stocks</div>
+      <div class="start-investing">Mutual Funds</div>
+      <div class="start-investing">Alternative</div>
+      <div class="view-all-wrapper">
+        <div class="start-investing">View All</div>
+      </div>
+    </div> -->
+      </div>
+      <div class="container">
+        <div class="row m-0 p-0">
+          <div class="col-lg-4 col-md-6 col-xs-12" ng-repeat="data in dataset">
+            <div class="rectangle-parent5 mb-4">
+              <div class="group-child4"></div>
+              <div class="group-child5" style="cursor: pointer;" ng-click="goToPortfolioPage(data.id)">
+                <a style="cursor: pointer; display: block; height: 100%;" ng-click="goToPortfolioPage(data.id)">
+                  <div class="view-portfolio-wrapper">
+                    <div class="viezh-robert">View Portfolio</div>
+                  </div>
+                </a>
+              </div>
+              <div class="group-parent2">
+                <div class="group-parent3">
+                  <div class="rectangle-wrapper">
+                    <div class="rectangle-wrapper">
+                      <div class="group-child6"></div>
+                    </div>
+                    <div class="frame-parent15">
+                      <div class="frame-wrapper d-flex">
+                        <div class="group-parent5">
+                          <img class="frame-child7" alt="" src="./public/group-1000004160.svg" />
+
+                          <div class="viezh-robert-parent">
+                            <div class="viezh-robert">{{data.portfolio_name}}</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="rectangle-parent6">
+                    <div class="group-child7"></div>
+                    <div class="frame-parent16">
+                      
+                      <div class="frame-wrapper1">
+                        <div class="viezh-robert">{{data.briefintro}}</div>
+                        <p class="mt-4" style="font-size: 16px; font-weight:bold">Contributors : Amol S, Smartportfolio Team, Quantbots Team.</p>
+                        <!-- <div class="group-parent5">
+                          <div class="viezh-robert">{{data.currency}} {{data.capital}}</div>
+                          <div class="min-investment">Min. Investment</div>
+                        </div> -->
+                      </div>
+                      
+                      <!-- <img class="frame-icon" alt="" src="./public/frame.svg" /> -->
+                      <sparkLineChart ata="{{data.portfolioroi}}"></sparkLineChart>
+                    </div>
+                  </div>
+                </div>
+                
+                
+                <div class="row w-100  m-0">
+                  <!-- <div class="col-3">
+                    <p style="font-size: 15px;" class="mt-2 m-0 p-0">Brokers</p>
+                  </div> -->
+
+                  <div class="col-4 p-0 m-0">
+                    <!-- <div class="vr"></div> -->
+                    <img src="/assets/img/Untitled-1.png" class="img-fluid ms-3 mb-3 m-0" style="max-height: 35px;">
+                  </div>
+
+                  <div class="col-4 p-0">
+                    <div class="vr"></div>
+                    <img src="/assets/img/Untitled--2.png" class="img-fluid ms-3 mb-3 m-0" style="max-height: 35px;">
+                  </div>
+                  <div class="col-4 p-0 m-0">
+                    <div class="vr"></div>
+                    <img src="/assets/img/Untitled11-2.png" class="img-fluid mb-3 ms-2 m-0" style="max-height: 30px; ">
+                  </div>
+
+                </div>
+               
+
+
+                <!-- <div class="row-main">
+                      <div class="col-xs-5 col-main first-col">
+                        <div class="row align-items-center mb-3">
+                          <div class="col">
+                            <div class="high-risk">Start Date</div>
+                            <div class="half-yearly">{{data.portfolio_startDate}}</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-3 col-main first-col">
+                        <div class="row align-items-center mb-3">
+                          <div class="col">
+                            <div class="high-risk">ROI</div>
+                            <div class="half-yearly">{{data.roi}}%</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-4 col-main">
+                        <div class="row align-items-center mb-3">
+                          <div class="col">
+                            <div class="high-risk">Benchmark</div>
+                            <div class="half-yearly">50.6%</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div> -->
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="frame-parent">
+      <div class="frame-group w-100">
+        <div class="get-started-in-parent">
+          <div class="get-started-in">Get Started In</div>
+          <div class="simple-steps">3 Simple Steps</div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 col-md-6 col-xs-12">
+              <div class="card custom-card">
+                <div class="card-body">
+                  <h5 class="card-title">01. Choose</h5>
+                  <p class="card-text">Choose a suitable portfolio that matches your investment objective</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-xs-12">
+              <div class="card custom-card">
+                <div class="card-body">
+                  <h5 class="card-title">02. Subscribe</h5>
+                  <p class="card-text">Subscribe to the portfolio to get access to the constituents and future updates
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-xs-12">
+              <div class="card custom-card">
+                <div class="card-body">
+                  <h5 class="card-title">03. Invest</h5>
+                  <p class="card-text">Invest in a portfolio, update it regularly, set up a SIP for disciplined investing.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="rectangle-parent1">
+        <div class="frame-child"></div>
+        <div>Easily track & manage your portfolio</div>
+        <div class="frame-item"></div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="ellipse-parent">
+              <div class="frame-inner"></div>
+              <div class="instant-portfolio-notification text-center">
+                Instant Portfolio Notifications
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="ellipse-parent">
+              <div class="frame-inner"></div>
+              <div class="instant-portfolio-notification text-center">
+                Auto portfolio execution
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="ellipse-parent">
+              <div class="frame-inner"></div>
+              <div class="instant-portfolio-notification text-center">
+                Seamless performance tracking
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="frame-parent4">
+    <div class="trusted-by-thousands-of-happy-parent">
+      <div class="explore-investment-portfolios-container">
+        <span class="trusted-by-thousands-container1">
+          <p class="trusted-by-thousands text-light">Trusted by Happy Customer</p>
+          <!-- <p class="trusted-by-thousands text-light">Happy Customer</p> -->
+        </span>
+      </div>
+      <div class="trusted-by-thousands text-light text-center" style="font-size: 20px;">
+        “A satisfied customer is the best business strategy"
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 colr-xs-12 mb-4">
+          <div class="card custom-card">
+            <div>
+              <div class="ellipse-parent2">
+                <div class="ellipse-icon">
+                  <img class="ellipse-icon" alt="" src="./public/ellipse-70@2x.png" />
+                </div>
+                <div class="viezh-robert-parent">
+                  <div class="viezh-robert" style="font-family: 'Open Sans',sans-serif; font-weight: bold; color: #EB693D;">Daniel Samuuels</div>
+                  <div class="warsaw-poland" style="font-family: 'Open Sans',sans-serif;">Director, Poland</div>
+                </div>
+              </div>
+              <div class="lorem-ipsum-dolor1">
+                <div class="card-text" style="font-size: 16px; font-family: 'Open Sans',sans-serif">
+                  Quantbots can provide a more systematic and disciplined approach to trading, which can help traders to
+                  identify
+                  and execute trades more efficiently than a human trader could.
+                </div>
+              </div>
+              <div class="rating">
+                <div class="div3 text-white">4.0</div>
+                <div class="rating1">
+                  <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color: rgb(220, 193, 19)"></i>
+                  <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color: rgb(220, 193, 19)"></i>
+                  <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color: rgb(220, 193, 19)"></i>
+                  <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color: rgb(220, 193, 19)"></i>
+                  <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color: rgb(220, 193, 19)"></i>
+                  <!-- <img class="rating-child" alt="" src="./public/star-1.svg" />
+                  <img class="rating-child" alt="" src="./public/star-1.svg" />
+                  <img class="rating-child" alt="" src="./public/star-1.svg" />
+                  <img class="rating-child" alt="" src="./public/star-1.svg" />
+                  <img class="rating-child" alt="" src="./public/star-1.svg" /> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 colr-xs-12 mb-4">
+          <div class="card custom-card">
+            <div>
+              <div class="ellipse-parent2">
+                <div class="ellipse-icon">
+                  <img class="ellipse-icon" alt="" src="./public/ellipse-70@2x.png" />
+                </div>
+                <div class="viezh-robert-parent">
+                  <div class="viezh-robert" style="font-family: 'Open Sans',sans-serif; font-weight: bold; color: #EB693D;">Carlo Mattives</div>
+                  <div class="warsaw-poland" style="font-family: 'Open Sans',sans-serif;">Trading Manager, Poland</div>
+                </div>
+              </div>
+              <div class="lorem-ipsum-dolor1">
+                <div class="card-text" style="font-size: 16px; font-family: 'Open Sans',sans-serif;">
+                  Thanks to share the great products and useful guideline to trade on market. I like that you have
+                  made the chart pattern analysis so easy and useful for my trading.
+                </div>
+              </div>
+              <div class="rating pt-4">
+                <div class="div3 text-white">5.0</div>
+                <div class="rating1">
+                  <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color: rgb(220, 193, 19)"></i>
+                  <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color: rgb(220, 193, 19)"></i>
+                  <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color: rgb(220, 193, 19)"></i>
+                  <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color: rgb(220, 193, 19)"></i>
+                  <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color: #FFF"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 colr-xs-12 mb-4">
+          <div class="card custom-card">
+            <div>
+              <div class="ellipse-parent2">
+                <div class="ellipse-icon">
+                  <img class="ellipse-icon" alt="" src="./public/ellipse-70@2x.png" />
+                </div>
+                <div class="viezh-robert-parent">
+                  <div class="viezh-robert" style="font-family: 'Open Sans',sans-serif; font-weight: bold; color: #EB693D;">Viezh Robert</div>
+                  <div class="warsaw-poland" style="font-family: 'Open Sans',sans-serif;">Warsaw, Poland</div>
+                </div>
+              </div>
+              <div class="lorem-ipsum-dolor1">
+                <div class="card-text" style="font-size: 16px; font-family: 'Open Sans',sans-serif;">
+                  "Quantbots" like the title states, this is an introduction level book and for that it's great. It
+                  doesn't bog you down with all the
+                  details but gives a great overall preview of Algo trading the fundamentals around it.
+                </div>
+              </div>
+              <div class="rating">
+                <div class="div3 text-white">4.0</div>
+                <div class="rating1">
+                  <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color: rgb(220, 193, 19)"></i>
+                  <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color: rgb(220, 193, 19)"></i>
+                  <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color: rgb(220, 193, 19)"></i>
+                  <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color: rgb(220, 193, 19)"></i>
+                  <i class="fa fa-star" aria-hidden="true" style="font-size: 20px; color: #FFF"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Repeat the above structure for each col -->
+      </div>
+    </div>
+  </div>
+
+
+  <ng-include src="'/app/footer/footer.html'"></ng-include>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+  (function () {
+    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/644f791631ebfa0fe7fb52e9/1gvb7202o';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    s0.parentNode.insertBefore(s1, s0);
+  })();
+</script>
+<!--End of Tawk.to Script-->

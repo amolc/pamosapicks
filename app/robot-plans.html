@@ -1,0 +1,405 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+
+
+  <title>Smartportfolio - Portfolio</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link rel="stylesheet" href="./global.css" />
+  <link rel="stylesheet" href="./index.css" />
+    
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  
+
+  <!-- Template Main CSS File -->
+  <link href="../assets/css/style.css" rel="stylesheet">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+  <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+
+
+  <script src='https://cdn.plot.ly/plotly-2.16.1.min.js'></script>
+  <script src="./angular/angular-storage.min.js"></script>
+  <script src="./angular/angular-payments.js"></script>
+  <script src="./angular/app.js"></script>
+  <script src="./angular/service.js"></script>
+  <script src="./angular/robotPlan.js"></script>
+  </head>
+ 
+
+
+</head>
+
+<body ng-app="website" ng-controller="selectPlan" ng-init="init()"  >
+
+  <div class="home-pages">
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="/app">
+          <img src="./public/logo.png" alt="Logo" class="img-fluid frame-logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/app">Home</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="/app/smart-portfolio.html">Smart Portfolio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/robots.html">Robots</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Screeners</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Support</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Pricing</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                About
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                <li><a class="dropdown-item" href="#">About Us</a></li>
+                <li><a class="dropdown-item" href="#">Mission</a></li>
+              </ul>
+            </li> -->
+            <li class="nav-item">
+              <a class="nav-link" href="#" ng-click="logout()">Logout</a>
+            </li>
+            <!-- <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="supportDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Support
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="supportDropdown">
+                <li><a class="dropdown-item" href="#">Contact</a></li>
+                <li><a class="dropdown-item" href="#">FAQ</a></li>
+              </ul>
+            </li> -->
+            <!-- <li class="nav-item">
+              <a class="nav-link" ng-click="register()" href="#">Register</a>
+            </li> -->
+            <!-- <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle start-investing-parent" href="#" id="investingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Start Investing
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="investingDropdown">
+                <li><a class="dropdown-item" href="#">Option 1</a></li>
+                <li><a class="dropdown-item" href="#">Option 2</a></li>
+              </ul>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="container mt-5">
+
+      <h3 class="name-text">Welcome {{name}}</h3>
+
+      <div class="main-header">
+        <div class="row-main">
+          <div class="first-main">
+            <div class="img-border">
+              <img class="thunder-1-icon" alt="" src="./public/thunder-1.svg" />
+            </div>
+          </div>
+          <div class="second-main">
+            <div class="year-parent">
+              <div class="smartportfolios" style="text-align: left;"> {{portfolioname}} -  {{robot |uppercase }} </div>
+              <!-- <div class="smartportfolios">Momentum</div> -->
+            </div>
+            <div class="invest-in-rending">Invest in trending Stocks</div>
+          </div>
+        </div>
+      </div>
+      
+      <h3 class="plans-text-main">{{robot | uppercase}} Plans and pricing</h3>
+
+      <div class="row mt-5">
+        <!-- Place your plan cards here -->
+        <!-- You can use Bootstrap's "card" component for each plan -->
+        <!-- Example: -->
+        <div class="col-md-3 mb-4">
+          <div class="card plan-card">
+            <div class="card-header plan-header">
+              Free
+              <p class="card-header-price">$0.00/USD</p>
+            </div>
+            <div class="card-body plan-body">
+              <div class="background-image">
+                <img src="./public/vector2.svg" alt="Background">
+              </div>
+              <div class="plan-content">
+                <p class="plan-title">365 Days</p>
+                <p class="plan-text">Alerts</p>
+                <div class="custom-list">
+                  <div class="custom-list-item">
+                    <img src="./public/7-Check.png" alt="Email">
+                    <span>Email</span>
+                  </div>
+                  <div class="custom-list-item">
+                    <img src="./public/7-Check.png" alt="Telegram">
+                    <span>Telegram</span>
+                  </div>
+                  <div class="custom-list-item">
+                    <img src="./public/7-Check.png" alt="WhatsApp">
+                    <span>WhatsApp</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer plan-footer" ng-click="subscribe(portfolioDetails,'0',portfolioDetails.capital,'Free')">
+              Subscribe
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4">
+          <div class="card plan-card">
+            <div class="card-header plan-header">
+              Monthly
+              <p class="card-header-price">$50.00/USD</p>
+            </div>
+            <div class="card-body plan-body">
+              <div class="background-image">
+                <img src="./public/vector2.svg" alt="Background">
+              </div>
+              <div class="plan-content">
+                <p class="plan-title">365 Days</p>
+                <p class="plan-text">Alerts</p>
+                <div class="custom-list">
+                  <div class="custom-list-item">
+                    <img src="./public/7-Check.png" alt="Email">
+                    <span>Email</span>
+                  </div>
+                  <div class="custom-list-item">
+                    <img src="./public/7-Check.png" alt="Telegram">
+                    <span>Telegram</span>
+                  </div>
+                  <div class="custom-list-item">
+                    <img src="./public/7-Check.png" alt="WhatsApp">
+                    <span>WhatsApp</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div ng-click="subscribe(portfolioDetails,'1',portfolioDetails.capital,'Monthly')" class="card-footer plan-footer">
+              Subscribe
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4">
+          <div class="card plan-card">
+            <div class="card-header plan-header">
+              Quarterly
+              <p class="card-header-price">$135.00/USD</p>
+            </div>
+            <div class="card-body plan-body">
+              <div class="background-image">
+                <img src="./public/vector2.svg" alt="Background">
+              </div>
+              <div class="plan-content">
+                <p class="plan-title">365 Days</p>
+                <p class="plan-text">Alerts</p>
+                <div class="custom-list">
+                  <div class="custom-list-item">
+                    <img src="./public/7-Check.png" alt="Email">
+                    <span>Email</span>
+                  </div>
+                  <div class="custom-list-item">
+                    <img src="./public/7-Check.png" alt="Telegram">
+                    <span>Telegram</span>
+                  </div>
+                  <div class="custom-list-item">
+                    <img src="./public/7-Check.png" alt="WhatsApp">
+                    <span>WhatsApp</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer plan-footer" ng-click="subscribe(portfolioDetails,'4',portfolioDetails.capital,'Quarterly')">
+              Subscribe
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4">
+          <div class="card plan-card">
+            <div class="card-header plan-header">
+              Yealy
+              <p class="card-header-price">$400.00/USD</p>
+            </div>
+            <div class="card-body plan-body">
+              <div class="background-image">
+                <img src="./public/vector2.svg" alt="Background">
+              </div>
+              <div class="plan-content">
+                <p class="plan-title">365 Days</p>
+                <p class="plan-text">Alerts</p>
+                <div class="custom-list">
+                  <div class="custom-list-item">
+                    <img src="./public/7-Check.png" alt="Email">
+                    <span>Email</span>
+                  </div>
+                  <div class="custom-list-item">
+                    <img src="./public/7-Check.png" alt="Telegram">
+                    <span>Telegram</span>
+                  </div>
+                  <div class="custom-list-item">
+                    <img src="./public/7-Check.png" alt="WhatsApp">
+                    <span>WhatsApp</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer plan-footer" ng-click="subscribe(portfolioDetails,'12',portfolioDetails.capital,'Yealy')">
+              Subscribe
+            </div>
+          </div>
+        </div>
+        <!-- Repeat similar structure for other plans -->
+      </div>
+    </div>
+
+
+
+    <div class="rectangle-parent4">
+      <div class="group-child3"></div>
+      <div class="frame-parent8">
+        <div class="frame-parent9">
+          <div class="frame-parent10">
+            <div class="logo-parent">
+              <div class="logo"><a href="/app"><img class="frame-logo" alt="logo" src="./public/logo.png" /></a></div>
+              <div class="our-vision-is-to-provide-conve-parent">
+                <div class="our-vision-is">
+                  Our vision is to provide convenience and help increase your
+                  sales business.
+                </div>
+                <div class="facebook-parent">
+                  <img
+                    class="facebook-icon"
+                    alt=""
+                    src="./public/facebook.svg"
+                  />
+  
+                  <img
+                    class="facebook-icon"
+                    alt=""
+                    src="./public/twitter.svg"
+                  />
+  
+                  <img
+                    class="facebook-icon"
+                    alt=""
+                    src="./public/linkedin.svg"
+                  />
+  
+                  <img
+                    class="facebook-icon"
+                    alt=""
+                    src="./public/group.svg"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="logo-group">
+              <div class="div">About</div>
+              <div class="logo-container">
+                <div class="start-investing"><a href="/how-it-work.html">How it work</a></How></div>
+                <div class="start-investing"><a href="/featured.html">Featured</a></div>
+                <div class="start-investing"><a href="/partnership.html">Partnership</a></div>
+                <div class="start-investing"><a href="/business-relation.html">Business Relation</a></div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-xs-12 mb-4 logo-group">
+              <div class="logo6">Community</div>
+              <div class="logo-container">
+                <div class="start-investing"><a href="/event.html">Events</a></div>
+                <div class="start-investing"><a href="/blog.html">Blog</a></div>
+                <div class="start-investing"><a href="/podcast.html">Podcast</a></div>
+                <div class="start-investing"><a href="/invite-friend.html">Invite a friend</a></div>
+              </div>
+            </div>
+            <div class="logo-group">
+              <div class="logo6">Socials</div>
+              <div class="logo-container">
+                <div class="start-investing">Discord</div>
+                <div class="start-investing">Instagram</div>
+                <div class="start-investing">Twitter</div>
+                <div class="start-investing">Facebook</div>
+              </div>
+            </div>
+          </div>
+          <div class="frame-child5"></div>
+        </div>
+        <div class="smartportfolios-all-rights">
+          ©2023 SmartPortfolios. All rights reserved
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function togglePasswordVisibility() {
+      const passwordInput = document.getElementById("password");
+      const toggleIcon = document.querySelector(".toggle-password i");
+
+      if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+          toggleIcon.classList.remove("fa-eye-slash");
+          toggleIcon.classList.add("fa-eye");
+      } else {
+          passwordInput.type = "password";
+          toggleIcon.classList.remove("fa-eye");
+          toggleIcon.classList.add("fa-eye-slash");
+      }
+  }
+  </script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/644f791631ebfa0fe7fb52e9/1gvb7202o';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->

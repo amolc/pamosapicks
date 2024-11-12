@@ -1,0 +1,33 @@
+{
+	"folders": [
+		{
+			"name": "iamstockbot",
+			"path": ".."
+		},
+		{
+			"name": "finance",
+			"path": "../../finance"
+		},
+		{
+			"name": "skor",
+			"path": "../../v3/skor"
+		},
+		{
+			"name": "spur-connect",
+			"path": "../../spur-connect"
+		},
+		{
+			"name": "stripopenapi",
+			"path": "../../stripopenapi"
+		},
+		{
+			"name": "rewardzapi",
+			"path": "../../rewardzapi"
+		},
+		{
+			"name": "tradedigitalgold",
+			"path": "../../tradedigitalgold"
+		}
+	],
+	"settings": {}
+}

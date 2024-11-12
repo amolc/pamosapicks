@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+
+
+<!-- Mirrored from webapplayers.com/inspinia_admin-v2.9.4/ecommerce_products_grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Jun 2022 03:36:24 GMT -->
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smartportfolios – Get atleast 20% more than your buy and hold strategy.</title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    <!-- CSS files -->
+    <link href="/dist/css/tabler.min.css" rel="stylesheet" />
+    <link href="/dist/css/tabler-flags.min.css" rel="stylesheet" />
+    <link href="/dist/css/tabler-payments.min.css" rel="stylesheet" />
+    <link href="/dist/css/tabler-vendors.min.css" rel="stylesheet" />
+    <link href="/dist/css/demo.min.css" rel="stylesheet" />
+    <!-- 1. Add the following script to your page. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+    <script src="./angular/angular-storage.min.js"></script>
+    <script src="./angular/angular-payments.js"></script>
+    <script src="./angular/app.js"></script>
+    
+    <script src="./angular/service.js"></script>
+    <script src="./angular/toodlsCtrl.js"></script>
+    
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Toastr style -->
+    <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/b978cbdbfe.js" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body ng-app="website" ng-controller="toodlsCtrl" ng-init="listorder()">
+
+<div id="wrapper">
+
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element">
+                        <img src="img/iamstockbot_a.png" class="img-fluid" style="max-width:75%; height:auto;" class="mt-3">
+                    </div>
+                    
+                </li>
+                <li class="active" >
+                    <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Generals</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li class="active" ><a href="stocklist.html"><i class="fa fa-file-text-o"></i> Stocklist</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-wifi"></i> <span class="nav-label">Signals</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="signals.html"><i class="fa fa-rss"></i> Signals</a></li>
+                        <li><a href="mysignalportfolio.html"><i class="fa fa-id-card"></i> My Portfolio</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-robot"></i> <span class="nav-label">Robots</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="robots.html"><i class="fa fa-cubes"></i> Categories</a></li>
+                        <li><a href="mysignalportfolio.html"><i class="fa fa-id-card"></i> My Portfolio</a></li>
+                        <li><a href="transactions.html"><i class="fa fa-bank"></i> Transactions</a></li>
+                        <li><a href="broker_connection.html"><i class="fa fa-handshake-o"></i> Broker Settings</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-money"></i> <span class="nav-label">Manage Funds</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="category.html"><i class="fa fa-dollar"></i> Funds</a></li>
+                        <li><a href="mysignalportfolio.html"><i class="fa fa-id-card"></i> My Portfolio</a></li>
+                        <li><a href="transactions.html"><i class="fa fa-bank"></i> Transactions</a></li>
+                        <li><a href="broker_connection.html"><i class="fa fa-handshake-o"></i> Broker Settings</a></li>
+                    </ul>
+                </li>
+                <li >
+                    <a href="#"><i class="fa fa-user"></i> <span class="nav-label">Admin</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="customers.html"><i class="fa fa-users"></i> Customers</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                    <form role="search" class="navbar-form-custom" action="http://webapplayers.com/inspinia_admin-v2.9.4/search_results.html">
+                        <div class="form-group">
+                            <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+                        </div>
+                    </form>
+                </div>
+                <ul class="nav navbar-top-links navbar-right">
+                    <div class="d-none d-xl-block ps-2">
+                        <div>{{name}}</div>
+                        <div>{{customerId}}</div>
+
+                    </div>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                            <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-messages">
+                            <li>
+                                <div class="dropdown-messages-box">
+                                    <a class="dropdown-item float-left" href="profile.html">
+                                        <img alt="image" class="rounded-circle" src="img/a7.html">
+                                    </a>
+                                    <div class="media-body">
+                                        <small class="float-right">46h ago</small>
+                                        <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
+                                        <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <div class="dropdown-messages-box">
+                                    <a class="dropdown-item float-left" href="profile.html">
+                                        <img alt="image" class="rounded-circle" src="img/a4.html">
+                                    </a>
+                                    <div class="media-body ">
+                                        <small class="float-right text-navy">5h ago</small>
+                                        <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>. <br>
+                                        <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <div class="dropdown-messages-box">
+                                    <a class="dropdown-item float-left" href="profile.html">
+                                        <img alt="image" class="rounded-circle" src="img/profile.html">
+                                    </a>
+                                    <div class="media-body ">
+                                        <small class="float-right">23h ago</small>
+                                        <strong>Monica Smith</strong> love <strong>Kim Smith</strong>. <br>
+                                        <small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <div class="text-center link-block">
+                                    <a href="mailbox.html" class="dropdown-item">
+                                        <i class="fa fa-envelope"></i> <strong>Read All Messages</strong>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                            <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-alerts">
+                            <li>
+                                <a href="mailbox.html" class="dropdown-item">
+                                    <div>
+                                        <i class="fa fa-envelope fa-fw"></i> You have 16 messages
+                                        <span class="float-right text-muted small">4 minutes ago</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <a href="profile.html" class="dropdown-item">
+                                    <div>
+                                        <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                        <span class="float-right text-muted small">12 minutes ago</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <a href="grid_options.html" class="dropdown-item">
+                                    <div>
+                                        <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                        <span class="float-right text-muted small">4 minutes ago</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <div class="text-center link-block">
+                                    <a href="notifications.html" class="dropdown-item">
+                                        <strong>See All Alerts</strong>
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    <li>
+                        <a href="index.html">
+                            <i class="fa fa-sign-out"></i> Log out
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+        </div>
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-10">
+                <h2>Dashboard</h2>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        <strong>Dashboard/Crypto currenct</strong>
+                    </li>
+                </ol>
+            </div>
+            
+        </div>
+
+       
+        
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="row mt-3 p-3">
+                    <div class="col-lg-4 col-md-4 sm-4">
+                        <div class="card card-content animated fadeIn " style="width:25rem; height:42rem;">
+                            <div class="card-header">
+                                <h2>Confirmation</h2>
+                            </div>
+                            <div class="row ml-1 mt-2">
+                                
+                                <div class="col-lg-12 col-md-5 col-sm-5">
+                                    <h4>1. Robots would be working automatically for a period of 30 days min to give great result.</h4><br>
+                                    <h4>2. An activation email would be sent and a weekly activity report would be updated.</h4>
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="row mt-3 p-3">
+                    <div class="col-lg-4 col-md-4 sm-4">
+                        <div class="card card-content animated fadeIn " style="width:25rem; height:42rem;">
+                            <div class="card-header">
+                                <h2>Start Roboto</h2>
+                            </div>
+                            <div class="row ml-1 mt-2">
+                                
+                                <div class="col-lg-12 col-md-5 col-sm-5">
+                                    <h4>No. of Unit</h4>
+                                    <p><input type="text" name="username" id="username" placeholder="username" ng-model="data.username"required="" style="width:94%;"></p>
+                                    <p><input type="text" name="password" id="password" placeholder="password" ng-model="data.password"required="" style="width:94%;"></p>
+                                    <p><input type="text" name="api_key" id="api_key"placeholder="api_key" ng-model="data.api_key"required="" style="width:94%;"></p>
+                                    <p><input type="text" name="account_type" id="account_type"placeholder="account_type" ng-model="data.account_type" required="" style="width:94%;"></p>
+                                    <p><input type="text" name="currency_code" id="currency_code"placeholder="currency_code" ng-model="data.currency_code"required="" style="width:94%;"></p>
+                                    <p><input type="text" name="epic" id="epic"placeholder="epic" ng-model="data.epic"required="" style="width:94%;"></p>
+                                    <p><input type="text" name="order_type" id="order_type"placeholder="order_type" ng-model="data.order_type"required="" style="width:94%;"></p>
+                                    <p><input type="text" name="expiry" id="expiry"placeholder="expiry" ng-model="data.expiry"required="" style="width:94%;"></p>
+                                    <p><input type="text" name="force_open" id="force_open"placeholder="force_open" ng-model="data.force_open"required="" style="width:94%;"></p>
+                                    <p><input type="text" name="guaranteed_stop" id="guaranteed_stop"placeholder="guaranteed_stop" ng-model="data.guaranteed_stop"required="" style="width:94%;"></p>
+                                    <p><input type="text" name="size" id="size"placeholder="size" ng-model="data.size"required="" style="width:94%;"></p>
+                                    <p><input type="text" name="stop_loss" id="stop_loss"placeholder="stop_loss" ng-model="data.stop_loss"required="" style="width:94%;"></p>
+                                    <p style="text-align:center"><button type="button" class="btn btn-primary btn-xs" style="width:130px;"ng-click="lgproduct()">Submit</button></p>
+                                </div>
+                                
+                                <!-- Modal -->
+                                    <div id="myModal" class="modal fade" role="dialog" >
+                                        <div class="modal-dialog modal-lg">
+                                    
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h3>Dashboard</h3>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title"></h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group ">
+                                                                <label class="form-label "><h4>Stock </h4></label>
+                                                                <input type="hidden" class="form-control " ng-model="data.Stock" placeholder="Stock">
+                                                            </div>
+                                                            <div class="form-group ">
+                                                                <label class="form-label "><h4>Transaction_number</h4></label>
+                                                                <input type="hidden" class="form-control " ng-model="data.Transaction_number" placeholder="Transaction_number">
+                                                            </div>  
+                                                            
+                                                            <div class="form-group ">
+                                                                <label class="form-label "><h4>Amount</h4></label>
+                                                                <input type="hidden " class="form-control " ng-model="data.Amount" placeholder="Amount">
+                                                            </div>    
+                                                            
+                                                            <div class="form-group ">
+                                                                <label class="form-label "><h4>Unit</h4></label>
+                                                                <input type="hidden" class="form-control " ng-model="data.Unit" placeholder="Unit">
+                                                            </div>    
+                                                            
+                                                            <div class="form-group ">
+                                                                <label class="form-label "><h4>Starttime</h4></label>
+                                                                <input type="hidden" class="form-control " ng-model="data.Start_time" placeholder="Starttime">
+                                                            </div>  
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="stock"><h4>Endtime:</h4></label>
+                                                                <input type="hidden" class="form-control" id="text" placeholder="Endtime" ng-model="data.EndTime">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="stock" ><h4>Status:</h4></label>
+                                                                <input type="hidden" class="form-control" id="text" placeholder="Status" ng-model="data.Status">
+                                                            </div>   
+                                                            
+                                                            <div class="form-group">
+                                                                <label for="stock"><h4>ProfitLoss:</h4></label>
+                                                                <input type="hidden" class="form-control" id="text" placeholder="ProfitLoss" ng-model="data.ProfitLoss">
+                                                            </div>    
+                                                            
+                                                            <div class="form-group">
+                                                                <label for="stock"><h4>Stop:</h4></label>
+                                                                <p style="text-align:center"><button type="hidden" class="btn btn-primary btn-xs"style="width:130px;" ng-click="addendtime()">Stop</button></p>
+                                                            </div>    
+                                                            
+                                                            <div class="form-group mb-5">
+                                                                <label for="stock"><h4>Detail:</h4></label>
+                                                                <input type="hidden" class="form-control" id="text" placeholder="Detail" ng-model="data.Deatil">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                        <p style="text-align:center"><button type="hidden" class="btn btn-primary btn-xs" style="width:130px;"ng-click="addstartbot()">Submit</button></p>
+                                                </form>
+                                            </div>
+                                             
+                                        </div>
+                                    
+                                        </div>
+                                    </div>
+
+                            </div>
+                        </div>
+                        
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="float-right">
+
+                </div>
+                <div>
+                    <strong>Copyright</strong> Example Company &copy; 2014-2018
+                </div>
+            </div>
+        </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- Mainly scripts -->
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
+
+</body>
+
+
+<!-- Mirrored from webapplayers.com/inspinia_admin-v2.9.4/ecommerce_products_grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Jun 2022 03:36:24 GMT -->
+</html>

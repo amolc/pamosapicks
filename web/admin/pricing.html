@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Smartportfolio - Portfolio</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  
+
+  <!-- Template Main CSS File -->
+  <link href="../assets/css/style.css" rel="stylesheet">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+  <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+
+
+  <script src='https://cdn.plot.ly/plotly-2.16.1.min.js'></script>
+  <script src="../angular/angular-storage.min.js"></script>
+  <script src="../angular/angular-payments.js"></script>
+  <script src="../angular/app.js"></script>
+  <script src="../angular/service.js"></script>
+  <script src="./angular/dashboardCtrl.js"></script>
+  </head>
+ 
+
+
+</head>
+
+<body ng-app="website" ng-controller="dashboardCtrl" ng-init="init()"  >
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top" style="background-color:  #143443;">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h1 class="logo"><a href="/app/"><img style="height: 80px;" src="../assets/img/quantbotslogo.png" alt=""></a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar">
+        <ul>
+            <li><a class="nav-link scrollto active" href="/app/">Home</a></li>
+                <li><a class="nav-link scrollto active" href="pricing.html">Pricing</a></li>
+                <li><a class="nav-link scrollto active" href="screener.html">Demo</a></li>
+                <li><a class="nav-link scrollto active" href="signal-portfolio.html">Signals</a></li>
+                <li><a class="nav-link scrollto active" href="robots.html">Robots</a></li>
+                <li><a class="nav-link scrollto active" href="connectors.html">Connectors</a></li>
+                <li><a class="nav-link scrollto active" href="ready-portfolio.html">Ready Portfolio</a></li>
+                <li><a class="nav-link scrollto active" href="backtesting/modelportfolio.html">My Portfolio</a></li>
+                <div class="dropdown profile-element">
+
+                  <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+
+                      <span class="text-muted text-xs block">{{name | uppercase}} <b class="caret"></b></span>
+                  </a>
+                  <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                      <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                      <li><a class="dropdown-item" ng-click="logout()">Logout</a></li>
+                  </ul>
+              </div>
+           
+            
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+        
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+<section  style="background-color: #143443;" >
+    <div class="container mt-5">
+        <div class="row mt-5">
+            <div class="col mt-5">
+             <h1 class="mt-5 text-light" style="font-weight: bold;"> Welcome {{name}}  
+                </h1>
+            </div>
+        </div>
+
+        <div class="row mt-3 justify-content-center">
+            <div class="col-md-12">
+                <p class="text-light">
+                    Our pricing is based on an easy to use and grow plan. We encourage you to give us a try and see the value.
+                </p>
+            </div>
+        </div>
+      </div>
+     
+
+
+       <div class="container  mb-5">
+        <div class="row">
+
+            <div class="col-md-3 mt-5">
+                <div class="card">
+                    <div class="card-body">
+                    <div class="row">
+                        <div class="col text-center">
+                            <img src="/superadmin/img/alpaca.png"> 
+                            <h3 class="text-dark"><strong>Starter Pack</strong></h3> 
+                        </div>
+                    </div>
+
+
+                    <div class="row mt-3">
+                        <div class="col" id="alpacastatus">
+                            <ul class="todo-list m-t small-list">
+                                <div class="feed-element mt-3">
+                                    <h4> No Of Stocks : 1</h4>
+                                    <h4> Price : USD $0.00/7 days Trial</h4>
+                                    <li class="mt-3">
+                                      <i class="fa-solid fa-circle-check"></i>
+                                        <span >Signals</span>
+                        
+                                    </li>
+                                    <li>
+                                      <i class="fa-solid fa-circle-check"></i>
+                                        <span class="m-l-xs">Robots - Max Qty (5)</span>
+                        
+                                    </li>
+                                    <li>
+                                      <i class="fa-solid fa-circle-check"></i>
+                                        <span class="m-l-xs">Connectors</span>
+                                    </li>
+                                   
+                                
+                               
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row mt-1" >
+                        <div class="col">
+                            <a  class="btn btn-primary w-100" href="demo-portfolio.html">Free</a>
+                        </div>
+                    </div>
+
+                  
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-md-3 mt-5">
+                <div class="card">
+                    <div class="card-body">
+                    <div class="row">
+                        <div class="col text-center">
+                            <img src="/superadmin/img/alpaca.png"> 
+                            <h3 class="text-dark"><strong>Small Plan</strong></h3> 
+                        </div>
+                    </div>
+
+
+                    <div class="row mt-3">
+                        <div class="col" id="alpacastatus">
+                            <ul class="todo-list m-t small-list">
+                                <div class="feed-element mt-3">
+                                   <h4> No Of Stocks : 5</h4>
+                                 
+                                    <h4> Price : USD $50.00/month</h4>
+                                    <li class="mt-3">
+                                      <i class="fa-solid fa-circle-check"></i>
+                                        <span >Signals</span>
+                        
+                                    </li>
+                                    <li>
+                                      <i class="fa-solid fa-circle-check"></i>
+                                        <span class="m-l-xs">Robots - Max Qty (5)</span>
+                        
+                                    </li>
+                                    <li>
+                                      <i class="fa-solid fa-circle-check"></i>
+                                        <span class="m-l-xs">Connectors</span>
+                                    </li>
+                                   
+                                
+                               
+                            </ul>
+                        </div>
+                    </div>
+
+                  
+
+                    <div class="row mt-1" >
+                        <div class="col">
+                            <a  class="btn btn-primary w-100" href="signal-portfolio.html">Portfolio</a>
+                        </div>
+                    </div>
+
+                  
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-md-3 mt-5">
+                <div class="card">
+                    <div class="card-body">
+                    <div class="row">
+                        <div class="col text-center">
+                            <img src="/superadmin/img/alpaca.png"> 
+                            <h3 class="text-dark"><strong>Medium Plan</strong></h3> 
+                        </div>
+                    </div>
+
+
+                    <div class="row mt-3">
+                        <div class="col" id="alpacastatus">
+                            <ul class="todo-list m-t small-list">
+                                <div class="feed-element mt-3">
+                                    <h4> No Of Stocks : 10</h4>
+                                    <h4> Price : USD $100.00/month</h4>
+                                    <li class="mt-3">
+                                      <i class="fa-solid fa-circle-check"></i>
+                                        <span >Signals</span>
+                        
+                                    </li>
+                                    <li>
+                                      <i class="fa-solid fa-circle-check"></i>
+                                        <span class="m-l-xs">Robots - Max Qty (5)</span>
+                        
+                                    </li>
+                                    <li>
+                                      <i class="fa-solid fa-circle-check"></i>
+                                        <span class="m-l-xs">Connectors</span>
+                                    </li>
+                                   
+                                
+                               
+                            </ul>
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="row mt-1" >
+                        <div class="col">
+                            <a  class="btn btn-primary w-100" href="algoji-portfolio.html">Portfolio</a>
+                        </div>
+                    </div>
+
+                  
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-md-3 mt-5">
+                <div class="card">
+                    <div class="card-body">
+                    <div class="row">
+                        <div class="col text-center">
+                            <img src="/superadmin/img/alpaca.png"> 
+                            <h3 class="text-dark"><strong>High Value</strong></h3> 
+                        </div>
+                    </div>
+
+
+                    <div class="row mt-3">
+                        <div class="col" id="alpacastatus">
+                            <ul class="todo-list m-t small-list">
+                                <div class="feed-element mt-3">
+                                    <h4> No Of Stocks : 20</h4>
+                                    <h4> Price : USD $200.00/month</h4>
+                                    <li class="mt-3">
+                                      <i class="fa-solid fa-circle-check"></i>
+                                        <span >Signals</span>
+                        
+                                    </li>
+                                    <li>
+                                      <i class="fa-solid fa-circle-check"></i>
+                                        <span class="m-l-xs">Robots - No Qty Limit</span>
+                        
+                                    </li>
+                                    <li>
+                                      <i class="fa-solid fa-circle-check"></i>
+                                        <span class="m-l-xs">Connectors</span>
+                                    </li>
+                                   
+                                
+                               
+                            </ul>
+                        </div>
+                    </div>
+
+                   
+
+                    <div class="row mt-1" >
+                        <div class="col">
+                            <a  class="btn btn-primary w-100" href="stockdeveloper-portfolio.html">Portfolio</a>
+                        </div>
+                    </div>
+
+                  
+                    </div>
+                  </div>
+            </div>
+
+            
+        </div>
+
+        
+       </div>  
+
+    </section>
+   
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" style="background-color: #143443;">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>Smartportfolios</h3>
+            <p>
+              Our vision is to provide convenience and help increase your sales business.
+            </p>
+            <div class="social-links text-left text-md-right pt-3 pt-md-0 mt-4">
+              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>About</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">How it work</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Featured</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Partnership</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Business Relation</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Community</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Events</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Blog</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Pod Cast</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Invite a Friend</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Social</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Discord</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Instagram</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Twitter</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Facebook</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+
+
+    <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/644f791631ebfa0fe7fb52e9/1gvb7202o';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->
+
+
+
+  
+  <!-- Vendor JS Files -->
+  <script src="js/jquery-3.1.1.min.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>

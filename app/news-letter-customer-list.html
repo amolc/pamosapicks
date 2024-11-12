@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+
+
+  <title>Smartportfolio - Portfolio</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link rel="stylesheet" href="./global.css" />
+  <link rel="stylesheet" href="./index.css" />
+
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- CSS files -->
+  <link href="css/custom.css" rel="stylesheet">
+
+
+
+  <!-- Toastr style -->
+  <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+  <link href="css/animate.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/b978cbdbfe.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/custom.css">
+
+
+  <!-- Vendor CSS Files -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src='https://cdn.plot.ly/plotly-2.16.1.min.js'></script>
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+  <!-- Toastr style -->
+  <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+  <link href="css/animate.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/b978cbdbfe.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/custom.css">
+
+
+  <!-- Template Main CSS File -->
+  <link href="../assets/css/style.css" rel="stylesheet">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+  <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+  <script src='https://cdn.plot.ly/plotly-2.16.1.min.js'></script>
+  <script src="./angular/angular-storage.min.js"></script>
+  <script src="./angular/angular-payments.js"></script>
+  <script src="./angular/app.js"></script>
+  <script src="./angular/service.js"></script>
+  <script src="./angular/news-letter-customer-list.js"></script>
+</head>
+
+
+
+
+<body ng-app="website" ng-controller="customerList" ng-init="init()">
+  <div class="im_loading" ng-show="imLoading"></div>
+  
+  <div class="home-pages">
+
+<ng-include src="'header/navbar.html'"></ng-include>
+
+<div>
+  
+</div>
+
+
+<div class="container-fluid login-container">
+    <div class="card_new justify-content-right">
+      <div class="card-header">
+        <div class="row">
+          
+          <div class="y-cagr-parent">
+            <div class="y-cagr robot-css" ng-click="newsLetter()" style="width: 235px;">
+              <a  alt="" style="width: 14px !important; margin-right: 5px; height: 34px;"
+                >
+                Add News-Letter Customer
+              </a>
+            </div>
+
+            <div class="y-cagr robot-css" ng-click="sendnewsLetterMail()" style="width: 235px;">
+              <a  alt="" style="width: 14px !important; margin-right: 5px; height: 34px;"
+                >
+               Send Mail
+              </a>
+            </div>
+
+            
+          </div>
+          <div class="col-lg-10 text-left">
+            <h3>Customer list</h3>
+            
+          </div>
+          <hr>
+        </div>
+        
+        <div class="table-responsive">
+        <table class="table table-striped  table-hover dataTables-example">
+          <thead>
+              <tr>
+                  <th class="text-light">Sr. Number</th>
+                  <th  class="text-light">Name</th>
+                  <th  class="text-light">Email</th>
+                  <th  class="text-light">phone</th>
+                  <th  class="text-light">Plan Name</th>
+                  <th  class="text-light">Edit</th>
+                  <th  class="text-light">Delete</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr ng-repeat="data in newsLetterCustomerList">
+                  <td  class="text-light">{{data.id}}</td>
+                  <td  class="text-light">{{data.name}}</td>
+                  <td  class="text-light">{{data.email }}</td>
+                  <td  class="text-light">{{data.phone}}</td>
+                  <td  class="text-light">{{data.plan_name }}</td>
+                  <td class="center"><a href="#" data-toggle="modal" ng-click="editCustomer(data)">Edit</a></td>
+                  <td class="center"><a href="#" data-toggle="modal" ng-click="deleteCustomer(data.id)">Delete</td>
+              </tr>
+             </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+</div>
+  
+
+    <ng-include src="'/app/footer/footer.html'"></ng-include>
+
+
+  </div>
+
+  <!-- modal starts-->
+  <div class="modal inmodal" id="addstock" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content animated fadeIn">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+              class="sr-only">Close</span></button>
+          <img src="img/botico.png" class="ml-3">
+          <h4 class="modal-title">Iamstockbot</h4>
+
+        </div>
+        <div class="modal-body">
+          <!--modal form section starts-->
+          <div class="form">
+            <h3> Add Stock</h3>
+            <p> Please select the stock for your portfolio.</p>
+            <form name="myForm">
+              <div class="form-group">
+                <label for="stockname">Stock Name:</label>
+                <select class="custom-select" ng-change="updatestocksource(addstock.stock)" ng-model="addstock.stock"
+                  required name="stockname">
+                  <option value="" disabled></option>
+                  <option ng-repeat="stock in stockdata_list" value="{{stock.stock}}">
+                    {{stock.stock}}</option>
+
+                </select>
+
+
+              </div>
+              <div class="form-group">
+                <label for="stockname">Stock Source:</label>
+
+                <select class="custom-select" ng-model="addstock.source" required name="stockname">
+                  <!-- <option value="" disabled></option> -->
+                  <option ng-repeat="stock in stockdata_list" ng-if="stock.stock === addstock.stock"
+                    value="{{stock.source}}">
+                    {{stock.source}}</option>
+
+                </select>
+
+
+              </div>
+
+
+              <div class="form-group">
+                <label for="stockpercentage">Percentage Allocation:</label>
+                <input type="number" min="0" max="100" class="form-control" ng-model="addstock.percentage"
+                  name="percentage" required>
+              </div>
+
+              <div class="form-group">
+                <label for="stockpercentage">Status:</label>
+                <input type="text" min="0" max="100" class="form-control" ng-model="addstock.status" name="status"
+                  required>
+              </div>
+              <button type="submit" ng-click="onaddstockSubmit(addstock)"
+                class="btn btn-primary block full-width m-b">Submit</button>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- modal starts-->
+  <div class="modal inmodal" id="closeOpenPositionMdl" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content animated fadeIn">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+              class="sr-only">Close</span></button>
+          <img src="Iamstockbot-Logo.png" style="width:120px; height:80px;">
+          <h4 class="modal-title">Iamstockbot</h4>
+
+        </div>
+        <div class="modal-body">
+          <!--modal form section starts-->
+          <div class="form">
+            <h3> Confirm Stock Delete</h3>
+
+            <form name="myForm">
+
+
+              <button type="submit" ng-click="confrimClosePosition()"
+                class="btn btn-primary btn-w-m block full-width m-b">Submit</button>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- edit position modal starts-->
+  <div class="modal inmodal" id="editpositionModel" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content animated fadeIn">
+        <div class="modal-header">
+          <div class="custom-close" data-dismiss="modal" ng-click="closeModal('editstock')" aria-label="Close"></div>
+          <h4 class="modal-title">Edit Stock</h4>
+        </div>
+        <div class="modal-body">
+
+          <!-- Modal form section starts -->
+          <div class="form">
+            <form name="myForm">
+              <div class="row">
+                
+
+                
+
+                <div class="form-group">
+                  <label for="stop_level" class="text-dark">stop level:</label>
+                  <input  min="0" max="100" class="form-control"
+                      ng-model="editpositionModel.stop_level" name="stop_level" required>
+              </div>
+
+              <div class="form-group">
+                  <label for="limit_level" class="text-dark">limit level:</label>
+                  <input  min="0" max="100" class="form-control"
+                      ng-model="editpositionModel.limit_level" name="limit_level" required>
+              </div>
+
+              </div>
+
+              <button type="submit" ng-click="editPositionSubmit(editpositionModel)"
+                class="btn btn-primary block full-width m-b">Submit</button>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- edit position modal ends-->
+
+
+
+  <!-- add news start-->
+<div class="modal modal-blur fade" id="news-letter" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <form ng-submit="addCustomerSubmit(data)">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-dark">Add Customer </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="form">
+            <div class="row">
+              <div class="form-group col-md-4">
+                <label for="name" class="text-dark">Name:</label>
+                <input type="text" class="form-control" ng-model="data.name" name="name" >
+              </div>
+              <div class="form-group col-md-4">
+                <label for="email" class="text-dark">email:</label>
+                <input type="text" class="form-control" ng-model="data.email" name="email">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="phone" class="text-dark">Phone (Optional):</label>
+                <input type="text" class="form-control" ng-model="data.phone" name="phone" required>
+              </div>
+            </div>
+         
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
+            Cancel
+          </a>
+          <button type="submit" class="btn btn-primary ms-auto" data-bs-dismiss="modal">
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- add news end -->
+
+
+  <!-- add news start-->
+  <div class="modal modal-blur fade" id="edit-news-letter" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <form ng-submit="editCustomerSubmit(data)">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-dark">Edit Customer </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="form">
+              <div class="row">
+                <div class="form-group col-md-4">
+                  <label for="name" class="text-dark">Name:</label>
+                  <input type="text" class="form-control" ng-model="data.name" name="name" >
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="email" class="text-dark">email:</label>
+                  <input type="text" class="form-control" ng-model="data.email" name="email">
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="phone" class="text-dark">Phone (Optional):</label>
+                  <input type="text" class="form-control" ng-model="data.phone" name="phone" required>
+                </div>
+              </div>
+           
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
+              Cancel
+            </a>
+            <button type="submit" class="btn btn-primary ms-auto" data-bs-dismiss="modal">
+              Submit
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- add news end -->
+
+
+  <div class="modal inmodal" id="delete-news-letter" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated fadeIn">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span
+                        aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <img src="Iamstockbot-Logo.png" style="width:120px; height:80px;">
+                <h4 class="modal-title">Iamstockbot</h4>
+
+            </div>
+            <div class="modal-body">
+                <!--modal form section starts-->
+                <div class="form">
+                    <h3> Confirm Delete</h3>
+                    
+                    <form name="myForm">
+                        
+                    
+                        <button type="submit" ng-click="deleteCustomerSumbit()"
+                            class="btn btn-primary btn-w-m block full-width m-b">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  <!-- add news start-->
+<div class="modal modal-blur fade" id="send-email" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <form ng-submit="mailsendSubmit(data)">
+      <div class="modal-content" style="width: 200%;">
+        <div class="modal-header">
+          <h5 class="modal-title text-dark">Send Mail</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="form">
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label for="subject" class="text-dark">Subject:</label>
+                <input type="text" class="form-control" ng-model="data.subject" name="subject" >
+              </div>
+              <div class="form-group col-md-12">
+                <label for="content" class="text-dark">Content:</label>
+                <textarea type="text" class="form-control" ng-model="data.content" name="content"></textarea>
+
+              </div>
+             
+            </div>
+         
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
+            Cancel
+          </a>
+          <button type="submit" class="btn btn-primary ms-auto" data-bs-dismiss="modal">
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- add news end -->
+
+
+
+
+
+
+
+
+</body>
+
+</html>
+<style>
+  .robot-css {
+    position: relative;
+    border-radius: var(--br-5xs);
+    background-color: #143443;
+    width: 100%;
+    text-align: center;
+    padding: 8px 18px;
+    cursor: pointer;
+  }
+</style>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="js/inspinia.js"></script>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+  (function () {
+    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/644f791631ebfa0fe7fb52e9/1gvb7202o';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    s0.parentNode.insertBefore(s1, s0);
+  })();
+</script>
+<!--End of Tawk.to Script-->

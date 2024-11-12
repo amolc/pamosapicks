@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html>
+
+
+<!-- Mirrored from webapplayers.com/inspinia_admin-v2.9.4/ecommerce_products_grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Jun 2022 03:36:24 GMT -->
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smartportfolios – Get atleast 20% more than your buy and hold strategy.</title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+
+    <!-- CSS files -->
+    <link href="/dist/css/tabler.min.css" rel="stylesheet" />
+    <link href="/dist/css/tabler-flags.min.css" rel="stylesheet" />
+    <link href="/dist/css/tabler-payments.min.css" rel="stylesheet" />
+    <link href="/dist/css/tabler-vendors.min.css" rel="stylesheet" />
+    <link href="/dist/css/demo.min.css" rel="stylesheet" />
+
+
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Toastr style -->
+    <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/b978cbdbfe.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- 1. Add the following script to your page. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+    <script src="./angular/angular-storage.min.js"></script>
+    <script src="./angular/angular-payments.js"></script>
+    <script src="./angular/app.js"></script>
+    <script src="./angular/service.js"></script>
+    <script src="./angular/signalsctrl.js"></script>
+
+</head>
+
+<body ng-app="website" ng-controller="signalsctrl" ng-init="init()">
+
+    <div id="wrapper">
+
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            <img src="img/iamstockbot_a.png" class="img-fluid" style="max-width:75%; height:auto;"
+                                class="mt-3">
+                        </div>
+
+                    </li>
+                    <li class="active">
+                        <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Generals</span> <span
+                                class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li class="active"><a href="stocklist.html"><i class="fa fa-file-text-o"></i> Stocklist</a>
+                                <li class="active"><a href="alerts.html"><i class="fa fa-file-text-o"></i> Alerts</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="#"><i class="fa fa-wifi"></i> <span class="nav-label">Signals</span> <span
+                                class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li class="active" ><a href="signals.html"><i class="fa fa-rss"></i> Signals</a></li>
+                            <li class="active" ><a href="mysignalportfolio.html"><i class="fa fa-id-card"></i> My Portfolio</a></li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="#"><i class="fa fa-robot"></i> <span class="nav-label">Robots</span> <span
+                                class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="robots.html"><i class="fa fa-cubes"></i> Categories</a></li>
+                            <li><a href="myportfolio.html"><i class="fa fa-id-card"></i> My Portfolio</a></li>
+                            <li><a href="transactions.html"><i class="fa fa-bank"></i> Transactions</a></li>
+                            <li><a href="broker_connection.html"><i class="fa fa-handshake-o"></i> Broker Settings</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-money"></i> <span class="nav-label">Manage Funds</span> <span
+                                class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="category.html"><i class="fa fa-dollar"></i> Funds</a></li>
+                            <li><a href="myportfolio.html"><i class="fa fa-id-card"></i> My Portfolio</a></li>
+                            <li><a href="transactions.html"><i class="fa fa-bank"></i> Transactions</a></li>
+                            <li><a href="broker_connection.html"><i class="fa fa-handshake-o"></i> Broker Settings</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-user"></i> <span class="nav-label">Admin</span> <span
+                                class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="customers.html"><i class="fa fa-users"></i> Customers</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i
+                                class="fa fa-bars"></i> </a>
+
+                    </div>
+
+                    <ul class="nav navbar-top-links navbar-right p-3">
+                        <div class="dropdown profile-element">
+
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+
+                                <span class="text-muted text-xs block">{{name}} <b class="caret"></b></span>
+                            </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                                <li><a class="dropdown-item" ng-click="logout()">Logout</a></li>
+                            </ul>
+                        </div>
+                </nav>
+            </div>
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-10">
+                    <h2>SIGNALS</h2>
+                </div>
+            </div>
+
+
+
+            <div class="wrapper wrapper-content">
+
+            </div>
+            <div class="row mb-4" id="intro1">
+                <div class="col-lg-12">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="signals.html"><strong>Signals</strong></a>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="row" id="intro">
+                <div class="col-lg-12">
+                    <div class="ibox ">
+                        <div class="ibox-title">
+                            <h3><strong>Technical Signals </strong></h3>
+
+                            <div class="ibox-tools">
+
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="row">
+                                <div class="col-lg-9">
+
+                                    <h3><strong>Get highly successful technical signals in stocks,forex and
+                                            indices</strong></h3>
+                                    <div>Our team of quant analyst have designed the system which is good and
+                                        efficient.It has been in development for more than 2 years and have been tested
+                                        on various categories like stocks, forex and cryptocurrency. Find the product
+                                        which best suit your style of trading and get started with it rightaway.</div>
+                                    <div>
+                                        <p></p>Signals are based on intraday and swing trading. Most products are
+                                        optimised for day trading and there are few signals which may go for a swing
+                                        trade. For example</p>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-3">
+                                    <ul class="stat-list">
+                                        <li>
+                                            <h2 class="no-margins">2,346</h2>
+                                            <small>Signals Generated</small>
+                                            <div class="stat-percent">48% <i class="fa fa-level-up text-navy"></i></div>
+                                            <div class="progress progress-mini">
+
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <h2 class="no-margins ">4,422</h2>
+                                            <small>Positive </small>
+                                            <div class="stat-percent">60% <i class="fa fa-level-down text-navy"></i>
+                                            </div>
+                                            <div class="progress progress-mini">
+                                                <div style="width: 60%;" class="progress-bar"></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <h2 class="no-margins ">9,180</h2>
+                                            <small>Negative</small>
+                                            <div class="stat-percent">22% <i class="fa fa-bolt text-navy"></i></div>
+                                            <div class="progress progress-mini">
+                                                <div style="width: 22%;" class="progress-bar"></div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="categorylist">
+                <div class="col-lg-3" ng-repeat="data in categoryset">
+                    <div class="ibox ">
+                        <div class="ibox-title">
+                            <h3><strong>{{data.categoryname}}</strong></h3>
+                            <div class="ibox-tools">
+                                <h5 style="color:coral"><strong>$22/USD</strong></h5>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+
+                            <ul class="todo-list m-t small-list">
+                                <div class="feed-element">
+                                    <h5>Alerts Available on the followin channels </h5>
+
+                                </div>
+                                <li>
+                                    <img src="tick.png">
+                                    <span class="m-l-xs">What's app</span>
+
+                                </li>
+                                <li>
+                                    <img src="tick.png">
+                                    <span class="m-l-xs">Telegram</span>
+
+                                </li>
+                                <li>
+                                    <img src="tick.png">
+                                    <span class="m-l-xs">Email</span>
+                                </li>
+                                <li>
+                                    <img src="tick.png">
+                                    <span class="m-l-xs">Daily Summary</span>
+                                </li>
+                                <li>
+                                    <img src="tick.png">
+                                    <span class="m-l-xs">Hints </span>
+                                </li>
+                                <li>
+                                    <img src="tick.png">
+                                    <span class="m-l-xs">Action Plan</span>
+                                </li>
+                            </ul>
+                            <div>
+
+                                <button type="button" class="btn btn-w-m btn-primary mt-3"
+                                    ng-click="createportfolioform(customerId,data.id,data.categoryname)">Signals</button>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row ng-hide" id="loader">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-4">
+                    <img src="/img/loader.gif" height="150px">
+                </div>
+                <div class="col-lg-4"></div>
+            </div>
+            <div class="container ">
+                <div class="row" id="createportfolio" >
+                
+                    <div class="col-lg-8">
+                        <div class="ibox ">
+                            <div>
+                                <div class="row ibox-title">
+                                    <div class="col-lg-9">
+                                        <h2><strong>Subscribe to {{portfolio_name}} Signals</strong></h2>
+                                    </div>
+                                </div>
+                                <form name="myForm">
+                                <div class="row ibox-content">  
+                                    <div class="col-lg-6">
+                                                <div class="row">
+                                                    <div>
+                                                        <h5><strong>1. Customer Information</strong></h5>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <label for="stockpercentage">Portfolio </label>
+                                                        <input type="text" class="form-control"
+                                                            ng-model="createportfolio.portfolio_name" name="portfolio_name">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="stockpercentage">Customer Details </label>
+                                                        <input type="text" class="form-control" ng-model="createportfolio.name"
+                                                            name="name">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="stockpercentage">Phone </label>
+                                                        <input type="text" class="form-control" ng-model="createportfolio.phone_number"
+                                                            name="phone">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="stockpercentage">Email </label>
+                                                        <input type="text" class="form-control" ng-model="createportfolio.email"
+                                                            name="email">
+                                                    </div>
+                                                    <div style="height:28px;"></div>
+                                                </div>
+                                            
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="row">
+                                            <div>
+                                                <h5><strong>2. Alert Information</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div style="height:10px;"></div>
+                                            <div class="col-md-5 form-group">
+                                            
+                                                <input type="checkbox" ng-model="createportfolio.email_alert"
+                                                    name="emailalert" >
+                                                <label for="stockpercentage">
+                                                Email Alert 
+                                                
+                                                </label>
+                                            </div>
+                                            <div class="col-md-5 form-group">
+                                                <input type="checkbox" ng-model="createportfolio.phone_alert"
+                                                    name="phonealert" >
+                                                <label for="stockpercentage">
+                                                    Phone Alert
+                                                </label>
+                                            </div>
+                                            <div class="form-group col-md-8">
+                                                <label for="duration">Duration </label>
+                                                <select class="custom-select " ng-model="createportfolio.duration"
+                                                    name="duration" >
+                                                    <option value="7" selected> 7 Days Free</option>
+                                                    <option value="30"> Monthly</option>
+                                                    <option value="365"> Year </option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-12 form-group">
+                                                <input type="checkbox" ng-model="createportfolio.accept_terms"
+                                                    name="accept_terms" >
+                                                <label for="accept_terms">
+                                                We understand that the trade signals are based on technical analysis and we should do our own due diligance before taking a trade.
+                                                </label>
+                                            </div>
+                                            <div class="form-group">
+                                            
+                                                <input type="hidden" class="form-control" ng-model="createportfolio.promocode"
+                                                    name="promocode">
+                    
+                    
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-5">
+
+                                                    <button type="submit" ng-click="submitcreateform(createportfolio)"
+                                                        class="btn btn-primary block full-width m-b">Submit</button>
+                                                    </div>
+                                                    <div class="col-md-5"> 
+                                                    <button type="button" ng-click="init()"
+                                                        class="btn btn-success block full-width m-b">Cancel</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        
+
+                                        
+                                        </div>
+                                    </div>
+                    
+                                    
+                    
+                                    
+                    
+                    
+                                </form>
+                                </div>
+                    
+                    
+                            </div>
+                    
+                    
+                    
+                    
+                        </div>
+                    
+                    </div>
+                    
+                
+                </div>
+            </div>
+
+            
+
+
+        </div>
+    </div>
+    <!-- Modals for the webpage come here -->
+    <!-- modal starts-->
+    <div class="modal inmodal" id="addstock" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content animated fadeIn">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span
+                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <img src="img/iamstockbot.png" class="ml-3">
+                   
+
+                </div>
+                <div class="modal-body">
+                    <!--modal form section starts-->
+                    <div class="form">
+                        <h3> Add Stock</h3>
+                        <p> Please select the stock for your portfolio.</p>
+                        <form name="myForm">
+                            <div class="form-group">
+                                <label for="stockname">Stock Name:</label>
+
+                                <select class="custom-select" ng-model="addstock.symbol" required name="stockname">
+                                    <option value="" disabled></option>
+                                    <option ng-repeat="stock in stockdata_list" value="{{stock.stock}}">
+                                        {{stock.stock}}</option>
+
+                                </select>
+
+
+                            </div>
+                            <div class="form-group">
+                                <label for="stockpercentage">Percentage Allocation:</label>
+                                <input type="number" min="0" max="100" class="form-control"
+                                    ng-model="addstock.percentage" name="percentage" required>
+                            </div>
+                            <button type="submit" ng-click="addnewstock(customerId,portfolioId ,addstock)"
+                                class="btn btn-primary block full-width m-b">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals for the reset portfolio -->
+    <!-- modal starts-->
+    <div class="modal inmodal" id="resetportfolio" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content animated fadeIn">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span
+                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <img src="img/iamstockbot.png" class="ml-3">
+                   
+
+                </div>
+                <div class="modal-body">
+                    <!--modal form section starts-->
+                    <div class="form">
+                        <h3> Reset Portfolio</h3>
+                        <p> This will reset your portfolio with the new cash value in account.</p>
+                        <form name="myForm">
+
+                            <button type="submit" ng-click="resetportfolio(customerId, '1')"
+                                class="btn btn-primary block full-width m-b">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals for the reset portfolio -->
+
+    <!-- Modals for the webpage come here -->
+    <!-- modal starts-->
+    <div class="modal inmodal" id="editstock" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content animated fadeIn">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span
+                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <img src="img/iamstockbot_a.png" style="width:120px; height:80px;">
+                   
+
+                </div>
+                <div class="modal-body">
+                    <!--modal form section starts-->
+                    <div class="form">
+                        <h3> Edit Stock</h3>
+                        <p> You may edit the percentage setting for your stock. </p>
+                        <form name="myForm">
+                            <div class="form-group">
+                                <label for="stockname">Stock Name:</label>
+
+                                <input type="text" class="form-control" ng-model="data.symbol" name="stockname"
+                                    value="{{data.symbol}} " required>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="stockpercentage">Percentage Allocation:</label>
+                                <input type="text" class="form-control" ng-model="data.percentage" name="percentage"
+                                    value="{{data.percentage }}" required>
+                            </div>
+                            <button type="submit" ng-click="editstock(customerId, '1',data)"
+                                class="btn btn-primary block full-width m-b">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals for the webpage come here -->
+    <!-- modal starts-->
+    <div class="modal inmodal" id="deletestock" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content animated fadeIn">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span
+                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <img src="Iamstockbot-Logo.png" style="width:120px; height:80px;">
+                   
+
+                </div>
+                <div class="modal-body">
+                    <!--modal form section starts-->
+                    <div class="form">
+                        <h3> Edit Stock</h3>
+                        <p> You may edit the percentage setting for your stock. </p>
+                        <form name="myForm">
+                            <div class="form-group">
+                                <label for="stockname">Stock Name:</label>
+
+                                <input type="text" class="form-control" ng-model="data.symbol" name="stockname"
+                                    value="{{data.symbol}} " readonly>
+
+                            </div>
+
+                            <button type="submit" ng-click="deletestock(customerId, '1',data)"
+                                class="btn btn-primary btn-w-m block full-width m-b">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals for the webpage come here -->
+    <!-- modal starts-->
+    <div class="modal inmodal" id="alert" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content animated fadeIn">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span
+                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <img src="img/iamstockbot.png" style="width:120px; height:80px;">
+                   
+
+                </div>
+                <div class="modal-body">
+                    <!--modal form section starts-->
+                    <div class="form">
+                        <h3> Alert</h3>
+                        <p>Please reset your existing portfolio before creating a new one. </p>
+
+                    </div>
+                    <form name="myForm">
+
+                        <button type="button" class="btn btn-primary block btn-w-m" data-dismiss="modal">Close</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modals for the webpage come here -->
+    <!-- modal starts-->
+    <div class="modal inmodal" id="success" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content animated fadeIn">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span
+                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <img src="img/iamstockbot.png" style="width:120px; ">
+                   
+
+                </div>
+                <div class="modal-body">
+                    <!--modal form section starts-->
+                    <div class="form">
+                        <h5>{{msg}}</h5>
+
+                    </div>
+
+
+                    <button type="button" class="btn btn-primary block btn-w-m" data-dismiss="modal"
+                        ng-click="myportfolio()">Close</button>
+
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals for the webpage come here -->
+    <!-- modal starts-->
+    <div class="modal inmodal" id="issue" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content animated fadeIn">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span
+                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <img src="img/iamstockbot.png" style="width:120px; height:80px;">
+                   
+
+                </div>
+                <div class="modal-body">
+                    <!--modal form section starts-->
+                    <div class="form">
+                        <h3> Alert</h3>
+                        <p>{{error-msg}} </p>
+
+                    </div>
+                    <form name="myForm">
+
+                        <button type="button" class="btn btn-primary block btn-w-m" data-dismiss="modal">Close</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Mainly scripts -->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="js/inspinia.js"></script>
+    <!-- <script src="js/plugins/pace/pace.min.js"></script> -->
+
+</body>
+
+
+<!-- Mirrored from webapplayers.com/inspinia_admin-v2.9.4/ecommerce_products_grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Jun 2022 03:36:24 GMT -->
+
+</html>

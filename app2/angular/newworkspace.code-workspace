@@ -1,0 +1,25 @@
+{
+    "folders": [
+		{
+			"path": "../../quant1"
+		},
+		{
+			"path": "../../scanner"
+		},
+		{
+			"path": "../../skor"
+		},
+		{
+			"path": "../../spur-connect"
+		},
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../restapi"
+		},
+		{
+			"path": "../../shipaudit"
+		}
+	]
+}
