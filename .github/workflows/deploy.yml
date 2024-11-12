@@ -20,7 +20,7 @@ jobs:
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
           ssh -i private_key -o StrictHostKeyChecking=no ${USER_NAME}@${HOSTNAME} << 'EOF'
-            cd /mnt/recovery-volume/repos/quantbots
-            ./scripts/deployfrontend.sh quantbots
+            cd /home/ubuntu/repos/freshpicks
+            ./scripts/deployfrontend.sh freshpicks
           EOF
 

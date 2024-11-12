@@ -67,4 +67,4 @@ app.get("/sitemap.xml", function (req, res, next) {
 
 global.appRoot = path.resolve(__dirname);
 app.listen(42000);
-console.log('quantbots - server is started at port: 32000');
+console.log('freshpicks - server is started at port: 42000');
