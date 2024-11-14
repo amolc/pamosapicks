@@ -1,8 +1,8 @@
 app.factory('config', function() {
     return {
-        baseurl: "https://m1.quantbots.co/1/api/",
-        orgurl: "https://m1.quantbots.co/api/",
-        wssurl: "wss://m1.quantbots.co/",
+        baseurl: "http://localhost:7777/1/api/",
+        orgurl: "http://localhost:7777/api/",
+        wssurl: "ws://localhost:7777/",
         orgId: "1"
     };
 })
