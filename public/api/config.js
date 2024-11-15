@@ -6,7 +6,7 @@ exports.getbusiness = function (req, res) {
 
 exports.getbaseurl = function (req, res) {
 	// var baseurl = "https://m1.quantbots.co/1/api/";
-	var baseurl = "http://localhost:7777/1/api/"
+	var baseurl = "http://localhost:9999/1/api/"
 	return baseurl;
 };
 

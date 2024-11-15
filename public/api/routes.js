@@ -14,21 +14,6 @@ function get_json(url, callback) {
 	});
 }
 
-
-
-
-
-
-
-exports.index = function (req, res) {
-	var data1 = [];
-	get_json('modelportfolio/get-all-strategy-portfolio/' , function (response1) {
-		data1['portfolioData'] = response1.data;
-		res.render('index', data1);
-	});
-};
-
-
 exports.login = function (req, res) {
 	var data1 = [];
 	data1['imageURL'] = imageURL;
@@ -44,7 +29,50 @@ exports.login = function (req, res) {
 	res.render('login', data1);
 };
 
+exports.index = function (req, res) {
+    var data1 = {};
+    res.render('index', data1);
+};
 
+exports.about = function (req, res) {
+    var data1 = {};
+    res.render('about', data1);
+};
+exports.blog = function (req, res) {
+    var data1 = {};
+    res.render('blog', data1);
+};
+
+exports.cart = function (req, res) {
+    var data1 = {};
+    res.render('cart', data1);
+};
+exports.checkout = function (req, res) {
+    var data1 = {};
+    res.render('checkout', data1);
+};
+exports.contact = function (req, res) {
+    var data1 = {};
+    res.render('contact', data1);
+};
+exports.wishlist = function (req, res) {
+    var data1 = {};
+    res.render('wishlist', data1);
+};
+exports.shop_details = function (req, res) {
+    var data1 = {};
+    res.render('shop-details', data1);
+};
+
+exports.log_In = function (req, res) {
+    var data1 = {};
+    res.render('log-in', data1);
+};
+
+exports.shop_left_sidebar = function (req, res) {
+    var data1 = {};
+    res.render('shop-left-sidebar', data1);
+};
 exports.quant_strategies_details = function (req, res) {
 	var data1 = [];
 	get_json('modelportfolio/get-all-strategy-portfolio/' , function (response1) {

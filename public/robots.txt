@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: 
-
-Sitemap: https://quantbots.co/sitemap.xml

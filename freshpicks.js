@@ -10,6 +10,7 @@ var routes = require('./public/api/routes.js');
 
 var isDev = app.get('env') === 'development';
 
+var routes = require('./public/api/routes.js');
 app.set('views', __dirname + '/public');
 
 
@@ -39,7 +40,8 @@ app.use('/fresh', express.static(__dirname + '/fresh'));
 app.use('/angular', express.static(__dirname + '/public/angular'));
 app.use('/header', express.static(__dirname + '/public/header'));
 app.use('/footer', express.static(__dirname + '/public/footer'));
-app.use('/', express.static(__dirname + '/freshpicks'));
+// app.use('/', express.static(__dirname + '/freshpicks'));
+app.use('/assets', express.static(__dirname + '/public/assets'));
 
 
 var njk = expressNunjucks(app, {
@@ -56,7 +58,17 @@ var njk = expressNunjucks(app, {
     }
   });
 
-
+app.get('/', routes.index);
+app.get('/index.html', routes.index);
+app.get('/about.html', routes.about);
+app.get('/blog.html', routes.blog);
+app.get('/cart.html', routes.cart);
+app.get('/checkout.html', routes.checkout);
+app.get('/contact.html', routes.contact);
+app.get('/wishlist.html', routes.wishlist);
+app.get('/shop-details.html', routes.shop_details);
+app.get('/log-in.html', routes.log_In);
+app.get('/shop-left-sidebar.html', routes.shop_left_sidebar);
 
 app.get("/sitemap.xml", function (req, res, next) {
     res.sendFile(__dirname + '/sitemap.xml');
@@ -64,6 +76,7 @@ app.get("/sitemap.xml", function (req, res, next) {
   app.get("/robots.txt", function (req, res, next) {
     res.sendFile(__dirname + '/robots.txt');
   });
+
 
 global.appRoot = path.resolve(__dirname);
 app.listen(42000);
