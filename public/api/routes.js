@@ -31,7 +31,11 @@ exports.login = function (req, res) {
 
 exports.index = function (req, res) {
     var data1 = {};
-    res.render('index', data1);
+
+    get_json('product/products/', function (response1) {
+        data1['productData'] = response1.data;
+        res.render('index', data1);
+    });
 };
 
 exports.about = function (req, res) {
