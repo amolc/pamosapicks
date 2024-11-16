@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="website">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Quantbots - The Ultimate Precision Stock Signal Generator</title>
+  <meta content="Quantbots generates real-time trading signals with unmatched precision for stocks, forex, and more, empowering traders with advanced technology." name="description">
+  <meta content="Quantbots, stock signal generator, trading signals, real-time signals, precision trading, advanced technology." name="keywords">
+
+  <!-- Vendor CSS Files -->
+  <link href="./assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="./assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="./assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="./assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="./assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="./assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="./assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+
+  <!-- Template Main CSS File -->
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="/staffadmin/css/animate.css" rel="stylesheet">
+  <link href="/staffadmin/css/style.css" rel="stylesheet">
+
+  <!-- Angular and app scripts -->
+ <!-- 1. Add the following script to your page. -->
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="./assets/js/main.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+<script src="./angular/angular-storage.min.js"></script>
+<script src="./angular/angular-payments.js"></script>
+<script src="./angular/app.js"></script>
+<script src="./angular/service.js"></script>
+<script src="./angular/adminregisterCtrl.js"></script>
+</head>
+
+<body ng-controller="addpropertyCtrl">
+
+  <main>
+    <div class="container">
+      <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+              <div class="d-flex justify-content-center py-4">
+                <a href="index.html" class="logo d-flex align-items-center w-auto">
+                  <!-- <img src="assets/img/logo.png" alt="">
+                  <span class="d-none d-lg-block">Quantbots</span> -->
+                </a>
+              </div><!-- End Logo -->
+
+              <div class="card mb-3">
+                <div class="card-body">
+                    <div class="pt-4 pb-2">
+                        <h5 class="card-title text-center pb-0 fs-4">Create Your Account</h5>
+                        <p class="text-center small">Fill out the form to register</p>
+                    </div>
+                    <form class="row g-3 needs-validation" ng-submit="register()" novalidate>
+                        <!-- Email -->
+                        <div class="col-12">
+                            <label for="yourEmail" class="form-label">Email</label>
+                            <div class="input-group has-validation">
+                                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                <input type="email" name="email" ng-model="data.email" class="form-control" id="yourEmail" required>
+                                <div class="invalid-feedback">Please enter your email.</div>
+                            </div>
+                        </div>
+                        <!-- Password -->
+                        <div class="col-12">
+                            <label for="yourPassword" class="form-label">Password</label>
+                            <input type="password" name="password" ng-model="data.password" class="form-control" id="yourPassword" required>
+                            <div class="invalid-feedback">Please enter your password!</div>
+                        </div>
+                        <!-- First Name -->
+                        <div class="col-12">
+                            <label for="firstName" class="form-label">First Name</label>
+                            <input type="text" name="first_name" ng-model="data.first_name" class="form-control" id="firstName" required>
+                            <div class="invalid-feedback">Please enter your first name.</div>
+                        </div>
+                        <!-- Last Name -->
+                        <div class="col-12">
+                            <label for="lastName" class="form-label">Last Name</label>
+                            <input type="text" name="last_name" ng-model="data.last_name" class="form-control" id="lastName" required>
+                            <div class="invalid-feedback">Please enter your last name.</div>
+                        </div>
+                        <!-- Mobile Number -->
+                        <div class="col-12">
+                            <label for="mobileNumber" class="form-label">Mobile Number</label>
+                            <input type="text" name="mobile_number" ng-model="data.mobile_number" class="form-control" id="mobileNumber">
+                            <div class="invalid-feedback">Please enter your mobile number.</div>
+                        </div>
+                        <!-- City -->
+                        <div class="col-12">
+                            <label for="city" class="form-label">City</label>
+                            <input type="text" name="city" ng-model="data.city" class="form-control" id="city" required>
+                            <div class="invalid-feedback">Please enter your city.</div>
+                        </div>
+                        <!-- Is Agent (Checkbox) -->
+                        <!-- <div class="col-12">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="is_agent" ng-model="data.is_agent" id="isAgent" value="true">
+                                <label class="form-check-label" for="isAgent">Are you an agent?</label>
+                            </div>
+                        </div> -->
+                        <!-- Submit Button -->
+                        <div class="col-12">
+                            <button class="btn btn-primary w-100" type="submit">Create Account</button>
+                        </div>
+                        <!-- Login Link -->
+                        <div class="col-12">
+                            <p class="small mb-0">Already have an account? <a href="index.html">Login</a></p>
+                        </div>
+                        <!-- Error Message (optional) -->
+                        <div ng-if="message" class="alert alert-danger">{{ message }}</div>
+                    </form>
+                </div>
+            </div>
+            
+            
+              </div>
+
+              <div class="credits">
+                <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main><!-- End #main -->
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>

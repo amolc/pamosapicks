@@ -2,40 +2,42 @@
 app.directive("sparklinechart", function () {
 
     return {
+
         restrict: "E",
+
         scope: {
+
             data: "@"
+
         },
+
         compile: function (tElement, tAttrs, transclude) {
 
+            tElement.replaceWith("<span>" + tAttrs.data + "</span>");
+
             return function (scope, element, attrs) {
+
                 attrs.$observe("data", function (newValue) { 
                     newValue = newValue.replace("[","");
                     newValue = newValue.replace("]","");
                     var array = newValue.split(",");
-                    
-                    // Custom tooltip formatter function
-                    var tooltipFormatter = function(sparkline, options, fields) {
-                        var value = fields.y;
-                        var background = '#143443';
-                        return '<span style="background-color: ' + background + '; color: #fff; padding: 5px; border-radius: 5px;">' + value + '</span>';
-                    };
-                    
-                    element.sparkline(array , { 
-                        type: 'line', 
-                        width: '96%', 
-                        height: '100px', 
-                        lineWidth: 2,
-                        changeRangeMin: -10, 
-                        chartRangeMax: 10,
-                        lineColor: "red" ,
-                        fillColor: 'false',
-                        tooltipFormatter: tooltipFormatter
-                    });
+                    console.log(array);
+                    console.log(typeof array);
+                    element.sparkline(array , { type: 'line', width: '96%', height: '100px', 
+                    lineWidth:2,
+                    changeRangeMin: -10, 
+                    chartRangeMax: 10,
+                    lineColor:"#2e76bb" ,
+                    fillColor: false});
+
                 });
+
             };
+
         }
+
     };
+
 });
 
 
@@ -64,18 +66,12 @@ app.controller('index-ctrl', function($scope, $http, $window, config) {
 
         $scope.islogin = localStorage.getItem("islogin");
         
-        console.log( $scope.islogin, "...");
-        var islogin = localStorage.getItem("islogin");
-
-         if (islogin != "1") {
-                location.href = "index.html";
-              }
+        console.log( $scope.islogin);
 
 
         $scope.name = localStorage.getItem("name");
         $scope.email = localStorage.getItem('email');
         $scope.phone = localStorage.getItem("phone");
-        // debugger    
 
 
         console.log("portfolio would be automatically displayed.")
@@ -97,9 +93,7 @@ app.controller('index-ctrl', function($scope, $http, $window, config) {
         $scope.customerId = 37 ;
         console.log($scope.customerId);
         $scope.url =
-          config.baseurl  +  "modelportfolio/featured" ;
-
-        // $scope.url = "https://api.iamstockbot.com/1/api/roboportfoliolive/getFeaturedRoi";
+          config.baseurl  +  "roboportfoliolive/getFeaturedRoi" ;
         console.log( $scope.url)
         $http
            .get($scope.url)
@@ -107,17 +101,15 @@ app.controller('index-ctrl', function($scope, $http, $window, config) {
             if (res.status == "false") {
             } else {
               $scope.portfoliolist = res.data;
-              $scope.lastNumber = this.data.portfolioroi[this.data.portfolioroi.length - 1];
-              console.log($scope.portfoliolist ,".....")
-            //   debugger
 
               for (var i=0; i<res.data.length; i++) {
                     console.log(res.data[i].id)
                    
+                   
               }
 
 
-              console.log("portfoliolistttt: ", $scope.portfoliolist);
+              console.log("portfoliolist: ", $scope.portfoliolist);
               $("#portfoliolist").removeClass("ng-hide");
             }
           })
@@ -160,7 +152,7 @@ app.controller('index-ctrl', function($scope, $http, $window, config) {
     }
 
 
-    $scope.customersignup = function(req, res) {
+    $scope.agentsignup = function(req, res) {
         // console.log($scope.data);
         $scope.formvalidate = vm.signupvalidate($scope.data);
         // console.log($scope.formvalidate);
@@ -176,7 +168,7 @@ app.controller('index-ctrl', function($scope, $http, $window, config) {
             console.log("this is before post");
             // console.log($scope.baseurl);
             // console.log($scope.data);
-            $http.post($scope.baseurl + 'customer/sign-up', $scope.data)
+            $http.post($scope.baseurl + 'agent/sign-up', $scope.data)
                 .success(function(response, status, headers, config) {
                     console.log("Successful");
                     console.log(response);

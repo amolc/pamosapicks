@@ -1,694 +1,794 @@
 <!DOCTYPE html>
-<html>
-
-
-<!-- Mirrored from webapplayers.com/inspinia_admin-v2.9.4/ecommerce_products_grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Jun 2022 03:36:24 GMT -->
+<html lang="en">
 
 <head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tables / Data - NiceAdmin Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-    <title>Smartportfolios – Get atleast 20% more than your buy and hold strategy.</title>
-    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <!-- CSS files -->
-    <link href="/dist/css/tabler.min.css" rel="stylesheet" />
-    <link href="/dist/css/tabler-flags.min.css" rel="stylesheet" />
-    <link href="/dist/css/tabler-payments.min.css" rel="stylesheet" />
-    <link href="/dist/css/tabler-vendors.min.css" rel="stylesheet" />
-    <link href="/dist/css/demo.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
-
-    <!-- Toastr style -->
-    <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet">
-
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <script src="https://kit.fontawesome.com/b978cbdbfe.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/custom.css">
-
-    <!-- 1. Add the following script to your page. -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
     <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
     <script src="./angular/angular-storage.min.js"></script>
     <script src="./angular/angular-payments.js"></script>
     <script src="./angular/app.js"></script>
     <script src="./angular/service.js"></script>
-    <script src="./angular/signalsctrl.js"></script>
 
+    <script src="./angular/propertyCtrl.js"></script>
+
+      <!-- Mainly scripts -->
+   <script src="./assets/js/jquery-3.1.1.min.js"></script>
+   <script src="./assets/js/popper.min.js"></script>
+   <script src="./assets/js/bootstrap.js"></script>
+   <script src="./assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+   <script src="./assets/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+   <!-- Custom and plugin javascript -->
+   <script src="./assets/js/inspinia.js"></script>
+   <script src="./assets/js/plugins/pace/pace.min.js"></script>
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Updated: Apr 20 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
 
-<body ng-app="website" ng-controller="signalsctrl" ng-init="init()">
+<body ng-app="website" ng-controller="productCtrl" ng-init="init()">
 
-    <div id="wrapper">
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
 
-        <nav class="navbar-default navbar-static-side" role="navigation">
-            <div class="sidebar-collapse">
-                <ul class="nav metismenu" id="side-menu">
-                    <li class="nav-header">
-                        <div class="dropdown profile-element">
-                            <img src="img/iamstockbot_a.png" class="img-fluid" style="max-width:75%; height:auto;"
-                                class="mt-3">
-                        </div>
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="">
+        <span class="d-none d-lg-block">StayVilla</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
 
-                    </li>
-                    <li class="active">
-                        <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Generals</span> <span
-                                class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li class="active"><a href="stocklist.html"><i class="fa fa-file-text-o"></i> Stocklist</a>
-                                <li class="active"><a href="alerts.html"><i class="fa fa-file-text-o"></i> Alerts</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="active">
-                        <a href="#"><i class="fa fa-wifi"></i> <span class="nav-label">Signals</span> <span
-                                class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li class="active" ><a href="signals.html"><i class="fa fa-rss"></i> Signals</a></li>
-                            <li class="active" ><a href="mysignalportfolio.html"><i class="fa fa-id-card"></i> My Portfolio</a></li>
-                        </ul>
-                    </li>
-                    <li class="active">
-                        <a href="#"><i class="fa fa-robot"></i> <span class="nav-label">Robots</span> <span
-                                class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li><a href="robots.html"><i class="fa fa-cubes"></i> Categories</a></li>
-                            <li><a href="myportfolio.html"><i class="fa fa-id-card"></i> My Portfolio</a></li>
-                            <li><a href="transactions.html"><i class="fa fa-bank"></i> Transactions</a></li>
-                            <li><a href="broker_connection.html"><i class="fa fa-handshake-o"></i> Broker Settings</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-money"></i> <span class="nav-label">Manage Funds</span> <span
-                                class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li><a href="category.html"><i class="fa fa-dollar"></i> Funds</a></li>
-                            <li><a href="myportfolio.html"><i class="fa fa-id-card"></i> My Portfolio</a></li>
-                            <li><a href="transactions.html"><i class="fa fa-bank"></i> Transactions</a></li>
-                            <li><a href="broker_connection.html"><i class="fa fa-handshake-o"></i> Broker Settings</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-user"></i> <span class="nav-label">Admin</span> <span
-                                class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li><a href="customers.html"><i class="fa fa-users"></i> Customers</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      </form>
+    </div><!-- End Search Bar -->
 
-        <div id="page-wrapper">
-            <div class="row border-bottom">
-                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
-                    <div class="navbar-header">
-                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i
-                                class="fa fa-bars"></i> </a>
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
 
-                    </div>
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
 
-                    <ul class="nav navbar-top-links navbar-right p-3">
-                        <div class="dropdown profile-element">
+        <li class="nav-item dropdown">
 
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-bell"></i>
+            <span class="badge bg-primary badge-number">4</span>
+          </a><!-- End Notification Icon -->
 
-                                <span class="text-muted text-xs block">{{name}} <b class="caret"></b></span>
-                            </a>
-                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                                <li><a class="dropdown-item" href="profile.html">Profile</a></li>
-                                <li><a class="dropdown-item" ng-click="logout()">Logout</a></li>
-                            </ul>
-                        </div>
-                </nav>
-            </div>
-            <div class="row wrapper border-bottom white-bg page-heading">
-                <div class="col-lg-10">
-                    <h2>SIGNALS</h2>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+            <li class="dropdown-header">
+              You have 4 new notifications
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-exclamation-circle text-warning"></i>
+              <div>
+                <h4>Lorem Ipsum</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>30 min. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-x-circle text-danger"></i>
+              <div>
+                <h4>Atque rerum nesciunt</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>1 hr. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-check-circle text-success"></i>
+              <div>
+                <h4>Sit rerum fuga</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>2 hrs. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-info-circle text-primary"></i>
+              <div>
+                <h4>Dicta reprehenderit</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>4 hrs. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li class="dropdown-footer">
+              <a href="#">Show all notifications</a>
+            </li>
+
+          </ul><!-- End Notification Dropdown Items -->
+
+        </li><!-- End Notification Nav -->
+
+        <li class="nav-item dropdown">
+
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-chat-left-text"></i>
+            <span class="badge bg-success badge-number">3</span>
+          </a><!-- End Messages Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+            <li class="dropdown-header">
+              You have 3 new messages
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>Maria Hudson</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>4 hrs. ago</p>
                 </div>
-            </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
 
-
-
-            <div class="wrapper wrapper-content">
-
-            </div>
-            <div class="row mb-4" id="intro1">
-                <div class="col-lg-12">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="index.html">Home</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="signals.html"><strong>Signals</strong></a>
-                        </li>
-                    </ol>
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/messages-2.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>Anna Nelson</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>6 hrs. ago</p>
                 </div>
-            </div>
-            <div class="row" id="intro">
-                <div class="col-lg-12">
-                    <div class="ibox ">
-                        <div class="ibox-title">
-                            <h3><strong>Technical Signals </strong></h3>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
 
-                            <div class="ibox-tools">
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/messages-3.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>David Muldon</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>8 hrs. ago</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
 
-                            </div>
-                        </div>
-                        <div class="ibox-content">
+            <li class="dropdown-footer">
+              <a href="#">Show all messages</a>
+            </li>
+
+          </ul><!-- End Messages Dropdown Items -->
+
+        </li><!-- End Messages Nav -->
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="{{agentInfo.profile_img || 'assets/img/profile-img.jpg'}}" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">{{agentInfo.first_name || 'Agent Name'}}</span>
+          </a><!-- End Profile Image Icon -->
+        
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>{{agentInfo.first_name || 'Agent Name'}} {{agentInfo.last_name || ''}}</h6>
+              <span>{{agentInfo.role || 'Agent Role'}}</span> <!-- Assuming 'role' field exists -->
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+        
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="agentprofileupdate.html">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+        
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-gear"></i>
+                <span>Account Settings</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+        
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                <i class="bi bi-question-circle"></i>
+                <span>Need Help?</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+        
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#" ng-click="signOut()">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+          </ul><!-- End Profile Dropdown -->
+        </li>
+        
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="index.html">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link"  href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Pages</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav" class="nav-content" data-bs-parent="#sidebar-nav">
+          <!-- <li>
+            <a href="enquiry.html">
+                <i class="bi bi-circle"></i><span>Enquiry</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="cancellation.html">
+                <i class="bi bi-circle"></i><span>Cancellation</span>
+            </a>
+        </li>
+        
+        <li>
+            <a href="property_manager.html">
+                <i class="bi bi-circle"></i><span>Property Manager</span>
+            </a>
+        </li>
+        
+        <li>
+            <a href="booking.html">
+                <i class="bi bi-circle"></i><span>Booking</span>
+            </a>
+        </li>
+        
+        <li>
+            <a href="agent.html">
+                <i class="bi bi-circle"></i><span>Agent</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="investor.html">
+                <i class="bi bi-circle"></i><span>Investor</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="customer.html">
+                <i class="bi bi-circle"></i><span>Customer</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="destinations.html">
+                <i class="bi bi-circle"></i><span>Destinations</span>
+            </a>
+        </li>
+
+        <li> -->
+            <a href="property.html">
+                <i class="bi bi-circle"></i><span>Property</span>
+            </a>
+        </li>
+
+        <li>
+          <a href="booking.html">
+              <i class="bi bi-circle"></i><span>Booking Details</span>
+          </a>
+        </li>
+        </ul>
+      </li><!-- End Components Nav -->
+
+      <!-- <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>Forms</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="forms-elements.html">
+              <i class="bi bi-circle"></i><span>Form Elements</span>
+            </a>
+          </li>
+          <li>
+            <a href="forms-layouts.html">
+              <i class="bi bi-circle"></i><span>Form Layouts</span>
+            </a>
+          </li>
+          <li>
+            <a href="forms-editors.html">
+              <i class="bi bi-circle"></i><span>Form Editors</span>
+            </a>
+          </li>
+          <li>
+            <a href="forms-validation.html">
+              <i class="bi bi-circle"></i><span>Form Validation</span>
+            </a>
+          </li>
+        </ul>
+      </li> End Forms Nav 
+
+      <li class="nav-item">
+        <a class="nav-link " data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tables-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="tables-general.html">
+              <i class="bi bi-circle"></i><span>General Tables</span>
+            </a>
+          </li>
+          <li>
+            <a href="tables-data.html" class="active">
+              <i class="bi bi-circle"></i><span>Data Tables</span>
+            </a>
+          </li>
+        </ul>
+      </li> End Tables Nav 
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-bar-chart"></i><span>Charts</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="charts-chartjs.html">
+              <i class="bi bi-circle"></i><span>Chart.js</span>
+            </a>
+          </li>
+          <li>
+            <a href="charts-apexcharts.html">
+              <i class="bi bi-circle"></i><span>ApexCharts</span>
+            </a>
+          </li>
+          <li>
+            <a href="charts-echarts.html">
+              <i class="bi bi-circle"></i><span>ECharts</span>
+            </a>
+          </li>
+        </ul>
+      </li> End Charts Nav  -->
+
+      <!-- <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-gem"></i><span>Icons</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="icons-bootstrap.html">
+              <i class="bi bi-circle"></i><span>Bootstrap Icons</span>
+            </a>
+          </li>
+          <li>
+            <a href="icons-remix.html">
+              <i class="bi bi-circle"></i><span>Remix Icons</span>
+            </a>
+          </li>
+          <li>
+            <a href="icons-boxicons.html">
+              <i class="bi bi-circle"></i><span>Boxicons</span>
+            </a>
+          </li>
+        </ul>
+      </li> End Icons Nav 
+
+      <li class="nav-heading">Pages</li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="users-profile.html">
+          <i class="bi bi-person"></i>
+          <span>Profile</span>
+        </a>
+      </li> End Profile Page Nav 
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-faq.html">
+          <i class="bi bi-question-circle"></i>
+          <span>F.A.Q</span>
+        </a>
+      </li> End F.A.Q Page Nav 
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-contact.html">
+          <i class="bi bi-envelope"></i>
+          <span>Contact</span>
+        </a>
+      </li> End Contact Page Nav 
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-register.html">
+          <i class="bi bi-card-list"></i>
+          <span>Register</span>
+        </a>
+      </li> End Register Page Nav 
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-login.html">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span>Login</span>
+        </a>
+      </li> End Login Page Nav 
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-error-404.html">
+          <i class="bi bi-dash-circle"></i>
+          <span>Error 404</span>
+        </a>
+      </li> End Error 404 Page Nav 
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-blank.html">
+          <i class="bi bi-file-earmark"></i>
+          <span>Blank</span>
+        </a>
+      </li> End Blank Page Nav  -->
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Data Tables</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">Tables</li>
+          <li class="breadcrumb-item active">Data</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Property</h5>
+              <div class="ibox-title">
                             <div class="row">
-                                <div class="col-lg-9">
-
-                                    <h3><strong>Get highly successful technical signals in stocks,forex and
-                                            indices</strong></h3>
-                                    <div>Our team of quant analyst have designed the system which is good and
-                                        efficient.It has been in development for more than 2 years and have been tested
-                                        on various categories like stocks, forex and cryptocurrency. Find the product
-                                        which best suit your style of trading and get started with it rightaway.</div>
-                                    <div>
-                                        <p></p>Signals are based on intraday and swing trading. Most products are
-                                        optimised for day trading and there are few signals which may go for a swing
-                                        trade. For example</p>
+                                 <div class="col-lg-8"> 
+                                  <h5>
+                                    <a class="btn btn-w-m btn-primary " href="addproperty.html" role="button">Add Property</a>
+                                    <!-- <button type="button" class="btn btn-w-m btn-primary"
+                                      data-target="#addform" ng-click="addform()">Add Property</button> -->
+                                    </h5>
                                     </div>
-
-                                </div>
-                                <div class="col-lg-3">
-                                    <ul class="stat-list">
-                                        <li>
-                                            <h2 class="no-margins">2,346</h2>
-                                            <small>Signals Generated</small>
-                                            <div class="stat-percent">48% <i class="fa fa-level-up text-navy"></i></div>
-                                            <div class="progress progress-mini">
-
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <h2 class="no-margins ">4,422</h2>
-                                            <small>Positive </small>
-                                            <div class="stat-percent">60% <i class="fa fa-level-down text-navy"></i>
-                                            </div>
-                                            <div class="progress progress-mini">
-                                                <div style="width: 60%;" class="progress-bar"></div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <h2 class="no-margins ">9,180</h2>
-                                            <small>Negative</small>
-                                            <div class="stat-percent">22% <i class="fa fa-bolt text-navy"></i></div>
-                                            <div class="progress progress-mini">
-                                                <div style="width: 22%;" class="progress-bar"></div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
+    
+              <!-- Table with stripped rows -->
+              <table class="table datatable mt-3">
+                <thead>
+                  <tr>
+                    <th>Property Name</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="data in dataset">
+                    <td>{{data.property_name}}</td>
+                    <td>{{data.city}}</td>
+                    <td>{{data.state}}</td>
+                    <!-- <th><a href="#" ng-click="onedit(data)" >Edit</a></th> -->
+                    <th><a href="editproperty.html?property_id={{data.id}}" >Edit</a></th> 
+                    <th><a href="#" ng-click="ondelete(data)" >Delete</a></th>
 
-                    </div>
-                </div>
+                </tr>
+                </tbody>
+              </table>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+    <!-- Modals for the webpage come here -->
+    <!-- modal starts-->
+    <div class="modal inmodal" id="editform" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content animated fadeIn">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"><span
+                          aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                  <img src="./assets/img/iamstockbot.png" class="ml-3">
+                 
 
-            <div class="row" id="categorylist">
-                <div class="col-lg-3" ng-repeat="data in categoryset">
-                    <div class="ibox ">
-                        <div class="ibox-title">
-                            <h3><strong>{{data.categoryname}}</strong></h3>
-                            <div class="ibox-tools">
-                                <h5 style="color:coral"><strong>$22/USD</strong></h5>
-                            </div>
+              </div>
+              <div class="modal-body">
+                  <!--modal form section starts-->
+                  <div class="form">
+                      <h3> Edit Property</h3>
+                      <p> Please select and edit Property <details></details></p>
+                      <form name="myForm">
+                          <div class="form-group">
+                              <label for="stockname">Property Name</label>
+
+                              <input type="text" min="0" max="100" class="form-control"
+                              ng-model="data.property_name" name="percentage" value="data.property_name" required>
+
+                          </div>
+                          
+                          <div class="form-group">
+
+                              <label for="stockname">City</label>
+
+                              <input type="text" min="0" max="100" class="form-control"
+                              ng-model="data.city" name="percentage" value="data.city" required>
+
+                          </div>
+
+                          <div class="form-group">
+
+                              <label for="stockname">State</label>
+
+                              <input type="text" min="0" max="100" class="form-control"
+                              ng-model="data.state" name="percentage" value="data.state" required>
+
+                          </div>
+                          <button type="submit" ng-click="oneditsubmit(data)"
+                              class="btn btn-primary block full-width m-b">Submit</button>
+                      </form>
+                  </div>
+              </div>
+              <div class="modal-footer">
+
+              </div>
+          </div>
+      </div>
+  </div>
+
+                          <!-- <div class="form-group">
+
+                            <label for="stockname">Password:</label>
+  
+                            <input type="text" min="0" max="100" class="form-control"
+                            ng-model="data.password" name="percentage" value="data.password" required>
+  
                         </div>
-                        <div class="ibox-content">
 
-                            <ul class="todo-list m-t small-list">
-                                <div class="feed-element">
-                                    <h5>Alerts Available on the followin channels </h5>
+                          <div class="form-group">
 
-                                </div>
-                                <li>
-                                    <img src="tick.png">
-                                    <span class="m-l-xs">What's app</span>
+                            <label for="stockname">City:</label>
 
-                                </li>
-                                <li>
-                                    <img src="tick.png">
-                                    <span class="m-l-xs">Telegram</span>
+                            <input type="text" min="0" max="100" class="form-control"
+                            ng-model="data.city" name="percentage" value="data.city" required>
 
-                                </li>
-                                <li>
-                                    <img src="tick.png">
-                                    <span class="m-l-xs">Email</span>
-                                </li>
-                                <li>
-                                    <img src="tick.png">
-                                    <span class="m-l-xs">Daily Summary</span>
-                                </li>
-                                <li>
-                                    <img src="tick.png">
-                                    <span class="m-l-xs">Hints </span>
-                                </li>
-                                <li>
-                                    <img src="tick.png">
-                                    <span class="m-l-xs">Action Plan</span>
-                                </li>
-                            </ul>
-                            <div>
+                        </div>
+                        
+                        <div class="form-group">
 
-                                <button type="button" class="btn btn-w-m btn-primary mt-3"
-                                    ng-click="createportfolioform(customerId,data.id,data.categoryname)">Signals</button>
+                          <label for="stockname">Mobile No:</label>
 
-                            </div>
+                          <input type="text" min="0" max="100" class="form-control"
+                          ng-model="data.mobile_number" name="percentage" value="data.mobile_number" required>
+
+                      </div>
+
+                      <div class="form-group">
+
+                        <label for="stockname">Total Sale:</label>
+
+                        <input type="text" min="0" max="100" class="form-control"
+                        ng-model="data.total_sales" name="percentage" value="data.total_sales" required>
+
+                    </div> -->
+                          
+              
+                          
+  <!-- Modals for the webpage come here -->
+    <!-- modal starts-->
+    <div class="modal inmodal" id="addform" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content animated fadeIn">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"><span
+                          aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                  <img src="./assets/img/iamstockbot.png" class="ml-3">
+                 
+
+              </div>
+              <div class="modal-body">
+                  <!--modal form section starts-->
+                  <div class="form">
+                      <h3> Add Property</h3>
+                      <p> Please select and add the property Deatils.</p>
+                      <form name="myForm">
+                        <div class="form-group">
+                            <label for="stockname">Property Name</label>
+
+                            <input type="text" min="0" max="100" class="form-control"
+                            ng-model="data.property_name" name="percentage" value="data.property_name" required>
+
+                        </div>
+                        
+                        <div class="form-group">
+
+                            <label for="stockname">City</label>
+
+                            <input type="text" min="0" max="100" class="form-control"
+                            ng-model="data.city" name="percentage" value="data.city" required>
+
                         </div>
 
-                    </div>
-                </div>
-            </div>
+                        <div class="form-group">
 
+                            <label for="stockname">State</label>
 
-            <div class="row ng-hide" id="loader">
-                <div class="col-lg-3"></div>
-                <div class="col-lg-4">
-                    <img src="/img/loader.gif" height="150px">
-                </div>
-                <div class="col-lg-4"></div>
-            </div>
-            <div class="container ">
-                <div class="row" id="createportfolio" >
-                
-                    <div class="col-lg-8">
-                        <div class="ibox ">
-                            <div>
-                                <div class="row ibox-title">
-                                    <div class="col-lg-9">
-                                        <h2><strong>Subscribe to {{portfolio_name}} Signals</strong></h2>
-                                    </div>
-                                </div>
-                                <form name="myForm">
-                                <div class="row ibox-content">  
-                                    <div class="col-lg-6">
-                                                <div class="row">
-                                                    <div>
-                                                        <h5><strong>1. Customer Information</strong></h5>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="form-group">
-                                                        <label for="stockpercentage">Portfolio </label>
-                                                        <input type="text" class="form-control"
-                                                            ng-model="createportfolio.portfolio_name" name="portfolio_name">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="stockpercentage">Customer Details </label>
-                                                        <input type="text" class="form-control" ng-model="createportfolio.name"
-                                                            name="name">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="stockpercentage">Phone </label>
-                                                        <input type="text" class="form-control" ng-model="createportfolio.phone_number"
-                                                            name="phone">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="stockpercentage">Email </label>
-                                                        <input type="text" class="form-control" ng-model="createportfolio.email"
-                                                            name="email">
-                                                    </div>
-                                                    <div style="height:28px;"></div>
-                                                </div>
-                                            
-                                    </div>
+                            <input type="text" min="0" max="100" class="form-control"
+                            ng-model="data.state" name="percentage" value="data.state" required>
 
-                                    <div class="col-lg-6">
-                                        <div class="row">
-                                            <div>
-                                                <h5><strong>2. Alert Information</strong></h5>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div style="height:10px;"></div>
-                                            <div class="col-md-5 form-group">
-                                            
-                                                <input type="checkbox" ng-model="createportfolio.email_alert"
-                                                    name="emailalert" >
-                                                <label for="stockpercentage">
-                                                Email Alert 
-                                                
-                                                </label>
-                                            </div>
-                                            <div class="col-md-5 form-group">
-                                                <input type="checkbox" ng-model="createportfolio.phone_alert"
-                                                    name="phonealert" >
-                                                <label for="stockpercentage">
-                                                    Phone Alert
-                                                </label>
-                                            </div>
-                                            <div class="form-group col-md-8">
-                                                <label for="duration">Duration </label>
-                                                <select class="custom-select " ng-model="createportfolio.duration"
-                                                    name="duration" >
-                                                    <option value="7" selected> 7 Days Free</option>
-                                                    <option value="30"> Monthly</option>
-                                                    <option value="365"> Year </option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-12 form-group">
-                                                <input type="checkbox" ng-model="createportfolio.accept_terms"
-                                                    name="accept_terms" >
-                                                <label for="accept_terms">
-                                                We understand that the trade signals are based on technical analysis and we should do our own due diligance before taking a trade.
-                                                </label>
-                                            </div>
-                                            <div class="form-group">
-                                            
-                                                <input type="hidden" class="form-control" ng-model="createportfolio.promocode"
-                                                    name="promocode">
-                    
-                    
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-5">
-
-                                                    <button type="submit" ng-click="submitcreateform(createportfolio)"
-                                                        class="btn btn-primary block full-width m-b">Submit</button>
-                                                    </div>
-                                                    <div class="col-md-5"> 
-                                                    <button type="button" ng-click="init()"
-                                                        class="btn btn-success block full-width m-b">Cancel</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        
-
-                                        
-                                        </div>
-                                    </div>
-                    
-                                    
-                    
-                                    
-                    
-                    
-                                </form>
-                                </div>
-                    
-                    
-                            </div>
-                    
-                    
-                    
-                    
                         </div>
-                    
-                    </div>
-                    
-                
+                          <button type="submit" ng-click="onsubmit(data)"
+                              class="btn btn-primary block full-width m-b">Submit</button>
+                      </form>
+                  </div>
+              </div>
+              <div class="modal-footer">
+
+              </div>
+          </div>
+      </div>
+  </div>
+   <!-- Modals for the webpage come here -->
+  <!-- modal starts-->
+  <div class="modal inmodal" id="deleteform" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content animated fadeIn">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"><span
+                          aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                  <img src="./assets/img/iamstockbot.png" class="ml-3">
+                 
+
+              </div>
+              <div class="modal-body">
+                <div class="form">
+                  <h3>Delete Customer</h3>
+                  <p>Please confirm if you would like to delete the following customer.</p>
+                  <p>Property ID: {{data.id}}</p>
+
+                  <!-- Trigger the delete function with the correct id -->
+                  <button type="submit" ng-click="delete(data.id)" class="btn btn-primary">Submit</button>
+                  <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancel</button>
+
                 </div>
-            </div>
+            </div>            
+              <div class="modal-footer">
 
-            
+              </div>
+          </div>
+      </div>
+  </div>
 
+  </main><!-- End #main -->
 
-        </div>
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>StayVillas</span></strong>. All Rights Reserved
     </div>
-    <!-- Modals for the webpage come here -->
-    <!-- modal starts-->
-    <div class="modal inmodal" id="addstock" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content animated fadeIn">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span
-                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <img src="img/iamstockbot.png" class="ml-3">
-                   
-
-                </div>
-                <div class="modal-body">
-                    <!--modal form section starts-->
-                    <div class="form">
-                        <h3> Add Stock</h3>
-                        <p> Please select the stock for your portfolio.</p>
-                        <form name="myForm">
-                            <div class="form-group">
-                                <label for="stockname">Stock Name:</label>
-
-                                <select class="custom-select" ng-model="addstock.symbol" required name="stockname">
-                                    <option value="" disabled></option>
-                                    <option ng-repeat="stock in stockdata_list" value="{{stock.stock}}">
-                                        {{stock.stock}}</option>
-
-                                </select>
-
-
-                            </div>
-                            <div class="form-group">
-                                <label for="stockpercentage">Percentage Allocation:</label>
-                                <input type="number" min="0" max="100" class="form-control"
-                                    ng-model="addstock.percentage" name="percentage" required>
-                            </div>
-                            <button type="submit" ng-click="addnewstock(customerId,portfolioId ,addstock)"
-                                class="btn btn-primary block full-width m-b">Submit</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="modal-footer">
-
-                </div>
-            </div>
-        </div>
+    <div class="credits">
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
     </div>
+  </footer><!-- End Footer -->
 
-    <!-- Modals for the reset portfolio -->
-    <!-- modal starts-->
-    <div class="modal inmodal" id="resetportfolio" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content animated fadeIn">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span
-                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <img src="img/iamstockbot.png" class="ml-3">
-                   
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-                </div>
-                <div class="modal-body">
-                    <!--modal form section starts-->
-                    <div class="form">
-                        <h3> Reset Portfolio</h3>
-                        <p> This will reset your portfolio with the new cash value in account.</p>
-                        <form name="myForm">
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
 
-                            <button type="submit" ng-click="resetportfolio(customerId, '1')"
-                                class="btn btn-primary block full-width m-b">Submit</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="modal-footer">
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modals for the reset portfolio -->
-
-    <!-- Modals for the webpage come here -->
-    <!-- modal starts-->
-    <div class="modal inmodal" id="editstock" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content animated fadeIn">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span
-                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <img src="img/iamstockbot_a.png" style="width:120px; height:80px;">
-                   
-
-                </div>
-                <div class="modal-body">
-                    <!--modal form section starts-->
-                    <div class="form">
-                        <h3> Edit Stock</h3>
-                        <p> You may edit the percentage setting for your stock. </p>
-                        <form name="myForm">
-                            <div class="form-group">
-                                <label for="stockname">Stock Name:</label>
-
-                                <input type="text" class="form-control" ng-model="data.symbol" name="stockname"
-                                    value="{{data.symbol}} " required>
-
-                            </div>
-                            <div class="form-group">
-                                <label for="stockpercentage">Percentage Allocation:</label>
-                                <input type="text" class="form-control" ng-model="data.percentage" name="percentage"
-                                    value="{{data.percentage }}" required>
-                            </div>
-                            <button type="submit" ng-click="editstock(customerId, '1',data)"
-                                class="btn btn-primary block full-width m-b">Submit</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="modal-footer">
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modals for the webpage come here -->
-    <!-- modal starts-->
-    <div class="modal inmodal" id="deletestock" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content animated fadeIn">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span
-                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <img src="Iamstockbot-Logo.png" style="width:120px; height:80px;">
-                   
-
-                </div>
-                <div class="modal-body">
-                    <!--modal form section starts-->
-                    <div class="form">
-                        <h3> Edit Stock</h3>
-                        <p> You may edit the percentage setting for your stock. </p>
-                        <form name="myForm">
-                            <div class="form-group">
-                                <label for="stockname">Stock Name:</label>
-
-                                <input type="text" class="form-control" ng-model="data.symbol" name="stockname"
-                                    value="{{data.symbol}} " readonly>
-
-                            </div>
-
-                            <button type="submit" ng-click="deletestock(customerId, '1',data)"
-                                class="btn btn-primary btn-w-m block full-width m-b">Submit</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="modal-footer">
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modals for the webpage come here -->
-    <!-- modal starts-->
-    <div class="modal inmodal" id="alert" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content animated fadeIn">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span
-                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <img src="img/iamstockbot.png" style="width:120px; height:80px;">
-                   
-
-                </div>
-                <div class="modal-body">
-                    <!--modal form section starts-->
-                    <div class="form">
-                        <h3> Alert</h3>
-                        <p>Please reset your existing portfolio before creating a new one. </p>
-
-                    </div>
-                    <form name="myForm">
-
-                        <button type="button" class="btn btn-primary block btn-w-m" data-dismiss="modal">Close</button>
-                    </form>
-                </div>
-                <div class="modal-footer">
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Modals for the webpage come here -->
-    <!-- modal starts-->
-    <div class="modal inmodal" id="success" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content animated fadeIn">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span
-                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <img src="img/iamstockbot.png" style="width:120px; ">
-                   
-
-                </div>
-                <div class="modal-body">
-                    <!--modal form section starts-->
-                    <div class="form">
-                        <h5>{{msg}}</h5>
-
-                    </div>
-
-
-                    <button type="button" class="btn btn-primary block btn-w-m" data-dismiss="modal"
-                        ng-click="myportfolio()">Close</button>
-
-                </div>
-                <div class="modal-footer">
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modals for the webpage come here -->
-    <!-- modal starts-->
-    <div class="modal inmodal" id="issue" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content animated fadeIn">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span
-                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <img src="img/iamstockbot.png" style="width:120px; height:80px;">
-                   
-
-                </div>
-                <div class="modal-body">
-                    <!--modal form section starts-->
-                    <div class="form">
-                        <h3> Alert</h3>
-                        <p>{{error-msg}} </p>
-
-                    </div>
-                    <form name="myForm">
-
-                        <button type="button" class="btn btn-primary block btn-w-m" data-dismiss="modal">Close</button>
-                    </form>
-                </div>
-                <div class="modal-footer">
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-    <!-- Mainly scripts -->
-    <script src="js/jquery-3.1.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-
-    <!-- Custom and plugin javascript -->
-    <script src="js/inspinia.js"></script>
-    <!-- <script src="js/plugins/pace/pace.min.js"></script> -->
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
 
 </body>
-
-
-<!-- Mirrored from webapplayers.com/inspinia_admin-v2.9.4/ecommerce_products_grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Jun 2022 03:36:24 GMT -->
 
 </html>

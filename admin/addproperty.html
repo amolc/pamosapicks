@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Tables / Data - NiceAdmin Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+  <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+  <script src="./angular/angular-storage.min.js"></script>
+  <script src="./angular/angular-payments.js"></script>
+  <script src="./angular/app.js"></script>
+  <script src="./angular/service.js"></script>
+
+  <script src="./angular/addpropertyCtrl.js"></script>
+
+  <!-- Mainly scripts -->
+  <script src="./assets/js/jquery-3.1.1.min.js"></script>
+  <script src="./assets/js/popper.min.js"></script>
+  <script src="./assets/js/bootstrap.js"></script>
+  <script src="./assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+  <script src="./assets/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+  <!-- Custom and plugin javascript -->
+  <script src="./assets/js/inspinia.js"></script>
+  <script src="./assets/js/plugins/pace/pace.min.js"></script>
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Updated: Apr 20 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    /* background-color: #f1f1f1; */
+    padding: 20px;
+    background: #f6f9ff;
+    color: #444444;
+  }
+
+  .form-container {
+    /* max-width: 595px; */
+    /* margin-top: 52px; */
+    /* margin-left: 434px; */
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-header {
+    background-color: #777c68;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .form-group {
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 48%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .form-group textarea {
+    height: 70px;
+    width: 100%;
+  }
+
+  .form-group label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .form-group-full {
+    width: 100%;
+  }
+
+  .amenities {
+    /* display: grid; */
+    grid-template-columns: repeat(2, 1fr);
+    margin: 30px 0;
+  }
+
+  .amenities label {
+    padding: 7px 0;
+  }
+
+  .submit-btn {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .submit-btn:hover {
+    background-color: #555;
+  }
+
+  .icon {
+    margin-right: 5px;
+    color: #777c68;
+  }
+
+  .double-input {
+    display: flex;
+    gap: 10px;
+  }
+
+  .form-group input[type="file"] {
+    padding: 5px;
+  }
+
+  .sidebar-nav {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .sidebar-nav li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .sidebar-nav .nav-item {
+    margin-bottom: 5px;
+  }
+
+  .sidebar-nav .nav-heading {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #899bbd;
+    font-weight: 600;
+    margin: 10px 0 5px 15px;
+  }
+
+  .sidebar-nav .nav-link {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: #4154f1;
+    transition: 0.3;
+    background: #f6f9ff;
+    padding: 10px 15px;
+    border-radius: 4px;
+  }
+
+  .sidebar-nav .nav-link i {
+    font-size: 16px;
+    margin-right: 10px;
+    color: #4154f1;
+  }
+
+  .sidebar-nav .nav-link.collapsed {
+    color: #012970;
+    background: #fff;
+  }
+
+  .sidebar-nav .nav-link.collapsed i {
+    color: #899bbd;
+  }
+
+  .sidebar-nav .nav-link:hover {
+    color: #4154f1;
+    background: #f6f9ff;
+  }
+
+  .sidebar-nav .nav-link:hover i {
+    color: #4154f1;
+  }
+
+  .sidebar-nav .nav-link .bi-chevron-down {
+    margin-right: 0;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .sidebar-nav .nav-link:not(.collapsed) .bi-chevron-down {
+    transform: rotate(180deg);
+  }
+
+  .sidebar-nav .nav-content {
+    padding: 5px 0 0 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .sidebar-nav .nav-content a {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #012970;
+    transition: 0.3;
+    padding: 10px 0 10px 40px;
+    transition: 0.3s;
+  }
+
+  .sidebar-nav .nav-content a i {
+    font-size: 6px;
+    margin-right: 8px;
+    line-height: 0;
+    border-radius: 50%;
+  }
+
+  .sidebar-nav .nav-content a:hover,
+  .sidebar-nav .nav-content a.active {
+    color: #4154f1;
+  }
+
+  .sidebar-nav .nav-content a.active i {
+    background-color: #4154f1;
+  }
+
+  .footer {
+    padding: 20px 0;
+    font-size: 14px;
+    transition: all 0.3s;
+    border-top: 1px solid #cddfff;
+  }
+
+  .footer .copyright {
+    text-align: center;
+    color: #012970;
+  }
+
+  .footer .credits {
+    padding-top: 5px;
+    text-align: center;
+    font-size: 13px;
+    color: #012970;
+  }
+  #main {
+  margin-top: 60px;
+  padding: 20px 30px;
+  transition: all 0.3s;
+}
+
+@media (max-width: 1199px) {
+  #main {
+    padding: 20px;
+  }
+}
+</style>
+
+<body ng-app="website" ng-controller="addpropertyCtrl" ng-init="init()">
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="">
+        <span class="d-none d-lg-block">StayVilla</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      </form>
+    </div><!-- End Search Bar -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+        <li class="nav-item dropdown">
+
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-bell"></i>
+            <span class="badge bg-primary badge-number">4</span>
+          </a><!-- End Notification Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+            <li class="dropdown-header">
+              You have 4 new notifications
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-exclamation-circle text-warning"></i>
+              <div>
+                <h4>Lorem Ipsum</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>30 min. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-x-circle text-danger"></i>
+              <div>
+                <h4>Atque rerum nesciunt</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>1 hr. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-check-circle text-success"></i>
+              <div>
+                <h4>Sit rerum fuga</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>2 hrs. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-info-circle text-primary"></i>
+              <div>
+                <h4>Dicta reprehenderit</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>4 hrs. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li class="dropdown-footer">
+              <a href="#">Show all notifications</a>
+            </li>
+
+          </ul><!-- End Notification Dropdown Items -->
+
+        </li><!-- End Notification Nav -->
+
+        <li class="nav-item dropdown">
+
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-chat-left-text"></i>
+            <span class="badge bg-success badge-number">3</span>
+          </a><!-- End Messages Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+            <li class="dropdown-header">
+              You have 3 new messages
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>Maria Hudson</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>4 hrs. ago</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/messages-2.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>Anna Nelson</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>6 hrs. ago</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/messages-3.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>David Muldon</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>8 hrs. ago</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="dropdown-footer">
+              <a href="#">Show all messages</a>
+            </li>
+
+          </ul><!-- End Messages Dropdown Items -->
+
+        </li><!-- End Messages Nav -->
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">{{agentInfo.first_name || 'Agent Name'}}</span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>{{agentInfo.first_name || 'Agent Name'}} {{agentInfo.last_name || ''}}</h6>
+              <span>{{agentInfo.role || 'Agent Role'}}</span> <!-- Assuming 'role' field exists -->
+            </li>
+
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="agentprofileupdate.html">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-gear"></i>
+                <span>Account Settings</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                <i class="bi bi-question-circle"></i>
+                <span>Need Help?</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#" ng-click="signOut()">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header>
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="index.html">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Pages</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav" class="nav-content" data-bs-parent="#sidebar-nav">
+          <!-- <li>
+            <a href="enquiry.html">
+              <i class="bi bi-circle"></i><span>Enquiry</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="cancellation.html">
+              <i class="bi bi-circle"></i><span>Cancellation</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="property_manager.html">
+              <i class="bi bi-circle"></i><span>Property Manager</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="booking.html">
+              <i class="bi bi-circle"></i><span>Booking</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="agent.html">
+              <i class="bi bi-circle"></i><span>Agent</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="investor.html">
+              <i class="bi bi-circle"></i><span>Investor</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="customer.html">
+              <i class="bi bi-circle"></i><span>Customer</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="destinations.html">
+              <i class="bi bi-circle"></i><span>Destinations</span>
+            </a>
+          </li> -->
+
+          <li>
+            <a href="property.html">
+              <i class="bi bi-circle"></i><span>Property</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="booking.html">
+              <i class="bi bi-circle"></i><span>Booking</span>
+            </a>
+          </li>
+
+          <!-- <li>
+            <a href="property_listing.html">
+              <i class="bi bi-circle"></i><span>Property List</span>
+            </a>
+          </li> -->
+        </ul>
+      </li><!-- End Components Nav -->
+
+       </ul>
+
+  </aside>
+  <main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Data Tables</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">Tables</li>
+          <li class="breadcrumb-item active">Data</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="form-container">
+      <div class="form-header">ADD PROPERTY</div>
+      <form ng-submit="submitProperty()">
+          <div class="form-group form-group-full">
+              <label for="property_name">Property Name</label>
+              <input type="text" id="property_name" placeholder="Property Name" ng-model="property.property_name" style="width:100%;" required>
+             
+              <label for="property_title">Property Title</label>
+              <input type="text" id="property_title" placeholder="Enter property title" ng-model="property.title" />
+          </div>
+  
+          <div class="form-group">
+              <label for="propertyType">Property Type</label>
+              <select class="form-control" id="propertyType" ng-model="property.property_type" required>
+                  <option value="Villa">Villa</option>
+                  <option value="Bungalow">Bungalow</option>
+                  <option value="Hotel">Hotel</option>
+              </select>
+              
+              <label for="total_price">Total Price</label>
+              <input type="text" id="total_price" placeholder="Total Price" ng-model="property.cost_per_night" required>
+          </div>
+          <div class="form-group form-group-full">
+            <label for="room_name_1">Room Name1</label>
+            <input type="text" id="room_name_1" placeholder="Room Name1" ng-model="property.room_name_1" style="width:50%;" >
+          
+            <label for="room_name_1_cost">Room1 Cost</label>
+            <input type="text" id="room_name_1_cost" placeholder="Room1 Cost" ng-model="property.room_name_1_cost" />
+          </div>
+          
+          <div class="form-group form-group-full">
+            <label for="room_name_2">Room Name2</label>
+            <input type="text" id="room_name_2" placeholder="Room Name2" ng-model="property.room_name_2" style="width:50%;" >
+          
+            <label for="room_name_2_cost">Room2 Cost</label> <!-- Fixed text to "Room2 Cost" -->
+            <input type="text" id="room_name_2_cost" placeholder="Room2 Cost" ng-model="property.room_name_2_cost" />
+          </div>
+          
+          <div class="form-group form-group-full">
+            <label for="room_name_3">Room Name3</label>
+            <input type="text" id="room_name_3" placeholder="Room Name3" ng-model="property.room_name_3" style="width:50%;" >
+          
+            <label for="room_name_3_cost">Room3 Cost</label>
+            <input type="text" id="room_name_3_cost" placeholder="Room3 Cost" ng-model="property.room_name_3_cost" />
+          </div>
+          
+          <div class="form-group form-group-full">
+            <label for="room_name_4">Room Name4</label>
+            <input type="text" id="room_name_4" placeholder="Room Name4" ng-model="property.room_name_4" style="width:50%;" >
+          
+            <label for="room_name_4_cost">Room4 Cost</label>
+            <input type="text" id="room_name_4_cost" placeholder="Room4 Cost" ng-model="property.room_name_4_cost" />
+          </div>
+          <div class="form-group form-group-full">
+              <label for="description">Description</label>
+              <textarea id="description" placeholder="Description" ng-model="property.description" required></textarea>
+          </div>
+  
+          <div class="form-group">
+              <label for="floors">Floors</label>
+              <input type="number" id="floors" placeholder="Floors" ng-model="property.floors" required>
+  
+              <label for="bedrooms">Bed Rooms</label>
+              <input type="number" id="bedrooms" placeholder="Bed Rooms" ng-model="property.num_bedrooms" required>
+  
+              <label for="bathrooms">Bath Rooms</label>
+              <input type="number" id="bathrooms" placeholder="Bath Rooms" ng-model="property.num_bathrooms" required>
+          </div>
+  
+          <div class="form-group">
+              <label for="guest_limit">Guest Limit</label>
+              <input type="number" id="guest_limit" placeholder="Guest Limit" ng-model="property.guest_limit" required>
+  
+              <label for="meals_available">Meals Available</label>
+              <input type="text" id="meals_available" placeholder="Meals Available" ng-model="property.meals_available">
+          </div>
+  
+          <div class="form-group double-input">
+            <label for="other_images">Header Image1</label>
+            <input type="file" id="other-images" accept="image/*" onchange="convertToBase64('other-images', 'property.other_images')">
+
+            <label for="img">Header Image2</label>
+            <input type="file" id="img" accept="image/*" onchange="convertToBase64('img', 'property.img')">
+
+            <label for="img2">Header Image3</label>
+            <input type="file" id="img3" accept="image/*" onchange="convertToBase64('img3', 'property.img3')">
+          </div>
+  
+          <div class="form-group">
+              <label for="total_bedroom_size">Property Size</label>
+              <input type="text" id="total_bedroom_size" placeholder="Property Size in Sq.ft" ng-model="property.total_bedroom_size">
+  
+              <label for="per_bedroom_size">Per Bedroom size</label>
+              <input type="text" id="per_bedroom_size" placeholder="Per Bedroom size in Sq.ft" ng-model="property.square_feet">
+          </div>
+  
+          <div class="form-group form-group-full">
+              <label for="location_url">Location URL</label>
+              <textarea type="text" id="location_url" placeholder="Enter Location URL" ng-model="property.location_url" style="width:50%;"></textarea> 
+  
+              <label for="video_url">Video (URL)</label>
+              <textarea type="text" id="video_url" placeholder="Video (URL)" ng-model="property.video_url" style="width:50%;"></textarea>
+          </div>
+  
+          <div class="form-group form-group-full">
+              <label for="propertyGreatFor">Great For</label>
+              <select ng-model="property.great_for" id="propertyGreatFor">
+                  <option value="Senior_Citizen">Senior Citizen</option>
+                  <option value="Kids">Kids</option>
+                  <option value="Adults">Adults</option>
+                  <option value="All">All</option>
+                  <option value="Others">Others</option>
+              </select>
+          </div>
+          <div class="form-group double-input">
+            <label for="bedroom1-images">Bedroom 1 Images</label>
+            <input type="file" id="bedroom1-images" accept="image/*" onchange="convertToBase64('bedroom1-images', 'property.bedroom1_image')">
+
+            <label for="bedroom2-images">Bedroom 2 Images</label>
+            <input type="file" id="bedroom2-images" accept="image/*" onchange="convertToBase64('bedroom2-images', 'property.bedroom2_image')">
+        </div>
+
+        <div class="form-group double-input">
+            <label for="bedroom3-images">Bedroom 3 Images</label>
+            <input type="file" id="bedroom3-images" accept="image/*" onchange="convertToBase64('bedroom3-images', 'property.bedroom3_image')">
+
+            <label for="bedroom4-images">Bedroom 4 Images</label>
+            <input type="file" id="bedroom4-images" accept="image/*" onchange="convertToBase64('bedroom4-images', 'property.bedroom4_image')">
+        </div>
+  
+          <div class="form-group form-group-full">
+              <label for="address1">Address 1</label>
+              <input type="text" id="address1" placeholder="Address1" ng-model="property.address1" style="width:100%;">
+          </div>
+  
+          <div class="form-group form-group-full">
+              <label for="address2">Address 2</label>
+              <input type="text" id="address2" placeholder="Address2" ng-model="property.address2" style="width:100%;">
+          </div>
+  
+          <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" id="city" placeholder="City" ng-model="property.city" required>
+  
+              <label for="state">State</label>
+              <input type="text" id="state" placeholder="State" ng-model="property.state" required>
+  
+              <label for="pincode">Pincode</label>
+              <input type="text" id="pincode" placeholder="Pincode" ng-model="property.pincode" required>
+          </div>
+          
+          <div class="form-group form-group-full" ng-hide="true">
+              <label for="agent_id">Agent ID</label>
+              <input type="text" id="agent_id" placeholder="Agent ID" ng-model="property.agent_id" readonly style="width:100%;">
+          </div>
+  
+          <div class="amenities">
+              <h3><b>Amenities</b></h3>
+              <div class="row">
+                  <div class="col-4">
+                      <label><input type="checkbox" ng-model="property.amenities['Swimming Pool']"> Swimming Pool</label>
+                  </div>
+                  <div class="col-4">
+                      <label><input type="checkbox" ng-model="property.amenities['Lawn']"> Lawn</label>
+                  </div>
+                  <div class="col-4">
+                      <label><input type="checkbox" ng-model="property.amenities['BBQ']"> BBQ</label>
+                  </div>
+                  <div class="col-4">
+                      <label><input type="checkbox" ng-model="property.amenities['Air Conditioner']"> Air Conditioner</label>
+                  </div>
+                  <div class="col-4">
+                      <label><input type="checkbox" ng-model="property.amenities['Parking']"> Parking</label>
+                  </div>
+                  <div class="col-4">
+                      <label><input type="checkbox" ng-model="property.amenities['Water Purifier']"> Water Purifier</label>
+                  </div>
+                  <div class="col-4">
+                      <label><input type="checkbox" ng-model="property.amenities['Indoor Games']"> Indoor Games</label>
+                  </div>
+                  <div class="col-4">
+                      <label><input type="checkbox" ng-model="property.amenities['Driver/Staff']"> Driver/Staff</label>
+                  </div>
+                  <div class="col-4">
+                      <label><input type="checkbox" ng-model="property.amenities['Bar']"> Bar</label>
+                  </div>
+                  <div class="col-4">
+                      <label><input type="checkbox" ng-model="property.amenities['Pet Friendly']"> Pet Friendly</label>
+                  </div>
+                  <div class="col-4">
+                      <label><input type="checkbox" ng-model="property.amenities['Towels']"> Towels</label>
+                  </div>
+              </div>
+          </div>                        
+          <button type="submit" class="submit-btn">SUBMIT</button>
+      </form>
+  </div>  
+  </main>
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>StayVillas</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+    </div>
+  </footer>
+  <script>
+        // Attach function to window for global access
+        window.convertToBase64 = function(inputId, modelPath) {
+            const fileInput = document.getElementById(inputId);
+            const file = fileInput.files[0];
+    
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const base64String = event.target.result;
+                    console.log(`Base64 for ${inputId}:`, base64String); // Log the Base64 string
+    
+                    // Get AngularJS scope
+                    const scope = angular.element(document.querySelector('[ng-controller="addpropertyCtrl"]')).scope();
+                    scope.$apply(function() {
+                        const propertyName = propertyNameFromModelPath(modelPath);
+                        console.log("Setting property:", propertyName, "to", base64String); // Log the property being set
+                        scope.property[propertyName] = base64String;
+                        console.log("Updated property:", scope.property); // Log the entire property object
+                    });
+                };
+                reader.readAsDataURL(file);
+            } else {
+                console.error("No file selected for:", inputId); // Log if no file is selected
+            }
+        };
+    
+        function propertyNameFromModelPath(modelPath) {
+            return modelPath.split('.').pop();
+        }
+    
+        // AngularJS controller definition
+        angular.module('myApp', []).controller("addpropertyCtrl", function($scope) {
+            // Initialize your property object
+            $scope.property = {
+                bedroom1_image_url: '',
+                bedroom2_image_url: '',
+                bedroom3_image_url: '',
+                bedroom4_image_url: '',
+                other_images: '',
+                img:'',
+                img3:''
+            };
+    
+            // Add your submitProperty function here
+            $scope.submitProperty = function() {
+                console.log("Property confirmed:", $scope.property);
+            };
+        });
+   </script>
+  <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a> -->
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+
+</body>
+
+</html>
