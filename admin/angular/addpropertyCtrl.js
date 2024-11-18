@@ -208,7 +208,7 @@ app.controller(
 // Redirect function
 $scope.redirect = function() {
     console.log("Redirecting to property.html");
-    window.location.href = 'property.html'; // Adjust this path if necessary
+    window.location.href = 'product.html'; // Adjust this path if necessary
 };
     }
   );

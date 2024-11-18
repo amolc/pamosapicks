@@ -2,19 +2,19 @@ app.controller('productCtrl', function($scope, $http, $window, $location, $sce, 
 
     $scope.data = {};
     $scope.properties = []; // Array to hold the properties
-    $scope.agentInfo = {};  // Object to hold agent information
+    $scope.adminInfo = {};  // Object to hold agent information
 
     $scope.init = function() {
-        $scope.fetchAgentProperties(); // Fetch properties on initialization
-        $scope.fetchAgentInfo();       // Fetch agent info on initialization
+        $scope.fetchAdminProduct(); // Fetch properties on initialization
+        $scope.fetchAdminInfo();       // Fetch agent info on initialization
     };
 
     // Function to fetch properties for the logged-in agent
-    $scope.fetchAgentProperties = function() {
-        const agent_id = localStorage.getItem('agent_id'); // Use the correct key for agent ID
+    $scope.fetchAdminProduct = function() {
+        const admin_id = localStorage.getItem('admin_id'); // Use the correct key for agent ID
     
-        if (!agent_id) {
-            console.error('Agent ID not found in local storage.');
+        if (!admin_id) {
+            console.error('Admin ID not found in local storage.');
             return;
         }
     
@@ -36,30 +36,30 @@ app.controller('productCtrl', function($scope, $http, $window, $location, $sce, 
     };
 
     // Function to fetch agent info
-    $scope.fetchAgentInfo = function() {
-        const agent_id = localStorage.getItem('agent_id');
+    $scope.fetchAdminInfo = function() {
+        const admin_id = localStorage.getItem('admin_id');
     
-        if (!agent_id) {
-            console.error('Agent ID not found.');
+        if (!admin_id) {
+            console.error('Admin ID not found.');
             return;
         }
 
-        console.log("Fetching info for agent ID:", agent_id);
+        console.log("Fetching info for admin ID:", admin_id);
 
-        $http.get(config.baseurl + 'agent/get-agent/' + agent_id + '/')
+        $http.get(config.baseurl + 'admin/get-admin/' + admin_id + '/')
 
             .then(function(response) {
-                $scope.agentInfo = response.data.data;
-                console.log('Agent Info:', $scope.agentInfo);
+                $scope.adminInfo = response.data.data;
+                console.log('Admin Info:', $scope.agentInfo);
             })
             .catch(function(error) {
-                console.error('Error fetching agent info:', error);
+                console.error('Error fetching admin info:', error);
             });
     };
 
     $scope.signOut = function() {
         // Remove any stored authentication information, e.g., token or agent_id
-        localStorage.removeItem('agent_id');
+        localStorage.removeItem('admin_id');
         
         // Optionally, you might also want to remove other data
         localStorage.clear(); // Clear all localStorage data
@@ -131,12 +131,12 @@ app.controller('productCtrl', function($scope, $http, $window, $location, $sce, 
     
     // Modal and form handling functions
     $scope.redirect = function() {
-        console.log("Redirecting to property.html");
+        console.log("Redirecting to product.html");
         window.location.href = 'product.html';
     };
 
     $scope.list = function() {
-        return $http.get(config.baseurl + 'property/properties/')
+        return $http.get(config.baseurl + 'product/products/')
             .then(function(response) {
                 // Assuming response.data contains the properties list
                 $scope.properties = response.data; // Adjust according to your data structure
