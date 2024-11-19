@@ -779,7 +779,7 @@
                                              <a href="shop-details.html">Vagetables</a>
                                           </span>
                                           <h4 class="tpproduct__title">
-                                             <a href="shop-details.html">Mangosteen Organic From VietNamese</a>
+                                             <a href="shop-details.html">{$ productData.product_name $}</a>
                                           </h4>
                                           <div class="tpproduct__rating mb-5">
                                              <a href="#"><i class="icon-star_outline1"></i></a>
@@ -1290,8 +1290,15 @@
                                   <div class="col">
                                       <div class="tpproduct p-relative mb-20">
                                           <div class="tpproduct__thumb p-relative text-center">
-                                              <a href="#"><img src="{$ product.product_image1 $}" alt="Primary Image"></a>
-                                              <a class="tpproduct__thumb-img" href="shop-details.html"><img src="{$ product.product_image2 $}" alt="Secondary Image"></a>
+                                              <!-- <a href="#"><img src="{$ product.product_image1 $}" alt="Primary Image"></a>
+                                              <a class="tpproduct__thumb-img" href="shop-details.html"><img src="{$ product.product_image2 $}" alt="Secondary Image"></a> -->
+                                              <a href="shop-details.html?id={$ product.id $}">
+                                                <img src="{$ product.product_image1 $}" alt="Primary Image">
+                                            </a>
+                                            <a class="tpproduct__thumb-img" href="shop-details.html?id={$ product.id $}">
+                                                <img src="{$ product.product_image2 $}" alt="Secondary Image">
+                                            </a>
+                                            
                                               <div class="tpproduct__info bage">
                                                   {% if product.product_discount %}
                                                   <!-- Display the product discount directly as a percentage -->
@@ -1316,24 +1323,24 @@
                                               </div>
                                           </div>
                                           <div class="tpproduct__content">
-                                              <span class="tpproduct__content-weight">
-                                                  <a href="shop-details.html">{$ product.product_type $}</a>
-                                              </span>
-                                              <h4 class="tpproduct__title">
-                                                  <a href="shop-details.html">{$ product.product_name $}</a>
-                                              </h4>
-                                              <div class="tpproduct__rating mb-5">
-                                                  {% for i in [1,2,3,4,5] %}
-                                                  <a href="#"><i class="icon-star_outline1"></i></a>
-                                                  {% endfor %}
-                                              </div>
-                                              <div class="tpproduct__price">
-                                                  <span>₹{$ product.discount_price or product.price $}</span>
-                                                  {% if product.discount_price %}
-                                                  <del>₹{$ product.price $}</del>
-                                                  {% endif %}
-                                              </div>
-                                          </div>
+                                             <span class="tpproduct__content-weight">
+                                                 <a href="shop-details.html?id={$ product.id $}">{$ product.product_type $}</a>
+                                             </span>
+                                             <h4 class="tpproduct__title">
+                                                 <a href="shop-details.html?id={$ product.id $}">{$ product.product_name $}</a>
+                                             </h4>
+                                             <div class="tpproduct__rating mb-5">
+                                                 {% for i in range(5) %}
+                                                     <a href="#"><i class="icon-star_outline1"></i></a>
+                                                 {% endfor %}
+                                             </div>
+                                             <div class="tpproduct__price">
+                                                 <span>₹{$ product.discount_price or product.price $}</span>
+                                                 {% if product.discount_price %}
+                                                     <del>₹{$ product.price $}</del>
+                                                 {% endif %}
+                                             </div>
+                                         </div>
                                           <div class="tpproduct__hover-text">
                                               <div class="tpproduct__hover-btn d-flex justify-content-center mb-10">
                                                   <a class="tp-btn-2" href="cart.html">Add to cart</a>

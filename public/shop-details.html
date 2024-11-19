@@ -450,7 +450,7 @@
                      <div class="tpdetails__area mr-60 pb-30">
                         <div class="tpdetails__product mb-30">
                            <div class="tpdetails__title-box">
-                              <h3 class="tpdetails__title">Mangosteen Organic From VietNameseg</h3>
+                              <h3 class="tpdetails__title">{$ productDetail.product_name $}</h3>
                               <ul class="tpdetails__brand">
                                  <li> Brands: <a href="#">ORFARM</a> </li>
                                  <li>
@@ -472,20 +472,20 @@
                                     <div class="tpproduct-details__nab">
                                        <div class="tab-content" id="nav-tabContents">
                                           <div class="tab-pane fade show active w-img" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
-                                             <img src="assets/img/product/products1-min.jpg" alt="">
+                                             <img src="{$ productDetail.product_image1 $}"" alt="">
                                              <div class="tpproduct__info bage">
                                                 <span class="tpproduct__info-hot bage__hot">HOT</span>
                                              </div>
                                           </div>
                                           <div class="tab-pane fade w-img" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
-                                             <img src="assets/img/product/products1-min.jpg" alt="">
+                                             <img src="{$ productDetail.product_image2 $}"" alt="">
                                              <div class="tpproduct__info bage">
                                                 <span class="tpproduct__info-discount bage__discount">-90%</span>
                                                 <span class="tpproduct__info-hot bage__hot">HOT</span>
                                              </div>
                                           </div>
                                           <div class="tab-pane fade w-img" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
-                                             <img src="assets/img/product/products1-min.jpg" alt="">
+                                             <img src="{$ productDetail.product_image1 $}" alt="">
                                              <div class="tpproduct__info bage">
                                                 <span class="tpproduct__info-hot bage__hot">HOT</span>
                                              </div>
@@ -494,13 +494,13 @@
                                        <nav>
                                           <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
                                             <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
-                                             <img src="assets/img/product/products1-min.jpg" alt="">
+                                             <img src="{$ productDetail.product_image1 $}" alt="">
                                             </button>
                                             <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
-                                             <img src="assets/img/product/products1-min.jpg" alt="">
+                                             <img src="{$ productDetail.product_image2 $}" alt="">
                                             </button>
                                             <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
-                                             <img src="assets/img/product/products1-min.jpg" alt="">
+                                             <img src="{$ productDetail.product_image1 $}" alt="">
                                             </button>
                                           </div>
                                         </nav>                 
@@ -509,12 +509,22 @@
                                  <div class="col-lg-6">
                                     <div class="product__details">
                                        <div class="product__details-price-box">
-                                          <h5 class="product__details-price">$56.00</h5>
-                                          <ul class="product__details-info-list">
+                                          <!-- <h5 class="product__details-price">$56.00</h5> -->
+                                          <h5 class="product__details-price">
+                                             ₹{$ productDetail.discount_price $}
+                                         </h5>
+                                         
+                                          <!-- <ul class="product__details-info-list">
                                              <li>Delicious non - dairy cheese sauce</li>
                                              <li>Vegan & Allergy friendly</li>
                                              <li>Smooth, velvety dairy free cheese sauce</li>
-                                          </ul>
+                                          </ul> -->
+                                          <div class="product__details-product_description">
+                                             {$ productDetail.product_description $}
+                                            
+                                          </div>
+                                           
+                                           
                                        </div>
                                        <div class="product__details-cart">
                                           <div class="product__details-quantity d-flex align-items-center mb-15"> 

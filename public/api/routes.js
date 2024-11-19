@@ -63,11 +63,31 @@ exports.wishlist = function (req, res) {
     var data1 = {};
     res.render('wishlist', data1);
 };
-exports.shop_details = function (req, res) {
-    var data1 = {};
-    res.render('shop-details', data1);
-};
+// exports.shop_details = function (req, res) {
+//     var data1 = {};
+// 	get_json('product/products/', function (response1) {
+//         data1['productDetail'] = response1.data;
+//     res.render('shop-details', data1);
+// });
+// };
 
+
+
+exports.shop_details = function (req, res) {
+    const productId = req.query.id; 
+    console.log('Product ID:', productId);
+
+    const apiUrl = `product/get-products/${productId}/`;
+    console.log('Fetching from API URL:', apiUrl);
+
+    get_json(apiUrl, function (response) {
+        const data1 = {};
+        data1['productDetail'] = response.data;
+        console.log(data1['productDetail']); // Ensure `price` is present in the response
+        
+        res.render('shop-details', data1); // Ensure your view file is named 'shop-details'
+    });
+};
 exports.log_In = function (req, res) {
     var data1 = {};
     res.render('log-in', data1);
