@@ -5,8 +5,8 @@ exports.getbusiness = function (req, res) {
 };
 
 exports.getbaseurl = function (req, res) {
-	//var baseurl = "https://api.flipopo.com/1/api/";
-	var baseurl = "http://localhost:9999/1/api/"
+	var baseurl = "https://api.flipopo.com/1/api/";
+	//var baseurl = "http://localhost:9999/1/api/"
 	return baseurl;
 };
 
