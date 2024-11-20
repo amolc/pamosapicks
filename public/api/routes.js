@@ -48,13 +48,41 @@ exports.blog = function (req, res) {
 };
 
 exports.cart = function (req, res) {
-    var data1 = {};
-    res.render('cart', data1);
+    const productId = req.query.id; 
+    console.log('Product ID:', productId);
+
+    const apiUrl = `product/get-products/${productId}/`;
+    console.log('Fetching from API URL:', apiUrl);
+
+    get_json(apiUrl, function (response) {
+        const data1 = {};
+        data1['productDetail'] = response.data;
+        console.log(data1['productDetail']); // Ensure `price` is present in the response
+        
+        res.render('cart', data1); // Ensure your view file is named 'shop-details'
+    });
 };
+
 exports.checkout = function (req, res) {
-    var data1 = {};
-    res.render('checkout', data1);
+    const productId = req.query.id; 
+    console.log('Product ID:', productId);
+
+    const apiUrl = `product/get-products/${productId}/`;
+    console.log('Fetching from API URL:', apiUrl);
+
+    get_json(apiUrl, function (response) {
+        const data1 = {};
+        data1['productDetails'] = response.data;
+        console.log(data1['productDetails']); 
+        
+        // Render the checkout view with the product data
+        res.render('checkout', data1);
+    });
 };
+
+
+
+
 exports.contact = function (req, res) {
     var data1 = {};
     res.render('contact', data1);

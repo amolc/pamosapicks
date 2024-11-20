@@ -508,21 +508,36 @@
                                  </div>
                                  <div class="col-lg-6">
                                     <div class="product__details">
-                                       <div class="product__details-price-box">
-                                          <!-- <h5 class="product__details-price">$56.00</h5> -->
-                                          <h5 class="product__details-price">
-                                             ₹{$ productDetail.discount_price $}
-                                         </h5>
+                                       <h5 class="product__details-unit">
+                                          1 {$ productDetail.unit $}
+                                      </h5>
+                                      <div class="product__details-price-box">
+                                       <h5 class="product__details-price">
+                                           ₹{$ productDetail.discount_price $}
+                                       </h5>
+                                       <span class="product__details-mrp">
+                                          <del>MRP ₹{$ productDetail.price $}</del>
+                                          <span class="product__details-discount">
+                                              {$ productDetail.discount_percentage $}% OFF
+                                          </span>
+                                          <p class="product__details-tax-info">(Inclusive of all taxes)</p>
+                                          <div class="product__details-product_description">
+                                             {$ productDetail.product_description $}
+                                            
+                                          </div>
+                                       </span>
+                                    </span>
+                                </div>
+                            
+                              
+                           
                                          
                                           <!-- <ul class="product__details-info-list">
                                              <li>Delicious non - dairy cheese sauce</li>
                                              <li>Vegan & Allergy friendly</li>
                                              <li>Smooth, velvety dairy free cheese sauce</li>
                                           </ul> -->
-                                          <div class="product__details-product_description">
-                                             {$ productDetail.product_description $}
-                                            
-                                          </div>
+                                          
                                            
                                            
                                        </div>
@@ -535,7 +550,7 @@
                                                 <span class="cart-plus"><i class="far fa-plus"></i></span>
                                              </div>
                                              <div class="product__details-btn">
-                                                <a href="cart.html">add to cart</a>
+                                                <a  href="cart.html?id={$ productDetail.id $}">Add to cart</a>
                                              </div>
                                           </div>
                                           <ul class="product__details-check">
@@ -550,13 +565,23 @@
                                              </li>
                                           </ul>
                                        </div>
-                                       <div class="product__details-stock mb-25">
+                                       <!-- <div class="product__details-stock mb-25">
                                           <ul>
                                              <li>Availability: <i>54 Instock</i></li>
                                              <li>Categories: <span>Vegetables, Meat & Eggs, Fruit Drink </span></li>
                                              <li>Tags: <span>Chicken, Natural, Organic</span></li>
                                           </ul>
-                                       </div>
+                                       </div> -->
+                                       <div class="product__details-stock mb-25">
+                                          <ul>
+                                             <li>Availability: <i>{% if productDetail.availability %}In Stock{% else %}Out of Stock{% endif %}</i></li>
+                                             <li>Categories: <span>{$ productDetail.categories $}</span></li>
+                                            <li>Tags: <span>{$ productDetail.product_type $}</span></li>
+                                            <li>Shelf Life: <span>{$ productDetail.product_life $} days</span></li>
+
+                                          </ul>
+                                        </div>
+                                        
                                        <div class="product__details-payment text-center">
                                           <img src="assets/img/shape/payment-2.png" alt="">
                                           <span>Guarantee safe & Secure checkout</span>
@@ -888,7 +913,7 @@
                               </div>
                               <div class="tpproduct__hover-text">
                                  <div class="tpproduct__hover-btn d-flex justify-content-center mb-10">
-                                    <a class="tp-btn-2" href="cart.html">Add to cart</a>
+                                    <a class="tp-btn-2" href="cart.html?id={$ product.id $}">Add to cart</a>
                                  </div>
                                  <div class="tpproduct__descrip">
                                     <ul>

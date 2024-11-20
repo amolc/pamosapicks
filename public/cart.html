@@ -461,23 +461,38 @@
                                  <tbody>
                                     <tr>
                                        <td class="product-thumbnail">
-                                          <a href="shop-details.html">
-                                             <img src="assets/img/product/products1-min.jpg" alt="">
-                                          </a>
+                                          <a href="shop-details.html?id={$ cart.product_id $}">
+                                             <img src="{$ productDetail.product_image1 $}" alt="Primary Image">
+                                         </a>
+                                         <a class="tpproduct__thumb-img" href="shop-details.html?id={$ cart.product_id $}">
+                                             <img src="{$ productDetail.product_image2 $}" alt="Secondary Image">
+                                         </a>
                                        </td>
                                        <td class="product-name">
-                                          <a href="shop-details.html">Fresh Mangosteen 100% Organic From VietNamese</a>
-                                       </td>
+                                          <a href="cart.html?id={$ product_id $}">{$ productDetail.product_name $}</a>
+                                      </td>
+                                       <!-- <td class="product-price">
+                                          <span class="amount">$56.00</span>
+                                       </td> -->
                                        <td class="product-price">
-                                          <span class="amount">$56.00</span>
-                                       </td>
-                                       <td class="product-quantity">
-                                             <span class="cart-minus">-</span>
-                                             <input class="cart-input" type="text" value="1">
-                                             <span class="cart-plus">+</span>
-                                       </td>
+                                          <span class="amount">₹{$ productDetail.price $}</span>
+                                      </td>
+
+                                      <td class="product-quantity">
+                                       <span class="cart-minus" onclick="updateQuantity(this, -1)">-</span>
+                                       <input 
+                                           class="cart-input" 
+                                           type="text" 
+                                           value="2" 
+                                           data-product-id="{$ productDetail.product_id $}" 
+                                           data-price="{$ productDetails.price $}" 
+                                           onchange="updateTotal(this)"
+                                       >
+                                       <span class="cart-plus" onclick="updateQuantity(this, 1)">+</span>
+                                   </td>
+                                   
                                        <td class="product-subtotal">
-                                          <span class="amount">$56.00</span>
+                                          <span class="amount">₹{$ productDetails.price $}</span>
                                        </td>
                                        <td class="product-remove">
                                           <a href="#"><i class="fa fa-times"></i></a>
@@ -533,7 +548,7 @@
                                        <!-- <li>Subtotal <span>$56.00</span></li> -->
                                        <li>Total <span>$56.00</span></li>
                                     </ul>
-                                    <a href="checkout.html" class="tp-btn tp-color-btn banner-animation">Proceed to Checkout</a>
+                                    <a href="checkout.html?id={$ productDetail.id $}" class="tp-btn tp-color-btn banner-animation">Proceed to Checkout</a>
                                  </div>
                            </div>
                         </div>
