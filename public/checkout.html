@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html lang="en" ng-app="website">
    
 <!-- Mirrored from html.hixstudio.net/orfarm/checkout.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 12 Nov 2024 07:35:04 GMT -->
 <head>
@@ -9,6 +9,15 @@
       <meta name="description" content="">
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+      <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+      <script src="./angular/angular-storage.min.js"></script>
+      <script src="./angular/angular-payments.js"></script>
+      <script src="./angular/app.js"></script>
+      <script src="./angular/service.js"></script>
+      <script src="./angular/checkoutCtrl2.js"></script>
       <!-- Place favicon.ico in the root directory -->
       <link rel="shortcut icon" type="image/x-icon" href="assets/img/logo/favicon.png">
 
@@ -26,7 +35,7 @@
       <link rel="stylesheet" href="assets/css/jquery-ui.css">
       <link rel="stylesheet" href="assets/css/main.css">
    </head>
-   <body>
+   <body ng-app="website" ng-controller="BookingDetailsCtrl" ng-init="init()">
 
 
       <!-- Scroll-top -->
@@ -503,7 +512,7 @@
          <section class="checkout-area pb-50">
             <div class="container">
                <form action="#">
-                  <div class="row">
+                  <div class="row" ng-submit="submitBookingDetails()" name="bookingForm" novalidate>
                         <div class="col-lg-6 col-md-12">
                            <div class="checkbox-form">
                               <h3>Billing Details</h3>
