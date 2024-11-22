@@ -587,16 +587,22 @@
           </li> -->
 
           <li>
-            <a href="property.html">
-              <i class="bi bi-circle"></i><span>Property</span>
+            <a href="product.html">
+              <i class="bi bi-circle"></i><span>Product</span>
+            </a>
+          </li>
+          <li>
+            <a href="category.html">
+              <i class="bi bi-circle"></i><span>Category</span>
+            </a>
+          </li>
+          <li>
+            <a href="subcategory.html">
+              <i class="bi bi-circle"></i><span>Subcategory</span>
             </a>
           </li>
 
-          <li>
-            <a href="booking.html">
-              <i class="bi bi-circle"></i><span>Booking</span>
-            </a>
-          </li>
+        
 
           <!-- <li>
             <a href="property_listing.html">
@@ -621,197 +627,68 @@
       </nav>
     </div>
     <div class="form-container">
-      <div class="form-header">ADD PROPERTY</div>
+      <div class="form-header">ADD SUBCATEGORY</div>
       <form ng-submit="submitProperty()">
-          <div class="form-group form-group-full">
-              <label for="property_name">Property Name</label>
-              <input type="text" id="property_name" placeholder="Property Name" ng-model="property.property_name" style="width:100%;" required>
-             
-              <label for="property_title">Property Title</label>
-              <input type="text" id="property_title" placeholder="Enter property title" ng-model="property.title" />
-          </div>
-  
-          <div class="form-group">
-              <label for="propertyType">Property Type</label>
-              <select class="form-control" id="propertyType" ng-model="property.property_type" required>
-                  <option value="Villa">Villa</option>
-                  <option value="Bungalow">Bungalow</option>
-                  <option value="Hotel">Hotel</option>
-              </select>
-              
-              <label for="total_price">Total Price</label>
-              <input type="text" id="total_price" placeholder="Total Price" ng-model="property.cost_per_night" required>
-          </div>
-          <div class="form-group form-group-full">
-            <label for="room_name_1">Room Name1</label>
-            <input type="text" id="room_name_1" placeholder="Room Name1" ng-model="property.room_name_1" style="width:50%;" >
+        <div class="form-group form-group-full">
+          <input type="text" id="property_name" placeholder="Product Name" ng-model="property.property_name" />
+          <input type="text" id="property_title" placeholder="Unit" ng-model="property.title" />
+      </div>
+      
+      <div class="form-group">
+          <input type="text" id="total_price" placeholder="Quantity" ng-model="property.cost_per_night" required />
+      
+          <input type="text" id="total_price" placeholder="Discount Price" ng-model="property.cost_per_night" required />
+      </div>
+      
+      <div class="form-group form-group-full">
+          <input type="text" id="total_price" placeholder="Product Type" ng-model="property.cost_per_night" required />
+          <input type="text" id="total_price" placeholder="MFG" ng-model="property.cost_per_night" required />
+
+      </div>
+      
           
-            <label for="room_name_1_cost">Room1 Cost</label>
-            <input type="text" id="room_name_1_cost" placeholder="Room1 Cost" ng-model="property.room_name_1_cost" />
-          </div>
           
           <div class="form-group form-group-full">
-            <label for="room_name_2">Room Name2</label>
-            <input type="text" id="room_name_2" placeholder="Room Name2" ng-model="property.room_name_2" style="width:50%;" >
-          
-            <label for="room_name_2_cost">Room2 Cost</label> <!-- Fixed text to "Room2 Cost" -->
-            <input type="text" id="room_name_2_cost" placeholder="Room2 Cost" ng-model="property.room_name_2_cost" />
-          </div>
-          
-          <div class="form-group form-group-full">
-            <label for="room_name_3">Room Name3</label>
-            <input type="text" id="room_name_3" placeholder="Room Name3" ng-model="property.room_name_3" style="width:50%;" >
-          
-            <label for="room_name_3_cost">Room3 Cost</label>
-            <input type="text" id="room_name_3_cost" placeholder="Room3 Cost" ng-model="property.room_name_3_cost" />
-          </div>
-          
-          <div class="form-group form-group-full">
-            <label for="room_name_4">Room Name4</label>
-            <input type="text" id="room_name_4" placeholder="Room Name4" ng-model="property.room_name_4" style="width:50%;" >
-          
-            <label for="room_name_4_cost">Room4 Cost</label>
-            <input type="text" id="room_name_4_cost" placeholder="Room4 Cost" ng-model="property.room_name_4_cost" />
-          </div>
-          <div class="form-group form-group-full">
-              <label for="description">Description</label>
               <textarea id="description" placeholder="Description" ng-model="property.description" required></textarea>
           </div>
   
+          
           <div class="form-group">
-              <label for="floors">Floors</label>
-              <input type="number" id="floors" placeholder="Floors" ng-model="property.floors" required>
+              <input type="text" id="total_bedroom_size" placeholder="product Life" ng-model="property.total_bedroom_size">
+            </div>
   
-              <label for="bedrooms">Bed Rooms</label>
-              <input type="number" id="bedrooms" placeholder="Bed Rooms" ng-model="property.num_bedrooms" required>
-  
-              <label for="bathrooms">Bath Rooms</label>
-              <input type="number" id="bathrooms" placeholder="Bath Rooms" ng-model="property.num_bathrooms" required>
-          </div>
-  
-          <div class="form-group">
-              <label for="guest_limit">Guest Limit</label>
-              <input type="number" id="guest_limit" placeholder="Guest Limit" ng-model="property.guest_limit" required>
-  
-              <label for="meals_available">Meals Available</label>
-              <input type="text" id="meals_available" placeholder="Meals Available" ng-model="property.meals_available">
-          </div>
-  
-          <div class="form-group double-input">
-            <label for="other_images">Header Image1</label>
-            <input type="file" id="other-images" accept="image/*" onchange="convertToBase64('other-images', 'property.other_images')">
-
-            <label for="img">Header Image2</label>
-            <input type="file" id="img" accept="image/*" onchange="convertToBase64('img', 'property.img')">
-
-            <label for="img2">Header Image3</label>
-            <input type="file" id="img3" accept="image/*" onchange="convertToBase64('img3', 'property.img3')">
-          </div>
-  
-          <div class="form-group">
-              <label for="total_bedroom_size">Property Size</label>
-              <input type="text" id="total_bedroom_size" placeholder="Property Size in Sq.ft" ng-model="property.total_bedroom_size">
-  
-              <label for="per_bedroom_size">Per Bedroom size</label>
-              <input type="text" id="per_bedroom_size" placeholder="Per Bedroom size in Sq.ft" ng-model="property.square_feet">
-          </div>
-  
-          <div class="form-group form-group-full">
+          <!-- <div class="form-group form-group-full">
               <label for="location_url">Location URL</label>
               <textarea type="text" id="location_url" placeholder="Enter Location URL" ng-model="property.location_url" style="width:50%;"></textarea> 
   
               <label for="video_url">Video (URL)</label>
               <textarea type="text" id="video_url" placeholder="Video (URL)" ng-model="property.video_url" style="width:50%;"></textarea>
-          </div>
+          </div> -->
   
-          <div class="form-group form-group-full">
-              <label for="propertyGreatFor">Great For</label>
-              <select ng-model="property.great_for" id="propertyGreatFor">
-                  <option value="Senior_Citizen">Senior Citizen</option>
-                  <option value="Kids">Kids</option>
-                  <option value="Adults">Adults</option>
-                  <option value="All">All</option>
-                  <option value="Others">Others</option>
-              </select>
-          </div>
+          
           <div class="form-group double-input">
-            <label for="bedroom1-images">Bedroom 1 Images</label>
             <input type="file" id="bedroom1-images" accept="image/*" onchange="convertToBase64('bedroom1-images', 'property.bedroom1_image')">
 
-            <label for="bedroom2-images">Bedroom 2 Images</label>
             <input type="file" id="bedroom2-images" accept="image/*" onchange="convertToBase64('bedroom2-images', 'property.bedroom2_image')">
         </div>
 
-        <div class="form-group double-input">
-            <label for="bedroom3-images">Bedroom 3 Images</label>
-            <input type="file" id="bedroom3-images" accept="image/*" onchange="convertToBase64('bedroom3-images', 'property.bedroom3_image')">
-
-            <label for="bedroom4-images">Bedroom 4 Images</label>
-            <input type="file" id="bedroom4-images" accept="image/*" onchange="convertToBase64('bedroom4-images', 'property.bedroom4_image')">
-        </div>
+        
   
           <div class="form-group form-group-full">
-              <label for="address1">Address 1</label>
-              <input type="text" id="address1" placeholder="Address1" ng-model="property.address1" style="width:100%;">
-          </div>
+              <input type="text" id="address1" placeholder="Category" ng-model="property.address1" required>
+              <input type="text" id="address2" placeholder="subcategory" ng-model="property.address2" required>
+            </div>
   
-          <div class="form-group form-group-full">
-              <label for="address2">Address 2</label>
-              <input type="text" id="address2" placeholder="Address2" ng-model="property.address2" style="width:100%;">
-          </div>
+          
   
           <div class="form-group">
-              <label for="city">City</label>
-              <input type="text" id="city" placeholder="City" ng-model="property.city" required>
+              <input type="text" id="city" placeholder="Availability" ng-model="Availability" required>
   
-              <label for="state">State</label>
-              <input type="text" id="state" placeholder="State" ng-model="property.state" required>
+              <input type="text" id="state" placeholder="Active" ng-model="property.state" required>
   
-              <label for="pincode">Pincode</label>
-              <input type="text" id="pincode" placeholder="Pincode" ng-model="property.pincode" required>
+              
           </div>
           
-          <div class="form-group form-group-full" ng-hide="true">
-              <label for="agent_id">Agent ID</label>
-              <input type="text" id="agent_id" placeholder="Agent ID" ng-model="property.agent_id" readonly style="width:100%;">
-          </div>
-  
-          <div class="amenities">
-              <h3><b>Amenities</b></h3>
-              <div class="row">
-                  <div class="col-4">
-                      <label><input type="checkbox" ng-model="property.amenities['Swimming Pool']"> Swimming Pool</label>
-                  </div>
-                  <div class="col-4">
-                      <label><input type="checkbox" ng-model="property.amenities['Lawn']"> Lawn</label>
-                  </div>
-                  <div class="col-4">
-                      <label><input type="checkbox" ng-model="property.amenities['BBQ']"> BBQ</label>
-                  </div>
-                  <div class="col-4">
-                      <label><input type="checkbox" ng-model="property.amenities['Air Conditioner']"> Air Conditioner</label>
-                  </div>
-                  <div class="col-4">
-                      <label><input type="checkbox" ng-model="property.amenities['Parking']"> Parking</label>
-                  </div>
-                  <div class="col-4">
-                      <label><input type="checkbox" ng-model="property.amenities['Water Purifier']"> Water Purifier</label>
-                  </div>
-                  <div class="col-4">
-                      <label><input type="checkbox" ng-model="property.amenities['Indoor Games']"> Indoor Games</label>
-                  </div>
-                  <div class="col-4">
-                      <label><input type="checkbox" ng-model="property.amenities['Driver/Staff']"> Driver/Staff</label>
-                  </div>
-                  <div class="col-4">
-                      <label><input type="checkbox" ng-model="property.amenities['Bar']"> Bar</label>
-                  </div>
-                  <div class="col-4">
-                      <label><input type="checkbox" ng-model="property.amenities['Pet Friendly']"> Pet Friendly</label>
-                  </div>
-                  <div class="col-4">
-                      <label><input type="checkbox" ng-model="property.amenities['Towels']"> Towels</label>
-                  </div>
               </div>
           </div>                        
           <button type="submit" class="submit-btn">SUBMIT</button>

@@ -547,12 +547,12 @@
         <div class="col-lg-12">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Product</h5>
+              <h5 class="card-title">Category</h5>
               <div class="ibox-title">
                             <div class="row">
                                  <div class="col-lg-8"> 
                                   <h5>
-                                    <a class="btn btn-w-m btn-primary " href="addproduct.html" role="button">Add Product</a>
+                                    <a class="btn btn-w-m btn-primary " href="addcategory.html" role="button">Add Category</a>
                                     <!-- <button type="button" class="btn btn-w-m btn-primary"
                                       data-target="#addform" ng-click="addform()">Add Property</button> -->
                                     </h5>
@@ -564,11 +564,10 @@
               <table class="table datatable mt-3">
                 <thead>
                   <tr>
-                    <th>Product Name</th>
-                    <th>unit</th>
-                    <th>price</th>
-                    <th>Quantity</th>
-                    <th>Product Life</th>
+                    <th>Category Id</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Active</th>
                     <th>Edit</th>
                     <th>Delete</th>
                   </tr>
@@ -700,11 +699,11 @@
               <div class="modal-body">
                   <!--modal form section starts-->
                   <div class="form">
-                      <h3> Add Property</h3>
-                      <p> Please select and add the property Deatils.</p>
+                      <h3> Add Category</h3>
+                      <p> Please select and add the Category Deatils.</p>
                       <form name="myForm">
                         <div class="form-group">
-                            <label for="stockname">Property Name</label>
+                            <label for="stockname">Category Name</label>
 
                             <input type="text" min="0" max="100" class="form-control"
                             ng-model="data.property_name" name="percentage" value="data.property_name" required>
@@ -713,7 +712,7 @@
                         
                         <div class="form-group">
 
-                            <label for="stockname">City</label>
+                            <label for="stockname">Description</label>
 
                             <input type="text" min="0" max="100" class="form-control"
                             ng-model="data.city" name="percentage" value="data.city" required>
