@@ -40,7 +40,7 @@
   <script src="./angular/app.js"></script>
   <script src="./angular/service.js"></script>
 
-  <script src="./angular/addpropertyCtrl.js"></script>
+  <script src="./angular/addproductCtrl.js"></script>
 
   <!-- Mainly scripts -->
   <script src="./assets/js/jquery-3.1.1.min.js"></script>
@@ -292,7 +292,7 @@
 }
 </style>
 
-<body ng-app="website" ng-controller="addpropertyCtrl" ng-init="init()">
+<body ng-app="website" ng-controller="addproductCtrl" ng-init="init()">
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
@@ -538,53 +538,7 @@
           <i class="bi bi-menu-button-wide"></i><span>Pages</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav" class="nav-content" data-bs-parent="#sidebar-nav">
-          <!-- <li>
-            <a href="enquiry.html">
-              <i class="bi bi-circle"></i><span>Enquiry</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="cancellation.html">
-              <i class="bi bi-circle"></i><span>Cancellation</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="property_manager.html">
-              <i class="bi bi-circle"></i><span>Property Manager</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="booking.html">
-              <i class="bi bi-circle"></i><span>Booking</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="agent.html">
-              <i class="bi bi-circle"></i><span>Agent</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="investor.html">
-              <i class="bi bi-circle"></i><span>Investor</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="customer.html">
-              <i class="bi bi-circle"></i><span>Customer</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="destinations.html">
-              <i class="bi bi-circle"></i><span>Destinations</span>
-            </a>
-          </li> -->
+          
 
           <li>
             <a href="product.html">
@@ -602,13 +556,6 @@
             </a>
           </li>
 
-        
-
-          <!-- <li>
-            <a href="property_listing.html">
-              <i class="bi bi-circle"></i><span>Property List</span>
-            </a>
-          </li> -->
         </ul>
       </li><!-- End Components Nav -->
 
@@ -626,75 +573,54 @@
         </ol>
       </nav>
     </div>
-    <div class="form-container">
-      <div class="form-header">ADD SUBCATEGORY</div>
-      <form ng-submit="submitProperty()">
-        <div class="form-group form-group-full">
-          <input type="text" id="property_name" placeholder="Product Name" ng-model="property.property_name" />
-          <input type="text" id="property_title" placeholder="Unit" ng-model="property.title" />
-      </div>
-      
-      <div class="form-group">
-          <input type="text" id="total_price" placeholder="Quantity" ng-model="property.cost_per_night" required />
-      
-          <input type="text" id="total_price" placeholder="Discount Price" ng-model="property.cost_per_night" required />
-      </div>
-      
-      <div class="form-group form-group-full">
-          <input type="text" id="total_price" placeholder="Product Type" ng-model="property.cost_per_night" required />
-          <input type="text" id="total_price" placeholder="MFG" ng-model="property.cost_per_night" required />
+    <div class="form-container" ng-app="myApp" ng-controller="addproductCtrl">
+  <div class="form-header">ADD PRODUCT</div>
+  <form ng-submit="submitProduct(product)">
+    <div class="form-group form-group-full">
+      <input type="text" id="product_name" placeholder="Product Name" ng-model="product.product_name" required />
+      <input type="text" id="product_unit" placeholder="Unit" ng-model="product.unit" required />
+    </div>
 
-      </div>
-      
-          
-          
-          <div class="form-group form-group-full">
-              <textarea id="description" placeholder="Description" ng-model="property.description" required></textarea>
-          </div>
-  
-          
-          <div class="form-group">
-              <input type="text" id="total_bedroom_size" placeholder="product Life" ng-model="property.total_bedroom_size">
-            </div>
-  
-          <!-- <div class="form-group form-group-full">
-              <label for="location_url">Location URL</label>
-              <textarea type="text" id="location_url" placeholder="Enter Location URL" ng-model="property.location_url" style="width:50%;"></textarea> 
-  
-              <label for="video_url">Video (URL)</label>
-              <textarea type="text" id="video_url" placeholder="Video (URL)" ng-model="property.video_url" style="width:50%;"></textarea>
-          </div> -->
-  
-          
-          <div class="form-group double-input">
-            <input type="file" id="bedroom1-images" accept="image/*" onchange="convertToBase64('bedroom1-images', 'property.bedroom1_image')">
+    <div class="form-group">
+      <input type="number"  placeholder="Quantity" ng-model="product.stock_quantity" required />
+      <input type="number"  placeholder="Price" ng-model="product.price" required />
+    </div>
 
-            <input type="file" id="bedroom2-images" accept="image/*" onchange="convertToBase64('bedroom2-images', 'property.bedroom2_image')">
-        </div>
+    <div class="form-group form-group-full">
+      <input type="text"  placeholder="Product Type" ng-model="product.product_type" required />
+      <input type="date" placeholder="MFG" ng-model="product.mfg" required />
+    </div>
 
-        
-  
-          <div class="form-group form-group-full">
-              <input type="text" id="address1" placeholder="Category" ng-model="property.address1" required>
-              <input type="text" id="address2" placeholder="subcategory" ng-model="property.address2" required>
-            </div>
-  
-          
-  
-          <div class="form-group">
-              <input type="text" id="city" placeholder="Availability" ng-model="Availability" required>
-  
-              <input type="text" id="state" placeholder="Active" ng-model="property.state" required>
-  
-              
-          </div>
-          
-              </div>
-          </div>                        
-          <button type="submit" class="submit-btn">SUBMIT</button>
-      </form>
-  </div>  
-  </main>
+    <div class="form-group form-group-full">
+      <textarea id="description" placeholder="Description" ng-model="product.product_description" required></textarea>
+    </div>
+
+    <div class="form-group">
+      <input type="number"  placeholder="Product Life" ng-model="product.product_life" />
+    </div>
+
+    <!-- <div class="form-group double-input">
+      <input type="file" id="product1-images" accept="image/*" onchange="convertToBase64('product1-images', 'product.product1_image')" />
+      <input type="file" id="product2-images" accept="image/*" onchange="convertToBase64('product2-images', 'product.product2_image')" />
+    </div> -->
+
+    <div class="form-group form-group-full">
+      <input type="number"  placeholder="Category" ng-model="product.category" required />
+      <input type="number"  placeholder="Subcategory" ng-model="product.subcategory" required />
+    </div>
+
+    <!-- <div class="form-group">
+      <input type="text" id="availability" placeholder="Availability" ng-model="product.availability" required />
+      <input type="text" id="active" placeholder="Active" ng-model="product.active" required />
+    </div> -->
+
+    <button type="submit" ng-disabled="isSubmitting" ng-click="submitProduct()">Submit</button>
+
+  </form>
+
+
+</div>
+
   <footer id="footer" class="footer">
     <div class="copyright">
       &copy; Copyright <strong><span>StayVillas</span></strong>. All Rights Reserved
@@ -708,55 +634,51 @@
     </div>
   </footer>
   <script>
-        // Attach function to window for global access
-        window.convertToBase64 = function(inputId, modelPath) {
-            const fileInput = document.getElementById(inputId);
-            const file = fileInput.files[0];
-    
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    const base64String = event.target.result;
-                    console.log(`Base64 for ${inputId}:`, base64String); // Log the Base64 string
-    
-                    // Get AngularJS scope
-                    const scope = angular.element(document.querySelector('[ng-controller="addpropertyCtrl"]')).scope();
-                    scope.$apply(function() {
-                        const propertyName = propertyNameFromModelPath(modelPath);
-                        console.log("Setting property:", propertyName, "to", base64String); // Log the property being set
-                        scope.property[propertyName] = base64String;
-                        console.log("Updated property:", scope.property); // Log the entire property object
-                    });
-                };
-                reader.readAsDataURL(file);
-            } else {
-                console.error("No file selected for:", inputId); // Log if no file is selected
-            }
+          // Attach function to window for global access
+    window.convertToBase64 = function(inputId, modelPath) {
+      const fileInput = document.getElementById(inputId);
+      const file = fileInput.files[0];
+
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          const base64String = event.target.result;
+
+          // Get AngularJS scope
+          const scope = angular.element(document.querySelector('[ng-controller="addproductCtrl"]')).scope();
+          scope.$apply(function() {
+            const propertyName = modelPath.split('.').pop();
+            scope.product[propertyName] = base64String; // Update the correct product property
+          });
         };
-    
-        function propertyNameFromModelPath(modelPath) {
-            return modelPath.split('.').pop();
+        reader.readAsDataURL(file);
+      } else {
+        console.error("No file selected for:", inputId);
+      }
+    };
+
+    // AngularJS application and controller
+    angular.module('myApp', []).controller('addproductCtrl', function($scope) {
+      // Initialize product object
+      $scope.product = {
+        product1_image: '',
+        product2_image: '',
+      };
+
+      // Submit Product function
+      $scope.submitProduct = function() {
+        // Validate required fields (basic example)
+        if (!$scope.product.property_name || !$scope.product.unit || !$scope.product.stock_quantity) {
+          alert('Please fill out all required fields!');
+          return;
         }
-    
-        // AngularJS controller definition
-        angular.module('myApp', []).controller("addpropertyCtrl", function($scope) {
-            // Initialize your property object
-            $scope.property = {
-                bedroom1_image_url: '',
-                bedroom2_image_url: '',
-                bedroom3_image_url: '',
-                bedroom4_image_url: '',
-                other_images: '',
-                img:'',
-                img3:''
-            };
-    
-            // Add your submitProperty function here
-            $scope.submitProperty = function() {
-                console.log("Property confirmed:", $scope.property);
-            };
-        });
-   </script>
+
+        console.log("Product submitted:", $scope.product);
+        // Add your API call or submission logic here
+      };
+    });
+
+      </script>
   <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a> -->
 
   <!-- Vendor JS Files -->

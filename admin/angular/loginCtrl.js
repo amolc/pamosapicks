@@ -3,21 +3,23 @@ app.controller('login-ctrl', function($scope, $http, $window, config) {
 
     // Initialize controller
     $scope.init = function() {
-        var islogin = localStorage.getItem('islogin');
+        const islogin = localStorage.getItem('islogin');
 
         if (islogin === '1') {
             $scope.name = localStorage.getItem('name');
             $scope.email = localStorage.getItem('email');
             $scope.phone = localStorage.getItem('phone');
-            $scope.agent_id = localStorage.getItem('agent_id');
+            $scope.id = localStorage.getItem('id');
             $scope.org_id = localStorage.getItem('org_id');
 
-            // Check if agent ID is present
-            if ($scope.admin_id) {
-                $window.location = "product.html"; // Redirect to agent page
+            // Check if id exists in local storage
+            if ($scope.id) {
+                console.log("Agent ID found:", $scope.id);
+                $window.location = "product.html"; // Redirect to product page
             } else {
-                console.error("Agent ID not found in local storage.");
-                // Optionally handle the case where the agent ID is not found
+                console.error("ID not found in local storage. Redirecting to login.");
+                localStorage.clear();
+                $window.location = "index.html";
             }
         }
 
@@ -25,7 +27,7 @@ app.controller('login-ctrl', function($scope, $http, $window, config) {
     };
 
     // Login validation
-    var vm = this; 
+    const vm = this;
     vm.loginvalidate = function(data) {
         if (!data || !data.email) {
             $scope.message = "Please provide an email address.";
@@ -40,50 +42,48 @@ app.controller('login-ctrl', function($scope, $http, $window, config) {
     // Login function
     $scope.login = function() {
         $scope.message = "";
-    
+
         if (vm.loginvalidate($scope.data)) {
             console.log("Validating login");
-    
-            var configHeaders = {
+
+            const configHeaders = {
                 headers: {
                     'Content-Type': 'application/json',
                 }
             };
-    
+
             // Construct the URL for the login request
-            $scope.url = config.baseurl + 'admin/login-admin/';
-            console.log("Constructed URL:", $scope.url);
+            const url = `${config.baseurl}customer/get-customer`;
+            console.log("Constructed URL:", url);
             console.log("Data being sent:", $scope.data);
-    
-            $http.post($scope.url, $scope.data, configHeaders)
+
+            $http.post(url, $scope.data, configHeaders)
                 .then(function(response) {
-                    console.log("Login successful:", response.data);
-    
-                    if (response.data.agent_id) {
+                    if (response.data.status === "success" && response.data.id) {
+                        // Store relevant data in local storage
                         localStorage.setItem('islogin', '1');
                         localStorage.setItem('name', response.data.first_name);
                         localStorage.setItem('email', response.data.email);
                         localStorage.setItem('phone', response.data.mobile_number);
-                        localStorage.setItem('agent_id', response.data.agent_id);
+                        localStorage.setItem('id', response.data.id);
                         localStorage.setItem('org_id', response.data.org_id);
                         localStorage.setItem('isSuperAdmin', response.data.is_super_admin);
-                        
-                        console.log("Admin ID stored in local storage:", localStorage.getItem('admin_id'));
-                        $window.location = "product.html"; // Redirect to agent page
+
+                        console.log("Agent ID stored in local storage:", response.data.id);
+                        $window.location = "product.html"; // Redirect to product page
                     } else {
-                        console.error("User data not found in the response.");
-                        $scope.message = "Login failed: User information is not available.";
+                        console.error("Login failed: Invalid credentials or missing agent ID.");
+                        $scope.message = response.data.message || "Login failed: Please check your credentials.";
                     }
                 })
-                .catch(function(response) {
-                    $scope.message = "Login failed: " + (response.data.message || "Invalid email or password.");
-                    console.error("Login error:", response);
+                .catch(function(error) {
+                    console.error("Login error:", error);
+                    $scope.message = error.data?.message || "Login failed: Unable to connect.";
                 });
         } else {
             console.log("Validation error occurred");
         }
     };
-    
 
     $scope.init();
 });
