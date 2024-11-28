@@ -99,7 +99,7 @@ app.controller("addproductCtrl", function ($scope, $http, $window, $location, co
     .then(function(response) {
         console.log("Product added successful:", response.data);
         alert("Product successfully created!");
-        $scope.isSubmitting = false; // Re-enable the button
+        // $scope.isSubmitting = false; // Re-enable the button
     })
     .catch(function(error) {
         console.error("AddProduct failed:", error);

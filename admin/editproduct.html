@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Tables / Data - NiceAdmin Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+  <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+  <script src="./angular/angular-storage.min.js"></script>
+  <script src="./angular/angular-payments.js"></script>
+  <script src="./angular/app.js"></script>
+  <script src="./angular/service.js"></script>
+
+  <script src="./angular/editproductCtrl.js"></script>
+
+  <!-- Mainly scripts -->
+  <script src="./assets/js/jquery-3.1.1.min.js"></script>
+  <script src="./assets/js/popper.min.js"></script>
+  <script src="./assets/js/bootstrap.js"></script>
+  <script src="./assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+  <script src="./assets/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+  <!-- Custom and plugin javascript -->
+  <script src="./assets/js/inspinia.js"></script>
+  <script src="./assets/js/plugins/pace/pace.min.js"></script>
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Updated: Apr 20 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    /* background-color: #f1f1f1; */
+    padding: 20px;
+    background: #f6f9ff;
+    color: #444444;
+  }
+
+  .form-container {
+    /* max-width: 595px; */
+    /* margin-top: 52px; */
+    /* margin-left: 434px; */
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-header {
+    background-color: #777c68;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .form-group {
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 48%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .form-group textarea {
+    height: 70px;
+    width: 100%;
+  }
+
+  .form-group label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .form-group-full {
+    width: 100%;
+  }
+
+  .amenities {
+    /* display: grid; */
+    grid-template-columns: repeat(2, 1fr);
+    margin: 30px 0;
+  }
+
+  .amenities label {
+    padding: 7px 0;
+  }
+
+  .submit-btn {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .submit-btn:hover {
+    background-color: #555;
+  }
+
+  .icon {
+    margin-right: 5px;
+    color: #777c68;
+  }
+
+  .double-input {
+    display: flex;
+    gap: 10px;
+  }
+
+  .form-group input[type="file"] {
+    padding: 5px;
+  }
+
+  .sidebar-nav {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .sidebar-nav li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .sidebar-nav .nav-item {
+    margin-bottom: 5px;
+  }
+
+  .sidebar-nav .nav-heading {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #899bbd;
+    font-weight: 600;
+    margin: 10px 0 5px 15px;
+  }
+
+  .sidebar-nav .nav-link {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: #4154f1;
+    transition: 0.3;
+    background: #f6f9ff;
+    padding: 10px 15px;
+    border-radius: 4px;
+  }
+
+  .sidebar-nav .nav-link i {
+    font-size: 16px;
+    margin-right: 10px;
+    color: #4154f1;
+  }
+
+  .sidebar-nav .nav-link.collapsed {
+    color: #012970;
+    background: #fff;
+  }
+
+  .sidebar-nav .nav-link.collapsed i {
+    color: #899bbd;
+  }
+
+  .sidebar-nav .nav-link:hover {
+    color: #4154f1;
+    background: #f6f9ff;
+  }
+
+  .sidebar-nav .nav-link:hover i {
+    color: #4154f1;
+  }
+
+  .sidebar-nav .nav-link .bi-chevron-down {
+    margin-right: 0;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .sidebar-nav .nav-link:not(.collapsed) .bi-chevron-down {
+    transform: rotate(180deg);
+  }
+
+  .sidebar-nav .nav-content {
+    padding: 5px 0 0 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .sidebar-nav .nav-content a {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #012970;
+    transition: 0.3;
+    padding: 10px 0 10px 40px;
+    transition: 0.3s;
+  }
+
+  .sidebar-nav .nav-content a i {
+    font-size: 6px;
+    margin-right: 8px;
+    line-height: 0;
+    border-radius: 50%;
+  }
+
+  .sidebar-nav .nav-content a:hover,
+  .sidebar-nav .nav-content a.active {
+    color: #4154f1;
+  }
+
+  .sidebar-nav .nav-content a.active i {
+    background-color: #4154f1;
+  }
+
+  .footer {
+    padding: 20px 0;
+    font-size: 14px;
+    transition: all 0.3s;
+    border-top: 1px solid #cddfff;
+  }
+
+  .footer .copyright {
+    text-align: center;
+    color: #012970;
+  }
+
+  .footer .credits {
+    padding-top: 5px;
+    text-align: center;
+    font-size: 13px;
+    color: #012970;
+  }
+  #main {
+  margin-top: 60px;
+  padding: 20px 30px;
+  transition: all 0.3s;
+}
+
+@media (max-width: 1199px) {
+  #main {
+    padding: 20px;
+  }
+}
+</style>
+
+<body ng-app="website" ng-controller="editproductCtrl" ng-init="init()">
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="">
+        <span class="d-none d-lg-block">StayVilla</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      </form>
+    </div><!-- End Search Bar -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+        <li class="nav-item dropdown">
+
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-bell"></i>
+            <span class="badge bg-primary badge-number">4</span>
+          </a><!-- End Notification Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+            <li class="dropdown-header">
+              You have 4 new notifications
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-exclamation-circle text-warning"></i>
+              <div>
+                <h4>Lorem Ipsum</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>30 min. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-x-circle text-danger"></i>
+              <div>
+                <h4>Atque rerum nesciunt</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>1 hr. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-check-circle text-success"></i>
+              <div>
+                <h4>Sit rerum fuga</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>2 hrs. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-info-circle text-primary"></i>
+              <div>
+                <h4>Dicta reprehenderit</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>4 hrs. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li class="dropdown-footer">
+              <a href="#">Show all notifications</a>
+            </li>
+
+          </ul><!-- End Notification Dropdown Items -->
+
+        </li><!-- End Notification Nav -->
+
+        <li class="nav-item dropdown">
+
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-chat-left-text"></i>
+            <span class="badge bg-success badge-number">3</span>
+          </a><!-- End Messages Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+            <li class="dropdown-header">
+              You have 3 new messages
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>Maria Hudson</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>4 hrs. ago</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/messages-2.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>Anna Nelson</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>6 hrs. ago</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/messages-3.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>David Muldon</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>8 hrs. ago</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="dropdown-footer">
+              <a href="#">Show all messages</a>
+            </li>
+
+          </ul><!-- End Messages Dropdown Items -->
+
+        </li><!-- End Messages Nav -->
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">{{agentInfo.first_name || 'Agent Name'}}</span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>{{agentInfo.first_name || 'Agent Name'}} {{agentInfo.last_name || ''}}</h6>
+              <span>{{agentInfo.role || 'Agent Role'}}</span> <!-- Assuming 'role' field exists -->
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="agentprofileupdate.html">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-gear"></i>
+                <span>Account Settings</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                <i class="bi bi-question-circle"></i>
+                <span>Need Help?</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#" ng-click="signOut()">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header>
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="index.html">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Pages</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav" class="nav-content" data-bs-parent="#sidebar-nav">
+          
+
+          <li>
+            <a href="product.html">
+              <i class="bi bi-circle"></i><span>Product</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="category.html">
+              <i class="bi bi-circle"></i><span>Category</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="subcategory.html">
+              <i class="bi bi-circle"></i><span>Subcategory</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Components Nav -->
+
+      
+
+    </ul>
+
+  </aside>
+  <main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Data Tables</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">Tables</li>
+          <li class="breadcrumb-item active">Data</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="form-container">
+        <div class="form-header">
+            EDIT PRODUCT
+        </div>
+        <form ng-submit="submitProduct()">
+            <div class="form-group form-group-full">
+                <input type="text" id="product_name" placeholder="Product Name" ng-model="product.product_name" required />
+                <input type="text" id="product_unit" placeholder="Unit" ng-model="product.unit" required />
+            </div>
+        
+            <div class="form-group">
+                <input type="number" placeholder="Quantity" ng-model="product.stock_quantity" required />
+                <input type="number" placeholder="Price" ng-model="product.price" required />
+            </div>
+        
+            <div class="form-group form-group-full">
+                <input type="text" placeholder="Product Type" ng-model="product.product_type" required />
+                <input type="date" placeholder="MFG" ng-model="product.mfg" required />
+            </div>
+        
+            <div class="form-group form-group-full">
+                <textarea id="description" placeholder="Description" ng-model="product.product_description" required></textarea>
+            </div>
+        
+            <div class="form-group">
+                <input type="number" placeholder="Product Life" ng-model="product.product_life" />
+            </div>
+        
+            <div class="form-group form-group-full">
+                <input type="number" placeholder="Category" ng-model="product.category" required />
+                <input type="number" placeholder="Subcategory" ng-model="product.subcategory" required />
+            </div>
+        
+            <button type="submit" ng-disabled="isSubmitting">Submit</button>
+        </form>
+    </div>
+    <footer id="footer" class="footer">
+        <div class="copyright">
+            &copy; Copyright <strong><span>StayVillas</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
+    </footer>
+    
+    <script>
+        angular.module('myApp', []).controller("editproductCtrl", function($scope, $http, $location, config) {
+            // Extract the product ID from the URL using $location.search()
+            var product_id = $location.search().product_id;  // Get product_id from query string
+    
+            console.log("Product ID from URL:", product_id);  // Log the product_id to verify
+    
+            // If product_id is missing in the URL, show an error
+            if (!product_id) {
+                console.error("Product ID is missing in the URL!");
+                alert("Product ID is missing. Please check the URL.");
+                return;
+            }
+    
+            $scope.baseurl = config.baseurl;
+    
+            // Fetch product details by ID
+            $scope.fetchProductDetails = function(id) {
+                var urlconfig = {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                };
+    
+                console.log("Fetching product details for ID:", id);
+    
+                // Fetch product data by ID from the API
+                $http.get(`${$scope.baseurl}product/products/${id}/`, urlconfig)
+                    .then(function(response) {
+                        console.log("API Response:", response);
+    
+                        // Assuming the product data is under response.data.product
+                        $scope.product = response.data.product;  // Store the product data in $scope.product
+    
+                        console.log("Product data fetched:", $scope.product);  // Log the product data
+                    })
+                    .catch(function(error) {
+                        console.error("Error fetching product details:", error);
+                        alert("Failed to fetch product details. Please try again.");
+                    });
+            };
+    
+            // Call fetchProductDetails with the extracted product_id
+            $scope.fetchProductDetails(product_id);
+    
+            // Submit the product data (for updating)
+            $scope.submitProduct = function() {
+                console.log("Submitting product data:", $scope.product);
+    
+                // Make sure the product data is valid before submission
+                if (!$scope.product.product_name || !$scope.product.unit) {
+                    console.error("Product name or unit is missing!");
+                    alert("Product name and unit are required.");
+                    return;
+                }
+    
+                $http.put(`${$scope.baseurl}product/products/${product_id}/`, $scope.product)
+                    .then(function(response) {
+                        console.log("Product updated successfully:", response.data);
+                        alert("Product successfully updated!");
+                        // Optionally, redirect after successful update
+                        window.location.href = 'product.html';  // Change this if needed
+                    })
+                    .catch(function(error) {
+                        console.error("Failed to update product:", error);
+                        alert("Failed to update the product. Please try again.");
+                    });
+            };
+        });
+    </script>
+    
+  <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a> -->
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+
+</body>
+
+</html>

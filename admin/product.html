@@ -396,8 +396,8 @@
                     <td>{{product.category}}</td>
                     <td>{{product.subcategory}}</td>
                     <!-- <th><a href="#" ng-click="onedit(data)" >Edit</a></th> -->
-                    <th><a href="editproduct.html?product_id={{data.id}}" >Edit</a></th> 
-                    <th><a href="#" ng-click="ondelete(data)" >Delete</a></th>
+                    <th><a href="editproduct.html?product_id={{product.id}}" >Edit</a></th> 
+                    <td><a href="#" ng-click="ondelete(product)">Delete</a></td>
 
                 </tr>
                 </tbody>
@@ -411,175 +411,39 @@
     
     <!-- Modals for the webpage come here -->
     <!-- modal starts-->
-    <div class="modal inmodal" id="editform" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog">
-          <div class="modal-content animated fadeIn">
-              <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal"><span
-                          aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                  <img src="./assets/img/iamstockbot.png" class="ml-3">
-                 
-
-              </div>
-              <div class="modal-body">
-                  <!--modal form section starts-->
-                  <div class="form">
-                      <h3> Edit Property</h3>
-                      <p> Please select and edit Property <details></details></p>
-                      <form name="myForm">
-                          <div class="form-group">
-                              <label for="stockname">Property Name</label>
-
-                              <input type="text" min="0" max="100" class="form-control"
-                              ng-model="data.property_name" name="percentage" value="data.property_name" required>
-
-                          </div>
+        
                           
-                          <div class="form-group">
-
-                              <label for="stockname">City</label>
-
-                              <input type="text" min="0" max="100" class="form-control"
-                              ng-model="data.city" name="percentage" value="data.city" required>
-
-                          </div>
-
-                          <div class="form-group">
-
-                              <label for="stockname">State</label>
-
-                              <input type="text" min="0" max="100" class="form-control"
-                              ng-model="data.state" name="percentage" value="data.state" required>
-
-                          </div>
-                          <button type="submit" ng-click="oneditsubmit(data)"
-                              class="btn btn-primary block full-width m-b">Submit</button>
-                      </form>
-                  </div>
-              </div>
-              <div class="modal-footer">
-
-              </div>
-          </div>
-      </div>
-  </div>
-
-                          <!-- <div class="form-group">
-
-                            <label for="stockname">Password:</label>
   
-                            <input type="text" min="0" max="100" class="form-control"
-                            ng-model="data.password" name="percentage" value="data.password" required>
-  
-                        </div>
-
-                          <div class="form-group">
-
-                            <label for="stockname">City:</label>
-
-                            <input type="text" min="0" max="100" class="form-control"
-                            ng-model="data.city" name="percentage" value="data.city" required>
-
-                        </div>
-                        
-                        <div class="form-group">
-
-                          <label for="stockname">Mobile No:</label>
-
-                          <input type="text" min="0" max="100" class="form-control"
-                          ng-model="data.mobile_number" name="percentage" value="data.mobile_number" required>
-
-                      </div>
-
-                      <div class="form-group">
-
-                        <label for="stockname">Total Sale:</label>
-
-                        <input type="text" min="0" max="100" class="form-control"
-                        ng-model="data.total_sales" name="percentage" value="data.total_sales" required>
-
-                    </div> -->
-                          
-              
-                          
-  <!-- Modals for the webpage come here -->
-    <!-- modal starts-->
-    <div class="modal inmodal" id="addform" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog">
-          <div class="modal-content animated fadeIn">
-              <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal"><span
-                          aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                  <img src="./assets/img/iamstockbot.png" class="ml-3">
-                 
-
-              </div>
-              <div class="modal-body">
-                  <!--modal form section starts-->
-                  <div class="form">
-                      <h3> Add Product</h3>
-                      <p> Please select and add the product Deatils.</p>
-                      <form name="myForm">
-                        <div class="form-group">
-                            <label for="stockname">Product Name</label>
-
-                            <input type="text" min="0" max="100" class="form-control"
-                            ng-model="data.product_name" name="percentage" value="data.product_name" required>
-
-                        </div>
-                        
-                        <div class="form-group">
-
-                            <label for="stockname">City</label>
-
-                            <input type="text" min="0" max="100" class="form-control"
-                            ng-model="data.city" name="percentage" value="data.city" required>
-
-                        </div>
-
-                        
-                          <button type="submit" ng-click="onsubmit(data)"
-                              class="btn btn-primary block full-width m-b">Submit</button>
-                      </form>
-                  </div>
-              </div>
-              <div class="modal-footer">
-
-              </div>
-          </div>
-      </div>
-  </div>
    <!-- Modals for the webpage come here -->
   <!-- modal starts-->
-  <div class="modal inmodal" id="deleteform" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog">
-          <div class="modal-content animated fadeIn">
-              <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal"><span
-                          aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                  <img src="./assets/img/iamstockbot.png" class="ml-3">
-                 
-
+  <div class="modal fade" id="deleteform" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated fadeIn">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <img src="./assets/img/iamstockbot.png" class="ml-3">
+            </div>
+            <div class="modal-body">
+              <div class="form">
+                <h3>Delete Product</h3>
+                <p>Please confirm if you would like to delete the following product.</p>
+            
+                <p>Product Name: {{product.product_name}}</p>
+                <p>Product ID: {{product.id}}</p>
+            
+                <!-- Trigger the delete function with the correct id -->
+                <button type="submit" ng-click="delete(product.id)" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-secondary" ng-click="closeModal()">Cancel</button>
               </div>
-              <div class="modal-body">
-                <div class="form">
-                  <h3>Delete product</h3>
-                  <p>Please confirm if you would like to delete the following product.</p>
-                  <p>Product ID: {{data.id}}</p>
-
-                  <!-- Trigger the delete function with the correct id -->
-                  <button type="submit" ng-click="delete(data.id)" class="btn btn-primary">Submit</button>
-                  <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancel</button>
-
-                </div>
-            </div>            
-              <div class="modal-footer">
-
-              </div>
-          </div>
-      </div>
-  </div>
-
+                
+            </div>
+            </div>
+            <div class="modal-footer">
+                <!-- You may add footer actions here if needed -->
+            </div>
+        </div>
+    </div>
+</div>
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
