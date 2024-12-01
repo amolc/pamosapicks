@@ -74,15 +74,15 @@ app.controller('subcategoryCtrl', function ($scope, $http, $window, $location, $
     };
 
     // Update a category
-    $scope.update = function (id) {
-        if (!id) {
+    $scope.update = function (subcategory_id) {
+        if (!subcategory_id) {
             alert("Invalid ID!");
             return;
         }
 
         console.log("Updating category:", $scope.data);
 
-        $http.patch(`${config.baseurl}category/category/${id}/`, $scope.data)
+        $http.patch(`${config.baseurl}subcategory/subcategory/${subcategory_id}/`, $scope.data)
             .then(function (response) {
                 if (response.data.status === 'false') {
                     console.error("Error updating category:", response.data.message);
@@ -98,36 +98,38 @@ app.controller('subcategoryCtrl', function ($scope, $http, $window, $location, $
     };
 
     // Delete a product
-    $scope.delete = function (id) {
-        if (!id) {
-            alert("Invalid  ID!");
+    $scope.deleteSubcategory = function (subcategory_id) {
+        if (!subcategory_id) {
+            alert("Invalid Subcategory ID!");
             return;
         }
-
-        if (!confirm("Are you sure you want to delete this ?")) {
+    
+        // Confirmation dialog
+        if (!confirm("Are you sure you want to delete this subcategory?")) {
             return;
         }
-
-        $http.delete(`${config.baseurl}category/delete-category/${id}/`)
+    
+        // Make the HTTP DELETE request
+        $http.delete(`${config.baseurl}subcategory/delete-subcategory/${subcategory_id}/`)
             .then(function (response) {
                 if (response.data.status === 'false') {
-                    alert("Failed to delete category: " + response.data.message);
+                    alert("Failed to delete subcategory: " + response.data.message);
                 } else {
-                    alert("Category deleted successfully!");
-                    $scope.init(); // Refresh the product list
-                    $("#deleteform").modal("hide");
+                    alert("Subcategory deleted successfully!");
+                    $scope.init(); // Refresh the list or page content
+                    $("#deleteform").modal("hide"); // Close the modal
                 }
             })
             .catch(function (error) {
-                console.error("Error deleting product:", error);
-                alert("An error occurred while deleting the product. Please try again.");
+                console.error("Error deleting subcategory:", error);
+                alert("An error occurred while deleting the subcategory. Please try again.");
             });
     };
 
     // Open the delete modal and bind the selected product data
     $scope.ondelete = function (data) {
         console.log("Delete modal triggered with data:", data);
-        $scope.category = angular.copy(data); // Bind the product data to $scope.product
+        $scope.subcategory = angular.copy(data); 
         $("#deleteform").modal("show"); // Show the delete confirmation modal
     };
 

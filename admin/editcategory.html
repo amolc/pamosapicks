@@ -40,7 +40,7 @@
   <script src="./angular/app.js"></script>
   <script src="./angular/service.js"></script>
 
-  <script src="./angular/addcategoryCtrl.js"></script>
+  <script src="./angular/editcategoryCtrl.js"></script>
 
   <!-- Mainly scripts -->
   <script src="./assets/js/jquery-3.1.1.min.js"></script>
@@ -292,7 +292,7 @@
 }
 </style>
 
-<body ng-app="website" ng-controller="addcategoryCtrl" ng-init="init()">
+<body ng-app="website" ng-controller="editcategoryCtrl" ng-init="init()">
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
@@ -472,8 +472,6 @@
               <h6>{{agentInfo.first_name || 'Agent Name'}} {{agentInfo.last_name || ''}}</h6>
               <span>{{agentInfo.role || 'Agent Role'}}</span> <!-- Assuming 'role' field exists -->
             </li>
-
-
             <li>
               <hr class="dropdown-divider">
             </li>
@@ -538,54 +536,31 @@
           <i class="bi bi-menu-button-wide"></i><span>Pages</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav" class="nav-content" data-bs-parent="#sidebar-nav">
-          <!-- <li>
-            <a href="enquiry.html">
-              <i class="bi bi-circle"></i><span>Enquiry</span>
-            </a>
-          </li>
-
           
-         
-
-          <li>
-            <a href="customer.html">
-              <i class="bi bi-circle"></i><span>Customer</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="destinations.html">
-              <i class="bi bi-circle"></i><span>Destinations</span>
-            </a>
-          </li> -->
 
           <li>
             <a href="product.html">
               <i class="bi bi-circle"></i><span>Product</span>
             </a>
           </li>
+
           <li>
             <a href="category.html">
               <i class="bi bi-circle"></i><span>Category</span>
             </a>
           </li>
+
           <li>
             <a href="subcategory.html">
               <i class="bi bi-circle"></i><span>Subcategory</span>
             </a>
           </li>
-
-        
-
-          <!-- <li>
-            <a href="property_listing.html">
-              <i class="bi bi-circle"></i><span>Property List</span>
-            </a>
-          </li> -->
         </ul>
       </li><!-- End Components Nav -->
 
-       </ul>
+      
+
+    </ul>
 
   </aside>
   <main id="main" class="main">
@@ -600,104 +575,133 @@
       </nav>
     </div>
     <div class="form-container">
-      <div class="form-header">ADD CATEGORY</div>
-      <form ng-submit="submitCategory()">
-        <div class="form-group form-group-full">
-          <input type="text" id="category" placeholder="Category Name" ng-model="category.category_name" />
-      </div>
-      
-         
-          <div class="form-group">
-            <input type="text"  placeholder="Description" ng-model="category.category_description">
-          </div>
-          
-          <div class="form-group">
-              <input type="text"  placeholder="Active" ng-model="category.IsActive">
+        <div class="form-header">
+            EDIT CATEGORY
+        </div>
+        <form ng-submit="submitCategory()">
+            <div class="form-group form-group-full">
+                <input 
+                    type="text" 
+                    id="category" 
+                    placeholder="Category Name" 
+                    ng-model="category.category_name" 
+                    required 
+                />
             </div>
-  
-      
-  
-          
-          <!-- <div class="form-group double-input">
-            <input type="file" id="bedroom1-images" accept="image/*" onchange="convertToBase64('bedroom1-images', 'property.bedroom1_image')">
-
-            <input type="file" id="bedroom2-images" accept="image/*" onchange="convertToBase64('bedroom2-images', 'property.bedroom2_image')">
-        </div> -->
-
         
-  
-          <div class="form-group form-group-full">
-              <input type="number"  placeholder="Category" ng-model="category.category" required>
+            <div class="form-group form-group-full">
+                <textarea 
+                    id="description" 
+                    placeholder="Description" 
+                    ng-model="category.category_description" 
+                    required
+                ></textarea>
             </div>
-  
-              </div>
-          </div>                        
-          <button type="submit" class="submit-btn">SUBMIT</button>
-      </form>
-  </div>  
-  </main>
-  <footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; Copyright <strong><span>StayVillas</span></strong>. All Rights Reserved
-    </div>
-    <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-    </div>
-  </footer>
-  <script>
-        // Attach function to window for global access
-        window.convertToBase64 = function(inputId, modelPath) {
-            const fileInput = document.getElementById(inputId);
-            const file = fileInput.files[0];
+        
+            <div class="form-group">
+                <input 
+                    type="text" 
+                    placeholder="Active (true/false)" 
+                    ng-model="category.is_active" 
+                    required 
+                />
+            </div>
+        
+            <div class="form-group">
+                <input 
+                    type="date" 
+                    placeholder="Created At" 
+                    ng-model="category.created_on" 
+                    required 
+                />
+            </div>
+        
+            <button type="submit" class="submit-btn">SUBMIT</button>
+        </form>
+        </div>
     
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    const base64String = event.target.result;
-                    console.log(`Base64 for ${inputId}:`, base64String); // Log the Base64 string
+        </div>  
+    <footer id="footer" class="footer">
+        <div class="copyright">
+            &copy; Copyright <strong><span>StayVillas</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
+    </footer>
     
-                    // Get AngularJS scope
-                    const scope = angular.element(document.querySelector('[ng-controller="addpropertyCtrl"]')).scope();
-                    scope.$apply(function() {
-                        const propertyName = propertyNameFromModelPath(modelPath);
-                        console.log("Setting property:", propertyName, "to", base64String); // Log the property being set
-                        scope.property[propertyName] = base64String;
-                        console.log("Updated property:", scope.property); // Log the entire property object
-                    });
-                };
-                reader.readAsDataURL(file);
-            } else {
-                console.error("No file selected for:", inputId); // Log if no file is selected
+    <script>
+        angular.module('myApp', []).controller("editproductCtrl", function($scope, $http, $location, config) {
+            // Extract the category ID from the URL using $location.search()
+            var category_id = $location.search().category_id; // Get category_id from query string
+    
+            console.log("Category ID from URL:", category_id); // Log the category_id to verify
+    
+            // If category_id is missing in the URL, show an error
+            if (!category_id) {
+                console.error("Category ID is missing in the URL!");
+                alert("Category ID is missing. Please check the URL.");
+                return;
             }
-        };
     
-        function propertyNameFromModelPath(modelPath) {
-            return modelPath.split('.').pop();
-        }
+            $scope.baseurl = config.baseurl;
     
-        // AngularJS controller definition
-        angular.module('myApp', []).controller("addpropertyCtrl", function($scope) {
-            // Initialize your property object
-            $scope.property = {
-                bedroom1_image_url: '',
-                bedroom2_image_url: '',
-                bedroom3_image_url: '',
-                bedroom4_image_url: '',
-                other_images: '',
-                img:'',
-                img3:''
+            // Fetch category details by ID
+            $scope.fetchCategoryDetails = function(category_id) {
+                var urlconfig = {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                };
+    
+                console.log("Fetching category details for ID:", category_id);
+    
+                // Fetch category data by ID from the API
+                $http.get(`${$scope.baseurl}category/get-category/${category_id}/`, urlconfig)
+                    .then(function(response) {
+                        console.log("API Response:", response);
+    
+                        // Assuming the category data is under response.data.category
+                        $scope.category = response.data.category; // Store the category data in $scope.category
+    
+                        console.log("Category data fetched:", $scope.category); // Log the category data
+                    })
+                    .catch(function(error) {
+                        console.error("Error fetching category details:", error);
+                        alert("Failed to fetch category details. Please try again.");
+                    });
             };
     
-            // Add your submitProperty function here
-            $scope.submitProperty = function() {
-                console.log("Property confirmed:", $scope.property);
+            // Call fetchCategoryDetails with the extracted category_id
+            $scope.fetchCategoryDetails(category_id);
+    
+            // Submit the category data (for updating)
+            $scope.submitCategory = function() {
+                console.log("Submitting category data:", $scope.category);
+    
+                // Make sure the category data is valid before submission
+                if (!$scope.category.category_name ) {
+                    console.error("Category name or unit is missing!");
+                    alert("Category name and unit are required.");
+                    return;
+                }
+    
+                $http.put(`${$scope.baseurl}category/update-category/${category_id}/`, $scope.category)
+                    .then(function(response) {
+                        console.log("Category updated successfully:", response.data);
+                        alert("Category successfully updated!");
+                        // Optionally, redirect after successful update
+                        window.location.href = 'category.html'; // Change this if needed
+                    })
+                    .catch(function(error) {
+                        console.error("Failed to update category:", error);
+                        alert("Failed to update the category. Please try again.");
+                    });
             };
         });
-   </script>
+    </script>
+    
+    
   <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a> -->
 
   <!-- Vendor JS Files -->

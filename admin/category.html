@@ -393,8 +393,8 @@
                     <td>{{product.IsActive}}</td>
                     
                     <!-- <th><a href="#" ng-click="onedit(data)" >Edit</a></th> -->
-                    <th><a href="editproduct.html?product_id={{product.id}}" >Edit</a></th> 
-                    <td><a href="#" ng-click="ondelete(product)">Delete</a></td>
+                    <th><a href="editcategory.html?category_id={{category.id}}" >Edit</a></th> 
+                    <td><a href="#" ng-click="ondelete(category)">Delete</a></td>
 
                 </tr>
                 </tbody>
@@ -422,14 +422,13 @@
             </div>
             <div class="modal-body">
               <div class="form">
-                <h3>Delete Product</h3>
-                <p>Please confirm if you would like to delete the following product.</p>
+                <h3>Delete Category</h3>
+                <p>Please confirm if you would like to delete the following category.</p>
             
-                <p>Product Name: {{product.product_name}}</p>
-                <p>Product ID: {{product.id}}</p>
+                <p>category ID: {{category.id}}</p>
             
                 <!-- Trigger the delete function with the correct id -->
-                <button type="submit" ng-click="delete(product.id)" class="btn btn-primary">Submit</button>
+                <button type="submit" ng-click="delete(category.id)" class="btn btn-primary">Submit</button>
                 <button type="button" class="btn btn-secondary" ng-click="closeModal()">Cancel</button>
               </div>
                 
