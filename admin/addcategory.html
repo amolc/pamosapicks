@@ -626,37 +626,26 @@
       <form ng-submit="submitCategory()">
         <div class="form-group form-group-full">
           <input type="text" id="category" placeholder="Category Name" ng-model="category.category_name" />
-      </div>
-      
-         
-          <div class="form-group">
-            <input type="text"  placeholder="Description" ng-model="category.category_description">
-          </div>
-          
-          <div class="form-group">
-              <input type="text"  placeholder="Active" ng-model="category.IsActive">
-            </div>
-  
-      
-  
-          
-          <!-- <div class="form-group double-input">
-            <input type="file" id="bedroom1-images" accept="image/*" onchange="convertToBase64('bedroom1-images', 'property.bedroom1_image')">
+          <!-- <input type="text" id="property_title" placeholder="Unit" ng-model="property.title" /> -->
+        </div>
 
-            <input type="file" id="bedroom2-images" accept="image/*" onchange="convertToBase64('bedroom2-images', 'property.bedroom2_image')">
-        </div> -->
 
-        
-  
-          <div class="form-group form-group-full">
-              <input type="number"  placeholder="Category" ng-model="category.category" required>
-            </div>
-  
-              </div>
-          </div>                        
-          <button type="submit" class="submit-btn">SUBMIT</button>
-      </form>
-  </div>  
+        <div class="form-group form-group-full">
+          <textarea id="description" placeholder="Description" ng-model="category.description" required></textarea>
+        </div>
+        <div class="form-group double-input">
+          <input type="file" id="category-image" accept="image/*"
+            onchange="convertToBase64('category-image', 'category.category_image')">
+        </div>
+        <div class="form-group">
+          <input type="text" id="state" placeholder="Active" ng-model="category.is_active" required>
+        </div>
+
+    </div>
+    </div>
+    <button type="submit" ng-disabled="isSubmitting" ng-click="submitCategory()">Submit</button>
+    </form>
+    </div>
   </main>
   <footer id="footer" class="footer">
     <div class="copyright">
