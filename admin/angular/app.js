@@ -1,4 +1,4 @@
-var app = angular.module('airport', ['angular-storage', 'angularPayments','chart.js']);
+var app = angular.module('website', ['angular-storage', 'angularPayments','chart.js']);
 app.config(['storeProvider', function(storeProvider) {
     storeProvider.setStore('sessionStorage');
 

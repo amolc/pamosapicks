@@ -1,4 +1,5 @@
 app.controller("editsubcategoryCtrl", function ($scope, $http, $window, $location, config) {
+    // Get subcategory_id from URL params
     var urlParams = new URLSearchParams(window.location.search);
     var subcategoryId = urlParams.get('subcategory_id');
     $scope.baseurl = config.baseurl;
@@ -8,11 +9,11 @@ app.controller("editsubcategoryCtrl", function ($scope, $http, $window, $locatio
     // Initialize isSubmitting to false
     $scope.isSubmitting = false;
 
-    // Initialization function to fetch subcategory details
+    // Initialize function to fetch subcategory details
     $scope.init = function () {
         console.log("Initializing subcategory details...");
         if (subcategoryId) {
-            $scope.getSubcategoryIdDetails(subcategoryId); // Updated function name
+            $scope.getSubcategoryIdDetails(subcategoryId); // Call function to fetch subcategory data
         } else {
             console.error("Subcategory ID is missing from the URL!");
         }
@@ -25,33 +26,32 @@ app.controller("editsubcategoryCtrl", function ($scope, $http, $window, $locatio
                 "Content-Type": "application/json"
             }
         };
-
-        $http.get($scope.baseurl + `subcategory/get-subcategory/${subcategoryId}`, urlconfig)
-        .then(function (response) {
-            console.log("API Response:", response.data);
-
-            // Check if data exists in the response
-            if (response.data && response.data.data) {
-                $scope.subcategory = response.data.data; // Assign API data to subcategory object
-                console.log("Subcategory fetched:", $scope.subcategory);
-            } else {
-                console.error("Invalid data structure:", response.data);
-            }
-        })
+    
+        // Ensure the API URL is correct and includes the 'subcategoryId'
+        $http.get($scope.baseurl + `subcategory/get-subcategory/${id}/`, urlconfig)
+            .then(function (response) {
+                console.log("API Response:", response.data);
+    
+                if (response.data && response.data.data) {
+                    $scope.subcategory = response.data.data; // Assign the API response data to the subcategory object
+                    console.log("Subcategory fetched:", $scope.subcategory);
+                } else {
+                    console.error("Invalid data structure:", response.data);
+                }
+            })
             .catch(function (error) {
                 console.error("Error fetching subcategory details:", error);
                 alert("Failed to fetch subcategory details. Please try again.");
             });
     };
-
+    
     // Initialize the form fields with default values
     $scope.subcategory = {
         subcategory_name: '',
         subcategory_description: '',
         created_at: '',
         category: '', // Default to an empty string
-        is_active: '',
-        // id: ''
+        is_active: ''
     };
 
     // Submit updated subcategory data
@@ -62,15 +62,17 @@ app.controller("editsubcategoryCtrl", function ($scope, $http, $window, $locatio
 
         $scope.isSubmitting = true;
 
+        // Prepare the updated subcategory data
         const subcategoryData = {
             subcategory_name: $scope.subcategory.subcategory_name,
             subcategory_description: $scope.subcategory.subcategory_description,
             created_at: $scope.subcategory.created_at,
             category: $scope.subcategory.category,
-            // id: $scope.subcategory.id
+            // no need to include 'id' as it is handled by the URL parameter
         };
 
-        $http.patch($scope.baseurl + `subcategory/get-subcategory/${subcategoryId}/`, subcategoryData)
+        // Update the subcategory using PATCH request
+        $http.patch($scope.baseurl + `subcategory/update-subcategory/${subcategoryId}/`, subcategoryData)
             .then(function (response) {
                 console.log("Subcategory updated successfully:", response.data);
                 alert("Subcategory successfully updated!");

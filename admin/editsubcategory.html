@@ -580,8 +580,8 @@
         </div>
         <form ng-submit="submitSubcategory()">
             <div class="form-group form-group-full">
-                <input type="text"  placeholder="Subcategory Name" ng-model="subcategory.subcategory_name" required />
-                <input type="text"  placeholder="Description" ng-model="subcategory_description" required />
+                <input type="text" placeholder="Subcategory Name" ng-model="subcategory.subcategory_name" required />
+                <input type="text" placeholder="Description" ng-model="subcategory.subcategory_description" required />
             </div>
         
             <div class="form-group">
@@ -589,16 +589,13 @@
                 <input type="text" placeholder="is_active" ng-model="subcategory.is_active" required />
             </div>
         
-            
-        
-    
-        
             <div class="form-group form-group-full">
                 <input type="number" placeholder="Category" ng-model="subcategory.category" required />
             </div>
         
             <button type="submit" ng-disabled="isSubmitting">Submit</button>
         </form>
+        
         </div>
     
         </div>  

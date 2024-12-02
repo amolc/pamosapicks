@@ -279,17 +279,18 @@
     font-size: 13px;
     color: #012970;
   }
-  #main {
-  margin-top: 60px;
-  padding: 20px 30px;
-  transition: all 0.3s;
-}
 
-@media (max-width: 1199px) {
   #main {
-    padding: 20px;
+    margin-top: 60px;
+    padding: 20px 30px;
+    transition: all 0.3s;
   }
-}
+
+  @media (max-width: 1199px) {
+    #main {
+      padding: 20px;
+    }
+  }
 </style>
 
 <body ng-app="website" ng-controller="editcategoryCtrl" ng-init="init()">
@@ -472,6 +473,8 @@
               <h6>{{agentInfo.first_name || 'Agent Name'}} {{agentInfo.last_name || ''}}</h6>
               <span>{{agentInfo.role || 'Agent Role'}}</span> <!-- Assuming 'role' field exists -->
             </li>
+
+
             <li>
               <hr class="dropdown-divider">
             </li>
@@ -536,29 +539,73 @@
           <i class="bi bi-menu-button-wide"></i><span>Pages</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav" class="nav-content" data-bs-parent="#sidebar-nav">
-          
+          <!-- <li>
+            <a href="enquiry.html">
+              <i class="bi bi-circle"></i><span>Enquiry</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="cancellation.html">
+              <i class="bi bi-circle"></i><span>Cancellation</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="property_manager.html">
+              <i class="bi bi-circle"></i><span>Property Manager</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="booking.html">
+              <i class="bi bi-circle"></i><span>Booking</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="agent.html">
+              <i class="bi bi-circle"></i><span>Agent</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="investor.html">
+              <i class="bi bi-circle"></i><span>Investor</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="customer.html">
+              <i class="bi bi-circle"></i><span>Customer</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="destinations.html">
+              <i class="bi bi-circle"></i><span>Destinations</span>
+            </a>
+          </li> -->
 
           <li>
             <a href="product.html">
               <i class="bi bi-circle"></i><span>Product</span>
             </a>
           </li>
-
           <li>
             <a href="category.html">
               <i class="bi bi-circle"></i><span>Category</span>
             </a>
           </li>
-
           <li>
             <a href="subcategory.html">
               <i class="bi bi-circle"></i><span>Subcategory</span>
             </a>
           </li>
+
+
         </ul>
       </li><!-- End Components Nav -->
-
-      
 
     </ul>
 
@@ -574,134 +621,60 @@
         </ol>
       </nav>
     </div>
-    <div class="form-container">
-        <div class="form-header">
-            EDIT CATEGORY
+    <div class="modal-dialog">
+      <div class="modal-body container" style="border:1px solid red;">
+        <div class="row">
+      <div class="form-container">
+      <div class="modal-content animated fadeIn">
+
+  
+    <div class="form-header">EDIT CATEGORY</div>
+
+      <form ng-submit="submitCategory()">
+        <div class="form-group">
+          <label for="category">Category Name</label>
+          <input type="text" id="category" placeholder="Enter category name" ng-model="category.category_name" />
         </div>
-        <form ng-submit="submitCategory()">
-            <div class="form-group form-group-full">
-                <input 
-                    type="text" 
-                    id="category" 
-                    placeholder="Category Name" 
-                    ng-model="category.category_name" 
-                    required 
-                />
-            </div>
-        
-            <div class="form-group form-group-full">
-                <textarea 
-                    id="description" 
-                    placeholder="Description" 
-                    ng-model="category.category_description" 
-                    required
-                ></textarea>
-            </div>
-        
-            <div class="form-group">
-                <input 
-                    type="text" 
-                    placeholder="Active (true/false)" 
-                    ng-model="category.is_active" 
-                    required 
-                />
-            </div>
-        
-            <div class="form-group">
-                <input 
-                    type="date" 
-                    placeholder="Created At" 
-                    ng-model="category.created_on" 
-                    required 
-                />
-            </div>
-        
-            <button type="submit" class="submit-btn">SUBMIT</button>
-        </form>
+
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input type="text" id="description" placeholder="Enter description" ng-model="category.category_description" required></textarea>
         </div>
-    
-        </div>  
-    <footer id="footer" class="footer">
-        <div class="copyright">
-            &copy; Copyright <strong><span>StayVillas</span></strong>. All Rights Reserved
+      
+        <div class="form-group">
+          <label for="category-image">Category Image</label>
+          <input type="file" id="category-image" accept="image/*"
+            onchange="convertToBase64('category-image', 'category.category_image')">
         </div>
-        <div class="credits">
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      
+        <div class="form-group">
+          <label for="is-active">Active</label>
+          <select id="is-active" ng-model="category.is_active" required>
+            <option value="" disabled selected>Select active status</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+          </select>
         </div>
-    </footer>
-    
-    <script>
-        angular.module('myApp', []).controller("editproductCtrl", function($scope, $http, $location, config) {
-            // Extract the category ID from the URL using $location.search()
-            var category_id = $location.search().category_id; // Get category_id from query string
-    
-            console.log("Category ID from URL:", category_id); // Log the category_id to verify
-    
-            // If category_id is missing in the URL, show an error
-            if (!category_id) {
-                console.error("Category ID is missing in the URL!");
-                alert("Category ID is missing. Please check the URL.");
-                return;
-            }
-    
-            $scope.baseurl = config.baseurl;
-    
-            // Fetch category details by ID
-            $scope.fetchCategoryDetails = function(category_id) {
-                var urlconfig = {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                };
-    
-                console.log("Fetching category details for ID:", category_id);
-    
-                // Fetch category data by ID from the API
-                $http.get(`${$scope.baseurl}category/get-category/${category_id}/`, urlconfig)
-                    .then(function(response) {
-                        console.log("API Response:", response);
-    
-                        // Assuming the category data is under response.data.category
-                        $scope.category = response.data.category; // Store the category data in $scope.category
-    
-                        console.log("Category data fetched:", $scope.category); // Log the category data
-                    })
-                    .catch(function(error) {
-                        console.error("Error fetching category details:", error);
-                        alert("Failed to fetch category details. Please try again.");
-                    });
-            };
-    
-            // Call fetchCategoryDetails with the extracted category_id
-            $scope.fetchCategoryDetails(category_id);
-    
-            // Submit the category data (for updating)
-            $scope.submitCategory = function() {
-                console.log("Submitting category data:", $scope.category);
-    
-                // Make sure the category data is valid before submission
-                if (!$scope.category.category_name ) {
-                    console.error("Category name or unit is missing!");
-                    alert("Category name and unit are required.");
-                    return;
-                }
-    
-                $http.put(`${$scope.baseurl}category/update-category/${category_id}/`, $scope.category)
-                    .then(function(response) {
-                        console.log("Category updated successfully:", response.data);
-                        alert("Category successfully updated!");
-                        // Optionally, redirect after successful update
-                        window.location.href = 'category.html'; // Change this if needed
-                    })
-                    .catch(function(error) {
-                        console.error("Failed to update category:", error);
-                        alert("Failed to update the category. Please try again.");
-                    });
-            };
-        });
-    </script>
-    
-    
+          <button type="submit" ng-disabled="isSubmitting" ng-click="submitCategory()">Submit</button>
+
+        
+      </div>
+      </div>
+    </div>
+    </div>
+    </form>
+    </div>
+  </main>
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>Ecommerce Application</span></strong>. All Rights Reserved
+    </div>
+
+  </footer>
+  <script>
+  
+  </script>
   <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a> -->
 
   <!-- Vendor JS Files -->
