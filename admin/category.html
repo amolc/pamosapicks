@@ -165,7 +165,7 @@ button[type="submit"]:hover {
 
 
 
-<body ng-app="website" ng-controller="categoryCtrl" ng-init="init()">
+<body ng-app="airport" ng-controller="categoryCtrl" ng-init="init()">
 
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
@@ -477,16 +477,14 @@ button[type="submit"]:hover {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr ng-repeat="category in dataset">
-                    <td>{{category.id}}</td>
-                    <td>{{category.category_name}}</td>
-                    <td>{{category.category_description}}</td>
-                    <td>{{category.created_at}}</td>
-                    <td>{{product.IsActive}}</td>
-
-                    <!-- <th><a href="#" ng-click="onedit(data)" >Edit</a></th> -->
-                    <th><a href="editcategory.html?category_id={{category.id}}" >Edit</a></th> 
-                    <td><a href="#" ng-click="ondelete(category)">Delete</a></td>
+                  <tr ng-repeat="data in dataset">
+                    <td>{{data.id}}</td>
+                    <td>{{data.category_name}}</td>
+                    <td>{{data.category_description}}</td>
+                    <td>{{data.created_at}}</td>
+                    <td>{{data.IsActive}}</td>
+                    <td><a href="#" ng-click="onedit(data)">Edit</a></td>
+                    <td><a href="#" ng-click="ondelete(data)">Delete</a></td>
 
                   </tr>
                 </tbody>
@@ -496,6 +494,61 @@ button[type="submit"]:hover {
         </div>
       </div>
     </section>
+
+
+     <!-- Modals for the webpage come here -->
+    <div class="modal fade" id="editform" tabindex="-1" role="dialog" aria-labelledby="editform"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content animated fadeIn">
+          <div class="modal-header">
+            <img src="./assets/img/iamstockbot.png" class="ml-3">
+            <button type="button" class="close" data-dismiss="modal" ng-click="closeaddModal()"> <i class="fas fa-times" style="color: #000;">*</i></button>
+        
+          </div>
+          <div class="modal-body container" style="border:1px solid red;">
+            <div class="row">
+        
+              <form ng-submit="submitCategory(category)" enctype="multipart/form-data">
+                <div class="form-group">
+                  <label for="category">Category Name</label>
+                  <input type="text" id="category" placeholder="Enter category name" ng-model="category.category_name" />
+                </div>
+              
+                <div class="form-group">
+                  <label for="description">Description</label>
+                  <textarea id="description" placeholder="Enter description" ng-model="category.description" required></textarea>
+                </div>
+              
+                <div class="form-group">
+                  <label for="category-image">Category Image</label>
+                  <input type="file" id="category-image" accept="image/*"
+                    onchange="convertToBase64('category-image', 'category.category_image')">
+                </div>
+              
+                <div class="form-group">
+                  <label for="is-active">Active</label>
+                  <select id="is-active" ng-model="category.is_active" required>
+                    <option value="" disabled selected>Select active status</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                  </select>
+                </div>
+              
+                <div class="form-group">
+                  <button type="submit" ng-disabled="isSubmitting" ng-click="oneditsubmit(category)">Submit</button>
+                </div>
+              </form>
+              
+              </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <!-- You may add footer actions here if needed -->
+        </div>
+      </div>
+    </div>
+
 
 
     <!-- Modals for the webpage come here -->

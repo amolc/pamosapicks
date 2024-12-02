@@ -1,4 +1,5 @@
 app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce, $timeout, store, config) {
+    
     $scope.data = {};
     $scope.dataset = [];
     $scope.category = {
@@ -8,10 +9,6 @@ app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce
         is_active: ''
     };
 
-    // Initialize the controller
-    $scope.init = function () {
-        $scope.list();
-    };
 
     // Fetch the list of products
     $scope.list = function () {
@@ -35,8 +32,9 @@ app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce
                 console.error("Error fetching product list:", error);
             });
     };
-    
-    $scope.getcategory = function (category_id) {
+
+
+    $scope.getcategorybyid = function (category_id) {
         if (!category_id) {
             console.error("category_id is missing!");
             return;
@@ -58,8 +56,8 @@ app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce
             })
             .catch(function (error) {
                 console.error("Error fetching product:", error);
-            });
-    };
+            }); };
+
     $scope.add = function () {
         console.log("Adding category:", $scope.category);
 
@@ -78,6 +76,7 @@ app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce
             });
     };
 
+
     // Update a category
     $scope.update = function (id) {
         if (!id) {
@@ -87,7 +86,7 @@ app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce
 
         console.log("Updating category:", $scope.data);
 
-        $http.patch(`${config.baseurl}category/category/${id}/`, $scope.data)
+        $http.patch(`${config.baseurl}category/update-category/${id}/`, $scope.data)
             .then(function (response) {
                 if (response.data.status === 'false') {
                     console.error("Error updating category:", response.data.message);
@@ -129,6 +128,17 @@ app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce
             });
     };
 
+
+
+
+
+
+
+
+    $scope.init = function () {
+       $scope.list();
+    }
+
     // Open the delete modal and bind the selected product data
     $scope.ondelete = function (data) {
         console.log("Delete modal triggered with data:", data);
@@ -138,7 +148,8 @@ app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce
 
     // Open the edit modal
     $scope.onedit = function (data) {
-        $scope.data = angular.copy(data); // Copy data to prevent binding issues
+        $scope.category = angular.copy(data); // Copy data to prevent binding issues
+        console.log($scope.data)
         $("#editform").modal("show");
     };
 
@@ -156,7 +167,9 @@ app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce
     };
 
     // Edit product submit handler
-    $scope.oneditsubmit = function () {
+    $scope.oneditsubmit = function (data) {
+        console.log("are we calling the functon")
+        $scope.data = data
         if ($scope.data && $scope.data.id) {
             $scope.update($scope.data.id);
         } else {
@@ -173,9 +186,19 @@ app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce
         $("#addform").modal("hide");
     };
 
+    
 
-    // Initialize the product list on page load
+
+
+
+
+
+
+
+
+
 });
+
 
 
     // Attach function to window for global access
@@ -203,4 +226,5 @@ app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce
       function propertyNameFromModelPath(modelPath) {
         return modelPath.split('.').pop();
       }
+
     
