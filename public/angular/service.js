@@ -1,8 +1,8 @@
 app.factory('config', function() {
     return {
-        baseurl: "http://localhost:8888/1/api/",
-        orgurl: "http://localhost:8888/api/",
-        wssurl: "ws://localhost:8888/",
+        baseurl: "http://localhost:9999/1/api/",
+        orgurl: "http://localhost:9999/api/",
+        wssurl: "ws://localhost:9999/",
         orgId: "1"
     };
 })

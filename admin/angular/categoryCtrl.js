@@ -1,7 +1,12 @@
 app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce, $timeout, store, config) {
     $scope.data = {};
     $scope.dataset = [];
-    $scope.category = {};
+    $scope.category = {
+        category_name: '',
+        category_description: '',
+        category_image: '',
+        is_active: ''
+    };
 
     // Initialize the controller
     $scope.init = function () {
@@ -56,12 +61,12 @@ app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce
             });
     };
     $scope.add = function () {
-        console.log("Adding category:", $scope.data);
+        console.log("Adding category:", $scope.category);
 
-        $http.post(`${config.baseurl}category/category/`, $scope.data)
+        $http.post(`${config.baseurl}category/category/`, $scope.category)
             .then(function (response) {
                 if (response.data.status === 'false') {
-                    console.error("Error adding category:", response.data.message);
+                    console.error("Error adding category:", response.category.message);
                 } else {
                     alert("Category added successfully!");
                     $scope.init(); // Refresh the product list
@@ -137,6 +142,8 @@ app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce
         $("#editform").modal("show");
     };
 
+
+
     // Open the add modal
     $scope.addform = function () {
         $scope.data = {}; // Reset form for new product
@@ -162,6 +169,38 @@ app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce
         $("#deleteform").modal("hide");
     };
 
+    $scope.closeaddModal = function () {
+        $("#addform").modal("hide");
+    };
+
+
     // Initialize the product list on page load
-    $scope.init();
 });
+
+
+    // Attach function to window for global access
+    window.convertToBase64 = function (inputId, modelPath) {
+        const fileInput = document.getElementById(inputId);
+        const file = fileInput.files[0];
+    
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (event) {
+            const base64String = event.target.result;
+            console.log(`Base64 for ${inputId}:`, base64String); // Log the Base64 string
+    
+            // Get AngularJS scope
+            const scope = angular.element(document.querySelector('[ng-controller="categoryCtrl"]')).scope();
+            scope.category['category_image'] = base64String;
+            
+          };
+          reader.readAsDataURL(file);
+        } else {
+          console.error("No file selected for:", inputId); // Log if no file is selected
+        }
+      };
+    
+      function propertyNameFromModelPath(modelPath) {
+        return modelPath.split('.').pop();
+      }
+    

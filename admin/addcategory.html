@@ -279,17 +279,18 @@
     font-size: 13px;
     color: #012970;
   }
-  #main {
-  margin-top: 60px;
-  padding: 20px 30px;
-  transition: all 0.3s;
-}
 
-@media (max-width: 1199px) {
   #main {
-    padding: 20px;
+    margin-top: 60px;
+    padding: 20px 30px;
+    transition: all 0.3s;
   }
-}
+
+  @media (max-width: 1199px) {
+    #main {
+      padding: 20px;
+    }
+  }
 </style>
 
 <body ng-app="website" ng-controller="addcategoryCtrl" ng-init="init()">
@@ -544,8 +545,35 @@
             </a>
           </li>
 
-          
-         
+          <li>
+            <a href="cancellation.html">
+              <i class="bi bi-circle"></i><span>Cancellation</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="property_manager.html">
+              <i class="bi bi-circle"></i><span>Property Manager</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="booking.html">
+              <i class="bi bi-circle"></i><span>Booking</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="agent.html">
+              <i class="bi bi-circle"></i><span>Agent</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="investor.html">
+              <i class="bi bi-circle"></i><span>Investor</span>
+            </a>
+          </li>
 
           <li>
             <a href="customer.html">
@@ -575,17 +603,11 @@
             </a>
           </li>
 
-        
 
-          <!-- <li>
-            <a href="property_listing.html">
-              <i class="bi bi-circle"></i><span>Property List</span>
-            </a>
-          </li> -->
         </ul>
       </li><!-- End Components Nav -->
 
-       </ul>
+    </ul>
 
   </aside>
   <main id="main" class="main">
@@ -638,66 +660,13 @@
   </main>
   <footer id="footer" class="footer">
     <div class="copyright">
-      &copy; Copyright <strong><span>StayVillas</span></strong>. All Rights Reserved
+      &copy; Copyright <strong><span>Ecommerce Application</span></strong>. All Rights Reserved
     </div>
-    <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-    </div>
+
   </footer>
   <script>
-        // Attach function to window for global access
-        window.convertToBase64 = function(inputId, modelPath) {
-            const fileInput = document.getElementById(inputId);
-            const file = fileInput.files[0];
-    
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    const base64String = event.target.result;
-                    console.log(`Base64 for ${inputId}:`, base64String); // Log the Base64 string
-    
-                    // Get AngularJS scope
-                    const scope = angular.element(document.querySelector('[ng-controller="addpropertyCtrl"]')).scope();
-                    scope.$apply(function() {
-                        const propertyName = propertyNameFromModelPath(modelPath);
-                        console.log("Setting property:", propertyName, "to", base64String); // Log the property being set
-                        scope.property[propertyName] = base64String;
-                        console.log("Updated property:", scope.property); // Log the entire property object
-                    });
-                };
-                reader.readAsDataURL(file);
-            } else {
-                console.error("No file selected for:", inputId); // Log if no file is selected
-            }
-        };
-    
-        function propertyNameFromModelPath(modelPath) {
-            return modelPath.split('.').pop();
-        }
-    
-        // AngularJS controller definition
-        angular.module('myApp', []).controller("addpropertyCtrl", function($scope) {
-            // Initialize your property object
-            $scope.property = {
-                bedroom1_image_url: '',
-                bedroom2_image_url: '',
-                bedroom3_image_url: '',
-                bedroom4_image_url: '',
-                other_images: '',
-                img:'',
-                img3:''
-            };
-    
-            // Add your submitProperty function here
-            $scope.submitProperty = function() {
-                console.log("Property confirmed:", $scope.property);
-            };
-        });
-   </script>
+  
+  </script>
   <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a> -->
 
   <!-- Vendor JS Files -->
