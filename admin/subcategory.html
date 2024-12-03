@@ -481,7 +481,7 @@ button[type="submit"]:hover {
                   <tr ng-repeat="data in dataset">
                     <td>{{data.id}}</td>
                     <td>{{data.subcategory_name}}</td>
-                    <td>{{data.category_id}}</td>
+                    <td>{{data.category}}</td>
                     <td>{{data.subcategory_description}}</td>
                     <td>{{data.created_at}}</td>
                     <td>{{data.is_active}}</td>
@@ -516,10 +516,12 @@ button[type="submit"]:hover {
                   <label for="subcategory">subcategory Name</label>
                   <input type="text" id="subcategory" placeholder="Enter subcategory name" ng-model="subcategory.subcategory_name" />
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label for="category">category Id</label>
                   <input type="number" id="category" placeholder="Enter category Id" ng-model="subcategory.category_id" />
-                </div>
+                </div> -->
+
+               
               
               
                 <div class="form-group">
@@ -590,9 +592,16 @@ button[type="submit"]:hover {
                 </div>
               
                 <div class="form-group">
-                  <label for="category">Category Id</label>
-                  <input type="number" id="category" placeholder="Enter category Id" ng-model="subcategory.category_id" />
+                  <label for="category_id">Category</label>
+                  <select id="category" ng-model="subcategory.category_id" class="form-control" required>
+                    <option value="" disabled selected>Select category</option>
+                    <option ng-repeat="category in catagoryset" value="{{category.id}}">
+                      {{category.id}}
+                    </option>
+                  </select>
                 </div>
+
+
                 <div class="form-group">
                   <label for="description">Description</label>
                   <textarea id="description" placeholder="Enter description" ng-model="subcategory.subcategory_description" required></textarea>

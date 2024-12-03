@@ -19,14 +19,14 @@ app.controller('subcategoryCtrl', function ($scope, $http, $window, $location, $
         .then(function (response) {
             console.log("Full response:", response);
             if (response.status !== 200) {
-                console.error("Error fetching category list:", response.statusText);
+                console.error("Error fetching subcategory list:", response.statusText);
             } else {
                 if (!response.data || response.data.length === 0) {
                     console.error("Subcategory list is undefined or empty!");
                     $scope.dataset = [];
                 } else {
                     $scope.dataset = response.data.data; // Directly assign the array to dataset
-                    console.log("Category list fetched:", $scope.dataset);
+                    console.log("Subcategory list fetched:", $scope.dataset);
                 }
                 }
             })
@@ -88,24 +88,28 @@ app.controller('subcategoryCtrl', function ($scope, $http, $window, $location, $
             alert("Invalid ID!");
             return;
         }
-
-        console.log("Updating subcategory:", $scope.data);
-
-        $http.patch(`${config.baseurl}subcategory/update-subcategory/${id}/`, $scope.data)
+    
+        // Convert price and discount_price to numbers
+        $scope.data.price = parseFloat($scope.data.price);
+        $scope.data.discount_price = parseFloat($scope.data.discount_price);
+    
+        console.log("Updating product:", $scope.data);
+    
+        $http.patch(`${config.baseurl}product/update-products/${id}/`, $scope.data)
             .then(function (response) {
                 if (response.data.status === 'false') {
-                    console.error("Error updating category:", response.data.message);
+                    console.error("Error updating product:", response.data.message);
                 } else {
-                    alert("subcategory updated successfully!");
+                    alert("Product updated successfully!");
                     $scope.init(); // Refresh the product list
                     $("#editform").modal("hide");
                 }
             })
             .catch(function (error) {
-                console.error("Error updating subcategory:", error);
+                console.error("Error updating product:", error);
+                console.log("Error details:", error.data); // Log response data
             });
     };
-
     // Delete a product
     $scope.delete = function (id) {
         if (!id) {
@@ -138,7 +142,47 @@ app.controller('subcategoryCtrl', function ($scope, $http, $window, $location, $
 
     $scope.init = function () {
        $scope.list();
+       $scope.categorylist();
     }
+
+    $scope.categorylist = function () {
+        console.log("Fetching product list from:", config.baseurl);
+        $http.get(`${config.baseurl}category/category/`)
+        .then(function (response) {
+            console.log("Full response:", response);
+            if (response.status !== 200) {
+                console.error("Error fetching category list:", response.statusText);
+            } else {
+                if (!response.data || response.data.length === 0) {
+                    console.error("Category list is undefined or empty!");
+                    $scope.catagoryset = [];
+                } else {
+                    $scope.catagoryset = response.data; // Directly assign the array to dataset
+                    console.log("Category list fetched:", $scope.catagoryset);
+                }
+                }
+            })
+            .catch(function (error) {
+                console.error("Error fetching product list:", error);
+            });
+    };
+
+    $scope.filterSubcategories = function() {
+        // Filter the subcategories based on the selected category
+        $scope.filteredSubcategories = $scope.dataset.filter(function(subcategory) {
+            return subcategory.category_id === $scope.product.category_id; // Filter by category_id
+        });
+        // Reset the subcategory_id if no valid subcategory is found
+        $scope.product.subcategory_id = '';
+    };
+    
+    // Example: Populate dataset with subcategories
+    $scope.dataset =[];
+    
+    
+    // Initial call to filter subcategories based on the selected category
+    $scope.filteredSubcategories = $scope.dataset;
+
 
     // Open the delete modal and bind the selected product data
     $scope.ondelete = function (data) {
