@@ -38,45 +38,48 @@ app.controller('productCtrl', function ($scope, $http, $window, $location, $sce,
     };
 
     // Fetch a single product by ID
-    $scope.getProduct = function (id) {
-        if (!id) {
+    $scope.getProductbyid = function (product_id) {
+        if (!product_id) {
             console.error("Product ID is missing!");
             return;
         }
-
-        $http.get(`${config.baseurl}product/get-products/${id}/`)
+    
+        $http.get(`${config.baseurl}product/get-products/${product_id}/`)
             .then(function (response) {
                 if (response.data.status === 'false') {
                     console.error("Error fetching product:", response.data.message);
                 } else {
-                    $scope.product = response.data.data;
-                    console.log("Product fetched:", $scope.product);
+                    if (!response.data.data) {
+                        console.error("Product not found for ID:", product_id);
+                        $scope.product = {}; // Empty category data if not found
+                    } else {
+                        // Ensure price and discount_price are numbers if they exist
+                        $scope.product = response.data.data;
+                        $scope.product.price = parseFloat($scope.product.price) || 0;  // Ensure price is a number
+                        $scope.product.discount_price = parseFloat($scope.product.discount_price) || null;  // Ensure discount_price is a number
+    
+                        console.log("Product fetched:", $scope.product);
+                    }
                 }
             })
             .catch(function (error) {
                 console.error("Error fetching product:", error);
             });
     };
-
+    
     // Add a new product
     $scope.add = function () {
         console.log("Adding product:", $scope.product);
-        if (!$scope.product.category_id) {
-            alert("Please select a category.");
-            return; // Stop further execution if category is not selected
-        }
     
-        if (!$scope.product.subcategory_id) {
-            alert("Please select a subcategory.");
-            return; // Stop further execution if subcategory is not selected
-        }
-
         // Ensure the mfg date is correctly formatted before sending
         if ($scope.product.mfg) {
             $scope.product.mfg = new Date($scope.product.mfg).toISOString().split('T')[0]; // "YYYY-MM-DD"
         }
-    
-        // Make the POST request
+        
+        $scope.product.category_id = parseInt($scope.product.category_id, 10);
+        $scope.product.subcategory_id = parseInt($scope.product.subcategory_id, 10);
+       
+        // Make the POST request to add the product
         $http.post(`${config.baseurl}product/create-products/`, $scope.product)
             .then(function (response) {
                 if (response.data.status === 'false') {
@@ -96,27 +99,46 @@ app.controller('productCtrl', function ($scope, $http, $window, $location, $sce,
     // Update a product
     $scope.update = function (id) {
         if (!id) {
-            alert("Invalid product ID!");
+            alert("Invalid ID!");
             return;
         }
-
-        console.log("Updating product:", $scope.product);
-      
-
-        $http.patch(`${config.baseurl}product/update-products/${id}/`, $scope.product)
+    
+        // Ensure mfg is correctly formatted as "YYYY-MM-DD"
+        if ($scope.data.mfg) {
+            $scope.data.mfg = new Date($scope.data.mfg).toISOString().split('T')[0];
+        }
+    
+        // Ensure category and subcategory are single values, not arrays
+        if (Array.isArray($scope.data.category)) {
+            $scope.data.category = $scope.data.category[0];
+        }
+    
+        if (Array.isArray($scope.data.subcategory)) {
+            $scope.data.subcategory = $scope.data.subcategory[0];
+        }
+    
+        // Convert price and discount_price to numbers
+        $scope.data.price = parseFloat($scope.data.price);
+        $scope.data.discount_price = parseFloat($scope.data.discount_price);
+    
+        console.log("Updating product:", $scope.data);
+    
+        $http.patch(`${config.baseurl}product/update-products/${id}/`, $scope.data)
             .then(function (response) {
                 if (response.data.status === 'false') {
                     console.error("Error updating product:", response.data.message);
                 } else {
                     alert("Product updated successfully!");
-                    $scope.list(); // Refresh the product list
+                    $scope.init(); // Refresh the product list
                     $("#editform").modal("hide");
                 }
             })
             .catch(function (error) {
-                console.error("Error updating product:", error.data);
+                console.error("Error updating product:", error);
+                console.log("Error details:", error.data); // Log response data for debugging
             });
     };
+    
 
     // Delete a product
     $scope.delete = function (id) {
@@ -185,10 +207,10 @@ app.controller('productCtrl', function ($scope, $http, $window, $location, $sce,
             } else {
                 if (!response.data || response.data.length === 0) {
                     console.error("Subcategory list is undefined or empty!");
-                    $scope.subcategoryset = [];
+                    $scope.subcatagoryset = [];
                 } else {
-                    $scope.subcategoryset = response.data.data; // Directly assign the array to dataset
-                    console.log("Subcategory list fetched:", $scope.subcategoryset);
+                    $scope.subcatagoryset = response.data.data; // Directly assign the array to dataset
+                    console.log("Subcategory list fetched:", $scope.subcatagoryset);
                 }
                 }
             })
@@ -198,22 +220,61 @@ app.controller('productCtrl', function ($scope, $http, $window, $location, $sce,
     };
 
     $scope.filterSubcategories = function() {
-        if ($scope.product.category_id) {
-            $scope.subcategoryset = $scope.dataset.filter(function(subcategory) {
-                return subcategory.category_id === $scope.product.category_id;
-            });
-        } else {
-            $scope.subcategoryset = [];  // Reset subcategories if no category selected
+        if (!$scope.product.category) {
+            console.warn("No category selected, unable to filter subcategories.");
+            $scope.filteredSubcategories = []; // Clear the subcategory list if no category is selected
+            return;
         }
-        // Reset subcategory_id to null when category changes
-        $scope.product.subcategory_id = '';
+    
+        // Filter the subcategories based on the selected category_id
+        $scope.filteredSubcategories = $scope.dataset.filter(function(subcategory) {
+            return subcategory.category_id === parseInt($scope.product.category_id, 10); // Ensure type consistency
+        });
+    
+        // Reset subcategory_id if it doesn't match the filtered subcategories
+        if (
+            !$scope.filteredSubcategories.some(function(subcategory) {
+                return subcategory.id === parseInt($scope.product.subcategory_id, 10);
+            })
+        ) {
+            $scope.product.subcategory_id = null; // Reset invalid subcategory_id
+        }
+    
+        console.log("Filtered subcategories:", $scope.filteredSubcategories);
     };
+    
+    // Example dataset of subcategories (replace with actual data source)
+    
+    
+    // Initialize product object
+    $scope.product = {
+        category_id: null, // Default value for category
+        subcategory_id: null, // Default value for subcategory
+    };
+    
+    // Initialize filteredSubcategories as empty
+    $scope.filteredSubcategories = [];
+    
+    // Watch for changes to category_id and update filtered subcategories dynamically
+    $scope.$watch("product.category_id", function(newValue) {
+        if (newValue) {
+            $scope.filterSubcategories();
+        }
+    });
+    
 
+    //Open the delete modal and bind the selected product data
     $scope.ondelete = function (data) {
         console.log("Delete modal triggered with data:", data);
         $scope.product = angular.copy(data); // Bind the product data to $scope.product
         $("#deleteform").modal("show"); // Show the delete confirmation modal
     };
+
+    $scope.ondelete = function (data) {
+        $scope.product = angular.copy(data);  // This ensures the modal is showing the correct product
+        $("#deleteform").modal("show");  // Show the modal
+    };
+    
 
     // Open the edit modal
     $scope.onedit = function (data) {
@@ -254,15 +315,6 @@ app.controller('productCtrl', function ($scope, $http, $window, $location, $sce,
     $scope.closeaddModal = function () {
         $("#addform").modal("hide");
     };
-
-    
-
-
-
-
-
-
-
 
 
 

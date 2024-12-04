@@ -474,7 +474,7 @@ button[type="submit"]:hover {
                     <th>Description</th>
                     <th>Category Id</th>
                     <th>Subcategory Id</th>
-                    <th>price</th>
+                    <th>Price</th>
                     <th>Discount Price</th>
                     <th>unit</th>
                     <th>Quantity</th>
@@ -533,21 +533,38 @@ button[type="submit"]:hover {
                   <input type="text" id="product" placeholder="Enter product name" ng-model="product.product_name" />
                 </div>
 
+                <!-- <div class="form-group">
+                  <label for="category_id">Category</label>
+                  <select id="category_id" ng-model="product.category_id" ng-change="filterSubcategories()" class="form-control" required>
+                      <option value="" disabled selected>Select category</option>
+                      <option ng-repeat="category in catagoryset" value="{{category_id.id}}">
+                          {{category.id}} 
+                      </option>
+                  </select>
+                </div> -->
 
-                
-                  <select id="category" ng-model="product.category_id" class="form-control" required>
+                <div class="form-group">
+                  <label for="category_id">Category</label>
+                  <select id="category" ng-model="subcategory.category_id" class="form-control" required>
                     <option value="" disabled selected>Select category</option>
                     <option ng-repeat="category in catagoryset" value="{{category.id}}">
-                        {{category.name}}
+                      {{category.id}}
                     </option>
                   </select>
-
+                </div>
+                
+                <!-- Subcategory Field -->
+                <div class="form-group">
+                  <label for="subcategory_id">Subcategory</label>
                   <select id="subcategory" ng-model="product.subcategory_id" class="form-control" required>
-                    <option value="" disabled selected>Select subcategory</option>
-                    <option ng-repeat="subcategory in subcatagoryset" value="{{subcategory.id}}">
-                        {{subcategory.name}}
-                    </option>
+                      <option value="" disabled selected>Select Subcategory</option>
+                      <option ng-repeat="subcategory in subcatagoryset" value="{{subcategory.id}}">
+                          {{subcategory.id}} 
+                      </option>
                   </select>
+                </div>
+
+                
 
                 <div class="form-group">
                   <label for="description">Description</label>
@@ -556,20 +573,20 @@ button[type="submit"]:hover {
 
                 <div class="form-group">
                   <label for="unit">Unit</label>
-                  <input type="text" id="unit" placeholder="Enter Unit" ng-model="product.unit" required></textarea>
+                  <input type="text" id="unit" placeholder="Enter Unit" ng-model="product.unit" required>
                 </div>
                 <div class="form-group">
                   <label for="price">Price</label>
-                  <input type="number" id="price" placeholder="Enter Price" ng-model="product.price" required  />
-                  
-                  </div>
+                  <input type="text" id="price" placeholder="Enter Price" ng-model="product.price" required />
+              </div>
+              
+              <div class="form-group">
+                  <label for="discount_price">Discount Price</label>
+                  <input type="text" id="discount_price" placeholder="Enter Discount Price" ng-model="product.discount_price" required />
+              </div>
                          
                          
                      
-                      
-
-                
-
                 <div class="form-group">
                   <label for="product_life">Product Life</label>
                   <input type="number" id="product Life" placeholder="Enter Product Life" ng-model="product.product_life" required></textarea>
@@ -590,7 +607,7 @@ button[type="submit"]:hover {
                 <div class="form-group">
                   <label for="availability">Availability</label>
                   <select id="availability" ng-model="product.availability" required>
-                    <option value="" disabled selected>Select availability status</option>
+                    <option value="" disabled selected>Select available status</option>
                     <option value="1">Yes</option>
                     <option value="0">No</option>
                   </select>
@@ -605,20 +622,14 @@ button[type="submit"]:hover {
           </div>
         </div>
         <div class="modal-footer">
-          <!-- You may add footer actions here if needed -->
         </div>
       </div>
     </div>
 
 
 
-    <!-- Modals for the webpage come here -->
-    <!-- modal starts-->
+    
 
-
-
-
-     <!-- Modals for the webpage come here -->
     <!-- modal starts-->
     <div class="modal fade" id="addform" tabindex="-1" role="dialog" aria-labelledby="addform"
       aria-hidden="true">
@@ -639,26 +650,26 @@ button[type="submit"]:hover {
                 </div>
               
                 <!-- Category Field -->
-<div class="form-group">
-  <label for="category_id">Category</label>
-  <select id="category" ng-model="product.category_id" ng-change="filterSubcategories()" class="form-control" required>
-      <option value="" disabled selected>Select category</option>
-      <option ng-repeat="category in catagoryset" value="{{category.id}}">
-          {{category.id}} <!-- Assuming 'name' is the category name, change this if necessary -->
-      </option>
-  </select>
-</div>
-
-<!-- Subcategory Field -->
-<div class="form-group">
-  <label for="subcategory_id">Subcategory</label>
-  <select id="subcategory" ng-model="product.subcategory_id" class="form-control" required>
-      <option value="" disabled selected>Select subcategory</option>
-      <option ng-repeat="subcategory in subcategoryset" value="{{subcategory.id}}">
-          {{subcategory.id}} <!-- Assuming 'name' is the subcategory name, change this if necessary -->
-      </option>
-  </select>
-</div>
+                <div class="form-group">
+                  <label for="category_id">Category</label>
+                  <select id="category" ng-model="product.category_id" ng-change="filterSubcategories()" class="form-control" required>
+                      <option value="" disabled selected>Select category</option>
+                      <option ng-repeat="category in catagoryset" value="{{category.id}}">
+                          {{category.id}} 
+                      </option>
+                  </select>
+                </div>
+                
+                <!-- Subcategory Field -->
+                <div class="form-group">
+                  <label for="subcategory_id">Subcategory</label>
+                  <select id="subcategory" ng-model="product.subcategory_id" ng-change="filterSubcategories()" class="form-control" required>
+                      <option value="" disabled selected>Select Subcategory</option>
+                      <option ng-repeat="subcategory in subcatagoryset" value="{{subcategory.id}}">
+                          {{subcategory.id}} 
+                      </option>
+                  </select>
+                </div>
 
                 <div class="form-group">
                   <label for="description">Description</label>
@@ -666,7 +677,7 @@ button[type="submit"]:hover {
                 </div>
                 <div class="form-group">
                   <label for="unit">Unit</label>
-                  <textarea id="unit" placeholder="Enter unit" ng-model="product.unit" required></textarea>
+                  <input type="text" id="unit" placeholder="Enter unit" ng-model="product.unit" required>
                 </div>
                 
                 <div class="form-group">
@@ -721,7 +732,6 @@ button[type="submit"]:hover {
           </div>
         </div>
         <div class="modal-footer">
-          <!-- You may add footer actions here if needed -->
         </div>
       </div>
     </div>
