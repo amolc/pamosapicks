@@ -516,10 +516,22 @@ button[type="submit"]:hover {
                   <label for="subcategory">subcategory Name</label>
                   <input type="text" id="subcategory" placeholder="Enter subcategory name" ng-model="subcategory.subcategory_name" />
                 </div>
-                <!-- <div class="form-group">
+
+
+                <div class="form-group">
                   <label for="category">category Id</label>
-                  <input type="number" id="category" placeholder="Enter category Id" ng-model="subcategory.category_id" />
-                </div> -->
+                  <input type="number" id="category" placeholder="Enter category Id" ng-model="subcategory.category" />
+                </div>
+
+                <!-- <div class="form-group">
+                  <label for="category">Category</label>
+                  <select id="category" ng-model="subcategory.category" class="form-control" required>
+                      <option value="" disabled selected>Select a category</option>
+                      <option ng-repeat="category in catagoryset" value="{{category.id}}">
+                          {{category.id}} 
+                      </option>
+                  </select>
+              </div> -->
 
                
               

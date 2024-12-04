@@ -52,7 +52,7 @@ app.controller('subcategoryCtrl', function ($scope, $http, $window, $location, $
                         $scope.subcategory = {}; // Empty category data if not found
                     } else {
                         $scope.subcategory = response.data.data;
-                        console.log("Category fetched:", $scope.subcategory);
+                        console.log("subcategory fetched:", $scope.subcategory);
                     }
                 }
             })
@@ -89,24 +89,22 @@ app.controller('subcategoryCtrl', function ($scope, $http, $window, $location, $
             return;
         }
     
-        // Convert price and discount_price to numbers
-        $scope.data.price = parseFloat($scope.data.price);
-        $scope.data.discount_price = parseFloat($scope.data.discount_price);
+        
     
-        console.log("Updating product:", $scope.data);
+        console.log("Updating subcategory:", $scope.data);
     
-        $http.patch(`${config.baseurl}product/update-products/${id}/`, $scope.data)
+        $http.patch(`${config.baseurl}subcategory/update-subcategory/${id}/`, $scope.data)
             .then(function (response) {
                 if (response.data.status === 'false') {
-                    console.error("Error updating product:", response.data.message);
+                    console.error("Error updating subcategory:", response.data.message);
                 } else {
-                    alert("Product updated successfully!");
+                    alert("subcategory updated successfully!");
                     $scope.init(); // Refresh the product list
                     $("#editform").modal("hide");
                 }
             })
             .catch(function (error) {
-                console.error("Error updating product:", error);
+                console.error("Error updating subcategory:", error);
                 console.log("Error details:", error.data); // Log response data
             });
     };
@@ -167,22 +165,7 @@ app.controller('subcategoryCtrl', function ($scope, $http, $window, $location, $
             });
     };
 
-    $scope.filterSubcategories = function() {
-        // Filter the subcategories based on the selected category
-        $scope.filteredSubcategories = $scope.dataset.filter(function(subcategory) {
-            return subcategory.category_id === $scope.product.category_id; // Filter by category_id
-        });
-        // Reset the subcategory_id if no valid subcategory is found
-        $scope.product.subcategory_id = '';
-    };
-    
-    // Example: Populate dataset with subcategories
-    $scope.dataset =[];
-    
-    
-    // Initial call to filter subcategories based on the selected category
-    $scope.filteredSubcategories = $scope.dataset;
-
+   
 
     // Open the delete modal and bind the selected product data
     $scope.ondelete = function (data) {
