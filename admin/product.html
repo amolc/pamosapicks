@@ -468,12 +468,10 @@ button[type="submit"]:hover {
                 <thead>
                   <tr>
                     <th>product Id</th>
-
-                    <th>Product Name</th>
-                    
+                    <th>Product Name</th>       
                     <th>Description</th>
-                    <th>Category Id</th>
-                    <th>Subcategory Id</th>
+                    <th>Category Name</th>
+                    <th>Subcategory Name</th>
                     <th>Price</th>
                     <th>Discount Price</th>
                     <th>unit</th>
@@ -491,8 +489,10 @@ button[type="submit"]:hover {
                     <td>{{data.id}}</td>
                     <td>{{data.product_name}}</td>
                     <td>{{data.product_description}}</td>
-                    <td>{{data.category}}</td>
-                    <td>{{data.subcategory}}</td>
+                    <!-- <td>{{data.category}}</td>
+                    <td>{{data.subcategory}}</td> -->
+                    <td>{{data.category_name}}</td>
+                    <td>{{data.subcategory_name}}</td>
                     <td>{{data.price}}</td>
                     <td>{{data.discount_price}}</td>
                     <td>{{data.unit}}</td>
@@ -526,7 +526,7 @@ button[type="submit"]:hover {
           </div>
           <div class="modal-body container" style="border:1px solid red;">
             <div class="row">
-        
+             
               <form ng-submit="submitproduct(product)" enctype="multipart/form-data">
                 <div class="form-group">
                   <label for="product">product Name</label>
@@ -543,41 +543,68 @@ button[type="submit"]:hover {
                   </select>
                 </div> -->
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label for="category_id">Category</label>
                   <select id="category" ng-model="product.category" class="form-control" required>
-                    <option value="{{product.category}}" disabled selected>{{product.category}}</option>
+                    <option value="" disabled selected>Select category</option>
                     <option ng-repeat="category in catagoryset" value="{{category.id}}">
-                        {{category.id}}
+                      {{category.category_name}}
                     </option>
                   </select>
-                </div>
+                </div> -->
                 
                 <!-- Subcategory Field -->
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label for="subcategory_id">Subcategory</label>
                   <select id="subcategory" ng-model="product.subcategory" class="form-control" required>
-                    <option value="{{product.subcategory}}" disabled selected>{{product.subcategory}}</option>
+                      <option value="" disabled selected>Select Subcategory</option>
                       <option ng-repeat="subcategory in subcatagoryset" value="{{subcategory.id}}">
-                          {{subcategory.id}} 
+                          {{subcategory.subcategory_name}} 
                       </option>
                   </select>
-                </div>
+                </div> -->
+
+                <!-- <div class="form-group">
+                  <label for="category">Category </label>
+                  <input type="text" id="category" placeholder="Enter category" ng-model="product.category_name" >
+                </div> -->
+
+                <div class="form-group">
+                  <label for="category">Category</label>
+                  <select id="category" ng-model="product.category" class="form-control" required>
+                    <option value="{{product.category}}" disabled selected>{{product.category_name}}</option>
+                    <option value="" disabled selected>Select category</option>
+                      <option ng-repeat="category in catagoryset" value="{{category.id}}">
+                          {{category.category_name}}
+                      </option>
+                  </select>
+              </div>
+
+              <div class="form-group">
+                <label for="subcategory">Subcategory</label>
+                <select id="subcategory" ng-model="product.subcategory" class="form-control" required>
+                  <option value="{{product.subcategory}}" disabled selected>{{product.subcategory_name}}</option>
+                  <option value="" disabled selected>Select Subcategory</option>
+                    <option ng-repeat="subcategory in subcatagoryset" value="{{subcategory.id}}">
+                        {{subcategory.subcategory_name}}
+                    </option>
+                </select>
+            </div>
 
                 
 
                 <div class="form-group">
                   <label for="description">Description</label>
-                  <textarea id="description" placeholder="Enter description" ng-model="product.product_description" ></textarea>
+                  <textarea id="description" placeholder="Enter description" ng-model="product.product_description" required></textarea>
                 </div>
 
                 <div class="form-group">
                   <label for="unit">Unit</label>
-                  <input type="text" id="unit" placeholder="Enter Unit" ng-model="product.unit" value="{{product.unit}}" required>
+                  <input type="text" id="unit" placeholder="Enter Unit" ng-model="product.unit">
                 </div>
                 <div class="form-group">
                   <label for="price">Price</label>
-                  <input type="text" id="price" placeholder="Enter Price" ng-model="product.price"  value="{{product.price}}" />
+                  <input type="text" id="price" placeholder="Enter Price" ng-model="product.price" required />
               </div>
               
               <div class="form-group">
@@ -592,13 +619,11 @@ button[type="submit"]:hover {
                   <input type="number" id="product Life" placeholder="Enter Product Life" ng-model="product.product_life" required></textarea>
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label for="created_at">MFG</label>
                   <input type="date" id="mfg"  placeholder="Enter mfg" ng-model="product.mfg" required 
                   ng-change="formatMFGDate()">
-
-                 
-                </div>
+                </div> -->
       
                         
                 <div class="form-group">
@@ -645,7 +670,6 @@ button[type="submit"]:hover {
           </div>
           <div class="modal-body container" style="border:1px solid red;">
             <div class="row">
-              {{product}}
         
               <form ng-submit="submitproduct(product)" enctype="multipart/form-data">
                 <div class="form-group">
@@ -653,28 +677,28 @@ button[type="submit"]:hover {
                   <input type="text" id="product" placeholder="Enter product name" ng-model="product.product_name" />
                 </div>
               
-                <!-- Category Field -->
-                <div class="form-group">
-                  <label for="category_id">Category</label>
-                  <select id="category" ng-model="product.category" ng-change="filterSubcategories()" class="form-control" required>
-                      <option value="" disabled selected>Select category</option>
-                      <option ng-repeat="category in catagoryset" value="{{category.id}}">
-                          {{category.id}} 
-                      </option>
-                  </select>
-                </div>
-                
-                <!-- Subcategory Field -->
-                <div class="form-group">
-                  <label for="subcategory_id">Subcategory</label>
-                  <select id="subcategory" ng-model="product.subcategory" ng-change="filterSubcategories()" class="form-control" required>
-                      <option value="" disabled selected>Select Subcategory</option>
-                      <option ng-repeat="subcategory in subcatagoryset" value="{{subcategory.id}}">
-                          {{subcategory.id}} 
-                      </option>
-                  </select>
-                </div>
+              
 
+                    <div class="form-group">
+                      <label for="category">Category</label>
+                      <select id="category" ng-model="product.category" class="form-control" required>
+                          <option value="" disabled selected>Select category</option>
+                          <option ng-repeat="category in catagoryset" value="{{category.id}}">
+                              {{category.category_name}}
+                          </option>
+                      </select>
+                  </div>
+
+                  <!-- Subcategory Field -->
+                  <div class="form-group">
+                      <label for="subcategory">Subcategory</label>
+                      <select id="subcategory" ng-model="product.subcategory" class="form-control" required>
+                          <option value="" disabled selected>Select Subcategory</option>
+                          <option ng-repeat="subcategory in subcatagoryset" value="{{subcategory.id}}">
+                              {{subcategory.subcategory_name}}
+                          </option>
+                      </select>
+                  </div>
                 <div class="form-group">
                   <label for="description">Description</label>
                   <textarea id="description" placeholder="Enter description" ng-model="product.product_description" required></textarea>

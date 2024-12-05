@@ -124,7 +124,7 @@ app.controller('subcategoryCtrl', function ($scope, $http, $window, $location, $
                 if (response.data.status === 'false') {
                     alert("Failed to delete subcategory: " + response.data.message);
                 } else {
-                    alert("Category deleted successfully!");
+                    alert("Subcategory deleted successfully!");
                     $scope.init(); // Refresh the product list
                     $("#deleteform").modal("hide");
                 }

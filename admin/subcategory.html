@@ -468,7 +468,7 @@ button[type="submit"]:hover {
                     <th>subcategory Id</th>
 
                     <th>Subcategory Name</th>
-                    <th>Category Id</th>
+                    <th>Category Name</th>
                     <th>Description</th>
                     <th>Created</th>
                     <th>IsActive</th>
@@ -481,7 +481,7 @@ button[type="submit"]:hover {
                   <tr ng-repeat="data in dataset">
                     <td>{{data.id}}</td>
                     <td>{{data.subcategory_name}}</td>
-                    <td>{{data.category}}</td>
+                    <td>{{data.category_name}}</td>
                     <td>{{data.subcategory_description}}</td>
                     <td>{{data.created_at}}</td>
                     <td>{{data.is_active}}</td>
@@ -519,9 +519,16 @@ button[type="submit"]:hover {
 
 
                 <div class="form-group">
-                  <label for="category">category Id</label>
-                  <input type="number" id="category" placeholder="Enter category Id" ng-model="subcategory.category" />
-                </div>
+                  <label for="category">Category</label>
+                  <select id="category" ng-model="subcategory.category" class="form-control" required>
+                    <option value="{{subcategory.category}}" disabled selected>{{subcategory.category_name}}</option>
+                    <option value="" disabled selected>Select category</option>
+                      <option ng-repeat="category in catagoryset" value="{{category.id}}">
+                          {{category.category_name}}
+                      </option>
+                  </select>
+              </div>
+
 
                 <!-- <div class="form-group">
                   <label for="category">Category</label>
@@ -541,10 +548,10 @@ button[type="submit"]:hover {
                   <textarea id="description" placeholder="Enter description" ng-model="subcategory.subcategory_description" required></textarea>
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label for="created_at">Created</label>
                   <input type="date" id="created_at" placeholder="Enter Created" ng-model="subcategory.created_at" required></textarea>
-                </div>
+                </div> -->
               
                 <div class="form-group">
                   <label for="subcategory-image">Subcategory Image</label>
@@ -553,14 +560,15 @@ button[type="submit"]:hover {
                 </div>
               
                 <div class="form-group">
-                  <label for="is-active">Active</label>
-                  <select id="is-active" ng-model="subcategory.is_active" required>
-                    <option value="" disabled selected>Select active status</option>
+                  <label for="availability">Availability</label>
+                  <select id="availability" ng-model="subcategory.availability" required>
+                    <option value="{{subcategory.availability}}" disabled selected>{{subcategory.availability}}</option>
                     <option value="1">Yes</option>
                     <option value="0">No</option>
                   </select>
                 </div>
-              
+
+                
                 <div class="form-group">
                   <button type="submit" ng-disabled="isSubmitting" ng-click="oneditsubmit(subcategory)">Submit</button>
                 </div>
@@ -608,7 +616,7 @@ button[type="submit"]:hover {
                   <select id="category" ng-model="subcategory.category_id" class="form-control" required>
                     <option value="" disabled selected>Select category</option>
                     <option ng-repeat="category in catagoryset" value="{{category.id}}">
-                      {{category.id}}
+                      {{category.category_name}}
                     </option>
                   </select>
                 </div>

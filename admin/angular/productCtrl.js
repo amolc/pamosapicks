@@ -11,9 +11,10 @@ app.controller('productCtrl', function ($scope, $http, $window, $location, $sce,
         product_life: '',
         product_image1: '',
         product_image2: '',
-        mfg: '',
-        category: '',
-        subcategory: '',
+        mfg: '', 
+        category:'',
+        subcategory:'',
+      
         
     };
 
@@ -72,18 +73,16 @@ app.controller('productCtrl', function ($scope, $http, $window, $location, $sce,
         console.log("Adding product:", $scope.product);
     
         // Ensure the mfg date is correctly formatted before sending
-        if ($scope.product.mfg) {
+        if ($scope.product && $scope.product.mfg) {
             $scope.product.mfg = new Date($scope.product.mfg).toISOString().split('T')[0]; // "YYYY-MM-DD"
         }
-        
-        $scope.product.category_id = parseInt($scope.product.category_id, 10);
-        $scope.product.subcategory_id = parseInt($scope.product.subcategory_id, 10);
-       
+    
         // Make the POST request to add the product
         $http.post(`${config.baseurl}product/create-products/`, $scope.product)
             .then(function (response) {
                 if (response.data.status === 'false') {
                     console.error("Error adding product:", response.data.message);
+                    alert("Failed to add product: " + response.data.message);
                 } else {
                     alert("Product added successfully!");
                     $scope.init(); // Refresh the product list
@@ -91,7 +90,8 @@ app.controller('productCtrl', function ($scope, $http, $window, $location, $sce,
                 }
             })
             .catch(function (error) {
-                console.error("Error adding product:", error.data);
+                console.error("Error adding product:", error);
+                alert("An error occurred while adding the product.");
             });
     };
     
@@ -109,13 +109,7 @@ app.controller('productCtrl', function ($scope, $http, $window, $location, $sce,
         }
     
         // Ensure category and subcategory are single values, not arrays
-        if (Array.isArray($scope.data.category)) {
-            $scope.data.category = $scope.data.category[0];
-        }
-    
-        if (Array.isArray($scope.data.subcategory)) {
-            $scope.data.subcategory = $scope.data.subcategory[0];
-        }
+       
     
         // Convert price and discount_price to numbers
         $scope.data.price = parseFloat($scope.data.price);
@@ -172,7 +166,6 @@ app.controller('productCtrl', function ($scope, $http, $window, $location, $sce,
         $scope.list();
         $scope.categorylist();
         $scope.subcategorylist();
-        $scope.filterSubcategories();
      }
  
      $scope.categorylist = function () {
@@ -219,48 +212,14 @@ app.controller('productCtrl', function ($scope, $http, $window, $location, $sce,
             });
     };
 
-    $scope.filterSubcategories = function() {
-        if (!$scope.product.category) {
-            console.warn("No category selected, unable to filter subcategories.");
-            $scope.filteredSubcategories = []; // Clear the subcategory list if no category is selected
-            return;
-        }
     
-        // Filter the subcategories based on the selected category_id
-        $scope.filteredSubcategories = $scope.dataset.filter(function(subcategory) {
-            return subcategory.category_id === parseInt($scope.product.category_id, 10); // Ensure type consistency
-        });
     
-        // Reset subcategory_id if it doesn't match the filtered subcategories
-        if (
-            !$scope.filteredSubcategories.some(function(subcategory) {
-                return subcategory.id === parseInt($scope.product.subcategory_id, 10);
-            })
-        ) {
-            $scope.product.subcategory_id = null; // Reset invalid subcategory_id
-        }
-    
-        console.log("Filtered subcategories:", $scope.filteredSubcategories);
-    };
-    
+      
     // Example dataset of subcategories (replace with actual data source)
     
     
-    // Initialize product object
-    $scope.product = {
-        category_id: null, // Default value for category
-        subcategory_id: null, // Default value for subcategory
-    };
-    
-    // Initialize filteredSubcategories as empty
-    $scope.filteredSubcategories = [];
-    
-    // Watch for changes to category_id and update filtered subcategories dynamically
-    $scope.$watch("product.category_id", function(newValue) {
-        if (newValue) {
-            $scope.filterSubcategories();
-        }
-    });
+   
+   
     
 
     //Open the delete modal and bind the selected product data
