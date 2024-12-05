@@ -5,7 +5,7 @@ app.controller('subcategoryCtrl', function ($scope, $http, $window, $location, $
     $scope.subcategory = {
         subcategory_name: '',
         subcategory_description: '',
-        category_id: '',
+        category_name: '',
         subcategory_image: '',
         created_at: '',
         is_active: ''

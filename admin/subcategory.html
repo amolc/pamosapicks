@@ -466,7 +466,6 @@ button[type="submit"]:hover {
                 <thead>
                   <tr>
                     <th>subcategory Id</th>
-
                     <th>Subcategory Name</th>
                     <th>Category Name</th>
                     <th>Description</th>
@@ -521,7 +520,7 @@ button[type="submit"]:hover {
                 <div class="form-group">
                   <label for="category">Category</label>
                   <select id="category" ng-model="subcategory.category" class="form-control" required>
-                    <option value="{{subcategory.category}}" disabled selected>{{subcategory.category_name}}</option>
+                    <option value="{{subcategory.category_name}}" disabled selected>{{subcategory.category_name}}</option>
                     <option value="" disabled selected>Select category</option>
                       <option ng-repeat="category in catagoryset" value="{{category.id}}">
                           {{category.category_name}}
@@ -567,8 +566,6 @@ button[type="submit"]:hover {
                     <option value="0">No</option>
                   </select>
                 </div>
-
-                
                 <div class="form-group">
                   <button type="submit" ng-disabled="isSubmitting" ng-click="oneditsubmit(subcategory)">Submit</button>
                 </div>
