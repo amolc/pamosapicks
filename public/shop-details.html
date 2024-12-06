@@ -433,7 +433,7 @@
                            <span class="dvdr">/</span>
                            <span class="tp-breadcrumb__active"><a href="index.html">Breakfast & Dairy</a></span>
                            <span class="dvdr">/</span>
-                           <span>Fresh Mangosteen 100% Organic From VietNamese</span>
+                           <span>{$ productDetail.product_name $}</span>
                         </div>
                      </div>
                   </div>
@@ -545,12 +545,13 @@
                                           <div class="product__details-quantity d-flex align-items-center mb-15"> 
                                              <b>Qty:</b>
                                              <div class="product__details-count mr-10">
-                                                <span class="cart-minus"><i class="far fa-minus"></i></span>
-                                                <input class="tp-cart-input" type="text" value="1">
-                                                <span class="cart-plus"><i class="far fa-plus"></i></span>
-                                             </div>
+                                                <span class="cart-minus" onclick="updateQuantity(this, -1)"><i class="far fa-minus"></i></span>
+                                                <input class="tp-cart-input" type="number" value="1" min="1">
+                                                <span class="cart-plus" onclick="updateQuantity(this, 1)"><i class="far fa-plus"></i></span>
+                                            </div>
                                              <div class="product__details-btn">
                                                 <a  href="cart.html?id={$ productDetail.id $}">Add to cart</a>
+                                                
                                              </div>
                                           </div>
                                           <ul class="product__details-check">
@@ -575,7 +576,7 @@
                                        <div class="product__details-stock mb-25">
                                           <ul>
                                              <li>Availability: <i>{% if productDetail.availability %}In Stock{% else %}Out of Stock{% endif %}</i></li>
-                                             <li>Categories: <span>{$ productDetail.categories $}</span></li>
+                                             <li>Categories: <span>{$ productDetail.category_name $}</span></li>
                                             <li>Tags: <span>{$ productDetail.product_type $}</span></li>
                                             <li>Shelf Life: <span>{$ productDetail.product_life $} days</span></li>
 

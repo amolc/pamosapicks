@@ -461,15 +461,15 @@
                                  <tbody>
                                     <tr>
                                        <td class="product-thumbnail">
-                                          <a href="shop-details.html?id={$ cart.product_id $}">
+                                          <a href="shop-details.html?id={$ productDetail.id $}">
                                              <img src="{$ productDetail.product_image1 $}" alt="Primary Image">
                                          </a>
-                                         <a class="tpproduct__thumb-img" href="shop-details.html?id={$ cart.product_id $}">
+                                         <a class="tpproduct__thumb-img" href="shop-details.html?id={$ productDetail.product_id $}">
                                              <img src="{$ productDetail.product_image2 $}" alt="Secondary Image">
                                          </a>
                                        </td>
                                        <td class="product-name">
-                                          <a href="cart.html?id={$ product_id $}">{$ productDetail.product_name $}</a>
+                                          <a href="shop-details.html?id={$ productDetail.id $}">{$ productDetail.product_name $}</a>
                                       </td>
                                        <!-- <td class="product-price">
                                           <span class="amount">$56.00</span>
@@ -482,21 +482,24 @@
                                        <span class="cart-minus" onclick="updateQuantity(this, -1)">-</span>
                                        <input 
                                            class="cart-input" 
-                                           type="text" 
-                                           value="2" 
-                                           data-product-id="{$ productDetail.product_id $}" 
-                                           data-price="{$ productDetails.price $}" 
+                                           type="number" 
+                                           value="1" 
+                                           data-product-id="{{ productDetail.product_id }}" 
+                                           data-price="{{ productDetails.price }}" 
+                                           min="1" 
                                            onchange="updateTotal(this)"
                                        >
                                        <span class="cart-plus" onclick="updateQuantity(this, 1)">+</span>
                                    </td>
                                    
+                                   
                                        <td class="product-subtotal">
-                                          <span class="amount">₹{$ productDetails.price $}</span>
+                                          <span class="amount">₹{$ productDetail.price $}</span>
                                        </td>
                                        <td class="product-remove">
                                           <a href="#"><i class="fa fa-times"></i></a>
                                        </td>
+                                       
                                     </tr>
                                     <!-- <tr>
                                        <td class="product-thumbnail">
@@ -546,7 +549,7 @@
                                     <h2>Cart totals</h2>
                                     <ul class="mb-20">
                                        <!-- <li>Subtotal <span>$56.00</span></li> -->
-                                       <li>Total <span>$56.00</span></li>
+                                       <li>Total <span >₹{$ productDetail.price $} </span></li>
                                     </ul>
                                     <a href="checkout.html?id={$ productDetail.id $}" class="tp-btn tp-color-btn banner-animation">Proceed to Checkout</a>
                                  </div>
