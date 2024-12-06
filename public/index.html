@@ -923,9 +923,10 @@
                                        <!-- Product Images -->
                                        <div class="tplist__product-img">
                                           <!-- Primary Image -->
-                                          <a href="shop-details.html?id={{} product.id }}">
-                                              <img src="{{ product.product_image1 }}" alt="Primary Image" class="img-fluid">
-                                          </a>
+                                          <a href="shop-details.html?id={$ product.id $}" class="product-link">
+                                             <img src="{$ product.product_image1 $}" alt="Primary Image" class="img-fluid product-image">
+                                         </a>
+                                         
                                           <!-- Secondary Image -->
                                           <a class="tpproduct__thumb-img" href="shop-details.html?id={$ product.id $}">
                                               <img src="{$ product.product_image2 $}" alt="Secondary Image" class="img-fluid">
