@@ -38,6 +38,45 @@ exports.index = function (req, res) {
     });
 };
 
+exports.product = function (req, res) {
+	const productId = req.query.id; 
+    console.log('Product ID:', productId);
+
+    const apiUrl = `product/get-products/${productId}/`;
+    console.log('Fetching from API URL:', apiUrl);
+
+    var data1 = {};
+
+    get_json('product/products/', function (response1) {
+        data1['productData'] = response1.data;
+	
+		get_json(apiUrl, function (response) {
+			const data1 = {};
+			data1['productDetail'] = response.data;
+			console.log(data1['productDetail'])
+			res.render('product', data1); // Ensure your view file is named 'shop-details'
+		});
+
+       
+    });
+
+	
+
+    get_json(apiUrl, function (response) {
+        const data1 = {};
+        data1['productDetail'] = response.data;
+        console.log(data1['productDetail']); // Ensure `price` is present in the response
+        
+        res.render('product', data1); // Ensure your view file is named 'shop-details'
+    });
+
+
+
+
+
+
+};
+
 
 exports.index2 = function (req, res) {
     var data1 = {};
