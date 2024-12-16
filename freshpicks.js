@@ -59,7 +59,8 @@ var njk = expressNunjucks(app, {
   });
 
 app.get('/', routes.index);
-app.get('/index.html', routes.index);
+app.get('index.html', routes.index);
+app.get('/index2.html', routes.index2);
 app.get('/about.html', routes.about);
 app.get('/blog.html', routes.blog);
 app.get('/cart.html', routes.cart);

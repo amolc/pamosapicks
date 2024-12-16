@@ -38,6 +38,16 @@ exports.index = function (req, res) {
     });
 };
 
+
+exports.index2 = function (req, res) {
+    var data1 = {};
+
+    get_json('product/products/', function (response1) {
+        data1['productData'] = response1.data;
+        res.render('index2', data1);
+    });
+};
+
 exports.about = function (req, res) {
     var data1 = {};
     res.render('about', data1);
