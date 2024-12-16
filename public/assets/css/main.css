@@ -7930,3 +7930,150 @@ p.checkout-coupon input[type=text]:focus {
   transform: scale(1.05); /* Optional: Adds a hover effect */
   transition: transform 0.3s ease; /* Smooth transition */
 }
+
+/* Main Layout */
+.content-with-sidebar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Main Content */
+.main-content {
+  flex-grow: 1;
+}
+
+/* Right Sidebar */
+.right-sidebar {
+  width: 300px; /* Set the width of the sidebar */
+  padding: 20px;
+  margin-top: -20px; 
+}
+
+/* Banner inside Sidebar */
+.tpsidebar__banner {
+  margin-bottom: 30px;
+}
+
+.tpsidebar__banner img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* Recent Products Section */
+.tpsidebar__product {
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.tpsidebar__title {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.tpsidebar__product-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Product Items */
+.tpsidebar__product-item {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.tpsidebar__product-thumb {
+  position: relative;
+}
+
+.tpsidebar__product-thumb img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.tpsidebar__info .bage__hot {
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 5px;
+  border-radius: 3px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  font-size: 0.8em;
+}
+
+/* Product Content */
+.tpsidebar__product-content {
+  flex-grow: 1;
+}
+
+.tpsidebar__product-title {
+  font-size: 1em;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.tpproduct__rating i {
+  color: #f39c12;
+}
+
+.tpproduct__price {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.tpproduct__price span {
+  font-weight: bold;
+  color: #27ae60;
+}
+
+.tpproduct__price del {
+  color: #95a5a6;
+  margin-left: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .content-with-sidebar {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .right-sidebar {
+      width: 100%;
+      padding: 15px;
+  }
+
+  .tpsidebar__product {
+      padding: 15px;
+  }
+
+  .tpsidebar__product-item {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .tpsidebar__product-thumb img {
+      width: 100px;
+      height: 100px;
+  }
+
+  .tpsidebar__product-title {
+      font-size: 1.2em;
+  }
+
+  .tpproduct__price {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+}

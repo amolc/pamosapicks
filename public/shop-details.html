@@ -25,6 +25,7 @@
       <link rel="stylesheet" href="assets/css/icon-dukamarket.css">
       <link rel="stylesheet" href="assets/css/jquery-ui.css">
       <link rel="stylesheet" href="assets/css/main.css">
+  
    </head>
    <body>
 
@@ -423,29 +424,107 @@
       <main>
 
          <!-- breadcrumb-area-start -->
-         <div class="breadcrumb__area grey-bg pt-5 pb-5">
+         
+         <!-- breadcrumb-area-end -->
+
+         <!-- shop-details-area-start -->
+     
             <div class="container">
-               <div class="row">
-                  <div class="col-lg-12">
-                     <div class="tp-breadcrumb__content">
-                        <div class="tp-breadcrumb__list">
-                           <span class="tp-breadcrumb__active"><a href="index.html">Home</a></span>
-                           <span class="dvdr">/</span>
-                           <span class="tp-breadcrumb__active"><a href="index.html">Breakfast & Dairy</a></span>
-                           <span class="dvdr">/</span>
-                           <span>{$ productDetail.product_name $}</span>
+              
+               <div class="tpshop__category">
+                  <div class="swiper-container inner-category-active">
+                     <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                           <div class="category__item mb-30">
+                              <div class="category__thumb fix mb-15">
+                                 <a href="shop-details-3.html"><img src="assets/img/catagory/category-1.jpg" alt="category-thumb"></a>
+                              </div>
+                              <div class="category__content">
+                                 <h5 class="category__title"><a href="shop-details-3.html">Vegetables</a></h5>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="swiper-slide">
+                           <div class="category__item mb-30">
+                              <div class="category__thumb fix mb-15">
+                                 <a href="shop-details-3.html"><img src="assets/img/catagory/category-2.jpg" alt="category-thumb"></a>
+                              </div>
+                              <div class="category__content">
+                                 <h5 class="category__title"><a href="shop-details-3.html">Fresh Fruits</a></h5>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="swiper-slide">
+                           <div class="category__item mb-30">
+                              <div class="category__thumb fix mb-15">
+                                 <a href="shop-details-3.html"><img src="assets/img/catagory/category-3.jpg" alt="category-thumb"></a>
+                              </div>
+                              <div class="category__content">
+                                 <h5 class="category__title"><a href="shop-details-3.html">Fruit Drink</a></h5>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="swiper-slide">
+                           <div class="category__item mb-30">
+                              <div class="category__thumb fix mb-15">
+                                 <a href="shop-details-3.html"><img src="assets/img/catagory/category-4.jpg" alt="category-thumb"></a>
+                              </div>
+                              <div class="category__content">
+                                 <h5 class="category__title"><a href="shop-details-3.html">Fresh Bakery</a></h5>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="swiper-slide">
+                           <div class="category__item mb-30">
+                              <div class="category__thumb fix mb-15">
+                                 <a href="shop-details-3.html"><img src="assets/img/catagory/category-5.jpg" alt="category-thumb"></a>
+                              </div>
+                              <div class="category__content">
+                                 <h5 class="category__title"><a href="shop-details-3.html">Biscuits Snack</a></h5>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="swiper-slide">
+                           <div class="category__item mb-30">
+                              <div class="category__thumb fix mb-15">
+                                 <a href="shop-details-3.html"><img src="assets/img/catagory/category-6.jpg" alt="category-thumb"></a>
+                              </div>
+                              <div class="category__content">
+                                 <h5 class="category__title"><a href="shop-details.html">Fresh Meat</a></h5>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="swiper-slide">
+                           <div class="category__item mb-30">
+                              <div class="category__thumb fix mb-15">
+                                 <a href="shop-details-3.html"><img src="assets/img/catagory/category-7.jpg" alt="category-thumb"></a>
+                              </div>
+                              <div class="category__content">
+                                 <h5 class="category__title"><a href="shop-details-3.html">Fresh Milk</a></h5>
+                              </div>
+                           </div>
                         </div>
                      </div>
                   </div>
                </div>
-            </div>
-         </div>
-         <!-- breadcrumb-area-end -->
-
-         <!-- shop-details-area-start -->
-         <section class="shopdetails-area grey-bg pb-50">
-            <div class="container">
-               <div class="row">
+               <div class="breadcrumb__area grey-bg pt-5 pb-5">
+                  <div class="container">
+                     <div class="row">
+                        <div class="col-lg-12">
+                           <div class="tp-breadcrumb__content">
+                              <div class="tp-breadcrumb__list">
+                                 <span class="tp-breadcrumb__active"><a href="index.html">Home</a></span>
+                                 <span class="dvdr">/</span>
+                                 <span class="tp-breadcrumb__active"><a href="index.html">Breakfast & Dairy</a></span>
+                                 <span class="dvdr">/</span>
+                                 <span>{$ productDetail.product_name $}</span>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="d-flex">
                   <div class="col-lg-10 col-md-12">
                      <div class="tpdetails__area mr-60 pb-30">
                         <div class="tpdetails__product mb-30">
@@ -600,132 +679,114 @@
                             
                  
                </div>
+               <div class="content-with-sidebar d-flex">
+                  <!-- Main Content Section (Left) -->
+                  <div class="main-content flex-grow-1">
+                      <!-- Add your main content here -->
+                  </div>
+              
+                  <!-- Right Sidebar Section -->
+                  <div class="right-sidebar">
+                      <aside class="tpsidebar__banner mt-20 mb-30">
+                          <img src="assets/img/shape/sidebar-product-1.png" alt="Sidebar Banner">
+                      </aside>
+              
+                      <div class="tpsidebar__product">
+                          <h4 class="tpsidebar__title mb-15">Recent Products</h4>
+                          <div class="tpsidebar__product-container">
+                              <!-- Product Item 1 -->
+                              <div class="tpsidebar__product-item">
+                                  <div class="tpsidebar__product-thumb p-relative">
+                                      <img src="assets/img/product/sidebar-pro-1.jpg" alt="Product 1">
+                                      <div class="tpsidebar__info bage">
+                                          <span class="tpproduct__info-hot bage__hot">HOT</span>
+                                      </div>
+                                  </div>
+                                  <div class="tpsidebar__product-content">
+                                      <span class="tpproduct__product-category">
+                                          <a href="shop-details-3.html">Fresh Fruits</a>
+                                      </span>
+                                      <h4 class="tpsidebar__product-title">
+                                          <a href="shop-details-3.html">Fresh Mangosteen 100% Organic From Vietnamese</a>
+                                      </h4>
+                                      <div class="tpproduct__rating mb-5">
+                                          <a href="#"><i class="icon-star_outline1"></i></a>
+                                          <a href="#"><i class="icon-star_outline1"></i></a>
+                                          <a href="#"><i class="icon-star_outline1"></i></a>
+                                          <a href="#"><i class="icon-star_outline1"></i></a>
+                                          <a href="#"><i class="icon-star_outline1"></i></a>
+                                      </div>
+                                      <div class="tpproduct__price">
+                                          <span>$56.00</span>
+                                          <del>$19.00</del>
+                                      </div>
+                                  </div>
+                              </div>
+              
+                              <!-- Product Item 2 -->
+                              <div class="tpsidebar__product-item">
+                                  <div class="tpsidebar__product-thumb p-relative">
+                                      <img src="assets/img/product/sidebar-pro-2.jpg" alt="Product 2">
+                                      <div class="tpsidebar__info bage">
+                                          <span class="tpproduct__info-hot bage__hot">HOT</span>
+                                      </div>
+                                  </div>
+                                  <div class="tpsidebar__product-content">
+                                      <span class="tpproduct__product-category">
+                                          <a href="shop-details-3.html">Fresh Vegetables</a>
+                                      </span>
+                                      <h4 class="tpsidebar__product-title">
+                                          <a href="shop-details-3.html">Fresh Organic Broccoli</a>
+                                      </h4>
+                                      <div class="tpproduct__rating mb-5">
+                                          <a href="#"><i class="icon-star_outline1"></i></a>
+                                          <a href="#"><i class="icon-star_outline1"></i></a>
+                                          <a href="#"><i class="icon-star_outline1"></i></a>
+                                          <a href="#"><i class="icon-star_outline1"></i></a>
+                                          <a href="#"><i class="icon-star_outline1"></i></a>
+                                      </div>
+                                      <div class="tpproduct__price">
+                                          <span>$48.00</span>
+                                          <del>$15.00</del>
+                                      </div>
+                                  </div>
+                              </div>
+              
+                              <!-- Product Item 3 -->
+                              <div class="tpsidebar__product-item">
+                                  <div class="tpsidebar__product-thumb p-relative">
+                                      <img src="assets/img/product/sidebar-pro-3.jpg" alt="Product 3">
+                                      <div class="tpsidebar__info bage">
+                                          <span class="tpproduct__info-hot bage__hot">HOT</span>
+                                      </div>
+                                  </div>
+                                  <div class="tpsidebar__product-content">
+                                      <span class="tpproduct__product-category">
+                                          <a href="shop-details-3.html">Fresh Fruits</a>
+                                      </span>
+                                      <h4 class="tpsidebar__product-title">
+                                          <a href="shop-details-3.html">Organic Ripe Bananas</a>
+                                      </h4>
+                                      <div class="tpproduct__rating mb-5">
+                                          <a href="#"><i class="icon-star_outline1"></i></a>
+                                          <a href="#"><i class="icon-star_outline1"></i></a>
+                                          <a href="#"><i class="icon-star_outline1"></i></a>
+                                          <a href="#"><i class="icon-star_outline1"></i></a>
+                                          <a href="#"><i class="icon-star_outline1"></i></a>
+                                      </div>
+                                      <div class="tpproduct__price">
+                                          <span>$35.00</span>
+                                          <del>$12.00</del>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
             </div>
-         </section> 
-         <!-- shop-details-area-end -->
-
-         <div class="tpsidebar__banner mb-30">
-            <img src="assets/img/shape/sidebar-product-1.png" alt="">
-        </div>
-        <div class="tpsidebar__product">
-            <h4 class="tpsidebar__title mb-15">Recent Products</h4>
-            <div class="tpsidebar__product-container">
-                <!-- Product Item 1 -->
-                <div class="tpsidebar__product-item">
-                    <div class="tpsidebar__product-thumb p-relative">
-                        <img src="assets/img/product/sidebar-pro-1.jpg" alt="">
-                        <div class="tpsidebar__info bage">
-                            <span class="tpproduct__info-hot bage__hot">HOT</span>
-                        </div>
-                    </div>
-                    <div class="tpsidebar__product-content">
-                        <span class="tpproduct__product-category">
-                            <a href="shop-details-3.html">Fresh Fruits</a>
-                        </span>
-                        <h4 class="tpsidebar__product-title">
-                            <a href="shop-details-3.html">Fresh Mangosteen 100% Organic From VietNamese</a>
-                        </h4>
-                        <div class="tpproduct__rating mb-5">
-                            <a href="#"><i class="icon-star_outline1"></i></a>
-                            <a href="#"><i class="icon-star_outline1"></i></a>
-                            <a href="#"><i class="icon-star_outline1"></i></a>
-                            <a href="#"><i class="icon-star_outline1"></i></a>
-                            <a href="#"><i class="icon-star_outline1"></i></a>
-                        </div>
-                        <div class="tpproduct__price">
-                            <span>$56.00</span>
-                            <del>$19.00</del>
-                        </div>
-                    </div>
-                </div>
-        
-                <div class="tpsidebar__product-item">
-                  <div class="tpsidebar__product-thumb p-relative">
-                     <img src="assets/img/product/sidebar-pro-3.jpg" alt="">
-                     <div class="tpsidebar__info bage">
-                        <span class="tpproduct__info-hot bage__hot">HOT</span>
-                     </div>
-                  </div>
-                  <div class="tpsidebar__product-content">
-                     <span class="tpproduct__product-category">
-                        <a href="shop-details-3.html">Fresh Fruits</a>
-                     </span>
-                     <h4 class="tpsidebar__product-title">
-                        <a href="shop-details-grid.html">Fresh Mangosteen 100% Organic From VietNamese</a>
-                     </h4>
-                     <div class="tpproduct__rating mb-5">
-                        <a href="#"><i class="icon-star_outline1"></i></a>
-                        <a href="#"><i class="icon-star_outline1"></i></a>
-                        <a href="#"><i class="icon-star_outline1"></i></a>
-                        <a href="#"><i class="icon-star_outline1"></i></a>
-                        <a href="#"><i class="icon-star_outline1"></i></a>
-                     </div>
-                     <div class="tpproduct__price">
-                        <span>$56.00</span>
-                        <del>$19.00</del>
-                     </div>
-                  </div>
-               </div>
-            
-
-                <!-- Product Item 2 -->
-                <div class="tpsidebar__product-item">
-                    <div class="tpsidebar__product-thumb p-relative">
-                        <img src="assets/img/product/sidebar-pro-2.jpg" alt="">
-                        <div class="tpsidebar__info bage">
-                            <span class="tpproduct__info-hot bage__hot">HOT</span>
-                        </div>
-                    </div>
-                    <div class="tpsidebar__product-content">
-                        <span class="tpproduct__product-category">
-                            <a href="shop-details-3.html">Fresh Fruits</a>
-                        </span>
-                        <h4 class="tpsidebar__product-title">
-                            <a href="shop-details-3.html">Fresh Mangosteen 100% Organic From VietNamese</a>
-                        </h4>
-                        <div class="tpproduct__rating mb-5">
-                            <a href="#"><i class="icon-star_outline1"></i></a>
-                            <a href="#"><i class="icon-star_outline1"></i></a>
-                            <a href="#"><i class="icon-star_outline1"></i></a>
-                            <a href="#"><i class="icon-star_outline1"></i></a>
-                            <a href="#"><i class="icon-star_outline1"></i></a>
-                        </div>
-                        <div class="tpproduct__price">
-                            <span>$56.00</span>
-                            <del>$19.00</del>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tpsidebar__product-item">
-                  <div class="tpsidebar__product-thumb p-relative">
-                     <img src="assets/img/product/sidebar-pro-2.jpg" alt="">
-                     <div class="tpsidebar__info bage">
-                        <span class="tpproduct__info-hot bage__hot">HOT</span>
-                     </div>
-                  </div>
-                  <div class="tpsidebar__product-content">
-                     <span class="tpproduct__product-category">
-                        <a href="shop-details-3.html">Fresh Fruits</a>
-                     </span>
-                     <h4 class="tpsidebar__product-title">
-                        <a href="shop-details-3.html">Fresh Mangosteen 100% Organic From VietNamese</a>
-                     </h4>
-                     <div class="tpproduct__rating mb-5">
-                        <a href="#"><i class="icon-star_outline1"></i></a>
-                        <a href="#"><i class="icon-star_outline1"></i></a>
-                        <a href="#"><i class="icon-star_outline1"></i></a>
-                        <a href="#"><i class="icon-star_outline1"></i></a>
-                        <a href="#"><i class="icon-star_outline1"></i></a>
-                     </div>
-                     <div class="tpproduct__price">
-                        <span>$56.00</span>
-                        <del>$19.00</del>
-                     </div>
-                  </div>
-               </div>
-            </div>
-        </div>
+         
+         
         
          <!-- product-area-start -->
          <!-- <section class="product-area whight-product pt-75 pb-80">
