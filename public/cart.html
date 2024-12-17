@@ -25,9 +25,19 @@
       <link rel="stylesheet" href="assets/css/icon-dukamarket.css">
       <link rel="stylesheet" href="assets/css/jquery-ui.css">
       <link rel="stylesheet" href="assets/css/main.css">
-   </head>
-   <body>
 
+       <!-- angular  -->
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+       <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+       <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+       <script src="./angular/angular-storage.min.js"></script>
+       <script src="./angular/angular-payments.js"></script>
+       <script src="./angular/app.js"></script>
+       <script src="./angular/service.js"></script>
+       <script src="./angular/cartCtrl.js"></script>
+   </head>
+   <body ng-app="website" ng-controller="cartCtrl" ng-init="init()">
 
       <!-- Scroll-top -->
       <button class="scroll-top scroll-to-target" data-target="html">
@@ -459,9 +469,14 @@
                                     </tr>
                                  </thead>
                                  <tbody>
-                                    <tr>
+                                    <tr ng-repeat="data in dataset">
+                                      
+                                       
+                   
+                                   </tr>
+                                    <tr ng-repeat="data in cart" >
                                        <td class="product-thumbnail">
-                                          <a href="shop-details.html?id={$ productDetail.id $}">
+                                          <a href="shop-details.html?id={{data.id}}">
                                              <img src="{$ productDetail.product_image1 $}" alt="Primary Image">
                                          </a>
                                          <a class="tpproduct__thumb-img" href="shop-details.html?id={$ productDetail.product_id $}">
@@ -469,13 +484,13 @@
                                          </a>
                                        </td>
                                        <td class="product-name">
-                                          <a href="shop-details.html?id={$ productDetail.id $}">{$ productDetail.product_name $}</a>
+                                          <a href="shop-details.html?id={$ productDetail.id $}">{{data.product_name}}</a>
                                       </td>
                                        <!-- <td class="product-price">
                                           <span class="amount">$56.00</span>
                                        </td> -->
                                        <td class="product-price">
-                                          <span class="amount">₹{$ productDetail.price $}</span>
+                                          <span class="amount">₹{{data.price}}</span>
                                       </td>
 
                                       <td class="product-quantity">
@@ -483,7 +498,7 @@
                                        <input 
                                            class="cart-input" 
                                            type="number" 
-                                           value="1" 
+                                           value="{{data.qty}}" 
                                            data-product-id="{{ productDetail.product_id }}" 
                                            data-price="{{ productDetails.price }}" 
                                            min="1" 
