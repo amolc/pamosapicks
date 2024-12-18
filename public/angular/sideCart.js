@@ -9,8 +9,9 @@ document.addEventListener("DOMContentLoaded", function () {
       let subtotal = 0;
   
       storedProducts.forEach((product, index) => {
-        const { id, product_name, quantity } = product;
+        const { id, product_name, quantity,product_image } = product;
         const price = Number(product.price);
+        
         const itemTotal = quantity * price;
         subtotal += itemTotal;
   
@@ -18,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <li>
             <div class="tpcart__item">
               <div class="tpcart__img">
-                <img src="{$ product.product_image1 $}" alt="${product_name}">
+                <img src="${product_image}" alt="${product_name}">
                 <div class="tpcart__del">
                   <a href="#" onclick="removeItem(${index})"><i class="icon-x-circle"></i></a>
                 </div>
