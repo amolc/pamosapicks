@@ -456,7 +456,7 @@
             <div class="row">
                <div class="col-12">
                      <form action="#">
-                        <div class="table-content table-responsive">
+                        <div class="table-content table-responsive" ng-controller="cartCtrl" ng-init="init()">
                            <table class="table">
                                  <thead>
                                     <tr>
@@ -468,7 +468,7 @@
                                        <th class="product-remove">Remove</th>
                                     </tr>
                                  </thead>
-                                 <tbody>
+                                 
                                
                                     <tbody id="cart-table-body">
                                        <!-- Rows rendered by renderCartItems -->
@@ -497,7 +497,7 @@
                                           <a href="#"><i class="fa fa-times"></i></a>
                                        </td>
                                     </tr> -->
-                                 </tbody>
+                                 
                            </table>
                         </div>
                         <div class="row">

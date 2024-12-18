@@ -42,6 +42,9 @@ app.controller(
         // Save to localStorage
         localStorage.setItem("cart", JSON.stringify($scope.cart));
         console.log("Updated Cart:", $scope.cart);
+
+        const cartUpdatedEvent = new Event("cartUpdated");
+    window.dispatchEvent(cartUpdatedEvent);
   
         // Update cart table and total
         $scope.renderCartItems();
