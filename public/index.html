@@ -684,78 +684,23 @@
                         <div class="tpshop__category">
                            <div class="swiper-container inner-category-active">
                               <div class="swiper-wrapper">
-                                 <div class="swiper-slide">
+                                 <div ng-if="fetchingCategoryList">
+                                    Loading categories...
+                                 </div>
+                                 <div ng-repeat="category in categorydataset" class="swiper-slide">
                                      <div class="category__item mb-30">
                                         <div class="category__thumb fix mb-15">
-                                           <a href="shop-details-3.html"><img src="assets/img/catagory/category-1.jpg" alt="category-thumb"></a>
-                                        </div>
-                                        <div class="category__content">
-                                           <h5 class="category__title"><a href="shop-details-3.html">Vegetables</a></h5>
-                                        </div>
-                                     </div>
-                                 </div>
-                                 <div class="swiper-slide">
-                                    <div class="category__item mb-30">
-                                       <div class="category__thumb fix mb-15">
-                                          <a href="shop-details-3.html">
-                                             <img src="assets/img/catagory/category-2.jpg" alt="category-thumb">
+                                          <a href="/categories/{{ category.id }}">
+                                             <img
+                                                src="{{ category.category_image }}"
+                                                alt="category-{{ category.category_name }}-thumb">
                                           </a>
-                                       </div>
-                                       <div class="category__content">
-                                           <h5 class="category__title">
-                                             <a href="shop-details-3.html">Fresh Fruits</a>
-                                          </h5>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="swiper-slide">
-                                     <div class="category__item mb-30">
-                                       <div class="category__thumb fix mb-15">
-                                          <a href="shop-details-3.html"><img src="assets/img/catagory/category-3.jpg" alt="category-thumb"></a>
-                                       </div>
-                                       <div class="category__content">
-                                          <h5 class="category__title"><a href="shop-details-3.html">Fruit Drink</a></h5>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="swiper-slide">
-                                    <div class="category__item mb-30">
-                                       <div class="category__thumb fix mb-15">
-                                          <a href="shop-details-3.html"><img src="assets/img/catagory/category-4.jpg" alt="category-thumb"></a>
-                                       </div>
-                                       <div class="category__content">
-                                          <h5 class="category__title"><a href="shop-details-3.html">Fresh Bakery</a></h5>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="swiper-slide">
-                                    <div class="category__item mb-30">
-                                       <div class="category__thumb fix mb-15">
-                                          <a href="shop-details-3.html"><img src="assets/img/catagory/category-5.jpg" alt="category-thumb"></a>
-                                       </div>
-                                       <div class="category__content">
-                                          <h5 class="category__title"><a href="shop-details-3.html">Biscuits Snack</a></h5>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="swiper-slide">
-                                    <div class="category__item mb-30">
-                                       <div class="category__thumb fix mb-15">
-                                          <a href="shop-details-3.html"><img src="assets/img/catagory/category-6.jpg" alt="category-thumb"></a>
-                                       </div>
-                                       <div class="category__content">
-                                          <h5 class="category__title"><a href="shop-details.html">Fresh Meat</a></h5>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="swiper-slide">
-                                    <div class="category__item mb-30">
-                                       <div class="category__thumb fix mb-15">
-                                          <a href="shop-details-3.html"><img src="assets/img/catagory/category-7.jpg" alt="category-thumb"></a>
                                         </div>
                                         <div class="category__content">
-                                          <h5 class="category__title"><a href="shop-details-3.html">Fresh Milk</a></h5>
-                                       </div>
+                                          <h5 class="category__title">
+                                             <a href="shop-details-3.html">{{ category.category_name }}</a>
+                                          </h5>
+                                        </div>
                                      </div>
                                  </div>
                               </div>
@@ -924,13 +869,13 @@
                                              <span ng-if="product.discount_price">₹{{ product.discount_price }}</span>
                                              <span ng-if="!product.discount_price">₹{{ product.price }}</span>
                                              <del ng-if="product.discount_price">₹{{ product.price }}</del>
-                                       </div>                                      
+                                          </div>                                      
                                        </div>
-                                       
+
                                        <!-- PRODUCT HOVER TEXT -->
                                        <div class="tpproduct__hover-text">
                                           <div class="tpproduct__hover-btn d-flex justify-content-center mb-10">
-                                             <a id="add-to-cart-btn" class="tp-btn-2" ng-click="addToCart({{ product.id }})" >Add to cart</a>
+                                             <a id="add-to-cart-btn" class="tp-btn-2" ng-click="addToCart(product.id)" >Add to cart</a>
                                           </div>
                                           <style>
                                              #add-to-cart-btn {

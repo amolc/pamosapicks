@@ -2,17 +2,17 @@ app.controller(
   "indexCtrl",
   function ($scope, $http, $window, $location, config) {
     $scope.init = function () {
-      $scope.productlist();
       $scope.baseurl = config.baseurl;
+      
+      $scope.productlist();
+      $scope.categorylist();
+
       console.log(config);
 
       // Initialize cart from localStorage
       $scope.cart = JSON.parse(localStorage.getItem("cart")) || [];
       
-
       console.log($scope.cart);
-
-      
     };
 
     // Fetch the list of products
@@ -27,15 +27,37 @@ app.controller(
                 console.log("Printing data");
                 console.log(response.data.data);
                 $scope.productdataset = response.data.data;
-                $scope.fetchingProductList = false;
-                
+
                 console.log("Product list fetched:", $scope.productdataset);
               }
           })
           .catch(function (error) {
               console.error("Error fetching product list:", error);
+          }).finally(() => {
+            $scope.fetchingProductList = false;
           });
     };
+
+    $scope.fetchingCategoryList = true;
+    $scope.categorylist = function() {
+      $http.get(`${config.baseurl}category/category/`)
+          .then(function (response) {
+              if (response.data.status === 'false') {
+                  console.error("Error fetching category list:", response.data.message);
+              } else {
+                console.log("Fetched categories from: ", `${config.baseurl}category/category/`);
+                console.log("Categories fetched: ");
+                console.log("Response: ", response);
+                console.log(response.data);
+                $scope.categorydataset = response.data;
+              }
+          })
+          .catch(function (error) {
+              console.error("Error fetching category list:", error);
+          }).finally(() => {
+            $scope.fetchingCategoryList = false;
+          });
+    }
 
     $scope.addToCart = function (id, product_name, qty, price,image) {
       qty = Number(qty);
