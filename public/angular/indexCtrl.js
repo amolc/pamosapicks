@@ -1,3 +1,10 @@
+// Function to convert JSON object to query string
+function jsonToQueryString(params) {
+  return Object.keys(params)
+      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(params[key]))
+      .join('&');
+}
+
 app.controller(
   "indexCtrl",
   function ($scope, $http, $window, $location, config) {
@@ -17,17 +24,25 @@ app.controller(
     };
 
     // Fetch the list of products
-    $scope.fetchingProductList = true;
     $scope.productlist = function () {
-      console.log("Fetching product list from:", config.baseurl);
       $scope.fetchingProductList = true;
-      $http.get(`${config.baseurl}product/products/`)
+
+      const urlParams = Object.fromEntries(new URLSearchParams(window.location.search));
+
+      let url = '';
+
+      if (urlParams.length == 0) {
+        url = `${config.baseurl}product/products/`;
+      } else {
+        const queryString = jsonToQueryString(urlParams);
+        url = `${config.baseurl}product/products?${queryString}`;
+      }
+
+      $http.get(url)
           .then(function (response) {
               if (response.data.status === 'false') {
                   console.error("Error fetching product list:", response.data.message);
               } else {
-                console.log("Printing data");
-                console.log(response.data.data);
                 $scope.productdataset = response.data.data;
                 $scope.num_products = $scope.productdataset.length;
 
@@ -40,29 +55,6 @@ app.controller(
             $scope.fetchingProductList = false;
           });
     };
-
-    $scope.productListByCategory = function(category_id, category_name) {
-      $scope.fetchingProductList = true;
-      $scope.categoryFilter = category_name;
-      $http.get(`${config.baseurl}product/products?category_id=${category_id}`)
-        .then(function (response) {
-          if (response.data.status === 'false') {
-              console.error("Error fetching product list:", response.data.message);
-          } else {
-            console.log("Printing data");
-            console.log(response.data.data);
-            $scope.productdataset = response.data.data;
-            $scope.num_products = $scope.productdataset.length;
-
-            console.log("Product list fetched:", $scope.productdataset);
-          }
-        })
-        .catch(function (error) {
-            console.error("Error fetching product list:", error);
-        }).finally(() => {
-          $scope.fetchingProductList = false;
-        });
-      };
 
     $scope.fetchingCategoryList = true;
     $scope.categorylist = function() {

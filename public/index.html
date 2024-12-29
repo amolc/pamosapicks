@@ -478,13 +478,24 @@
                                  </div>
                                  <div ng-repeat="category in categorydataset" class="swiper-slide h-full">
                                      <div class="category__item mb-30 h-full">
-                                        <div class="category__thumb fix mb-15">
-                                          <div style="cursor: pointer;" ng-click="productListByCategory(category.id, category.category_name)" href="/categories/{{ category.id }}">
+                                       <!-- class="category__thumb fix"--> 
+                                       <div class="mb-15" style="
+                                          height: 80px;
+                                          width: 80px;
+                                          display: inline-block;
+                                          position: relative;
+                                       ">
+                                          <a style="cursor: pointer;" href="/?category_id={{ category.id }}">
                                              <img
+                                                style="
+                                                   height: 80px;
+                                                   width: 80px;
+                                                   border-radius: 50%;
+                                                "
                                                 class="aspect-square"
                                                 src="{{ category.category_image }}"
                                                 alt="category-{{ category.category_name }}-thumb">
-                                          </div>
+                                          </a>
                                         </div>
                                         <div class="category__content">
                                           <h5 class="category__title">
@@ -556,94 +567,65 @@
                                     <div ng-repeat="product in productdataset" class="col">
                                        <div class="tpproduct p-relative mb-20">
                                           <div class="tpproduct__thumb p-relative text-center">
-                                             <!-- Product Images -->
                                              <a href="shop-details.html?id={{ product.id }}">
                                                 <img
                                                    style="height: 240px; object-fit: contain; object-position: center;"
                                                    src="{{ product.product_image1 }}" alt="Primary Image">
                                              </a>
-                                             <!--
-                                             <a class="tpproduct__thumb-img" href="shop-details.html?id={{ product.id }}">
-                                                <img src="{{ product.product_image2 }}" alt="Secondary Image">
-                                             </a> -->
-                                 
-                                             <!-- Product Badges -->
-                                             <div class="tpproduct__info bage">
-                                                {{ product.product_discount }}
-                                                
-                                                <!-- Calculate and display the discount percentage -->
-                                                <span ng-if="product.discount_price" class="tpproduct__info-discount bage__discount">
-                                                   -{{ (((product.price - product.discount_price) / product.price) * 100) | round:0 }}%
-                                                </span>
-                                                
-                                                <span ng-if="product.availability == 'HOT'" class="tpproduct__info-hot bage__hot">HOT</span>
-                                             </div>
-
-                                             <!-- Product Shopping Options -->
-                                             <div class="tpproduct__shopping">
-                                                   <a class="tpproduct__shopping-wishlist" href="wishlist.html"><i class="icon-heart icons"></i></a>
-                                                   <a class="tpproduct__shopping-wishlist" href="#"><i class="icon-layers"></i></a>
-                                                   <a class="tpproduct__shopping-cart" href="#"><i class="icon-eye"></i></a>
-                                             </div>
-                                          </div>
-                                 
-                                          <!-- Product Content -->
-                                          <div class="tpproduct__content">
-                                             <span class="tpproduct__content-weight">
-                                                   <a href="shop-details.html?id={$ product.id $}">{{ product.product_type }}</a>
-                                             </span>
-                                             <!-- Calculate and display the discount percentage -->
-                                             <span ng-if="product.discount_price" class="tpproduct__info-discount bage__discount">
-                                                -{{ (((product.price - product.discount_price) / product.price) * 100) | round:0 }}%
-                                             </span>
-                                             
-                                             <span ng-if="product.availability == 'HOT'" class="tpproduct__info-hot bage__hot">HOT</span>
-                                          </div>
-                              
-                                          <!-- Product Shopping Options -->
-                                          <div class="tpproduct__shopping">
-                                             <a class="tpproduct__shopping-wishlist" href="wishlist.html"><i class="icon-heart icons"></i></a>
-                                             <a class="tpproduct__shopping-wishlist" href="#"><i class="icon-layers"></i></a>
-                                             <a class="tpproduct__shopping-cart" href="#"><i class="icon-eye"></i></a>
-                                          </div>
-                                       </div>
-                              
-                                       <!-- Product Content -->
-                                       <div class="tpproduct__content">
-                                          <span class="tpproduct__content-weight">
-                                             <a href="shop-details.html?id={$ product.id $}">{{ product.product_type }}</a>
-                                          </span>
-                                          <h4 class="tpproduct__title">
-                                             <a href="shop-details.html?id={$ product.id $}">{{ product.product_name }}</a>
-                                          </h4>
-                                          <div class="tpproduct__rating mb-5">
-                                             <a href="#" ng-repeat="star in [] | limitTo: 5">
-                                                <i class="icon-star_outline1"></i>
+                                             <a class="tpproduct__thumb-img" href="shop-details.html">
+                                                <img src="{{ product.product_image2 }}" alt="">
                                              </a>
+                                             <div class="tpproduct__info bage">
+                                                <span
+                                                   ng-if="product.discount_price"
+                                                   class="tpproduct__info-discount bage__discount">
+                                                       -{{ (((product.price - product.discount_price) / product.price) * 100) | round:0 }}%
+                                                </span>
+                                                                        
+                                                   <span ng-if="product.availability == 'HOT'" class="tpproduct__info-hot bage__hot">HOT</span>
+                                             </div>
+                                             <div class="tpproduct__shopping">
+                                                <a class="tpproduct__shopping-wishlist" href="wishlist.html"><i class="icon-heart icons"></i></a>
+                                                <a class="tpproduct__shopping-wishlist" href="#"><i class="icon-layers"></i></a>
+                                                <a class="tpproduct__shopping-cart" href="#"><i class="icon-eye"></i></a>
+                                             </div>
                                           </div>
-                                          <div class="tpproduct__price">
+                                          <div class="tpproduct__content">
+                                            <span class="tpproduct__content-weight">
+                                                <a href="shop-details.html?id={{ product.id }}">{{ product.product_type }}</a>
+                                           </span>
+                                            <h4 class="tpproduct__title">
+                                              <a href="shop-details-top-.html">{{ product.title }}</a>
+                                            </h4>
+                                            <div class="tpproduct__rating mb-5">
+                                              <a href="#"><i class="icon-star_outline1"></i></a>
+                                              <a href="#"><i class="icon-star_outline1"></i></a>
+                                              <a href="#"><i class="icon-star_outline1"></i></a>
+                                              <a href="#"><i class="icon-star_outline1"></i></a>
+                                              <a href="#"><i class="icon-star_outline1"></i></a>
+                                            </div>
+                                            <div class="tpproduct__price">
                                              <span ng-if="product.discount_price">₹{{ product.discount_price }}</span>
                                              <span ng-if="!product.discount_price">₹{{ product.price }}</span>
                                              <del ng-if="product.discount_price">₹{{ product.price }}</del>
-                                          </div>                                      
-                                       </div>
-
-                                       <!-- PRODUCT HOVER TEXT -->
-                                       <div class="tpproduct__hover-text">
-                                          <div class="tpproduct__hover-btn d-flex justify-content-center mb-10">
-                                             <a id="add-to-cart-btn" class="tp-btn-2" ng-click="addToCart(product.id)" >Add to cart</a>
+                                            </div>
                                           </div>
-                                          <style>
-                                             #add-to-cart-btn {
+                                          <div class="tpproduct__hover-text">
+                                            <div class="tpproduct__hover-btn d-flex justify-content-center mb-10">
+                                              <a id="add-to-cart-btn" class="tp-btn-2" ng-click="addToCart(product.id)" >Add to cart</a>
+                                            </div>
+                                            <style>
+                                              #add-to-cart-btn {
                                                 cursor: pointer;
-                                             }
-                                          </style>
-                                          <div class="tpproduct__descrip">
-                                             <ul>
-                                                <li>Type: {{ product.product_type }}</li>
-                                                <li>MFG: {{ product.mfg }}</li>
-                                                <li>LIFE: {{ product.product_life }}</li>
-                                             </ul>
+                                              }
+                                            </style>
+                                            <div class="tpproduct__descrip">
+                                              <ul>
+                                                <li>Type: Organic</li>
+                                                <li>MFG: August 4.2021</li>
+                                                <li>LIFE: 60 days</li>
+                                              </ul>
+                                            </div>
                                           </div>
                                        </div>
                                     </div>
