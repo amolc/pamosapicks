@@ -6,6 +6,7 @@ app.controller(
       
       $scope.productlist();
       $scope.categorylist();
+      $scope.categoryFilter = null;
 
       console.log(config);
 
@@ -19,6 +20,7 @@ app.controller(
     $scope.fetchingProductList = true;
     $scope.productlist = function () {
       console.log("Fetching product list from:", config.baseurl);
+      $scope.fetchingProductList = true;
       $http.get(`${config.baseurl}product/products/`)
           .then(function (response) {
               if (response.data.status === 'false') {
@@ -27,6 +29,7 @@ app.controller(
                 console.log("Printing data");
                 console.log(response.data.data);
                 $scope.productdataset = response.data.data;
+                $scope.num_products = $scope.productdataset.length;
 
                 console.log("Product list fetched:", $scope.productdataset);
               }
@@ -37,6 +40,29 @@ app.controller(
             $scope.fetchingProductList = false;
           });
     };
+
+    $scope.productListByCategory = function(category_id, category_name) {
+      $scope.fetchingProductList = true;
+      $scope.categoryFilter = category_name;
+      $http.get(`${config.baseurl}product/products?category_id=${category_id}`)
+        .then(function (response) {
+          if (response.data.status === 'false') {
+              console.error("Error fetching product list:", response.data.message);
+          } else {
+            console.log("Printing data");
+            console.log(response.data.data);
+            $scope.productdataset = response.data.data;
+            $scope.num_products = $scope.productdataset.length;
+
+            console.log("Product list fetched:", $scope.productdataset);
+          }
+        })
+        .catch(function (error) {
+            console.error("Error fetching product list:", error);
+        }).finally(() => {
+          $scope.fetchingProductList = false;
+        });
+      };
 
     $scope.fetchingCategoryList = true;
     $scope.categorylist = function() {

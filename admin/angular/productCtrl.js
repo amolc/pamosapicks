@@ -290,12 +290,12 @@ app.controller('productCtrl', function ($scope, $http, $window, $location, $sce,
           const reader = new FileReader();
           reader.onload = function (subCategory) {
             const base64String = subCategory.target.result;
-            console.log(`Base64 for ${inputId}:`, base64String); // Log the Base64 string
     
             // Get AngularJS scope
-            const scope = angular.element(document.querySelector('[ng-controller="subcategoryCtrl"]')).scope();
+            const scope = angular.element(document.querySelector('[ng-controller="productCtrl"]')).scope();
             scope.product['product_image'] = base64String;
-            
+            scope.product['product_image1'] = base64String;
+            scope.product['product_image2'] = base64String;
           };
           reader.readAsDataURL(file);
         } else {
