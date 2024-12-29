@@ -9,3 +9,13 @@ app.filter('round', function() {
         return Math.round(input * Math.pow(10, decimals)) / Math.pow(10, decimals);
     };
 });
+
+app.filter('display_availability', () => {
+    return (availability) => {
+        if (availability) {
+            return 'In Stock';
+        } else {
+            return 'Out of Stock';
+        }
+    }
+});
