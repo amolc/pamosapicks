@@ -27,15 +27,15 @@
       <link rel="stylesheet" href="assets/css/main.css">
 
      <!-- angular  -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
-      <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
-      <script src="./angular/angular-storage.min.js"></script>
-      <script src="./angular/angular-payments.js"></script>
-      <script src="./angular/app.js"></script>
-      <script src="./angular/service.js"></script>
-      <script src="./angular/indexCtrl.js"></script>   
+      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+      <script defer src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+      <script defer src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+      <script defer src="./angular/angular-storage.min.js"></script>
+      <script defer src="./angular/angular-payments.js"></script>
+      <script defer src="./angular/app.js"></script>
+      <script defer src="./angular/service.js"></script>
+      <script defer src="./angular/indexCtrl.js"></script>   
    </head>
    <body ng-app="website" ng-controller="indexCtrl" ng-init="init()">
       <!-- Scroll-top -->
@@ -186,7 +186,7 @@
                         <li ng-repeat="cart_item in cart">
                            <div class="tpcart__item">
                               <div class="tpcart__img">
-                                 <img src="{{ cart_item.product_image }}" alt="{{ cart_item.product_name }}">
+                                 <img ng-src="{{ cart_item.product_image }}" alt="{{ cart_item.product_name }}">
                                  <div class="tpcart__del">
                                     <a ng-click="removeItem(cart_item.id)"
                                        href="#">
@@ -317,12 +317,13 @@
                   </div>
                 </div>
             </div>
+            <!--
             <div class="tpsideinfo__account-link">							
                <a href="log-in.html"><i class="icon-user icons"></i> Login / Register</a>
             </div>
-            <!--<div class="tpsideinfo__wishlist-link">
+            <div class="tpsideinfo__wishlist-link">
                <a href="wishlist.html" target="_parent"><i class="icon-heart"></i> Wishlist</a>
-            </div>-->
+            </div> -->
          </div> 
          <!-- sidebar-menu-area-end -->
       </header>
@@ -385,7 +386,7 @@
                                                    border-radius: 50%;
                                                 "
                                                 class="aspect-square"
-                                                src="{{ category.category_image }}"
+                                                ng-src="{{ category.category_image }}"
                                                 alt="category-{{ category.category_name }}-thumb">
                                           </a>
                                         </div>
@@ -402,13 +403,24 @@
                         <div class="product__filter-content mb-40">
                            <div class="row align-items-center">
                               <div class="col-sm-4">
-                                 <div class="product__item-count">
-                                    <span>Showing {{ num_products }} Products</span>
-                                    <span ng-if="categoryFilter !== null">from {{ categoryFilter }} category</span>
-                                    <span ng-if="categoryFilter !== null">
+                                 <div
+                                    style="
+                                       display: flex;
+                                       flex-direction: column;
+                                       justify-content: center;
+                                       align-items: start;
+                                    " class="product__item-count">
+                                    <span ng-if="search" class="d-flex justify-content-center justify-content-md-start w-100 w-md-auto">
+                                       Searching for: {{ search }}
+                                    </span>
+                                    <span class="d-flex justify-content-center justify-content-md-start w-100 w-md-auto">
+                                       <span>Showing {{ start_index }} - {{ end_index }} of {{ num_products }}</span>
+                                       <span ng-if="categoryFilter !== null">&nbsp;from {{ categoryFilter }}</span>
+                                    </span>
+                                    <span class="d-flex justify-content-center justify-content-md-start w-100 w-md-auto" ng-if="categoryFilter !== null || search !== null">
                                        <a style="
                                           text-decoration: underline;   
-                                       " href="index.html">x Clear Filter</a>
+                                       " href="index.html">Clear Filter</a>
                                     </span>
                                  </div>
                               </div>
@@ -437,21 +449,7 @@
                                     </nav>
                                  </div>
                               </div>
-                              <div class="col-sm-4">
-                                 <div class="product__navtabs d-flex justify-content-end align-items-center">
-                                    <div class="tp-shop-selector">
-                                       <select style="display: none;">
-                                          <option>Default sorting</option>
-                                       </select>
-                                       <div class="nice-select" tabindex="0">
-                                          <span class="current">Default sorting</span>
-                                          <ul class="list">
-                                             <li data-value="Show 12" class="option selected">Default sorting</li>
-                                          </ul>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
+                              <!-- TEMP: DEFAULT SORTING-->
                            </div>
                         </div>
                         <div class="tab-content" id="nav-tabContent">
@@ -467,10 +465,10 @@
                                              <a href="shop-details.html?id={{ product.id }}">
                                                 <img
                                                    style="height: 240px; object-fit: contain; object-position: center;"
-                                                   src="{{ product.product_image1 }}" alt="Primary Image">
+                                                   ng-src="{{ product.product_image1 }}" alt="Primary Image">
                                              </a>
                                              <a class="tpproduct__thumb-img" href="shop-details.html?id={{ product.id }}">
-                                                <img src="{{ product.product_image2 }}" alt="">
+                                                <img ng-src="{{ product.product_image2 }}" alt="">
                                              </a>
                                              <div class="tpproduct__info bage">
                                                 <span
@@ -547,16 +545,21 @@
                                  <nav>
                                     <ul>
                                        <li>
-                                          <span class="current">1</span>
+                                          <a href="#" ng-click="navigateToPage(current_page - 1)">
+                                             <i class="icon-chevrons-left"></i>
+                                          </a>
+                                       </li>
+                                       <li ng-repeat="index in [] | range:num_pages">
+                                          <span ng-if="current_page === index + 1" class="current">
+                                             {{ index + 1 }}
+                                          </span>
+                                          <a
+                                             style="cursor: pointer;"
+                                             ng-if="current_page !== index + 1"
+                                             ng-click="navigateToPage(index + 1)">{{ index + 1 }}</a>
                                        </li>
                                        <li>
-                                          <a href="blog.html">2</a>
-                                       </li>
-                                       <li>
-                                          <a href="blog.html">3</a>
-                                       </li>
-                                       <li>
-                                          <a href="blog.html">
+                                          <a href="#" ng-click="navigateToPage(current_page + 1)">
                                              <i class="icon-chevrons-right"></i>
                                           </a>
                                        </li>

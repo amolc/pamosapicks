@@ -123,7 +123,7 @@
                                  <li>
                                     <a href="blog.html">Blog</a>
                                  </li>
-                                 
+
                                  <li><a href="about.html">About Us</a></li>
                                  <li><a href="contact.html">Contact Us</a></li>
                               </ul>
@@ -135,12 +135,12 @@
                            <div class="header__info-search tpcolor__purple ml-10">
                               <button class="tp-search-toggle"><i class="icon-search"></i></button>
                            </div>
-                           <div class="header__info-user tpcolor__yellow ml-10">
+                           <!--<div class="header__info-user tpcolor__yellow ml-10">
                               <a href="log-in.html"><i class="icon-user"></i></a>
                            </div>
                            <div class="header__info-wishlist tpcolor__greenish ml-10">
                               <a href="wishlist.html"><i class="icon-heart icons"></i></a>
-                           </div>
+                           </div>-->
                            <div class="header__info-cart tpcolor__oasis ml-10 tp-cart-toggle">
                               <button>
                                  <i>
@@ -323,12 +323,13 @@
                   </div>
                 </div>
             </div>
+            <!--
             <div class="tpsideinfo__account-link">							
                <a href="log-in.html"><i class="icon-user icons"></i> Login / Register</a>
             </div>
             <div class="tpsideinfo__wishlist-link">
                <a href="wishlist.html" target="_parent"><i class="icon-heart"></i> Wishlist</a>
-            </div>
+            </div> -->
          </div> 
          <!-- sidebar-menu-area-end -->
       </header>
@@ -405,7 +406,7 @@
                            <div class="tpdetails__title-box">
                               <h3 class="tpdetails__title">{{ product.product_name }}</h3>
                               <ul class="tpdetails__brand">
-                                 <li> Brands: <a href="#">ORFARM</a> </li>
+                                 <!--<li> Brands: <a href="#">ORFARM</a> </li>
                                  <li>
                                     <i class="icon-star_outline1"></i>
                                     <i class="icon-star_outline1"></i>
@@ -416,7 +417,7 @@
                                  </li>
                                  <li>
                                     SKU: <span>ORFARMVE005</span>
-                                 </li>
+                                 </li>-->
                               </ul>
                            </div>
                            <div class="tpdetails__box">
@@ -471,7 +472,7 @@
                                        <span class="product__details-mrp">
                                           <del>MRP ₹{{ product.price }}</del>
                                           <span class="product__details-discount">
-                                             {{ product.discount_percentage }}% OFF
+                                             -{{ (((product.price - product.discount_price) / product.price) * 100) | round:0 }}% OFF
                                           </span>
                                           <p class="product__details-tax-info">(Inclusive of all taxes)</p>
                                           <div class="product__details-product_description">
@@ -518,10 +519,11 @@
                                              </li>
                                              <li>
                                                 <a href="#"><i class="icon-layers"></i> Add to Compare</a>
-                                             </li> -->
+                                             </li>
                                              <li> 
                                                 <a href="#"><i class="icon-share-2"></i> Share</a>
                                              </li>
+                                             -->
                                           </ul>
                                        </div>
                                        <div class="product__details-stock mb-25">

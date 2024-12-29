@@ -11,20 +11,24 @@ app.controller(
     $scope.init = function () {
       $scope.baseurl = config.baseurl;
       $scope.cartTotal = 100;
-      
+      $scope.search = null;
+      $scope.categoryFilter = null;
+
       $scope.urlParams = Object.fromEntries(
         new URLSearchParams(window.location.search)
       );
+
+      if ($scope.urlParams.hasOwnProperty('search')) {
+        $scope.search = $scope.urlParams.search;
+      }
+
       $scope.productlist();
       $scope.categorylist();
-      $scope.categoryFilter = null;
 
       // Initialize cart from localStorage
       $scope.cart = JSON.parse(localStorage.getItem("cart")) || [];
      
       $scope.updateCartTotal();
- 
-      console.log($scope.cart);
     };
 
     // Fetch the list of products
@@ -47,8 +51,10 @@ app.controller(
               } else {
                 $scope.productdataset = response.data.data;
                 $scope.num_products = $scope.productdataset.length;
-
-                console.log("Product list fetched:", $scope.productdataset);
+                $scope.num_pages = response.data.num_pages;
+                $scope.start_index = response.data.start_index;
+                $scope.end_index = response.data.end_index;
+                $scope.current_page = response.data.page;
               }
           })
           .catch(function (error) {
@@ -58,6 +64,12 @@ app.controller(
           });
     };
 
+    $scope.navigateToPage = page => {
+      const url = new URL(window.location.href);
+      url.searchParams.set('page', page);
+      window.location.assign(url);
+    }
+
     $scope.fetchingCategoryList = true;
     $scope.categorylist = function() {
       $http.get(`${config.baseurl}category/category/`)
@@ -65,10 +77,6 @@ app.controller(
               if (response.data.status === 'false') {
                   console.error("Error fetching category list:", response.data.message);
               } else {
-                console.log("Fetched categories from: ", `${config.baseurl}category/category/`);
-                console.log("Categories fetched: ");
-                console.log("Response: ", response);
-                console.log(response.data);
                 $scope.categorydataset = response.data;
 
                 if ($scope.urlParams.hasOwnProperty('category_id')) {
@@ -98,8 +106,6 @@ app.controller(
         product_image:image
       };
 
-      console.log("Adding Product:", product);
-
       // Check if the product already exists in the cart
       let existingProduct = $scope.cart.find((item) => item.id === id);
 
@@ -125,9 +131,6 @@ app.controller(
     };
 
     $scope.removeItem = function (id) {
-      console.log("removing item");
-      console.log(id);
-
       $scope.cart = $scope.cart.filter((item) => item.id !== id);
       localStorage.setItem("cart", JSON.stringify($scope.cart));
 
