@@ -1,8 +1,8 @@
-copy service.local.js  web\angular\service.js
-copy service.local.js  admin\angular\service.js
-copy service.local.js  staffadmin\angular\service.js
-copy service.local.js  fresh\angular\service.js
-copy service.local.js  app\angular\service.js
-copy service.local.js  client\angular\service.js
-copy service.local.js  public\angular\service.js
+copy service.server.js  web\angular\service.js
+copy service.server.js  admin\angular\service.js
+copy service.server.js  staffadmin\angular\service.js
+copy service.server.js  fresh\angular\service.js
+copy service.server.js  app\angular\service.js
+copy service.server.js  client\angular\service.js
+copy service.server.js  public\angular\service.js
 node freshpicks.js
