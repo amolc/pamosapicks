@@ -1,7 +1,5 @@
 app.controller('checkoutCtrl', function($scope, $http, $window, config) {
-
-    // Define formatDate outside of any specific function so it can be used anywhere in the controller
-    $scope.init = function() {
+  $scope.init = function() {
         $scope.cartTotal = 0;
         $scope.urlParams = Object.fromEntries(
           new URLSearchParams(window.location.search)
@@ -16,7 +14,7 @@ app.controller('checkoutCtrl', function($scope, $http, $window, config) {
         $scope.cart = JSON.parse(localStorage.getItem("cart")) || [];
         $scope.updateCartTotal();
 
-        $scope.billing_data = {
+        $scope.order_data = {
           first_name: '',
           last_name: '',
           email: '',
@@ -26,25 +24,40 @@ app.controller('checkoutCtrl', function($scope, $http, $window, config) {
           city: '',
           postal_code: '',
           billing_address: '',
+          shipping_address: '',
+          amount: $scope.cartTotal,
+          order_items: '',
         };
     };
 
-    $scope.submitOrder = () => {
-      const url = `${config.baseurl}billing/create-billing/`;
+    $scope.buildOrderItemsFromCartData = () => {
+      const orderItems = $scope.cart.map(item => {
+        return {
+          product: item.id,
+          product_name: item.product_name,
+          product_qty: item.quantity,
+          product_price: item.price,
+          product_subtotal: item.subtotal,
+        }
+      });
 
-      const data = {
-        billing_data: $scope.billing_data,
-        cart_data: $scope.cart
-      };
+      return orderItems;
+    }
+    $scope.submitOrder = () => {
+      const url = `${config.baseurl}order/create-order/`;
+      $scope.order_data.total = $scope.cartTotal;
+      $scope.order_data.order_items = $scope.buildOrderItemsFromCartData();
+
+      console.log($scope.order_data.order_items);
 
       $http.post(
         url,
-        data
+        $scope.order_data
       ).then(response => {
         if (response.data.status == "success") {
           alert("Order has been submitted :).");
-          const billing_data = response.data.data;
-          window.location.assign(`/thankyou.html?id=${billing_data.id}`);
+          const order_data = response.data.data;
+          window.location.assign(`/thankyou.html?id=${order_data.id}`);
         }
       }).catch(error => {
           console.error(`Error submitting booking: ${error}`);
