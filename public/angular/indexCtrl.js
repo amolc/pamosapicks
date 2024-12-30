@@ -27,7 +27,6 @@ app.controller(
 
       // Initialize cart from localStorage
       $scope.cart = JSON.parse(localStorage.getItem("cart")) || [];
-     
       $scope.updateCartTotal();
     };
 
@@ -95,15 +94,20 @@ app.controller(
           });
     }
 
-    $scope.addToCart = function (id, product_name, qty, price, image) {
+    $scope.addToCart = function (id, product_name, qty, price, discount_price, image) {
       qty = Number(qty);
       price = Number(price);
+      discount_price = discount_price ? Number(discount_price) : 0;
+
       const product = {
         id: id,
         product_name: product_name,
         quantity: qty,
         price: price, // Ensure price is stored as a number
-        product_image:image
+        discount_price: discount_price,
+        product_image: image,
+        subtotal: price,
+        discount_subtotal: discount_price
       };
 
       // Check if the product already exists in the cart
@@ -111,14 +115,26 @@ app.controller(
 
       if (existingProduct) {
         existingProduct.quantity += qty; // Increment quantity
+        $scope.updateProductTotal(id);
       } else {
-        $scope.cart.push(product); // Add new product
+        $scope.cart.push(product);
+        localStorage.setItem("cart", JSON.stringify($scope.cart));
+        $scope.updateCartTotal();
       }
-
-      // Save to localStorage
-      localStorage.setItem("cart", JSON.stringify($scope.cart));
-      updateCartTotal();
     };
+
+    $scope.checkIfProductInCart = id => {
+      let product = $scope.cart.find((item) => item.id === id);
+
+      if(product) {
+        return true;
+      }
+    };
+
+    $scope.clearCart = () => {
+      localStorage.setItem("cart", JSON.stringify([]));
+      $scope.updateCartTotal();
+    }
 
     $scope.updateQuantity = function (id, delta) {
       let product = $scope.cart.find((item) => item.id === id);
@@ -126,7 +142,7 @@ app.controller(
         product.quantity = Math.max(1, product.quantity + delta); // Ensure quantity doesn't go below 1
         localStorage.setItem("cart", JSON.stringify($scope.cart));
 
-        $scope.updateCartTotal();
+        $scope.updateProductTotal(id);
       }
     };
 
@@ -137,21 +153,28 @@ app.controller(
       $scope.updateCartTotal();
     };
 
-    $scope.updateTotal = function (inputElement, id) {
+    $scope.updateProductTotal = id => {
       let product = $scope.cart.find((item) => item.id === id);
+      
       if (product) {
-        const newQuantity = Math.max(1, Number(inputElement.value));
-        product.quantity = newQuantity;
-        localStorage.setItem("cart", JSON.stringify($scope.cart));
+        const subtotal = product.quantity * product.price;
+        const discount_subtotal = product.discount_price ?
+          product.quantity * product.discount_price :
+          product.discount_subtotal;
 
+        product.subtotal = subtotal;
+        product.discount_subtotal = discount_subtotal;
+
+        localStorage.setItem("cart", JSON.stringify($scope.cart));
         $scope.updateCartTotal();
       }
-    };
+    }
 
     $scope.updateCartTotal = function () {
+      $scope.cart = JSON.parse(localStorage.getItem("cart")) || [];
       let total = 0;
       $scope.cart.forEach(cartItem => {
-        total += cartItem.quantity * cartItem.price;
+        total += cartItem.subtotal;
       });
       $scope.cartTotal = total;
     };

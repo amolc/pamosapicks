@@ -6,7 +6,7 @@ function jsonToQueryString(params) {
   }
   
   app.controller(
-    "productDetailsCtrl",
+    "thankyouCtrl",
     function ($scope, $http, $window, $location, config) {
       $scope.init = function () {
         $scope.baseurl = config.baseurl;
@@ -14,19 +14,15 @@ function jsonToQueryString(params) {
         $scope.urlParams = Object.fromEntries(
           new URLSearchParams(window.location.search)
         );
-        $scope.product();
-        $scope.categorylist();
-
-        $scope.productQuantity = 1; // Default product quantiy.
-        // Initialize cart from localStorage
-        $scope.cart = JSON.parse(localStorage.getItem("cart")) || [];
+        
+        $scope.billing();
         $scope.updateCartTotal();
       };
       
   
       // Fetch the list of products
-      $scope.product = function () {
-        $scope.fetchingProduct = true;
+      $scope.billing = function () {
+        $scope.fetchingBillingData = true;
   
         let url = '';
   
@@ -40,47 +36,21 @@ function jsonToQueryString(params) {
           return;
         }
         
-        url = `${config.baseurl}product/get-product/${$scope.urlParams['id']}/`;
-        
+        url = `${config.baseurl}billing/get-billing/${$scope.urlParams['id']}/`;        
         $http.get(url)
             .then(function (response) {
                 if (response.data.status === 'false') {
-                    console.error("Error fetching product:", response.data.message);
+                    console.error("Error fetching billing data:", response.data.message);
                 } else {
-                  $scope.product = response.data.data;
+                  $scope.billing_data = response.data.data;
                 }
             })
             .catch(function (error) {
-                console.error("Error fetching product list:", error);
+                console.error("Error fetching billing data:", error);
             }).finally(() => {
-              $scope.fetchingProductList = false;
+              $scope.fetchingBillingData = false;
             });
       };
-  
-    $scope.fetchingCategoryList = true;
-    $scope.categorylist = function() {
-      $http.get(`${config.baseurl}category/category/`)
-          .then(function (response) {
-              if (response.data.status === 'false') {
-                  console.error("Error fetching category list:", response.data.message);
-              } else {
-                $scope.categorydataset = response.data;
-
-                if ($scope.urlParams.hasOwnProperty('category_id')) {
-                  $scope.categorydataset.forEach(category => {
-                    if (category.id === parseInt($scope.urlParams['category_id'])) {
-                      $scope.categoryFilter = category.category_name;
-                    }
-                  });
-                }
-              }
-          })
-          .catch(function (error) {
-              console.error("Error fetching category list:", error);
-          }).finally(() => {
-            $scope.fetchingCategoryList = false;
-          });
-      }
 
       $scope.addToCart = function (id, product_name, qty, price, discount_price, image) {
         qty = Number(qty);

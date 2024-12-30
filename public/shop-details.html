@@ -45,71 +45,24 @@
          <i class="icon-chevrons-up"></i>
       </button>
       <!-- Scroll-top-end-->
-
-
       <!-- header-area-start -->
       <header>
-         <div class="header__top theme-bg-1 d-none d-md-block">
-            <div class="container">
-               <div class="row align-items-center">
-                  <div class="col-lg-6 col-md-12">
-                     <div class="header__top-left">
-                        <!-- <span>Due to the <strong>COVID-19</strong> epidemic, orders may be processed with a slight delay.</span> -->
-                     </div>
-                  </div>
-                  <div class="col-lg-6 col-md-12">
-                     <div class="header__top-right d-flex align-items-center">
-                        <div class="header__top-link">
-                           <a href="#">Store Location</a>
-                           <a href="#">Order Tracking</a>
-                           <a href="faq.html">FAQs</a>
-                        </div>
-                        <div class="header__lang">
-                           <span class="header__lang-select">English <i class="far fa-angle-down"></i></span>
-                           <ul class="header__lang-submenu">
-                              <li>
-                                 <a href="#">Australia</a>
-                              </li>
-                              <li>
-                                 <a href="#">Spain</a>
-                              </li>
-                              <li>
-                                 <a href="#">Brazil</a>
-                              </li>
-                              <li>
-                                 <a href="#">English</a>
-                              </li>
-                              <li>
-                                 <a href="#">France</a>
-                              </li>
-                              <li>
-                                 <a href="#">United States</a>
-                              </li>
-                           </ul>
-                        </div>
-                        <div class="header__top-price">
-                           <select>
-                              <option>USD</option>
-                              <option>ARS</option>
-                              <option>AUD</option>
-                              <option>BRL</option>
-                              <option>GBP</option>
-                              <option>DKK</option>
-                              <option>EUR</option>
-                           </select>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
          <div id="header-sticky" class="header__main-area d-none d-xl-block">
             <div class="container">
                <div class="header__for-megamenu p-relative">
                   <div class="row align-items-center">
                      <div class="col-xl-3">
                         <div class="header__logo">
-                           <a href="index.html"><img src="assets/img/logo/logo.png" alt="logo"></a>
+                           <a href="index.html">
+                              <img
+                                 style="
+                                    height: 120px;
+                                    width: 120px;
+                                    object-fit: contain;
+                                    object-position: center;
+                                 "
+                                 src="assets/img/logo/pamosa_logo.png" alt="logo">
+                           </a>
                         </div>
                      </div>
                      <div class="col-xl-6">
@@ -135,12 +88,6 @@
                            <div class="header__info-search tpcolor__purple ml-10">
                               <button class="tp-search-toggle"><i class="icon-search"></i></button>
                            </div>
-                           <!--<div class="header__info-user tpcolor__yellow ml-10">
-                              <a href="log-in.html"><i class="icon-user"></i></a>
-                           </div>
-                           <div class="header__info-wishlist tpcolor__greenish ml-10">
-                              <a href="wishlist.html"><i class="icon-heart icons"></i></a>
-                           </div>-->
                            <div class="header__info-cart tpcolor__oasis ml-10 tp-cart-toggle">
                               <button>
                                  <i>
@@ -180,67 +127,84 @@
 
          <!-- header-cart-start -->
          <div class="tpcartinfo tp-cart-info-area p-relative">
-         <button class="tpcart__close"><i class="icon-x"></i></button>
-         <div class="tpcart">
-            <h4 class="tpcart__title">Your Cart</h4>
-            <div class="tpcart__product">
-               <div class="tpcart__product-list">
-                  <ul>
-                     <li ng-repeat="cart_item in cart">
-                        <div class="tpcart__item">
-                           <div class="tpcart__img">
-                              <img src="{{ cart_item.product_image }}" alt="{{ cart_item.product_name }}">
-                              <div class="tpcart__del">
+            <button class="tpcart__close">
+               <i class="icon-x"></i>
+            </button>
+            <div class="tpcart">
+               <h4 class="tpcart__title">Your Cart</h4>
+               <div class="tpcart__product">
+                  <div class="tpcart__product-list">
+                     <div ng-if="cart.length > 0" class="w-100 d-flex flex-row justify-content-end">
+                        <button style="
+                           text-decoration: underline;   
+                        " ng-click="clearCart()">Clear Cart</button>
+                     </div>
+                     <ul>
+                        <li ng-repeat="cart_item in cart">
+                           <div class="tpcart__item position-relative">
+                              <div class="tpcart__img">
+                                 <img ng-src="{{ cart_item.product_image }}" alt="{{ cart_item.product_name }}">
+                              </div>
+                              <div class="tpcart__content">
+                                 <span class="tpcart__content-title">
+                                    <a href="shop-details.html">{{ cart_item.product_name }}</a>
+                                 </span>
+                                 <div class="tpcart__cart-price">
+                                    <div class="product__details-count mr-10">
+                                       <span 
+                                          class="cart-minus"
+                                          ng-click="updateQuantity(cart_item.id, -1)">
+                                          <i class="far fa-minus"></i>
+                                       </span>
+                                       <input 
+                                          class="tp-cart-input" 
+                                          type="number" 
+                                          ng-model="cart_item.quantity" 
+                                          min="1" 
+                                          >
+                                       <span class="cart-plus" ng-click="updateQuantity(cart_item.id, 1)">
+                                          <i class="far fa-plus"></i>
+                                       </span>
+                                    </div>
+                                    <span>
+                                       <span class="new-price"
+                                          ng-bind="'₹' + cart_item.price"></span>
+                                    </span>
+                                    <span>
+                                       <span>=</span>
+                                       <span class="heilight-price">₹{{ cart_item.subtotal }}</span>
+                                    </span>
+                                 </div>
+                              </div>
+                              <div style="
+                                 position: absolute;
+                                 top: 0;
+                                 right: 0;
+                              ">
                                  <a ng-click="removeItem(cart_item.id)"
                                     href="#">
                                     <i class="icon-x-circle"></i>
                                  </a>
                               </div>
                            </div>
-                           <div class="tpcart__content">
-                              <span class="tpcart__content-title">
-                                 <a href="shop-details.html">{{ cart_item.product_name }}</a>
-                              </span>
-                              <div class="tpcart__cart-price">
-                                 <span class="quantity">
-                                    <span class="product-quantity">
-                                       <span
-                                          class="cart-minus"
-                                          ng-click="updateQuantity(cart_item.id, -1)">-</span>
-                                          <input 
-                                            class="cart-input" 
-                                            type="number" 
-                                            ng-model="cart_item.quantity" 
-                                            min="1" 
-                                          >
-                                          <span class="cart-plus"
-                                             ng-click="updateQuantity(cart_item.id, 1)">+</span>
-                                    </span>
-                                    <span>&nbsp;x&nbsp;</span>
-                                 </span>
-                                 <span class="new-price"
-                                    ng-bind="'₹' + cart_item.price"></span>
-                              </div>
-                           </div>
-                        </div>
-                     </li>
-                  </ul>
-               </div>
-               <div class="tpcart__checkout">
-                  <div class="tpcart__total-price d-flex justify-content-between align-items-center">
-                     <span> Subtotal:</span>
-                     <span class="heilight-price">₹{{ cartTotal }}</span>
+                        </li>
+                     </ul>
                   </div>
-                  <div class="tpcart__checkout-btn">
-                     <a class="tpcart-btn mb-10" href="cart.html">View Cart</a>
-                     <a class="tpcheck-btn" href="checkout.html">Checkout</a>
+                  <div class="tpcart__checkout">
+                     <div class="tpcart__total-price d-flex justify-content-between align-items-center">
+                        <span> Subtotal:</span>
+                        <span class="heilight-price">₹{{ cartTotal }}</span>
+                     </div>
+                     <div class="tpcart__checkout-btn">
+                        <a class="tpcart-btn mb-10" href="cart.html">View Cart</a>
+                        <a class="tpcheck-btn" href="checkout.html">Checkout</a>
+                     </div>
                   </div>
                </div>
+               <div class="tpcart__free-shipping text-center">
+                  <span>Free shipping for orders <b>under 10km</b></span>
+               </div>
             </div>
-            <div class="tpcart__free-shipping text-center">
-               <span>Free shipping for orders <b>under 10km</b></span>
-            </div>
-         </div>
          </div>
          <div class="cartbody-overlay"></div>
          <!-- header-cart-end -->
@@ -248,33 +212,35 @@
          <!-- mobile-menu-area -->
          <div id="header-sticky-2" class="tpmobile-menu d-xl-none">
             <div class="container-fluid">
-               <div class="row align-items-center">
-                  <div class="col-lg-4 col-md-4 col-3 col-sm-3">
-                     <div class="mobile-menu-icon">
-                        <button class="tp-menu-toggle"><i class="icon-menu1"></i></button>
-                     </div>
+               <div class="row align-items-center d-flex w-100 flex-row flex-nowrap justify-content-between align-items-center">
+                  <div class="mobile-menu-icon flex-fill">
+                     <button class="tp-menu-toggle"><i class="icon-menu1"></i></button>
                   </div>
-                  <div class="col-lg-4 col-md-4 col-6 col-sm-4">
-                     <div class="header__logo text-center">
-                        <a href="index.html"><img src="assets/img/logo/logo.png" alt="logo"></a>
-                     </div>
+                  <div class="header__logo text-center flex-fill">
+                     <a href="/index.html">
+                        <img style="
+                              height: 120px;
+                              width: 120px;
+                              object-fit: contain;
+                              object-position: center;
+                           "
+                           src="assets/img/logo/pamosa_logo.png" alt="logo">
+                     </a>
                   </div>
-                  <div class="col-lg-4 col-md-4 col-3 col-sm-5">
+                  <div class="flex-fill">
                      <div class="header__info d-flex align-items-center">
                         <div class="header__info-search tpcolor__purple ml-10 d-none d-sm-block">
                            <button class="tp-search-toggle"><i class="icon-search"></i></button>
                         </div>
+                        <!--
                         <div class="header__info-user tpcolor__yellow ml-10 d-none d-sm-block">
                            <a href="#"><i class="icon-user"></i></a>
                         </div>
                         <div class="header__info-wishlist tpcolor__greenish ml-10 d-none d-sm-block">
                            <a href="#"><i class="icon-heart icons"></i></a>
-                        </div>
+                        </div>-->
                         <div class="header__info-cart tpcolor__oasis ml-10 tp-cart-toggle">
-                           <button>
-                              <i>
-                                 <img src="assets/img/icon/cart-1.svg" alt="">
-                              </i>
+                           <button><i><img src="assets/img/icon/cart-1.svg" alt=""></i>
                               <span>{{ cart.length }}</span>
                            </button>
                         </div>
@@ -494,7 +460,7 @@
                                                    min="1" 
                                                    >
                                                 <span class="cart-plus" onclick="updateProductQuantity(1)"><i class="far fa-plus"></i></span>
-                                            </div>
+                                             </div>
                                              <div class="product__details-btn">
                                                 <a
                                                    id="add-to-cart-btn"
@@ -509,6 +475,7 @@
                                                       product.product_name,
                                                       1,
                                                       product.price,
+                                                      product.discount_price,
                                                       product.product_image1
                                                    )" >Add to cart</a>
                                              </div>
