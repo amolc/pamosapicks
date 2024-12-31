@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Tables / Data - NiceAdmin Bootstrap Template</title>
+  <title>Pamosapicks - Admin</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -27,16 +27,12 @@
 <!-- jQuery (required for Bootstrap) -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- Bootstrap JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
-I
-
+  <!-- Bootstrap JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
@@ -168,175 +164,17 @@ button[type="submit"]:hover {
 <body ng-app="website" ng-controller="productCtrl" ng-init="init()">
 
   <!-- ======= Header ======= -->
-  <header id="header" class="header fixed-top d-flex align-items-center">
-
+  <header id="header" class="header fixed-top d-flex flex-row justify-content-between align-items-center">
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
-        <span class="d-none d-lg-block">Ecommerce</span>
-      </a>
-      <i class="bi bi-list toggle-sidebar-btn"></i>
+        <a href="index.html" class="logo d-flex align-items-center">
+            <img src="assets/img/logo.png" alt="">
+            <span class="d-none d-lg-block">Pamosapicks</span>
+        </a>
+        <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
-
-    <div class="search-bar">
-      <form class="search-form d-flex align-items-center" method="POST" action="#">
-        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-      </form>
-    </div><!-- End Search Bar -->
-
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
-
-        <li class="nav-item d-block d-lg-none">
-          <a class="nav-link nav-icon search-bar-toggle " href="#">
-            <i class="bi bi-search"></i>
-          </a>
-        </li><!-- End Search Icon-->
-
-        <li class="nav-item dropdown">
-
-          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-            <i class="bi bi-bell"></i>
-            <span class="badge bg-primary badge-number">4</span>
-          </a><!-- End Notification Icon -->
-
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-            <li class="dropdown-header">
-              You have 4 new notifications
-              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="notification-item">
-              <i class="bi bi-exclamation-circle text-warning"></i>
-              <div>
-                <h4>Lorem Ipsum</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>30 min. ago</p>
-              </div>
-            </li>
-
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="notification-item">
-              <i class="bi bi-x-circle text-danger"></i>
-              <div>
-                <h4>Atque rerum nesciunt</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>1 hr. ago</p>
-              </div>
-            </li>
-
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="notification-item">
-              <i class="bi bi-check-circle text-success"></i>
-              <div>
-                <h4>Sit rerum fuga</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>2 hrs. ago</p>
-              </div>
-            </li>
-
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="notification-item">
-              <i class="bi bi-info-circle text-primary"></i>
-              <div>
-                <h4>Dicta reprehenderit</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>4 hrs. ago</p>
-              </div>
-            </li>
-
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li class="dropdown-footer">
-              <a href="#">Show all notifications</a>
-            </li>
-
-          </ul><!-- End Notification Dropdown Items -->
-
-        </li><!-- End Notification Nav -->
-
-        <li class="nav-item dropdown">
-
-          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-            <i class="bi bi-chat-left-text"></i>
-            <span class="badge bg-success badge-number">3</span>
-          </a><!-- End Messages Icon -->
-
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-            <li class="dropdown-header">
-              You have 3 new messages
-              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="message-item">
-              <a href="#">
-                <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
-                <div>
-                  <h4>Maria Hudson</h4>
-                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                  <p>4 hrs. ago</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="message-item">
-              <a href="#">
-                <img src="assets/img/messages-2.jpg" alt="" class="rounded-circle">
-                <div>
-                  <h4>Anna Nelson</h4>
-                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                  <p>6 hrs. ago</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="message-item">
-              <a href="#">
-                <img src="assets/img/messages-3.jpg" alt="" class="rounded-circle">
-                <div>
-                  <h4>David Muldon</h4>
-                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                  <p>8 hrs. ago</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="dropdown-footer">
-              <a href="#">Show all messages</a>
-            </li>
-
-          </ul><!-- End Messages Dropdown Items -->
-
-        </li><!-- End Messages Nav -->
-
         <li class="nav-item dropdown pe-3">
-
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="{{adminInfo.profile_img || 'assets/img/profile-img.jpg'}}" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">{{adminInfo.first_name || 'Agent Name'}}</span>
@@ -350,7 +188,6 @@ button[type="submit"]:hover {
             <li>
               <hr class="dropdown-divider">
             </li>
-
             <li>
               <a class="dropdown-item d-flex align-items-center" href="agentprofileupdate.html">
                 <i class="bi bi-person"></i>
@@ -360,7 +197,6 @@ button[type="submit"]:hover {
             <li>
               <hr class="dropdown-divider">
             </li>
-
             <li>
               <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
                 <i class="bi bi-gear"></i>
@@ -370,9 +206,8 @@ button[type="submit"]:hover {
             <li>
               <hr class="dropdown-divider">
             </li>
-
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+              <a class="dropdown-item d-flex align-items-center" href="input disabled -faq.html">
                 <i class="bi bi-question-circle"></i>
                 <span>Need Help?</span>
               </a>
@@ -380,7 +215,6 @@ button[type="submit"]:hover {
             <li>
               <hr class="dropdown-divider">
             </li>
-
             <li>
               <a class="dropdown-item d-flex align-items-center" href="#" ng-click="signOut()">
                 <i class="bi bi-box-arrow-right"></i>
@@ -391,16 +225,11 @@ button[type="submit"]:hover {
         </li>
 
       </ul><!-- End Profile Dropdown Items -->
-      </li><!-- End Profile Nav -->
-
-      </ul>
     </nav><!-- End Icons Navigation -->
-
   </header><!-- End Header -->
 
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
-
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
@@ -408,40 +237,48 @@ button[type="submit"]:hover {
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
-      </li><!-- End Dashboard Nav -->
-
+      </li>
+      <hr>
       <li class="nav-item">
-        <a class="nav-link" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Pages</span><i class="bi bi-chevron-down ms-auto"></i>
+        <a class="nav-link" href="/product.html">
+          <i class="bi bi-bag"></i>
+          <span>Products</span>
         </a>
-        <ul id="components-nav" class="nav-content" data-bs-parent="#sidebar-nav">
-
       </li>
-     
-      <a href="product.html"><i class="bi bi-circle"></i><span>product</span></a>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/category.html">
+          <i class="bi bi-tag"></i>
+          <span>Categories</span>
+        </a>
       </li>
-      <li>
-        <a href="category.html"><i class="bi bi-circle"></i><span>Category</span></a>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/subcategory.html">
+          <i class="bi bi-tags"></i>
+          <span>Subcategories</span>
+        </a>
       </li>
-      <li>
-        <a href="subcategory.html"><i class="bi bi-circle"></i><span>Subategory</span></a>
+      <hr>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/orders.html">
+          <i class="bi bi-rocket-takeoff"></i>
+          <span>Orders</span>
+        </a>
       </li>
     </ul>
-    </li><!-- End Components Nav -->
-
-    </ul>
-
-  </aside><!-- End Sidebar-->
+  </aside>
+  <!-- End Sidebar-->
 
   <main id="main" class="main">
-
     <div class="pagetitle">
-      <h1>Data Tables</h1>
+      <h1>Products</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">Tables</li>
-          <li class="breadcrumb-item active">Data</li>
+          <li class="breadcrumb-item">
+            <a href="/admin/index.html">Home</a>
+          </li>
+          <li class="breadcrumb-item active">
+            Products
+          </li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -451,35 +288,25 @@ button[type="submit"]:hover {
         <div class="col-lg-12">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Product</h5>
-              <div class="ibox-title">
-                <div class="row">
-                  <div class="col-lg-8">
-                    <h5>
-                      <button type="button" class="btn btn-w-m btn-primary"
-                                      data-target="#addform" ng-click="addform()">Add Product</button>
-                    </h5>
-                  </div>
-                </div>
+              <div class="w-100 d-flex flex-row flex-nowrap justify-content-between align-items-center">
+                <h5 class="card-title">
+                  Products
+                </h5>
+                <button style="max-height: 60px;" type="button" class="btn btn-w-m btn-primary"
+                  data-target="#addform" ng-click="addform()">Add Product</button>  
               </div>
-
               <!-- Table with stripped rows -->
-              <table class="table datatable mt-3">
+              <table class="table mt-3">
                 <thead>
                   <tr>
-                    <th>product Id</th>
-                    <th>Product Name</th>       
-                    <th>Description</th>
-                    <th>Category Name</th>
-                    <th>Subcategory Name</th>
+                    <th>Id</th>
+                    <th>Name</th>       
+                    <th>Category</th>
+                    <th class="d-none d-md-table-cell">Quantity</th>
+                    <th class="d-none d-md-table-cell">Unit</th>
                     <th>Price</th>
                     <th>Discount Price</th>
-                    <th>unit</th>
-                    <th>Quantity</th>
-                    <th>MFG</th>
-                    <th>product Life</th>
-                    <th>Availability</th>
-                  
+
                     <th>Edit</th>
                     <th>Delete</th>
                   </tr>
@@ -488,22 +315,17 @@ button[type="submit"]:hover {
                   <tr ng-repeat="data in dataset">
                     <td>{{data.id}}</td>
                     <td>{{data.product_name}}</td>
-                    <td>{{data.product_description}}</td>
-                    <!-- <td>{{data.category}}</td>
-                    <td>{{data.subcategory}}</td> -->
                     <td>{{data.category_name}}</td>
-                    <td>{{data.subcategory_name}}</td>
+                    <td class="d-none d-md-table-cell">{{data.stock_quantity}}</td>
+                    <td class="d-none d-md-table-cell">{{data.unit}}</td>
                     <td>{{data.price}}</td>
                     <td>{{data.discount_price}}</td>
-                    <td>{{data.unit}}</td>
-                    <td>{{data.stock_quantity}}</td>
-                    <td>{{data.mfg}}</td>
-                    <td>{{data.product_life}}</td>
-                    <td>{{data.availability}}</td>
-
-                    <td><a href="#" ng-click="onedit(data)">Edit</a></td>
-                    <td><a href="#" ng-click="ondelete(data)">Delete</a></td>
-
+                    <td>
+                      <a href="#" ng-click="onedit(data)">Edit</a>
+                    </td>
+                    <td>
+                      <a href="#" ng-click="ondelete(data)">Delete</a>
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -514,61 +336,23 @@ button[type="submit"]:hover {
     </section>
 
 
-     <!-- Modals for the webpage come here -->
-    <div class="modal fade" id="editform" tabindex="-1" role="dialog" aria-labelledby="editform"
-      aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content animated fadeIn">
-          <div class="modal-header">
-            <img src="./assets/img/iamstockbot.png" class="ml-3">
-            <button type="button" class="close" data-dismiss="modal" ng-click="closeaddModal()"> <i class="fas fa-times" style="color: #000;">*</i></button>
-        
-          </div>
-          <div class="modal-body container" style="border:1px solid red;">
-            <div class="row">
-             
+    <!-- Modals -->
+      <div class="modal fade" id="editform" tabindex="-1" role="dialog" aria-labelledby="editform"
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content animated fadeIn">
+            <div class="modal-header">
+              <h5 class="modal-title">Edit Product: {{ product.id }}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body container">
               <form ng-submit="submitproduct(product)" enctype="multipart/form-data">
                 <div class="form-group">
-                  <label for="product">product Name</label>
+                  <label for="product">Name</label>
                   <input type="text" id="product" placeholder="Enter product name" ng-model="product.product_name" />
                 </div>
-
-                <!-- <div class="form-group">
-                  <label for="category_id">Category</label>
-                  <select id="category_id" ng-model="product.category_id" ng-change="filterSubcategories()" class="form-control" required>
-                      <option value="" disabled selected>Select category</option>
-                      <option ng-repeat="category in catagoryset" value="{{category_id.id}}">
-                          {{category.id}} 
-                      </option>
-                  </select>
-                </div> -->
-
-                <!-- <div class="form-group">
-                  <label for="category_id">Category</label>
-                  <select id="category" ng-model="product.category" class="form-control" required>
-                    <option value="" disabled selected>Select category</option>
-                    <option ng-repeat="category in catagoryset" value="{{category.id}}">
-                      {{category.category_name}}
-                    </option>
-                  </select>
-                </div> -->
-                
-                <!-- Subcategory Field -->
-                <!-- <div class="form-group">
-                  <label for="subcategory_id">Subcategory</label>
-                  <select id="subcategory" ng-model="product.subcategory" class="form-control" required>
-                      <option value="" disabled selected>Select Subcategory</option>
-                      <option ng-repeat="subcategory in subcatagoryset" value="{{subcategory.id}}">
-                          {{subcategory.subcategory_name}} 
-                      </option>
-                  </select>
-                </div> -->
-
-                <!-- <div class="form-group">
-                  <label for="category">Category </label>
-                  <input type="text" id="category" placeholder="Enter category" ng-model="product.category_name" >
-                </div> -->
-
                 <div class="form-group">
                   <label for="category">Category</label>
                   <select id="category" ng-model="product.category" class="form-control" required>
@@ -578,26 +362,21 @@ button[type="submit"]:hover {
                           {{category.category_name}}
                       </option>
                   </select>
-              </div>
-
-              <div class="form-group">
-                <label for="subcategory">Subcategory</label>
-                <select id="subcategory" ng-model="product.subcategory" class="form-control" required>
-                  <option value="{{product.subcategory}}" disabled selected>{{product.subcategory_name}}</option>
-                  <option value="" disabled selected>Select Subcategory</option>
-                    <option ng-repeat="subcategory in subcatagoryset" value="{{subcategory.id}}">
-                        {{subcategory.subcategory_name}}
-                    </option>
-                </select>
-            </div>
-
-                
-
+                </div>
+                <div class="form-group">
+                  <label for="subcategory">Subcategory</label>
+                  <select id="subcategory" ng-model="product.subcategory" class="form-control" required>
+                    <option value="{{product.subcategory}}" disabled selected>{{product.subcategory_name}}</option>
+                    <option value="" disabled selected>Select Subcategory</option>
+                      <option ng-repeat="subcategory in subcatagoryset" value="{{subcategory.id}}">
+                          {{subcategory.subcategory_name}}
+                      </option>
+                  </select>
+                </div>
                 <div class="form-group">
                   <label for="description">Description</label>
                   <textarea id="description" placeholder="Enter description" ng-model="product.product_description" required></textarea>
                 </div>
-
                 <div class="form-group">
                   <label for="unit">Unit</label>
                   <input type="text" id="unit" placeholder="Enter Unit" ng-model="product.unit">
@@ -605,187 +384,172 @@ button[type="submit"]:hover {
                 <div class="form-group">
                   <label for="price">Price</label>
                   <input type="text" id="price" placeholder="Enter Price" ng-model="product.price" required />
-              </div>
-              
-              <div class="form-group">
+                </div>
+                <div class="form-group">
                   <label for="discount_price">Discount Price</label>
                   <input type="text" id="discount_price" placeholder="Enter Discount Price" ng-model="product.discount_price" value="{{product.discount_price}}" />
-              </div>
-                         
-                         
-                     
+                </div>
                 <div class="form-group">
                   <label for="product_life">Product Life</label>
                   <input type="number" id="product Life" placeholder="Enter Product Life" ng-model="product.product_life" required></textarea>
-                </div>
-                    
+                </div>  
                 <div class="form-group">
                   <label for="product-image">product Image</label>
                   <input type="file" id="product-image" accept="image/*"
                     onchange="convertToBase64('product-image', 'product.product_image')">
                 </div>
-              
                 <div class="form-group">
                   <label for="availability">Availability</label>
-                  <select id="availability" ng-model="product.availability" required>
+                  <select class="form-select" id="availability" ng-model="product.availability" required>
                     <option value="{{product.availability}}" disabled selected>{{product.availability}}</option>
                     <option value="1">Yes</option>
                     <option value="0">No</option>
                   </select>
                 </div>
-              
                 <div class="form-group">
                   <button type="submit" ng-disabled="isSubmitting" ng-click="oneditsubmit(product)">Submit</button>
                 </div>
               </form>
-              
-              </div>
+            </div>
           </div>
-        </div>
-        <div class="modal-footer">
+          <div class="modal-footer">
+          </div>
         </div>
       </div>
-    </div>
 
-
-
-    
-
-    <!-- modal starts-->
-    <div class="modal fade" id="addform" tabindex="-1" role="dialog" aria-labelledby="addform"
-      aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content animated fadeIn">
-          <div class="modal-header">
-            <img src="./assets/img/iamstockbot.png" class="ml-3">
-            <button type="button" class="close" data-dismiss="modal" ng-click="closeaddModal()"> <i class="fas fa-times" style="color: #000;">*</i></button>
-        
-          </div>
-          <div class="modal-body container" style="border:1px solid red;">
-            <div class="row">
-        
-              <form ng-submit="submitproduct(product)" enctype="multipart/form-data">
-                <div class="form-group">
-                  <label for="product">product Name</label>
-                  <input type="text" id="product" placeholder="Enter product name" ng-model="product.product_name" />
-                </div>
-              
-              
-
-                    <div class="form-group">
-                      <label for="category">Category</label>
-                      <select id="category" ng-model="product.category" class="form-control" required>
-                          <option value="" disabled selected>Select category</option>
-                          <option ng-repeat="category in catagoryset" value="{{category.id}}">
-                              {{category.category_name}}
-                          </option>
-                      </select>
-                  </div>
-
-                  <!-- Subcategory Field -->
-                  <div class="form-group">
-                      <label for="subcategory">Subcategory</label>
-                      <select id="subcategory" ng-model="product.subcategory" class="form-control" required>
-                          <option value="" disabled selected>Select Subcategory</option>
-                          <option ng-repeat="subcategory in subcatagoryset" value="{{subcategory.id}}">
-                              {{subcategory.subcategory_name}}
-                          </option>
-                      </select>
-                  </div>
-                <div class="form-group">
-                  <label for="description">Description</label>
-                  <textarea id="description" placeholder="Enter description" ng-model="product.product_description" required></textarea>
-                </div>
-                <div class="form-group">
-                  <label for="unit">Unit</label>
-                  <input type="text" id="unit" placeholder="Enter unit" ng-model="product.unit" required>
-                </div>
-                
-                <div class="form-group">
-                  <label for="mfg">MFG</label>
-                  <input type="date" id="mfg" placeholder="Enter mfg" ng-model="product.mfg" required></textarea>
-                </div>
-
-                <div class="form-group">
-                  <label for="product_life">Product Life</label>
-                  <input type="number" id="product life" placeholder="Enter product Life" ng-model="product.product_life" required></textarea>
-                </div>
-
-                <div class="form-group">
-                  <label for="stock_quantity">Quantity</label>
-                  <input type="number" id="stock quantity" placeholder="Enter product quantity" ng-model="product.stock_quantity" required></textarea>
-                </div>
-                <div class="form-group">
-                  <label for="price">Price</label>
-                  <input type="number" id="price" placeholder="Enter price" ng-model="product.price" required></textarea>
-                </div>
-                <div class="form-group">
-                  <label for="discount_price">Discount Price</label>
-                  <input type="number" id="discount_price" placeholder="Enter discount price" ng-model="product.discount_price" required></textarea>
-                </div>
-              
-                <div class="form-group">
-                  <label for="product-image1">product Image1</label>
-                  <input type="file" id="product-image1" accept="image/*"
-                    onchange="convertToBase64('product-image1', 'product.product_image1')">
-                </div>
-                <div class="form-group">
-                  <label for="product-image2">product Image2</label>
-                  <input type="file" id="product-image2" accept="image/*"
-                    onchange="convertToBase64('product-image2', 'product.product_image2')">
-                </div>
-              
-                <div class="form-group">
-                  <label for="availability">Availability</label>
-                  <select id="availability" ng-model="product.availability" required>
-                    <option value="" disabled selected>Select available status</option>
-                    <option value="1">Yes</option>
-                    <option value="0">No</option>
-                  </select>
-                </div>
-              
-                <div class="form-group">
-                  <button type="submit" ng-disabled="isSubmitting" ng-click="onsubmit()">Submit</button>
-                </div>
-              </form>
-              
-              </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-        </div>
-      </div>
-    </div>
-
-    <!-- Modals for the webpage come here -->
-    <!-- modal starts-->
-    <div class="modal fade" id="deleteform" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content animated fadeIn">
+      <div class="modal fade" id="addform" tabindex="-1" role="dialog" aria-labelledby="addform"
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content animated fadeIn">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <img src="./assets/img/iamstockbot.png" class="ml-3">
+              <img src="./assets/img/iamstockbot.png" class="ml-3">
+              <button type="button" class="close" data-dismiss="modal" ng-click="closeaddModal()"> <i class="fas fa-times" style="color: #000;">*</i></button>
+          
             </div>
-            <div class="modal-body">
-              <div class="form">
-                <h3>Delete product</h3>
-                <p>Please confirm if you would like to delete the following product.</p>
-            
-                <p>product ID: {{product.id}}</p>
-            
-                <!-- Trigger the delete function with the correct id -->
-                <button type="submit" ng-click="delete(product.id)" class="btn btn-primary">Submit</button>
-                <button type="button" class="btn btn-secondary" ng-click="closeModal()">Cancel</button>
-              </div>
+            <div class="modal-body container" style="border:1px solid red;">
+              <div class="row">
+          
+                <form ng-submit="submitproduct(product)" enctype="multipart/form-data">
+                  <div class="form-group">
+                    <label for="product">Name</label>
+                    <input type="text" id="product" placeholder="Enter product name" ng-model="product.product_name" />
+                  </div>
                 
+                
+
+                      <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="category" ng-model="product.category" class="form-control" required>
+                            <option value="" disabled selected>Select category</option>
+                            <option ng-repeat="category in catagoryset" value="{{category.id}}">
+                                {{category.category_name}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <!-- Subcategory Field -->
+                    <div class="form-group">
+                        <label for="subcategory">Subcategory</label>
+                        <select id="subcategory" ng-model="product.subcategory" class="form-control" required>
+                            <option value="" disabled selected>Select Subcategory</option>
+                            <option ng-repeat="subcategory in subcatagoryset" value="{{subcategory.id}}">
+                                {{subcategory.subcategory_name}}
+                            </option>
+                        </select>
+                    </div>
+                  <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" placeholder="Enter description" ng-model="product.product_description" required></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="unit">Unit</label>
+                    <input type="text" id="unit" placeholder="Enter unit" ng-model="product.unit" required>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="mfg">MFG</label>
+                    <input type="date" id="mfg" placeholder="Enter mfg" ng-model="product.mfg" required></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="product_life">Product Life</label>
+                    <input type="number" id="product life" placeholder="Enter product Life" ng-model="product.product_life" required></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="stock_quantity">Quantity</label>
+                    <input type="number" id="stock quantity" placeholder="Enter product quantity" ng-model="product.stock_quantity" required></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="price">Price</label>
+                    <input type="number" id="price" placeholder="Enter price" ng-model="product.price" required></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="discount_price">Discount Price</label>
+                    <input type="number" id="discount_price" placeholder="Enter discount price" ng-model="product.discount_price" required></textarea>
+                  </div>
+                
+                  <div class="form-group">
+                    <label for="product-image1">product Image1</label>
+                    <input type="file" id="product-image1" accept="image/*"
+                      onchange="convertToBase64('product-image1', 'product.product_image1')">
+                  </div>
+                  <div class="form-group">
+                    <label for="product-image2">product Image2</label>
+                    <input type="file" id="product-image2" accept="image/*"
+                      onchange="convertToBase64('product-image2', 'product.product_image2')">
+                  </div>
+                
+                  <div class="form-group">
+                    <label for="availability">Availability</label>
+                    <select id="availability" ng-model="product.availability" required>
+                      <option value="" disabled selected>Select available status</option>
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                    </select>
+                  </div>
+                
+                  <div class="form-group">
+                    <button type="submit" ng-disabled="isSubmitting" ng-click="onsubmit()">Submit</button>
+                  </div>
+                </form>
+                
+                </div>
             </div>
-            </div>
-            <div class="modal-footer">
-                <!-- You may add footer actions here if needed -->
-            </div>
+          </div>
+          <div class="modal-footer">
+          </div>
         </div>
-    </div>
+      </div>
+      
+      <div class="modal fade" id="deleteform" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content animated fadeIn">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                  <img src="./assets/img/iamstockbot.png" class="ml-3">
+              </div>
+              <div class="modal-body">
+                <div class="form">
+                  <h3>Delete product</h3>
+                  <p>Please confirm if you would like to delete the following product.</p>
+              
+                  <p>product ID: {{product.id}}</p>
+              
+                  <!-- Trigger the delete function with the correct id -->
+                  <button type="submit" ng-click="delete(product.id)" class="btn btn-primary">Submit</button>
+                  <button type="button" class="btn btn-secondary" ng-click="closeModal()">Cancel</button>
+                </div>
+                  
+              </div>
+              </div>
+              <div class="modal-footer">
+                  <!-- You may add footer actions here if needed -->
+              </div>
+          </div>
+      </div>
+    <!-- End Modals -->
     </div>
   </main><!-- End #main -->
 

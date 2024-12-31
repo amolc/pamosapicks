@@ -56,6 +56,8 @@ app.controller('checkoutCtrl', function($scope, $http, $window, config) {
       ).then(response => {
         if (response.data.status == "success") {
           const order_data = response.data.data;
+          $scope.clearCart();
+          
           window.location.assign(`/payment.html?id=${order_data.id}`);
         } else {
           $scope.errorMessage = "Couldn't submit order.";

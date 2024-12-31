@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Quantbots - The Ultimate Precision Stock Signal Generator</title>
+  <title>Pamosapicks - Admin</title>
   <meta content="Quantbots generates real-time trading signals with unmatched precision for stocks, forex, and more, empowering traders with advanced technology." name="description">
   <meta content="Quantbots, stock signal generator, trading signals, real-time signals, precision trading, advanced technology." name="keywords">
 
@@ -40,7 +40,69 @@
 </head>
 
 <body ng-controller="addpropertyCtrl">
+  <header id="header" class="header fixed-top d-flex flex-row justify-content-between align-items-center">
+    <div class="d-flex align-items-center justify-content-between">
+        <a href="index.html" class="logo d-flex align-items-center">
+            <img src="assets/img/logo.png" alt="">
+            <span class="d-none d-lg-block">Pamosapicks</span>
+        </a>
+        <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+        <li class="nav-item dropdown pe-3">
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="{{adminInfo.profile_img || 'assets/img/profile-img.jpg'}}" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">{{adminInfo.first_name || 'Agent Name'}}</span>
+          </a><!-- End Profile Image Icon -->
 
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>{{adminInfo.first_name || 'Agent Name'}} {{adminInfo.last_name || ''}}</h6>
+              <span>{{adminInfo.role || 'Agent Role'}}</span> <!-- Assuming 'role' field exists -->
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="agentprofileupdate.html">
+                <i class="bi bi-person"></i>
+                <span>My Profil</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-gear"></i>
+                <span>Account Settings</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="input disabled -faq.html">
+                <i class="bi bi-question-circle"></i>
+                <span>Need Help?</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#" ng-click="signOut()">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+          </ul><!-- End Profile Dropdown -->
+        </li>
+
+      </ul><!-- End Profile Dropdown Items -->
+    </nav><!-- End Icons Navigation -->
+  </header><!-- End Header -->
   <main>
     <div class="container">
       <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
