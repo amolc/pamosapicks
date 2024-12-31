@@ -36,14 +36,11 @@
       <link rel="stylesheet" href="assets/css/main.css">
    </head>
    <body ng-app="website" ng-controller="checkoutCtrl" ng-init="init()">
-
-
       <!-- Scroll-top -->
       <button class="scroll-top scroll-to-target" data-target="html">
          <i class="icon-chevrons-up"></i>
       </button>
       <!-- Scroll-top-end-->
-
 
       <!-- header-area-start -->
       <header>
@@ -302,7 +299,6 @@
       <!-- header-area-end -->
 
       <main>
-
          <!-- breadcrumb-area-start -->
          <div class="breadcrumb__area pt-5 pb-5">
             <div class="container">
@@ -310,7 +306,9 @@
                   <div class="col-lg-12">
                      <div class="tp-breadcrumb__content">
                         <div class="tp-breadcrumb__list">
-                           <span class="tp-breadcrumb__active"><a href="index.html">Home</a></span>
+                           <span class="tp-breadcrumb__active">
+                              <a href="index.html">Home</a>
+                           </span>
                            <span class="dvdr">/</span>
                            <span>Checkout</span>
                         </div>
@@ -327,166 +325,131 @@
          <section class="checkout-area pb-50">
             <div class="container">
                <form action="#">
-                  <div class="row" name="bookingForm" novalidate>
-                        <div class="col-lg-6 col-md-12">
-                           <div class="checkbox-form">
-                              <h3>Billing Details</h3>
-                              <div class="row">
-                                    <div class="col-md-6">
-                                       <div class="checkout-form-list">
-                                          <label>Email Address <span class="required">*</span></label>
-                                          <input ng-model="order_data.email" type="email" placeholder="" >
-                                       </div>
+                  <div class="row">
+                     <div class="col-lg-6 col-md-12">
+                        <div class="checkbox-form">
+                           <h3>Billing Details</h3>
+                           <div class="row">
+                                 <div class="col-md-6">
+                                    <div class="checkout-form-list">
+                                       <label>Email Address <span class="required">*</span></label>
+                                       <input ng-model="order_data.email" type="email" placeholder="" >
                                     </div>
-                                    <div class="col-md-6">
-                                       <div class="checkout-form-list">
-                                          <label>Phone <span class="required">*</span></label>
-                                          <input ng-model="order_data.mobile_number" type="tel" placeholder="+9912345678" >
-                                       </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="checkout-form-list">
+                                       <label>Phone <span class="required">*</span></label>
+                                       <input ng-model="order_data.mobile_number" type="text" placeholder="+9912345678" >
                                     </div>
-                                    <div class="col-md-6">
-                                       <div class="checkout-form-list">
-                                          <label>First Name <span class="required">*</span></label>
-                                          <input ng-model="order_data.first_name" type="text" placeholder="" >
-                                       </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="checkout-form-list">
+                                       <label>First Name <span class="required">*</span></label>
+                                       <input ng-model="order_data.first_name" type="text" placeholder="" >
                                     </div>
-                                    <div class="col-md-6">
-                                       <div class="checkout-form-list">
-                                          <label>Last Name <span class="required">*</span></label>
-                                          <input ng-model="order_data.last_name" type="text" placeholder="" >
-                                       </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="checkout-form-list">
+                                       <label>Last Name <span class="required">*</span></label>
+                                       <input ng-model="order_data.last_name" type="text" placeholder="" >
                                     </div>
-                                    <div class="col-md-12">
-                                       <div class="country-select">
-                                          <label>Country <span class="required">*</span></label>
-                                          <select
-                                             ng-model="order_data.country">
-                                             <option selected value="India">India</option>
-                                          </select>
-                                       </div>
+                                 </div>
+                                 <div class="col-md-12">
+                                    <div class="country-select">
+                                       <label>Country <span class="required">*</span></label>
+                                       <select
+                                          ng-model="order_data.country">
+                                          <option selected value="India">India</option>
+                                       </select>
                                     </div>
-                                    <div class="col-md-6">
-                                       <div class="checkout-form-list">
-                                          <label>State <span class="required">*</span></label>
-                                          <input ng-model="order_data.state" type="text" placeholder="" >
-                                       </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="checkout-form-list">
+                                       <label>State <span class="required">*</span></label>
+                                       <input ng-model="order_data.state" type="text" placeholder="" >
                                     </div>
-                                    <div class="col-md-12">
-                                       <div class="checkout-form-list">
-                                          <label>Town / City <span class="required">*</span></label>
-                                          <input ng-model="order_data.city" type="text" placeholder="Town / City" >
-                                       </div>
+                                 </div>
+                                 <div class="col-md-12">
+                                    <div class="checkout-form-list">
+                                       <label>Town / City <span class="required">*</span></label>
+                                       <input ng-model="order_data.city" type="text" placeholder="Town / City" >
                                     </div>
-                                    <div class="col-md-6">
-                                       <div class="checkout-form-list">
-                                          <label>Postcode / Zip <span class="required">*</span></label>
-                                          <input ng-model="order_data.postal_code" type="text" placeholder="Postcode / Zip" >
-                                       </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="checkout-form-list">
+                                       <label>Postcode / Zip <span class="required">*</span></label>
+                                       <input ng-model="order_data.postal_code" type="text" placeholder="Postcode / Zip" >
                                     </div>
-                                    <div class="col-md-12">
-                                       <div class="checkout-form-list">
-                                          <label>Billing Address <span class="required">*</span></label>
-                                          <input ng-model="order_data.billing_address" type="text" placeholder="Street address" >
-                                       </div>
+                                 </div>
+                                 <div class="col-md-12">
+                                    <div class="checkout-form-list">
+                                       <label>Billing Address <span class="required">*</span></label>
+                                       <input ng-model="order_data.billing_address" type="text" placeholder="Street address" >
                                     </div>
-                                    <!-- TEMP: CREATE ACCOUNT -->
+                                 </div>
+                                 <!-- TEMP: CREATE ACCOUNT -->
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-lg-6 col-md-12">
+                        <div class="your-order mb-30 ">
+                           <h3>Your order</h3>
+                           <div class="your-order-table table-responsive">
+                                 <table>
+                                    <thead>
+                                       <tr>
+                                          <th class="product-name">Product</th>
+                                          <th>Quantity</th>
+                                          <th>Price</th>
+                                          <th class="product-total">Total</th>
+                                       </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr ng-repeat="cart_item in cart" class="cart_item">
+                                          <td class="product-name">
+                                             <a href="checkout.html?id={{ cart_item.id }}">{{ cart_item.product_name }}</a>
+                                          </td>
+                                          <td>
+                                             {{ cart_item.quantity }}
+                                          </td>
+                                          <td>
+                                             ₹{{ cart_item.price }}
+                                          </td>
+                                          <td class="product-total">
+                                             ₹{{ cart_item.quantity * cart_item.price }}
+                                          </td>
+                                       </tr>
+                                    </tbody>
+                                    <tfoot>
+                                       <tr class="cart-subtotal">
+                                             <th>Cart Subtotal</th>
+                                             <td colspan="2"></td>
+                                             <td><span class="amount">₹{{ cartTotal }}</span></td>
+                                       </tr>
+                                       <!-- TEMP: CHECKOUT SHIPPING -->
+                                       <tr class="order-total">
+                                             <th>Order Total</th>
+                                             <td colspan="2"></td>
+                                             <td>
+                                                <strong><span class="amount">₹{{ cartTotal }}</span></strong>
+                                             </td>
+                                       </tr>
+                                    </tfoot>
+                                 </table>
+                           </div>
+                           <div class="payment-method">
+                              <div ng-if="errorMessage !== null" class="w-100 alert alert-warning">
+                                 {{ errorMessage }}
+                              </div>
+                              <div class="order-button-payment mt-20">
+                                 <button
+                                    ng-click="submitOrder()"
+                                    type="button"
+                                    class="tp-btn tp-color-btn w-100">Proceed to payment</button>
                               </div>
                            </div>
                         </div>
-                        <div class="col-lg-6 col-md-12">
-                           <div class="your-order mb-30 ">
-                              <h3>Your order</h3>
-                              <div class="your-order-table table-responsive">
-                                    <table>
-                                       <thead>
-                                          <tr>
-                                             <th class="product-name">Product</th>
-                                             <th>Quantity</th>
-                                             <th>Price</th>
-                                             <th class="product-total">Total</th>
-                                          </tr>
-                                       </thead>
-                                       <tbody>
-                                          <tr ng-repeat="cart_item in cart" class="cart_item">
-                                             <td class="product-name">
-                                                <a href="checkout.html?id={{ cart_item.id }}">{{ cart_item.product_name }}</a>
-                                             </td>
-                                             <td>
-                                                {{ cart_item.quantity }}
-                                             </td>
-                                             <td>
-                                                ₹{{ cart_item.price }}
-                                             </td>
-                                             <td class="product-total">
-                                                ₹{{ cart_item.quantity * cart_item.price }}
-                                             </td>
-                                          </tr>
-                                       </tbody>
-                                       <tfoot>
-                                          <tr class="cart-subtotal">
-                                                <th>Cart Subtotal</th>
-                                                <td colspan="2"></td>
-                                                <td><span class="amount">₹{{ cartTotal }}</span></td>
-                                          </tr>
-                                          <!-- TEMP: CHECKOUT SHIPPING -->
-                                          <tr class="order-total">
-                                                <th>Order Total</th>
-                                                <td colspan="2"></td>
-                                                <td>
-                                                   <strong><span class="amount">₹{{ cartTotal }}</span></strong>
-                                                </td>
-                                          </tr>
-                                       </tfoot>
-                                    </table>
-                              </div>
-                              <div class="payment-method">
-                                 <div class="accordion" id="checkoutAccordion">
-                                    <div class="accordion-item">
-                                       <h2 class="accordion-header" id="checkoutOne">
-                                          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#bankOne" aria-expanded="true" aria-controls="bankOne">
-                                          Direct Bank Transfer
-                                          </button>
-                                       </h2>
-                                       <div id="bankOne" class="accordion-collapse collapse show" aria-labelledby="checkoutOne" data-bs-parent="#checkoutAccordion">
-                                          <div class="accordion-body">
-                                          Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="accordion-item">
-                                       <h2 class="accordion-header" id="paymentTwo">
-                                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#payment" aria-expanded="false" aria-controls="payment">
-                                          Cheque Payment
-                                          </button>
-                                       </h2>
-                                       <div id="payment" class="accordion-collapse collapse" aria-labelledby="paymentTwo" data-bs-parent="#checkoutAccordion">
-                                          <div class="accordion-body">
-                                          Please send your cheque to Store Name, Store Street, Store Town, Store
-                                          State / County, Store
-                                          Postcode.
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="accordion-item">
-                                       <h2 class="accordion-header" id="paypalThree">
-                                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#paypal" aria-expanded="false" aria-controls="paypal">
-                                          PayPal
-                                          </button>
-                                       </h2>
-                                       <div id="paypal" class="accordion-collapse collapse" aria-labelledby="paypalThree" data-bs-parent="#checkoutAccordion">
-                                          <div class="accordion-body">
-                                          Pay via PayPal; you can pay with your credit card if you don’t have a
-                                          PayPal account.
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="order-button-payment mt-20">
-                                    <button ng-click="submitOrder()" type="button" class="tp-btn tp-color-btn w-100">Place order</button>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
+                     </div>
                   </div>
                </form>
             </div>

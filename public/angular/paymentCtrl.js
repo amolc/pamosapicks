@@ -1,4 +1,4 @@
-app.controller('checkoutCtrl', function($scope, $http, $window, config) {
+app.controller('paymentCtrl', function($scope, $http, $window, config) {
   $scope.init = function() {
         $scope.cartTotal = 0;
         $scope.urlParams = Object.fromEntries(
@@ -30,6 +30,42 @@ app.controller('checkoutCtrl', function($scope, $http, $window, config) {
           amount: $scope.cartTotal,
           order_items: '',
         };
+
+        $scope.getorderdata();
+    };
+
+    // Fetch the list of products
+    $scope.getorderdata = function () {
+      $scope.fetchingOrderData = true;
+
+      let url = '';
+
+      if ($scope.urlParams.length == 0) {
+        console.error("No ID specified.");
+        return;
+      }
+
+      if(!$scope.urlParams.hasOwnProperty('id')) {
+        console.error("No ID specified.");
+        return;
+      }
+      
+      url = `${config.baseurl}order/get-order/${$scope.urlParams['id']}/`;        
+      $http.get(url)
+          .then(function (response) {
+              if (response.data.status === 'false') {
+                  console.error("Error fetching billing data:", response.data.message);
+              } else {
+                console.log(response.data);
+                console.log(response.data.data);
+                $scope.order_data = response.data.data;
+              }
+          })
+          .catch(function (error) {
+              console.error("Error fetching billing data:", error);
+          }).finally(() => {
+            $scope.fetchingBillingData = false;
+          });
     };
 
     $scope.buildOrderItemsFromCartData = () => {
