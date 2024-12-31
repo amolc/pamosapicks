@@ -60,498 +60,486 @@ I
 
   <style>
     /* General modal styling */
-.modal-content {
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  background-color: #ffffff;
-}
+  .modal-content {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    background-color: #ffffff;
+  }
+  .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #eee;
+  }
+  .modal-header img {
+    height: 40px;
+  }
+  .modal-header .close {
+    font-size: 1.5rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  .modal-body {
+    padding: 20px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  textarea {
+    resize: none;
+    height: 100px;
+  }
+  .form-group-full {
+    width: 100%;
+  }
+  .double-input input {
+    width: calc(100% - 20px);
+  }
 
-.modal-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #eee;
-}
+  input[type="file"] {
+    padding: 5px;
+  }
 
-.modal-header img {
-  height: 40px;
-}
+  button[type="submit"] {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
 
-.modal-header .close {
-  font-size: 1.5rem;
-  border: none;
-  background: none;
-  cursor: pointer;
-}
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
 
-.modal-body {
-  padding: 20px;
-}
+  /* Footer styling (if needed) */
+  .modal-footer {
+    border-top: 1px solid #eee;
+    padding: 10px;
+    text-align: right;
+  }
 
-/* Form styling */
-form {
-  display: flex;
-  flex-direction: column;
-}
+  .modal-footer button {
+    background-color: #6c757d;
+    color: #ffffff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
 
-.form-group {
-  margin-bottom: 15px;
-}
+  .modal-footer button:hover {
+    background-color: #5a6268;
+  }
+  </style>
+  </head>
+  <body ng-app="website" ng-controller="subcategoryCtrl" ng-init="init()">
+    <header id="header" class="header fixed-top d-flex flex-row justify-content-between align-items-center">
+      <div class="d-flex align-items-center justify-content-between">
+          <a href="index.html" class="logo d-flex align-items-center">
+              <img src="assets/img/logo.png" alt="">
+              <span class="d-none d-lg-block">Pamosapicks</span>
+          </a>
+          <i class="bi bi-list toggle-sidebar-btn"></i>
+      </div><!-- End Logo -->
+      <nav class="header-nav ms-auto">
+        <ul class="d-flex align-items-center">
+          <li class="nav-item dropdown pe-3">
+            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+              <img src="{{adminInfo.profile_img || 'assets/img/profile-img.jpg'}}" alt="Profile" class="rounded-circle">
+              <span class="d-none d-md-block dropdown-toggle ps-2">{{adminInfo.first_name || 'Agent Name'}}</span>
+            </a><!-- End Profile Image Icon -->
 
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
-}
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+              <li class="dropdown-header">
+                <h6>{{adminInfo.first_name || 'Agent Name'}} {{adminInfo.last_name || ''}}</h6>
+                <span>{{adminInfo.role || 'Agent Role'}}</span> <!-- Assuming 'role' field exists -->
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="agentprofileupdate.html">
+                  <i class="bi bi-person"></i>
+                  <span>My Profil</span>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                  <i class="bi bi-gear"></i>
+                  <span>Account Settings</span>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="input disabled -faq.html">
+                  <i class="bi bi-question-circle"></i>
+                  <span>Need Help?</span>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="#" ng-click="signOut()">
+                  <i class="bi bi-box-arrow-right"></i>
+                  <span>Sign Out</span>
+                </a>
+              </li>
+            </ul><!-- End Profile Dropdown -->
+          </li>
 
-textarea {
-  resize: none;
-  height: 100px;
-}
+        </ul><!-- End Profile Dropdown Items -->
+      </nav><!-- End Icons Navigation -->
+    </header><!-- End Header -->
 
-.form-group-full {
-  width: 100%;
-}
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+      <ul class="sidebar-nav" id="sidebar-nav">
 
-.double-input input {
-  width: calc(100% - 20px);
-}
-
-input[type="file"] {
-  padding: 5px;
-}
-
-button[type="submit"] {
-  background-color: #007bff;
-  color: #ffffff;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-button[type="submit"]:hover {
-  background-color: #0056b3;
-}
-
-/* Footer styling (if needed) */
-.modal-footer {
-  border-top: 1px solid #eee;
-  padding: 10px;
-  text-align: right;
-}
-
-.modal-footer button {
-  background-color: #6c757d;
-  color: #ffffff;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.modal-footer button:hover {
-  background-color: #5a6268;
-}
-</style>
-</head>
-<body ng-app="website" ng-controller="subcategoryCtrl" ng-init="init()">
-  <header id="header" class="header fixed-top d-flex flex-row justify-content-between align-items-center">
-    <div class="d-flex align-items-center justify-content-between">
-        <a href="index.html" class="logo d-flex align-items-center">
-            <img src="assets/img/logo.png" alt="">
-            <span class="d-none d-lg-block">Pamosapicks</span>
-        </a>
-        <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div><!-- End Logo -->
-    <nav class="header-nav ms-auto">
-      <ul class="d-flex align-items-center">
-        <li class="nav-item dropdown pe-3">
-          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="{{adminInfo.profile_img || 'assets/img/profile-img.jpg'}}" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">{{adminInfo.first_name || 'Agent Name'}}</span>
-          </a><!-- End Profile Image Icon -->
-
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-            <li class="dropdown-header">
-              <h6>{{adminInfo.first_name || 'Agent Name'}} {{adminInfo.last_name || ''}}</h6>
-              <span>{{adminInfo.role || 'Agent Role'}}</span> <!-- Assuming 'role' field exists -->
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="agentprofileupdate.html">
-                <i class="bi bi-person"></i>
-                <span>My Profil</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-gear"></i>
-                <span>Account Settings</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="input disabled -faq.html">
-                <i class="bi bi-question-circle"></i>
-                <span>Need Help?</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="#" ng-click="signOut()">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Sign Out</span>
-              </a>
-            </li>
-          </ul><!-- End Profile Dropdown -->
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="index.html">
+            <i class="bi bi-grid"></i>
+            <span>Dashboard</span>
+          </a>
         </li>
+        <hr>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="/admin/product.html">
+            <i class="bi bi-bag"></i>
+            <span>Products</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="/admin/category.html">
+            <i class="bi bi-tag"></i>
+            <span>Categories</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/subcategory.html">
+            <i class="bi bi-tags"></i>
+            <span>Subcategories</span>
+          </a>
+        </li>
+        <hr>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="/admin/orders.html">
+            <i class="bi bi-rocket-takeoff"></i>
+            <span>Orders</span>
+          </a>
+        </li>
+      </ul>
+    </aside>
+    <!-- End Sidebar-->
+    <main id="main" class="main">
 
-      </ul><!-- End Profile Dropdown Items -->
-    </nav><!-- End Icons Navigation -->
-  </header><!-- End Header -->
+      <div class="pagetitle">
+        <h1>Data Tables</h1>
+        <nav>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active">Subcategories</li>
+          </ol>
+        </nav>
+      </div><!-- End Page Title -->
 
-  <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar">
-    <ul class="sidebar-nav" id="sidebar-nav">
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="index.html">
-          <i class="bi bi-grid"></i>
-          <span>Dashboard</span>
-        </a>
-      </li>
-      <hr>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="/admin/product.html">
-          <i class="bi bi-bag"></i>
-          <span>Products</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="/admin/category.html">
-          <i class="bi bi-tag"></i>
-          <span>Categories</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/admin/subcategory.html">
-          <i class="bi bi-tags"></i>
-          <span>Subcategories</span>
-        </a>
-      </li>
-      <hr>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="/admin/orders.html">
-          <i class="bi bi-rocket-takeoff"></i>
-          <span>Orders</span>
-        </a>
-      </li>
-    </ul>
-  </aside>
-  <!-- End Sidebar-->
-  <main id="main" class="main">
-
-    <div class="pagetitle">
-      <h1>Data Tables</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Subcategories</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
-
-    <section class="section">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Subcategories</h5>
-              <div class="ibox-title">
-                <div class="row">
-                  <div class="col-lg-8">
-                    <h5>
-                      <button type="button" class="btn btn-w-m btn-primary"
-                                      data-target="#addform" ng-click="addform()">Add subcategory</button>
-                    </h5>
+      <section class="section">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Subcategories</h5>
+                <div class="ibox-title">
+                  <div class="row">
+                    <div class="col-lg-8">
+                      <h5>
+                        <button type="button" class="btn btn-w-m btn-primary"
+                                        data-target="#addform" ng-click="addform()">Add subcategory</button>
+                      </h5>
+                    </div>
                   </div>
                 </div>
+
+                <!-- Table with stripped rows -->
+                <table class="table mt-3">
+                  <thead>
+                    <tr>
+                      <th>subcategory Id</th>
+                      <th>Subcategory Name</th>
+                      <th>Category Name</th>
+                      <th>Description</th>
+                      <th>Created</th>
+                      <th>IsActive</th>
+                    
+                      <th>Edit</th>
+                      <th>Delete</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="data in dataset">
+                      <td>{{data.id}}</td>
+                      <td>{{data.subcategory_name}}</td>
+                      <td>{{data.category_name}}</td>
+                      <td>{{data.subcategory_description}}</td>
+                      <td>{{data.created_at}}</td>
+                      <td>{{data.is_active}}</td>
+                      <td><a href="#" ng-click="onedit(data)">Edit</a></td>
+                      <td><a href="#" ng-click="ondelete(data)">Delete</a></td>
+
+                    </tr>
+                  </tbody>
+                </table>
               </div>
-
-              <!-- Table with stripped rows -->
-              <table class="table mt-3">
-                <thead>
-                  <tr>
-                    <th>subcategory Id</th>
-                    <th>Subcategory Name</th>
-                    <th>Category Name</th>
-                    <th>Description</th>
-                    <th>Created</th>
-                    <th>IsActive</th>
-                  
-                    <th>Edit</th>
-                    <th>Delete</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr ng-repeat="data in dataset">
-                    <td>{{data.id}}</td>
-                    <td>{{data.subcategory_name}}</td>
-                    <td>{{data.category_name}}</td>
-                    <td>{{data.subcategory_description}}</td>
-                    <td>{{data.created_at}}</td>
-                    <td>{{data.is_active}}</td>
-                    <td><a href="#" ng-click="onedit(data)">Edit</a></td>
-                    <td><a href="#" ng-click="ondelete(data)">Delete</a></td>
-
-                  </tr>
-                </tbody>
-              </table>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
 
-     <!-- Modals for the webpage come here -->
-    <div class="modal fade" id="editform" tabindex="-1" role="dialog" aria-labelledby="editform"
-      aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content animated fadeIn">
-          <div class="modal-header">
-            <img src="./assets/img/iamstockbot.png" class="ml-3">
-            <button type="button" class="close" data-dismiss="modal" ng-click="closeaddModal()"> <i class="fas fa-times" style="color: #000;">*</i></button>
-        
-          </div>
-          <div class="modal-body container" style="border:1px solid red;">
-            <div class="row">
-        
-              <form ng-submit="submitCategory(subcategory)" enctype="multipart/form-data">
-                <div class="form-group">
-                  <label for="subcategory">subcategory Name</label>
-                  <input type="text" id="subcategory" placeholder="Enter subcategory name" ng-model="subcategory.subcategory_name" />
-                </div>
-
-
-                <div class="form-group">
-                  <label for="category">Category</label>
-                  <select id="category" ng-model="subcategory.category" class="form-control" required>
-                    <option value="{{subcategory.category_name}}" disabled selected>{{subcategory.category_name}}</option>
-                    <option value="" disabled selected>Select category</option>
-                      <option ng-repeat="category in catagoryset" value="{{category.id}}">
-                          {{category.category_name}}
-                      </option>
-                  </select>
-              </div>
-
-
-                <!-- <div class="form-group">
-                  <label for="category">Category</label>
-                  <select id="category" ng-model="subcategory.category" class="form-control" required>
-                      <option value="" disabled selected>Select a category</option>
-                      <option ng-repeat="category in catagoryset" value="{{category.id}}">
-                          {{category.id}} 
-                      </option>
-                  </select>
-              </div> -->
-
-               
-              
-              
-                <div class="form-group">
-                  <label for="description">Description</label>
-                  <textarea id="description" placeholder="Enter description" ng-model="subcategory.subcategory_description" required></textarea>
-                </div>
-
-                <!-- <div class="form-group">
-                  <label for="created_at">Created</label>
-                  <input type="date" id="created_at" placeholder="Enter Created" ng-model="subcategory.created_at" required></textarea>
-                </div> -->
-              
-                <div class="form-group">
-                  <label for="subcategory-image">Subcategory Image</label>
-                  <input type="file" id="subcategory-image1" accept="image/*"
-                    onchange="convertToBase64('subcategory-image', 'subcategory.subcategory_image')">
-                </div>
-              
-                <div class="form-group">
-                  <label for="availability">Availability</label>
-                  <select id="availability" ng-model="subcategory.availability" required>
-                    <option value="{{subcategory.availability}}" disabled selected>{{subcategory.availability}}</option>
-                    <option value="1">Yes</option>
-                    <option value="0">No</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <button type="submit" ng-disabled="isSubmitting" ng-click="oneditsubmit(subcategory)">Submit</button>
-                </div>
-              </form>
-              
-              </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <!-- You may add footer actions here if needed -->
-        </div>
-      </div>
-    </div>
-
-
-
-    <!-- Modals for the webpage come here -->
-    <!-- modal starts-->
-
-
-
-
-     <!-- Modals for the webpage come here -->
-    <!-- modal starts-->
-    <div class="modal fade" id="addform" tabindex="-1" role="dialog" aria-labelledby="addform"
-      aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content animated fadeIn">
-          <div class="modal-header">
-            <img src="./assets/img/iamstockbot.png" class="ml-3">
-            <button type="button" class="close" data-dismiss="modal" ng-click="closeaddModal()"> <i class="fas fa-times" style="color: #000;">*</i></button>
-        
-          </div>
-          <div class="modal-body container" style="border:1px solid red;">
-            <div class="row">
-        
-              <form ng-submit="submitSubcategory(subcategory)" enctype="multipart/form-data">
-                <div class="form-group">
-                  <label for="subcategory">Subcategory Name</label>
-                  <input type="text" id="subcategory" placeholder="Enter subcategory name" ng-model="subcategory.subcategory_name" />
-                </div>
-              
-                <div class="form-group">
-                  <label for="category_id">Category</label>
-                  <select id="category" ng-model="subcategory.category_id" class="form-control" required>
-                    <option value="" disabled selected>Select category</option>
-                    <option ng-repeat="category in catagoryset" value="{{category.id}}">
-                      {{category.category_name}}
-                    </option>
-                  </select>
-                </div>
-
-
-                <div class="form-group">
-                  <label for="description">Description</label>
-                  <textarea id="description" placeholder="Enter description" ng-model="subcategory.subcategory_description" required></textarea>
-                </div>
-                
-                <div class="form-group">
-                  <label for="created_at">Created</label>
-                  <input type="date" id="created_at" placeholder="Enter Created" ng-model="subcategory.created_at" required></textarea>
-                </div>
-              
-                <div class="form-group">
-                  <label for="subcategory-image">Subcategory Image</label>
-                  <input type="file" id="subcategory-image" accept="image/*"
-                    onchange="convertToBase64('subcategory-image', 'subcategory.subcategory_image')">
-                </div>
-              
-                <div class="form-group">
-                  <label for="is-active">Active</label>
-                  <select id="is-active" ng-model="subcategory.is_active" required>
-                    <option value="" disabled selected>Select active status</option>
-                    <option value="1">Yes</option>
-                    <option value="0">No</option>
-                  </select>
-                </div>
-              
-                <div class="form-group">
-                  <button type="submit" ng-disabled="isSubmitting" ng-click="onsubmit()">Submit</button>
-                </div>
-              </form>
-              
-              </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <!-- You may add footer actions here if needed -->
-        </div>
-      </div>
-    </div>
-
-    <!-- Modals for the webpage come here -->
-    <!-- modal starts-->
-    <div class="modal fade" id="deleteform" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content animated fadeIn">
+      <!-- Modals for the webpage come here -->
+      <div class="modal fade" id="editform" tabindex="-1" role="dialog" aria-labelledby="editform"
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content animated fadeIn">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <img src="./assets/img/iamstockbot.png" class="ml-3">
+              <img src="./assets/img/iamstockbot.png" class="ml-3">
+              <button type="button" class="close" data-dismiss="modal" ng-click="closeaddModal()"> <i class="fas fa-times" style="color: #000;">*</i></button>
+          
             </div>
-            <div class="modal-body">
-              <div class="form">
-                <h3>Delete subcategory</h3>
-                <p>Please confirm if you would like to delete the following subcategory.</p>
-            
-                <p>subcategory ID: {{subcategory.id}}</p>
-            
-                <!-- Trigger the delete function with the correct id -->
-                <button type="submit" ng-click="delete(subcategory.id)" class="btn btn-primary">Submit</button>
-                <button type="button" class="btn btn-secondary" ng-click="closeModal()">Cancel</button>
-              </div>
+            <div class="modal-body container" style="border:1px solid red;">
+              <div class="row">
+          
+                <form ng-submit="submitCategory(subcategory)" enctype="multipart/form-data">
+                  <div class="form-group">
+                    <label for="subcategory">subcategory Name</label>
+                    <input type="text" id="subcategory" placeholder="Enter subcategory name" ng-model="subcategory.subcategory_name" />
+                  </div>
+
+
+                  <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" ng-model="subcategory.category" class="form-control" required>
+                      <option value="{{subcategory.category_name}}" disabled selected>{{subcategory.category_name}}</option>
+                      <option value="" disabled selected>Select category</option>
+                        <option ng-repeat="category in catagoryset" value="{{category.id}}">
+                            {{category.category_name}}
+                        </option>
+                    </select>
+                </div>
+
+
+                  <!-- <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" ng-model="subcategory.category" class="form-control" required>
+                        <option value="" disabled selected>Select a category</option>
+                        <option ng-repeat="category in catagoryset" value="{{category.id}}">
+                            {{category.id}} 
+                        </option>
+                    </select>
+                </div> -->
+
                 
+                
+                
+                  <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" placeholder="Enter description" ng-model="subcategory.subcategory_description" required></textarea>
+                  </div>
+
+                  <!-- <div class="form-group">
+                    <label for="created_at">Created</label>
+                    <input type="date" id="created_at" placeholder="Enter Created" ng-model="subcategory.created_at" required></textarea>
+                  </div> -->
+                
+                  <div class="form-group">
+                    <label for="subcategory-image">Subcategory Image</label>
+                    <input type="file" id="subcategory-image1" accept="image/*"
+                      onchange="convertToBase64('subcategory-image', 'subcategory.subcategory_image')">
+                  </div>
+                
+                  <div class="form-group">
+                    <label for="availability">Availability</label>
+                    <select id="availability" ng-model="subcategory.availability" required>
+                      <option value="{{subcategory.availability}}" disabled selected>{{subcategory.availability}}</option>
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <button type="submit" ng-disabled="isSubmitting" ng-click="oneditsubmit(subcategory)">Submit</button>
+                  </div>
+                </form>
+                
+                </div>
             </div>
-            </div>
-            <div class="modal-footer">
-                <!-- You may add footer actions here if needed -->
-            </div>
+          </div>
+          <div class="modal-footer">
+            <!-- You may add footer actions here if needed -->
+          </div>
         </div>
-    </div>
-    </div>
-  </main><!-- End #main -->
+      </div>
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; Copyright <strong><span>StayVillas</span></strong>. All Rights Reserved
-    </div>
-    <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-    </div>
-  </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/chart.js/chart.umd.js"></script>
-  <script src="assets/vendor/echarts/echarts.min.js"></script>
-  <script src="assets/vendor/quill/quill.js"></script>
-  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+      <!-- Modals for the webpage come here -->
+      <!-- modal starts-->
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
 
-</body>
+
+
+      <!-- Modals for the webpage come here -->
+      <!-- modal starts-->
+      <div class="modal fade" id="addform" tabindex="-1" role="dialog" aria-labelledby="addform"
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content animated fadeIn">
+            <div class="modal-header">
+              <img src="./assets/img/iamstockbot.png" class="ml-3">
+              <button type="button" class="close" data-dismiss="modal" ng-click="closeaddModal()"> <i class="fas fa-times" style="color: #000;">*</i></button>
+          
+            </div>
+            <div class="modal-body container" style="border:1px solid red;">
+              <div class="row">
+          
+                <form ng-submit="submitSubcategory(subcategory)" enctype="multipart/form-data">
+                  <div class="form-group">
+                    <label for="subcategory">Subcategory Name</label>
+                    <input type="text" id="subcategory" placeholder="Enter subcategory name" ng-model="subcategory.subcategory_name" />
+                  </div>
+                
+                  <div class="form-group">
+                    <label for="category_id">Category</label>
+                    <select id="category" ng-model="subcategory.category_id" class="form-control" required>
+                      <option value="" disabled selected>Select category</option>
+                      <option ng-repeat="category in catagoryset" value="{{category.id}}">
+                        {{category.category_name}}
+                      </option>
+                    </select>
+                  </div>
+
+
+                  <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" placeholder="Enter description" ng-model="subcategory.subcategory_description" required></textarea>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="created_at">Created</label>
+                    <input type="date" id="created_at" placeholder="Enter Created" ng-model="subcategory.created_at" required></textarea>
+                  </div>
+                
+                  <div class="form-group">
+                    <label for="subcategory-image">Subcategory Image</label>
+                    <input type="file" id="subcategory-image" accept="image/*"
+                      onchange="convertToBase64('subcategory-image', 'subcategory.subcategory_image')">
+                  </div>
+                
+                  <div class="form-group">
+                    <label for="is-active">Active</label>
+                    <select id="is-active" ng-model="subcategory.is_active" required>
+                      <option value="" disabled selected>Select active status</option>
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                    </select>
+                  </div>
+                
+                  <div class="form-group">
+                    <button type="submit" ng-disabled="isSubmitting" ng-click="onsubmit()">Submit</button>
+                  </div>
+                </form>
+                
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <!-- You may add footer actions here if needed -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Modals for the webpage come here -->
+      <!-- modal starts-->
+      <div class="modal fade" id="deleteform" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content animated fadeIn">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                  <img src="./assets/img/iamstockbot.png" class="ml-3">
+              </div>
+              <div class="modal-body">
+                <div class="form">
+                  <h3>Delete subcategory</h3>
+                  <p>Please confirm if you would like to delete the following subcategory.</p>
+              
+                  <p>subcategory ID: {{subcategory.id}}</p>
+              
+                  <!-- Trigger the delete function with the correct id -->
+                  <button type="submit" ng-click="delete(subcategory.id)" class="btn btn-primary">Submit</button>
+                  <button type="button" class="btn btn-secondary" ng-click="closeModal()">Cancel</button>
+                </div>
+                  
+              </div>
+              </div>
+              <div class="modal-footer">
+                  <!-- You may add footer actions here if needed -->
+              </div>
+          </div>
+      </div>
+      </div>
+    </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Pamosapicks</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </footer><!-- End Footer -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/chart.js/chart.umd.js"></script>
+    <script src="assets/vendor/echarts/echarts.min.js"></script>
+    <script src="assets/vendor/quill/quill.js"></script>
+    <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+  </body>
 
 </html>
