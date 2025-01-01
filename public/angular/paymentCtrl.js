@@ -56,8 +56,6 @@ app.controller('paymentCtrl', function($scope, $http, $window, config) {
               if (response.data.status === 'false') {
                   console.error("Error fetching billing data:", response.data.message);
               } else {
-                console.log(response.data);
-                console.log(response.data.data);
                 $scope.order_data = response.data.data;
               }
           })

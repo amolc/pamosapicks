@@ -37,6 +37,7 @@ app.controller('checkoutCtrl', function($scope, $http, $window, config) {
         return {
           product: item.id,
           product_name: item.product_name,
+          product_image: item.product_image,
           product_qty: item.quantity,
           product_price: item.price,
           product_subtotal: item.subtotal,
