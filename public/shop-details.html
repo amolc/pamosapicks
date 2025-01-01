@@ -38,13 +38,6 @@
       <script src="./angular/productDetailsCtrl.js"></script>   
    </head>
    <body ng-app="website" ng-controller="productDetailsCtrl" ng-init="init()">
-
-
-      <!-- Scroll-top -->
-      <button class="scroll-top scroll-to-target" data-target="html">
-         <i class="icon-chevrons-up"></i>
-      </button>
-      <!-- Scroll-top-end-->
       <!-- header-area-start -->
       <header>
          <div id="header-sticky" class="header__main-area d-none d-xl-block">
@@ -52,38 +45,19 @@
                <div class="header__for-megamenu p-relative">
                   <div class="row align-items-center">
                      <div class="col-xl-3">
-                        <div class="header__logo">
+                        <div class="header__logo py-1">
                            <a href="index.html">
                               <img
                                  style="
                                     height: 120px;
-                                    width: 120px;
                                     object-fit: contain;
                                     object-position: center;
                                  "
-                                 src="assets/img/logo/pamosa_logo.png" alt="logo">
+                                 src="assets/img/logo/pamosa_logo_resized.png" alt="logo">
                            </a>
                         </div>
                      </div>
-                     <div class="col-xl-6">
-                        <div class="header__menu main-menu text-center">
-                           <nav id="mobile-menu">
-                              <ul>
-                                 <li>
-                                    <a href="index.html">Home</a>
-                                 </li>
-                                 
-                                 <li>
-                                    <a href="blog.html">Blog</a>
-                                 </li>
-
-                                 <li><a href="about.html">About Us</a></li>
-                                 <li><a href="contact.html">Contact Us</a></li>
-                              </ul>
-                           </nav>
-                        </div>
-                     </div>
-                     <div class="col-xl-3">
+                     <div class="offset-6 col-xl-3">
                         <div class="header__info d-flex align-items-center">
                            <div class="header__info-search tpcolor__purple ml-10">
                               <button class="tp-search-toggle"><i class="icon-search"></i></button>
@@ -210,21 +184,20 @@
          <!-- header-cart-end -->
 
          <!-- mobile-menu-area -->
-         <div id="header-sticky-2" class="tpmobile-menu d-xl-none">
+         <div id="header-sticky-2" class="tpmobile-menu d-xl-none p-0">
             <div class="container-fluid">
                <div class="row align-items-center d-flex w-100 flex-row flex-nowrap justify-content-between align-items-center">
                   <div class="mobile-menu-icon flex-fill">
                      <button class="tp-menu-toggle"><i class="icon-menu1"></i></button>
                   </div>
-                  <div class="header__logo text-center flex-fill">
+                  <div class="header__logo text-center flex-fill py-1">
                      <a href="/index.html">
                         <img style="
                               height: 120px;
-                              width: 120px;
                               object-fit: contain;
                               object-position: center;
                            "
-                           src="assets/img/logo/pamosa_logo.png" alt="logo">
+                           src="assets/img/logo/pamosa_logo_resized.png" alt="logo">
                      </a>
                   </div>
                   <div class="flex-fill">
@@ -258,24 +231,13 @@
             <div class="tpsideinfo__search text-center pt-35">
                <span class="tpsideinfo__search-title mb-20">What Are You Looking For?</span>
                <form action="#">
-                  <input type="text" placeholder="Search Products...">
+                  <input type="text" name="search" placeholder="Search Products...">
                   <button><i class="icon-search"></i></button>
                </form>
             </div>
             <div class="tpsideinfo__nabtab">
-               <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                  <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Menu</button>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Categories</button>
-                  </li>
-                </ul>
                 <div class="tab-content" id="pills-tabContent">
-                  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
-                     <div class="mobile-menu"></div>
-                  </div>
-                  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+                  <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
                      <div class="tpsidebar-categories">
                         <ul>
                            <li>
@@ -300,237 +262,225 @@
          <!-- sidebar-menu-area-end -->
       </header>
       <!-- header-area-end -->
-
-      <main>
-
-         <!-- breadcrumb-area-start -->
-         
-         <!-- breadcrumb-area-end -->
-
-         <!-- shop-details-area-start -->
-     
-            <div class="container">
-              
-               <div class="tpshop__category">
-                  <div class="swiper-container inner-category-active">
-                     <div class="swiper-wrapper">
-                        <div ng-if="fetchingCategoryList">
-                           Loading categories...
-                        </div>
-                        <div ng-repeat="category in categorydataset" class="swiper-slide h-full">
-                            <div class="category__item mb-30 h-full">
-                              <!-- class="category__thumb fix"--> 
-                              <div class="mb-15" style="
-                                 height: 80px;
-                                 width: 80px;
-                                 display: inline-block;
-                                 position: relative;
-                              ">
-                                 <a style="cursor: pointer;" href="/?category_id={{ category.id }}">
-                                    <img
-                                       style="
-                                          height: 80px;
-                                          width: 80px;
-                                          border-radius: 50%;
-                                       "
-                                       class="aspect-square"
-                                       src="{{ category.category_image }}"
-                                       alt="category-{{ category.category_name }}-thumb">
-                                 </a>
-                               </div>
-                               <div class="category__content">
-                                 <h5 class="category__title">
-                                    <a href="/?category_id={{ category.id }}">{{ category.category_name }}</a>
-                                 </h5>
-                               </div>
-                            </div>
-                        </div>
+      <main class="grey-bg py-4">
+         <div class="container">
+            <div class="tpshop__category py-0">
+               <div class="swiper-container inner-category-active">
+                  <div class="swiper-wrapper">
+                     <div ng-if="fetchingCategoryList">
+                        Loading categories...
                      </div>
-                  </div>
-               </div>
-               <div class="breadcrumb__area grey-bg pt-5 pb-5">
-                  <div class="container">
-                     <div class="row">
-                        <div class="col-lg-12">
-                           <div class="tp-breadcrumb__content">
-                              <div class="tp-breadcrumb__list">
-                                 <span class="tp-breadcrumb__active"><a href="index.html">Home</a></span>
-                                 <span class="dvdr">/</span>
-                                 <span class="tp-breadcrumb__active"><a href="index.html?category_id={{ product.category_id }}">{{ product.category_name }}</a></span>
-                                 <span class="dvdr">/</span>
-                                 <span>{{ product.product_name }}</span>
-                              </div>
+                     <div ng-repeat="category in categorydataset" class="swiper-slide h-full">
+                        <div class="category__item h-full">
+                           <!-- class="category__thumb fix"--> 
+                           <div class="mb-15" style="
+                              height: 80px;
+                              width: 80px;
+                              display: inline-block;
+                              position: relative;
+                           ">
+                              <a style="cursor: pointer;" href="/?category_id={{ category.id }}">
+                                 <img
+                                    style="
+                                       height: 80px;
+                                       width: 80px;
+                                       border-radius: 50%;
+                                    "
+                                    class="aspect-square"
+                                    src="{{ category.category_image }}"
+                                    alt="category-{{ category.category_name }}-thumb">
+                              </a>
+                           </div>
+                           <div class="category__content">
+                              <h5 class="category__title">
+                                 <a href="/?category_id={{ category.id }}">{{ category.category_name }}</a>
+                              </h5>
                            </div>
                         </div>
                      </div>
                   </div>
                </div>
-               <div class="d-flex">
-                  <div class="col-lg-10 col-md-12">
-                     <div class="tpdetails__area mr-60 pb-30">
-                        <div class="tpdetails__product mb-30">
-                           <div class="tpdetails__title-box">
-                              <h3 class="tpdetails__title">{{ product.product_name }}</h3>
-                              <ul class="tpdetails__brand">
-                                 <!--<li> Brands: <a href="#">ORFARM</a> </li>
-                                 <li>
-                                    <i class="icon-star_outline1"></i>
-                                    <i class="icon-star_outline1"></i>
-                                    <i class="icon-star_outline1"></i>
-                                    <i class="icon-star_outline1"></i>
-                                    <i class="icon-star_outline1"></i>
-                                    <b>02 Reviews</b>
-                                 </li>
-                                 <li>
-                                    SKU: <span>ORFARMVE005</span>
-                                 </li>-->
-                              </ul>
-                           </div>
-                           <div class="tpdetails__box">
-                              <div class="row">
-                                 <div class="col-lg-6">
-                                    <div class="tpproduct-details__nab">
-                                       <div class="tab-content" id="nav-tabContents">
-                                          <div class="tab-pane fade show active w-img" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
-                                             <img src="{{ product.product_image1 }}" alt="">
-                                             <div class="tpproduct__info bage">
-                                                <span class="tpproduct__info-hot bage__hot">HOT</span>
-                                             </div>
-                                          </div>
-                                          <div class="tab-pane fade w-img" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
-                                             <img src="{{ product.product_image2 }}" alt="">
-                                             <div class="tpproduct__info bage">
-                                                <span class="tpproduct__info-discount bage__discount">-90%</span>
-                                                <span class="tpproduct__info-hot bage__hot">HOT</span>
-                                             </div>
-                                          </div>
-                                          <div class="tab-pane fade w-img" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
-                                             <img src="{{ product.product_image1 }}" alt="">
-                                             <div class="tpproduct__info bage">
-                                                <span class="tpproduct__info-hot bage__hot">HOT</span>
-                                             </div>
-                                          </div>
-                                       </div> 
-                                       <nav>
-                                          <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
-                                            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
-                                             <img src="{{ product.product_image1 }}" alt="">
-                                            </button>
-                                            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
-                                             <img src="{{ product.product_image2 }}" alt="">
-                                            </button>
-                                            <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
-                                             <img src="{{ product.product_image1 }}" alt="">
-                                            </button>
-                                          </div>
-                                        </nav>                 
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-6">
-                                    <div class="product__details">
-                                       <h5 class="product__details-unit">
-                                          1 {{ product.unit }}
-                                      </h5>
-                                      <div class="product__details-price-box">
-                                       <h5 class="product__details-price">
-                                           ₹{{ product.discount_price }}
-                                       </h5>
-                                       <span class="product__details-mrp">
-                                          <del>MRP ₹{{ product.price }}</del>
-                                          <span class="product__details-discount">
-                                             -{{ (((product.price - product.discount_price) / product.price) * 100) | round:0 }}% OFF
-                                          </span>
-                                          <p class="product__details-tax-info">(Inclusive of all taxes)</p>
-                                          <div class="product__details-product_description">
-                                             {{ product.product_description }}
-                                          </div>
-                                       </span>
-                                    </span>
-                                </div>
-                                       </div>
-                                       <div class="product__details-cart">
-                                          <div class="product__details-quantity d-flex align-items-center mb-15"> 
-                                             <b>Qty:</b>
-                                             <div class="product__details-count mr-10">
-                                                <span class="cart-minus" onclick="updateProductQuantity(-1)"><i class="far fa-minus"></i></span>
-                                                <input 
-                                                   class="tp-cart-input" 
-                                                   type="number" 
-                                                   ng-model="productQuantity" 
-                                                   min="1" 
-                                                   >
-                                                <span class="cart-plus" onclick="updateProductQuantity(1)"><i class="far fa-plus"></i></span>
-                                             </div>
-                                             <div class="product__details-btn">
-                                                <a
-                                                   id="add-to-cart-btn"
-                                                   class="tp-btn-"
-                                                   style="
-                                                      cursor: pointer;
-                                                      display: inline-block;
-                                                      margin-left: auto;
-                                                   "
-                                                   ng-click="addToCart(
-                                                      product.id,
-                                                      product.product_name,
-                                                      1,
-                                                      product.price,
-                                                      product.discount_price,
-                                                      product.product_image1
-                                                   )" >Add to cart</a>
-                                             </div>
-                                          </div>
-                                          <ul class="product__details-check">
-                                             <!--<li>
-                                                <a href="#"><i class="icon-heart icons"></i> add to wishlist</a>
-                                             </li>
-                                             <li>
-                                                <a href="#"><i class="icon-layers"></i> Add to Compare</a>
-                                             </li>
-                                             <li> 
-                                                <a href="#"><i class="icon-share-2"></i> Share</a>
-                                             </li>
-                                             -->
-                                          </ul>
-                                       </div>
-                                       <div class="product__details-stock mb-25">
-                                          <ul>
-                                             <li>Availability: <i>{{ product.availability|display_availability }}</i></li>
-                                             <li>Categories: <span>{{ product.category_name }}</span></li>
-                                            <li>Tags: <span>{{ product.product_type }}</span></li>
-                                            <li>Shelf Life: <span>{{ product.product_life }} days</span></li>
-
-                                          </ul>
-                                        </div>
-                                        
-                                       <div class="product__details-payment text-center">
-                                          <img src="assets/img/shape/payment-2.png" alt="">
-                                          <span>Guarantee safe & Secure checkout</span>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        
- 
-
-
-
-                            
-                 
-               </div>
-               <div class="content-with-sidebar d-flex">
-                  <!-- Main Content Section (Left) -->
-                  <div class="main-content flex-grow-1">
-                      <!-- Add your main content here -->
-                  </div>
-              
-                  <!-- TEMP: SHOP DETAILS RIGHT SIDEBAR -->
-              </div>
             </div>
-      </main>
+            <div class="breadcrumb__area grey-bg pb-5">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <div class="tp-breadcrumb__content">
+                           <div class="tp-breadcrumb__list">
+                              <span class="tp-breadcrumb__active"><a href="index.html?category_id={{ product.category }}">{{ product.category_name }}</a></span>
+                              <span class="dvdr">/</span>
+                              <span>{{ product.product_name }}</span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="d-flex">
+               <div class="col-12">
+                  <div class="tpdetails__area pb-30">
+                     <div class="tpdetails__product mb-30">
+                        <div class="tpdetails__title-box">
+                           <h3 class="tpdetails__title">{{ product.product_name }}</h3>
+                           <ul class="tpdetails__brand">
+                              <!--<li> Brands: <a href="#">ORFARM</a> </li>
+                              <li>
+                                 <i class="icon-star_outline1"></i>
+                                 <i class="icon-star_outline1"></i>
+                                 <i class="icon-star_outline1"></i>
+                                 <i class="icon-star_outline1"></i>
+                                 <i class="icon-star_outline1"></i>
+                                 <b>02 Reviews</b>
+                              </li>
+                              <li>
+                                 SKU: <span>ORFARMVE005</span>
+                              </li>-->
+                           </ul>
+                        </div>
+                        <div class="tpdetails__box">
+                           <div class="row">
+                              <div class="col-lg-6">
+                                 <div class="tpproduct-details__nab">
+                                    <div class="tab-content" id="nav-tabContents">
+                                       <div class="tab-pane fade show active w-img" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+                                          <img src="{{ product.product_image1 }}" alt="">
+                                          <div class="tpproduct__info bage">
+                                             <span class="tpproduct__info-hot bage__hot">HOT</span>
+                                          </div>
+                                       </div>
+                                       <div class="tab-pane fade w-img" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+                                          <img src="{{ product.product_image2 }}" alt="">
+                                          <div class="tpproduct__info bage">
+                                             <span class="tpproduct__info-discount bage__discount">-90%</span>
+                                             <span class="tpproduct__info-hot bage__hot">HOT</span>
+                                          </div>
+                                       </div>
+                                       <div class="tab-pane fade w-img" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
+                                          <img src="{{ product.product_image1 }}" alt="">
+                                          <div class="tpproduct__info bage">
+                                             <span class="tpproduct__info-hot bage__hot">HOT</span>
+                                          </div>
+                                       </div>
+                                    </div> 
+                                    <nav>
+                                       <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
+                                          <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+                                          <img src="{{ product.product_image1 }}" alt="">
+                                          </button>
+                                          <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
+                                          <img src="{{ product.product_image2 }}" alt="">
+                                          </button>
+                                          <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
+                                          <img src="{{ product.product_image1 }}" alt="">
+                                          </button>
+                                       </div>
+                                       </nav>                 
+                                 </div>
+                              </div>
+                              <div class="col-lg-6">
+                                 <div class="product__details">
+                                    <h5 class="product__details-unit">
+                                       1 {{ product.unit }}
+                                    </h5>
+                                    <div class="product__details-price-box">
+                                    <h5 class="product__details-price">
+                                          ₹{{ product.discount_price }}
+                                    </h5>
+                                    <span class="product__details-mrp">
+                                       <del>MRP ₹{{ product.price }}</del>
+                                       <span class="product__details-discount">
+                                          -{{ (((product.price - product.discount_price) / product.price) * 100) | round:0 }}% OFF
+                                       </span>
+                                       <p class="product__details-tax-info">(Inclusive of all taxes)</p>
+                                       <div class="product__details-product_description">
+                                          {{ product.product_description }}
+                                       </div>
+                                    </span>
+                                 </span>
+                              </div>
+                                    </div>
+                                    <div class="product__details-cart">
+                                       <div class="product__details-quantity d-flex align-items-center mb-15"> 
+                                          <b>Qty:</b>
+                                          <div class="product__details-count mr-10">
+                                             <span class="cart-minus" onclick="updateProductQuantity(-1)"><i class="far fa-minus"></i></span>
+                                             <input 
+                                                class="tp-cart-input" 
+                                                type="number" 
+                                                ng-model="productQuantity" 
+                                                min="1" 
+                                                >
+                                             <span class="cart-plus" onclick="updateProductQuantity(1)"><i class="far fa-plus"></i></span>
+                                          </div>
+                                          <div class="product__details-btn">
+                                             <a
+                                                id="add-to-cart-btn"
+                                                class="tp-btn-"
+                                                style="
+                                                   cursor: pointer;
+                                                   display: inline-block;
+                                                   margin-left: auto;
+                                                "
+                                                ng-click="addToCart(
+                                                   product.id,
+                                                   product.product_name,
+                                                   1,
+                                                   product.price,
+                                                   product.discount_price,
+                                                   product.product_image1
+                                                )" >Add to cart</a>
+                                          </div>
+                                       </div>
+                                       <ul class="product__details-check">
+                                          <!--<li>
+                                             <a href="#"><i class="icon-heart icons"></i> add to wishlist</a>
+                                          </li>
+                                          <li>
+                                             <a href="#"><i class="icon-layers"></i> Add to Compare</a>
+                                          </li>
+                                          <li> 
+                                             <a href="#"><i class="icon-share-2"></i> Share</a>
+                                          </li>
+                                          -->
+                                       </ul>
+                                    </div>
+                                    <div class="product__details-stock mb-25">
+                                       <ul>
+                                          <li>Availability: <i>{{ product.availability|display_availability }}</i></li>
+                                          <li>Categories: <span>{{ product.category_name }}</span></li>
+                                          <li>Tags: <span>{{ product.product_type }}</span></li>
+                                          <li>Shelf Life: <span>{{ product.product_life }} days</span></li>
 
+                                       </ul>
+                                       </div>
+                                       
+                                    <div class="product__details-payment text-center">
+                                       <img src="assets/img/shape/payment-2.png" alt="">
+                                       <span>Guarantee safe & Secure checkout</span>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     
+
+
+
+
+                           
+               
+            </div>
+            <div class="content-with-sidebar d-flex">
+               <!-- Main Content Section (Left) -->
+               <div class="main-content flex-grow-1">
+                     <!-- Add your main content here -->
+               </div>
+            
+               <!-- TEMP: SHOP DETAILS RIGHT SIDEBAR -->
+            </div>
+         </div>
+      </main>
       <!-- footer-area-start -->
       <footer>
          <div class="tpfooter__area theme-bg-2">
@@ -541,21 +491,14 @@
                         <div class="tpfooter__widget footer-col-1 mb-50">
                            <h4 class="tpfooter__widget-title">Let Us Help You</h4>
                            <p>If you have any question, please <br> contact us at: 
-                              <a href="mailto:support@example.com">support@example.com</a>
+                              <a href="mailto:support@pamosapicks.com">support@pamosapicks.com</a>
                            </p>
-                           <div class="tpfooter__widget-social mt-45">
-                              <span class="tpfooter__widget-social-title mb-5">Social Media:</span>
-                              <a href="#"><i class="fab fa-facebook-f"></i></a>
-                              <a href="#"><i class="fab fa-twitter"></i></a>
-                              <a href="#"><i class="fab fa-youtube"></i></a>
-                              <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                              <a href="#"><i class="fab fa-skype"></i></a>
-                           </div>
+                           <!-- TEMP: INDEX SOCIAL MEDIA -->
                         </div>
                      </div>
                      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                         <div class="tpfooter__widget footer-col-2 mb-50">
-                           <h4 class="tpfooter__widget-title">Looking for Orfarm?</h4>
+                           <h4 class="tpfooter__widget-title">Looking for Pamosapicks?</h4>
                            <p>68 St. Vicent Place, Glasgow, Greater <br> Newyork NH2012, UK.</p>
                            <div class="tpfooter__widget-time-info mt-35">
                               <span>Monday – Friday: <b>8:10 AM – 6:10 PM</b></span>
@@ -564,38 +507,15 @@
                            </div>
                         </div>
                      </div>
-                     <div class="col-xl-2 col-lg-4 col-md-4 col-sm-5">
+                     <div class="col-xl-6 col-lg-10 col-md-12 col-sm-12">
                         <div class="tpfooter__widget footer-col-3 mb-50">
-                           <h4 class="tpfooter__widget-title">HOT CATEGORIES</h4>
+                           <h4 class="tpfooter__widget-title">CATEGORIES</h4>
                            <div class="tpfooter__widget-links">
-                              <ul>
-                                 <li><a href="#">Fruits & Vegetables</a></li>
-                                 <li><a href="#">Dairy Products</a></li>
-                                 <li><a href="#">Package Foods</a></li>
-                                 <li><a href="#">Beverage</a></li>
-                                 <li><a href="#">Health & Wellness</a></li>
+                              <ul class="row">
+                                 <li class="col-6" ng-repeat="category in categorydataset">
+                                    <a href="/index.html?id={{ category.id }}">{{ category.category_name }}</a>
+                                 </li>
                               </ul>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-xl-4 col-lg-6 col-md-8 col-sm-7">
-                        <div class="tpfooter__widget footer-col-4 mb-50">
-                           <h4 class="tpfooter__widget-title">Our newsletter</h4>
-                           <div class="tpfooter__widget-newsletter">
-                              <p>Subscribe to the Orfarm mailing list to receive updates <br> on new arrivals & other information.</p>
-                              <form action="index.html">
-                                 <span><i><img src="assets/img/shape/message-1.svg" alt=""></i></span>
-                                 <input type="email" placeholder="Your email address...">
-                                 <button class="tpfooter__widget-newsletter-submit tp-news-btn">Subscribe</button>
-                              </form>
-                              <div class="tpfooter__widget-newsletter-check mt-10">
-                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                       I accept terms & conditions & privacy policy.
-                                    </label>
-                                  </div>                                  
-                              </div>
                            </div>
                         </div>
                      </div>
@@ -621,7 +541,6 @@
          </div>
       </footer>
       <!-- footer-area-end -->
-      
 
       <!-- JS here -->
       <script src="assets/js/jquery.js"></script>
