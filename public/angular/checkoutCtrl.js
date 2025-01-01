@@ -30,6 +30,8 @@ app.controller('checkoutCtrl', function($scope, $http, $window, config) {
           amount: $scope.cartTotal,
           order_items: '',
         };
+
+        $scope.categorylist();
     };
 
     $scope.buildOrderItemsFromCartData = () => {
@@ -155,4 +157,29 @@ app.controller('checkoutCtrl', function($scope, $http, $window, config) {
       });
       $scope.cartTotal = total;
     };
+
+    $scope.fetchingCategoryList = true;
+    $scope.categorylist = function() {
+      $http.get(`${config.baseurl}category/category/`)
+          .then(function (response) {
+              if (response.data.status === 'false') {
+                  console.error("Error fetching category list:", response.data.message);
+              } else {
+                $scope.categorydataset = response.data;
+
+                if ($scope.urlParams.hasOwnProperty('category_id')) {
+                  $scope.categorydataset.forEach(category => {
+                    if (category.id === parseInt($scope.urlParams['category_id'])) {
+                      $scope.categoryFilter = category.category_name;
+                    }
+                  });
+                }
+              }
+          })
+          .catch(function (error) {
+              console.error("Error fetching category list:", error);
+          }).finally(() => {
+            $scope.fetchingCategoryList = false;
+          });
+    }
 });

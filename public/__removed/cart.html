@@ -170,7 +170,7 @@
                         <span class="heilight-price">₹{{ cartTotal }}</span>
                      </div>
                      <div class="tpcart__checkout-btn">
-                        <a class="tpcart-btn mb-10" href="cart.html">View Cart</a>
+                        <!--<a class="tpcart-btn mb-10" href="cart.html">View Cart</a>-->
                         <a class="tpcheck-btn" href="checkout.html">Checkout</a>
                      </div>
                   </div>
@@ -287,6 +287,28 @@
             <div class="row">
                <div class="col-12">
                      <div ng-if="cart.length > 0">
+                        <ul>
+                           <li ng-repeat="cart_item in cart">
+                              <div class="tpcart__item position-relative row">
+                                 <div class="tpcart__img m-0 col-2">
+                                    <img ng-src="{{ cart_item.product_image }}" alt="{{ cart_item.product_name }}">
+                                 </div>
+                                 <div class="tpcart__content m-0 col-6">
+                                    <span class="tpcart__content-title">
+                                       <a class="fs-5" href="shop-details.html?id={{ cart_item.id }}">{{ cart_item.product_name }}</a>
+                                    </span>
+                                 </div>
+                                 <div class="tpcart__cart-price m-0 col-4 d-flex flex-row flex-nowrap justify-content-between align-items-center">
+                                    <div class="product__details-count me-2" style="cursor: default;">
+                                       <span style="color: #012970;">x{{ cart_item.quantity }}</span>
+                                    </div>
+                                    <span>
+                                       <span class="heilight-price fs-6">₹{{ cart_item.subtotal }}</span>
+                                    </span>
+                                 </div>
+                              </div>
+                           </li>
+                        </ul>
                         <div class="table-content table-responsive">
                            <table class="table">
                                  <thead>
@@ -326,29 +348,9 @@
                                       </td>
                                     </tr>
                                   </tbody>
-                                  <li>Total <span>₹{{cartTotal.toFixed(2)}}</span></li>
-                                  
-                       
-                                 
+                                  <li>Total <span>₹{{cartTotal.toFixed(2)}}</span></li>        
                            </table>
                         </div>
-                        <!--
-                        <div class="row">
-                           <div class="col-12">
-                                 <div class="coupon-all">
-                                    <div class="coupon">
-                                       <input id="coupon_code" class="input-text" name="coupon_code" value=""
-                                             placeholder="Coupon code" type="text">
-                                       <button class="tp-btn tp-color-btn banner-animation" name="apply_coupon" type="submit">Apply
-                                             Coupon</button>
-                                    </div>
-                                    <div class="coupon2">
-                                       <button class="tp-btn tp-color-btn banner-animation" name="update_cart" type="submit">Update cart</button>
-                                    </div>
-                                 </div>
-                           </div>
-                        </div>
-                        -->
                         <div class="row justify-content-end">
                            <div class="col-md-5 ">
                               <div class="cart-page-total">
