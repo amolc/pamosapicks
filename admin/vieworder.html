@@ -5,9 +5,8 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Pamosapicks - Admin</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <title>Pamosapicks</title>
+  <meta content="Pamosapicks admin panel." name="description">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -556,14 +555,13 @@ button[type="submit"]:hover {
              <h5 class="modal-title" id="statusChangeHistoryModal">Status change history</h5>
              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body pt-0">
              <table ng-if="order.status_changes.length > 0" class="table table-striped">
                 <thead>
                    <tr>
-                      <th scope="col">Date</th>
-                      <th scope="col">From</th>
-                      <th scope="col">To</th>
-                      <th scope="col">By</th>
+                      <th scope="col" style="border-top: none;">Date</th>
+                      <th scope="col" style="border-top: none;">From</th>
+                      <th scope="col" style="border-top: none;">To</th>
                    </tr>
                 </thead>
                 <tbody>
@@ -571,7 +569,6 @@ button[type="submit"]:hover {
                       <td>{{ status_change.created_on }}</td>
                       <td>{{ status_change.status_from }}</td>
                       <td>{{ status_change.status_to }}</td>
-                      <td>{{ status_change.authenticated_user }}</td>
                    </tr>
                 </tbody>
              </table>
