@@ -41,6 +41,10 @@ app.controller('viewOrderCtrl', function ($scope, $http, $window, $location, $sc
         $("#changeOrderStatusModal").modal('show');
     };
 
+    $scope.showStatusChangeHistoryModal = () => {
+        $("#statusChangeHistoryModal").modal('show');
+    };
+
     $scope.submitOrderStatusChange = () => {
         const id = $scope.order.id;
         let url = `${config.baseurl}order/change-order-status/${$scope.urlParams['id']}`;

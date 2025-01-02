@@ -274,7 +274,7 @@ button[type="submit"]:hover {
           </li>
         </ol>
       </nav>
-    </div><!-- End Page Title -->
+    </div>
 
     <section class="section">
       <div class="row">
@@ -297,11 +297,14 @@ button[type="submit"]:hover {
                       <span>Order status:</span>
                       <span>{{ order.status }}</span>
                     </p>
-                    <p class="d-flex flex-row justify-content-start">
+                    <p class="d-flex flex-row justify-content-between">
                       <button
                         ng-click="showChangeOrderStatusModal()"
                         type="button" style="text-decoration: underline;">Change status</button>
                       
+                      <button
+                        ng-click="showStatusChangeHistoryModal()"
+                        type="button" style="text-decoration: underline;">View status change history</button>
                     </p>
                   </div>
                 </div>
@@ -546,6 +549,42 @@ button[type="submit"]:hover {
     </div>
   </div>
 
+  <div class="modal fade" id="statusChangeHistoryModal" tabindex="-1" aria-labelledby="statusChangeHistoryModal" aria-hidden="true">
+    <div class="modal-dialog">
+       <div class="modal-content">
+          <div class="modal-header">
+             <h5 class="modal-title" id="statusChangeHistoryModal">Status change history</h5>
+             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+             <table ng-if="order.status_changes.length > 0" class="table table-striped">
+                <thead>
+                   <tr>
+                      <th scope="col">Date</th>
+                      <th scope="col">From</th>
+                      <th scope="col">To</th>
+                      <th scope="col">By</th>
+                   </tr>
+                </thead>
+                <tbody>
+                   <tr ng-repeat="status_change in order.status_changes">
+                      <td>{{ status_change.created_on }}</td>
+                      <td>{{ status_change.status_from }}</td>
+                      <td>{{ status_change.status_to }}</td>
+                      <td>{{ status_change.authenticated_user }}</td>
+                   </tr>
+                </tbody>
+             </table>
+             <div ng-if="order.status_changes == 0" class="alert alert-info wi-100">
+              There are no status changes for this order yet.
+             </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+       </div>
+    </div>
+  </div>
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
