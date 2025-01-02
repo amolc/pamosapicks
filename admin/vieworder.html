@@ -301,6 +301,7 @@ button[type="submit"]:hover {
                       <button
                         ng-click="showChangeOrderStatusModal()"
                         type="button" style="text-decoration: underline;">Change status</button>
+                      
                     </p>
                   </div>
                 </div>
@@ -381,9 +382,78 @@ button[type="submit"]:hover {
                   <div class="checkbox-form">
                       <h5 class="card-title mb-0">Shipping Details</h5>
                       <div class="row">
-                          <div class="col-md-6">
-                            <p>To be added.</p>
-                          </div>
+                        <div class="col-md-6">
+                           <div class="form-group checkout-form-list">
+                              <label>Email Address</label>
+                              <input disabled ng-model="order.shipping_email" type="email" placeholder="">
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="form-group checkout-form-list">
+                              <label>Phone</label>
+                              <input disabled ng-model="order.shipping_mobile_number" type="text" placeholder="+9912345678">
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="form-group checkout-form-list">
+                              <label>First Name</label>
+                              <input disabled ng-model="order.shipping_first_name" type="text" placeholder="">
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="form-group checkout-form-list">
+                              <label>Last Name</label>
+                              <input disabled ng-model="order.shipping_last_name" type="text" placeholder="">
+                           </div>
+                        </div>
+                        <div class="col-md-12">
+                           <div class="form-group checkout-form-list">
+                              <label>Address 1<span class="required">*</span></label>
+                              <input disabled ng-model="order.shipping_address" type="text" placeholder="Street address">
+                           </div>
+                        </div>
+                        <div ng-if="order.shipping_address_specifier" class="col-md-12">
+                           <div class="form-group checkout-form-list">
+                              <input disabled ng-model="order.shipping_address_specifier" type="text" placeholder="address_specifier, suite, unit etc. (optional)">
+                           </div>
+                        </div>
+                        <div ng-if="order.shipping_address2" class="col-md-12">
+                           <div class="form-group checkout-form-list">
+                              <label>Address 2 (Optional)</label>
+                              <input disabled ng-model="order.shipping_address2" type="text" placeholder="Street address">
+                           </div>
+                        </div>
+                        <div ng-if="order.shipping_address2_specifier" class="col-md-12">
+                           <div class="form-group checkout-form-list">
+                              <input disabled ng-model="order.shipping_address2_specifier" type="text" placeholder="address_specifier, suite, unit etc. (optional)">
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="country-select">
+                              <label>Country</label>
+                              <select disabled ng-model="order.shipping_country">
+                                 <option selected value="India">India</option>
+                              </select>
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="form-group checkout-form-list">
+                              <label>State</label>
+                              <input disabled ng-model="order.shipping_state" type="text" placeholder="">
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="form-group checkout-form-list">
+                              <label>Town / City</label>
+                              <input disabled ng-model="order.shipping_city" type="text" placeholder="Town / City">
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="form-group checkout-form-list">
+                              <label>Postcode / Zip</label>
+                              <input disabled ng-model="order.shipping_postal_code" type="text" placeholder="Postcode / Zip">
+                           </div>
+                        </div>
                       </div>
                   </div>
                 </div>

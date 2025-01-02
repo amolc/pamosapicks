@@ -4,33 +4,23 @@ app.controller('checkoutCtrl', function($scope, $http, $window, config) {
         $scope.urlParams = Object.fromEntries(
           new URLSearchParams(window.location.search)
         );
-        $scope.categoryFilter = null;
-  
         $scope.countries = [
           'India',
         ];
+        
+        // TODO: Figure this out. I'm having trouble binding
+        // a select element with ng-bind. The initialization below
+        // is a temporary fix.
+        $scope.order_data = {
+          country: 'India'
+        };
 
+        $scope.useIndependentShippingDetails = false;
         $scope.errorMessage = null;
 
         // Initialize cart from localStorage
         $scope.cart = JSON.parse(localStorage.getItem("cart")) || [];
         $scope.updateCartTotal();
-
-        $scope.order_data = {
-          first_name: '',
-          last_name: '',
-          email: '',
-          mobile_number: '',
-          country: 'India',
-          state: '',
-          city: '',
-          postal_code: '',
-          billing_address: '',
-          shipping_address: '',
-          amount: $scope.cartTotal,
-          order_items: '',
-        };
-
         $scope.categorylist();
     };
 
@@ -47,10 +37,40 @@ app.controller('checkoutCtrl', function($scope, $http, $window, config) {
       });
 
       return orderItems;
-    }
+    };
+
+    $scope.copyBillingDetailsToShippingDetails = () => {
+      const shippingDetails = {
+        shipping_email: $scope.order_data.email,
+        shipping_mobile_number: $scope.order_data.mobile_number,
+        shipping_first_name: $scope.order_data.first_name,
+        shipping_last_name: $scope.order_data.last_name,
+        shipping_address: $scope.order_data.billing_address,
+        shipping_address_specifier: $scope.order_data.billing_address_specifier,
+        shipping_address2: $scope.order_data.shipping_address2,
+        shipping_address2_specifier: $scope.order_data.shipping_address2_specifier,
+        shipping_country: $scope.order_data.country,
+        shipping_state: $scope.order_data.state,
+        shipping_city: $scope.order_data.city,
+        shipping_postal_code: $scope.order_data.postal_code,
+      };
+
+      $scope.order_data = {
+        ...$scope.order_data,
+        ...shippingDetails
+      };
+    };
+
     $scope.submitOrder = () => {
+      if (!$scope.useIndependentShippingDetails) {
+        $scope.copyBillingDetailsToShippingDetails();
+      }
+
+      console.log("Order data being submitted: ");
+      console.log($scope.order_data);
+      
       const url = `${config.baseurl}order/create-order/`;
-      $scope.order_data.total = $scope.cartTotal;
+      $scope.order_data.amount = $scope.cartTotal;
       $scope.order_data.order_items = $scope.buildOrderItemsFromCartData();
 
       $http.post(

@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
    
-<!-- Mirrored from html.hixstudio.net/orfarm/shop-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 12 Nov 2024 07:34:36 GMT -->
+<!-- Mirrored from html.hixstudio.net/orfarm/product.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 12 Nov 2024 07:34:36 GMT -->
 <head>
       <meta charset="utf-8">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -35,9 +35,9 @@
       <script src="./angular/angular-payments.js"></script>
       <script src="./angular/app.js"></script>
       <script src="./angular/service.js"></script>
-      <script src="./angular/productDetailsCtrl.js"></script>   
+      <script src="./angular/productCtrl.js"></script>   
    </head>
-   <body ng-app="website" ng-controller="productDetailsCtrl" ng-init="init()">
+   <body ng-app="website" ng-controller="productCtrl" ng-init="init()">
       <!-- header-area-start -->
       <header>
          <div id="header-sticky" class="header__main-area d-none d-xl-block">
@@ -121,7 +121,7 @@
                               </div>
                               <div class="tpcart__content">
                                  <span class="tpcart__content-title">
-                                    <a href="shop-details.html">{{ cart_item.product_name }}</a>
+                                    <a href="product.html">{{ cart_item.product_name }}</a>
                                  </span>
                                  <div class="tpcart__cart-price">
                                     <div class="product__details-count mr-10">
@@ -205,13 +205,6 @@
                         <div class="header__info-search tpcolor__purple ml-10 d-none d-sm-block">
                            <button class="tp-search-toggle"><i class="icon-search"></i></button>
                         </div>
-                        <!--
-                        <div class="header__info-user tpcolor__yellow ml-10 d-none d-sm-block">
-                           <a href="#"><i class="icon-user"></i></a>
-                        </div>
-                        <div class="header__info-wishlist tpcolor__greenish ml-10 d-none d-sm-block">
-                           <a href="#"><i class="icon-heart icons"></i></a>
-                        </div>-->
                         <div class="header__info-cart tpcolor__oasis ml-10 tp-cart-toggle">
                            <button><i><img src="assets/img/icon/cart-1.svg" alt=""></i>
                               <span>{{ cart.length }}</span>
@@ -244,20 +237,13 @@
                               <a href="index.html">All</a>
                            </li>
                            <li ng-repeat="category in categorydataset">
-                              <a href="index.html?id={{ category.id }}">{{ category.category_name }}</a>
+                              <a href="index.html?category_id={{ category.id }}">{{ category.category_name }}</a>
                            </li>
                         </ul>
                      </div>
                   </div>
                 </div>
             </div>
-            <!--
-            <div class="tpsideinfo__account-link">							
-               <a href="log-in.html"><i class="icon-user icons"></i> Login / Register</a>
-            </div>
-            <div class="tpsideinfo__wishlist-link">
-               <a href="wishlist.html" target="_parent"><i class="icon-heart"></i> Wishlist</a>
-            </div> -->
          </div> 
          <!-- sidebar-menu-area-end -->
       </header>
@@ -305,7 +291,7 @@
                <div class="container">
                   <div class="row">
                      <div class="col-lg-12">
-                        <div class="tp-breadcrumb__content">
+                        <div class="tp-breadcrumb__content pt-0">
                            <div class="tp-breadcrumb__list">
                               <span class="tp-breadcrumb__active"><a href="index.html?category_id={{ product.category }}">{{ product.category_name }}</a></span>
                               <span class="dvdr">/</span>
@@ -322,20 +308,6 @@
                      <div class="tpdetails__product mb-30">
                         <div class="tpdetails__title-box">
                            <h3 class="tpdetails__title">{{ product.product_name }}</h3>
-                           <ul class="tpdetails__brand">
-                              <!--<li> Brands: <a href="#">ORFARM</a> </li>
-                              <li>
-                                 <i class="icon-star_outline1"></i>
-                                 <i class="icon-star_outline1"></i>
-                                 <i class="icon-star_outline1"></i>
-                                 <i class="icon-star_outline1"></i>
-                                 <i class="icon-star_outline1"></i>
-                                 <b>02 Reviews</b>
-                              </li>
-                              <li>
-                                 SKU: <span>ORFARMVE005</span>
-                              </li>-->
-                           </ul>
                         </div>
                         <div class="tpdetails__box">
                            <div class="row">
@@ -344,13 +316,10 @@
                                     <div class="tab-content" id="nav-tabContents">
                                        <div class="tab-pane fade show active w-img" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
                                           <img src="{{ product.product_image1 }}" alt="">
-                                          <div class="tpproduct__info bage">
-                                             <span class="tpproduct__info-hot bage__hot">HOT</span>
-                                          </div>
                                        </div>
                                        <div class="tab-pane fade w-img" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
                                           <img src="{{ product.product_image2 }}" alt="">
-                                          <div class="tpproduct__info bage">
+                                          <div class="tpproduct__info badge">
                                              <span class="tpproduct__info-discount bage__discount">-90%</span>
                                              <span class="tpproduct__info-hot bage__hot">HOT</span>
                                           </div>
@@ -380,107 +349,89 @@
                               <div class="col-lg-6">
                                  <div class="product__details">
                                     <h5 class="product__details-unit">
-                                       1 {{ product.unit }}
+                                       Unit of measure: {{ product.unit }}
                                     </h5>
                                     <div class="product__details-price-box">
-                                    <h5 class="product__details-price">
-                                          ₹{{ product.discount_price }}
-                                    </h5>
-                                    <span class="product__details-mrp">
-                                       <del>MRP ₹{{ product.price }}</del>
-                                       <span class="product__details-discount">
-                                          -{{ (((product.price - product.discount_price) / product.price) * 100) | round:0 }}% OFF
+                                       <h5 class="product__details-price">
+                                             ₹{{ product.discount_price }}
+                                       </h5>
+                                       <span class="product__details-mrp">
+                                          <del>MRP ₹{{ product.price }}</del>
+                                          <span class="product__details-discount">
+                                             -{{ (((product.price - product.discount_price) / product.price) * 100) | round:0 }}% OFF
+                                          </span>
+                                          <p class="product__details-tax-info">(Inclusive of all taxes)</p>
+                                          <div class="product__details-product_description">
+                                             {{ product.product_description }}
+                                          </div>
                                        </span>
-                                       <p class="product__details-tax-info">(Inclusive of all taxes)</p>
-                                       <div class="product__details-product_description">
-                                          {{ product.product_description }}
-                                       </div>
-                                    </span>
-                                 </span>
-                              </div>
                                     </div>
-                                    <div class="product__details-cart">
-                                       <div class="product__details-quantity d-flex align-items-center mb-15"> 
-                                          <b>Qty:</b>
-                                          <div class="product__details-count mr-10">
-                                             <span class="cart-minus" onclick="updateProductQuantity(-1)"><i class="far fa-minus"></i></span>
-                                             <input 
-                                                class="tp-cart-input" 
-                                                type="number" 
-                                                ng-model="productQuantity" 
-                                                min="1" 
-                                                >
-                                             <span class="cart-plus" onclick="updateProductQuantity(1)"><i class="far fa-plus"></i></span>
-                                          </div>
-                                          <div class="product__details-btn">
-                                             <a
-                                                id="add-to-cart-btn"
-                                                class="tp-btn-"
-                                                style="
-                                                   cursor: pointer;
-                                                   display: inline-block;
-                                                   margin-left: auto;
-                                                "
-                                                ng-click="addToCart(
-                                                   product.id,
-                                                   product.product_name,
-                                                   1,
-                                                   product.price,
-                                                   product.discount_price,
-                                                   product.product_image1
-                                                )" >Add to cart</a>
-                                          </div>
+                                 </div>
+                                 <div class="product__details-cart">
+                                    <div class="product__details-quantity d-flex align-items-center mb-15"> 
+                                       <b>Qty:</b>
+                                       <div class="product__details-count mr-10">
+                                          <span class="cart-minus" onclick="updateProductQuantity(-1)"><i class="far fa-minus"></i></span>
+                                          <input 
+                                             class="tp-cart-input" 
+                                             type="number" 
+                                             ng-model="productQuantity" 
+                                             min="1" 
+                                             >
+                                          <span class="cart-plus" onclick="updateProductQuantity(1)"><i class="far fa-plus"></i></span>
                                        </div>
-                                       <ul class="product__details-check">
-                                          <!--<li>
-                                             <a href="#"><i class="icon-heart icons"></i> add to wishlist</a>
-                                          </li>
-                                          <li>
-                                             <a href="#"><i class="icon-layers"></i> Add to Compare</a>
-                                          </li>
-                                          <li> 
-                                             <a href="#"><i class="icon-share-2"></i> Share</a>
-                                          </li>
-                                          -->
-                                       </ul>
-                                    </div>
-                                    <div class="product__details-stock mb-25">
-                                       <ul>
-                                          <li>Availability: <i>{{ product.availability|display_availability }}</i></li>
-                                          <li>Categories: <span>{{ product.category_name }}</span></li>
-                                          <li>Tags: <span>{{ product.product_type }}</span></li>
-                                          <li>Shelf Life: <span>{{ product.product_life }} days</span></li>
-
-                                       </ul>
+                                       <div class="product__details-btn">
+                                          <a
+                                             id="add-to-cart-btn"
+                                             class="tp-btn-"
+                                             style="
+                                                cursor: pointer;
+                                                display: inline-block;
+                                                margin-left: auto;
+                                             "
+                                             ng-click="addToCart(
+                                                product.id,
+                                                product.product_name,
+                                                1,
+                                                product.price,
+                                                product.discount_price,
+                                                product.product_image1
+                                             )" >Add to cart</a>
                                        </div>
-                                       
-                                    <div class="product__details-payment text-center">
-                                       <img src="assets/img/shape/payment-2.png" alt="">
-                                       <span>Guarantee safe & Secure checkout</span>
                                     </div>
+                                    <ul class="product__details-check">
+                                       <!--<li>
+                                          <a href="#"><i class="icon-heart icons"></i> add to wishlist</a>
+                                       </li>
+                                       <li>
+                                          <a href="#"><i class="icon-layers"></i> Add to Compare</a>
+                                       </li>
+                                       <li> 
+                                          <a href="#"><i class="icon-share-2"></i> Share</a>
+                                       </li>
+                                       -->
+                                    </ul>
+                                 </div>
+                                 <div class="product__details-stock mb-25">
+                                    <ul>
+                                       <li>Availability: <i>{{ product.availability|display_availability }}</i></li>
+                                       <li>Categories: <span>{{ product.category_name }}</span></li>
+                                       <li>Tags: <span>{{ product.product_type }}</span></li>
+                                       <li>Shelf Life: <span>{{ product.product_life }} days</span></li>
+                                    </ul>
+                                 </div>   
+                                 <div class="product__details-payment text-center">
+                                    <img src="assets/img/shape/payment-2.png" alt="">
+                                    <span>Guarantee safe & Secure checkout</span>
                                  </div>
                               </div>
                            </div>
                         </div>
                      </div>
-                     
-
-
-
-
-                           
-               
-            </div>
-            <div class="content-with-sidebar d-flex">
-               <!-- Main Content Section (Left) -->
-               <div class="main-content flex-grow-1">
-                     <!-- Add your main content here -->
+                  </div>
                </div>
-            
-               <!-- TEMP: SHOP DETAILS RIGHT SIDEBAR -->
             </div>
-         </div>
-         
+         </div>    
       </main>
       <!-- feature-area-start -->
       <section class="feature-area mainfeature__bg grey-bg pt-4 pb-40" data-background="assets/img/shape/footer-shape-1.svg">
@@ -554,7 +505,7 @@
                      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                         <div class="tpfooter__widget footer-col-2 mb-50">
                            <h4 class="tpfooter__widget-title">Looking for Pamosapicks?</h4>
-                           <p>68 St. Vicent Place, Glasgow, Greater <br> Newyork NH2012, UK.</p>
+                           <p>Shree Sai Society, Ground Floor, Flat No 1, Near By Abane Hospital, Gadital, Pune 411028</p>
                            <div class="tpfooter__widget-time-info mt-35">
                               <span>Monday – Friday: <b>8:10 AM – 6:10 PM</b></span>
                               <span>Saturday: <b>10:10 AM – 06:10 PM</b></span>
@@ -568,7 +519,7 @@
                            <div class="tpfooter__widget-links">
                               <ul class="row">
                                  <li class="col-6" ng-repeat="category in categorydataset">
-                                    <a href="/index.html?id={{ category.id }}">{{ category.category_name }}</a>
+                                    <a href="/index.html?category_id={{ category.id }}">{{ category.category_name }}</a>
                                  </li>
                               </ul>
                            </div>
@@ -613,9 +564,6 @@
       <script src="assets/js/ajax-form.js"></script>
       <script src="assets/js/jquery-ui.js"></script>
       <script src="assets/js/meanmenu.js"></script>
-      <script src="assets/js/main.js"></script>
-      
+      <script src="assets/js/main.js"></script>      
    </body>
-
-<!-- Mirrored from html.hixstudio.net/orfarm/shop-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 12 Nov 2024 07:34:36 GMT -->
 </html>

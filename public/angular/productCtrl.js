@@ -6,7 +6,7 @@ function jsonToQueryString(params) {
   }
   
   app.controller(
-    "productDetailsCtrl",
+    "productCtrl",
     function ($scope, $http, $window, $location, config) {
       $scope.init = function () {
         $scope.baseurl = config.baseurl;
