@@ -317,7 +317,7 @@ app.controller('productsCtrl', function ($scope, $http, $window, $location, $sce
             const base64String = subCategory.target.result;
     
             // Get AngularJS scope
-            const scope = angular.element(document.querySelector('[ng-controller="productCtrl"]')).scope();
+            const scope = angular.element(document.querySelector('[ng-controller="productsCtrl"]')).scope();
             scope.product['product_image'] = base64String;
             scope.product['product_image1'] = base64String;
             scope.product['product_image2'] = base64String;
