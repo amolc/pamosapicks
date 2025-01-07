@@ -1,4 +1,14 @@
-app.controller('productCtrl', function ($scope, $http, $window, $location, $sce, $timeout, store, config) {
+function jsonToQueryString(params) {
+    return Object.keys(params)
+        .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(params[key]))
+    .join('&');
+}
+
+app.controller('productsCtrl', function ($scope, $http, $window, $location, $sce, $timeout, store, config) {
+    $scope.urlParams = Object.fromEntries(
+        new URLSearchParams(window.location.search)
+    );
+    
     $scope.data = {};
     $scope.dataset = [];
     $scope.product = {
@@ -13,23 +23,34 @@ app.controller('productCtrl', function ($scope, $http, $window, $location, $sce,
         product_image2: '',
         mfg: '', 
         category:'',
-        subcategory:'',
-      
-        
+        subcategory:'',  
     };
 
-    // Initialize the controller
-   
-
-    // Fetch the list of products
     $scope.list = function () {
         console.log("Fetching product list from:", config.baseurl);
+        let url = "";
+
+        if ($scope.urlParams.length == 0) {
+            url = `${config.baseurl}product/products/`;
+        } else {
+            const queryString = jsonToQueryString($scope.urlParams);
+            url = `${config.baseurl}product/products?${queryString}`;
+        }
+
         $http.get(`${config.baseurl}product/products/`)
             .then(function (response) {
                 if (response.data.status === 'false') {
                     console.error("Error fetching product list:", response.data.message);
                 } else {
                     $scope.dataset = response.data.data;
+
+                    $scope.pagination = {
+                        start_index: response.data.start_index,
+                        end_index: response.data.end_index,
+                        current_page: response.data.current_page,
+                        num_pages: response.data.num_pages,
+                        total_num_items: response.data.total_num_items,
+                    }
                     console.log("Product list fetched:", $scope.dataset);
                 }
             })
@@ -38,7 +59,6 @@ app.controller('productCtrl', function ($scope, $http, $window, $location, $sce,
             });
     };
 
-    // Fetch a single product by ID
     $scope.getProductbyid = function (product_id) {
         if (!product_id) {
             console.error("Product ID is missing!");
@@ -95,7 +115,6 @@ app.controller('productCtrl', function ($scope, $http, $window, $location, $sce,
             });
     };
     
-    
     // Update a product
     $scope.update = function (id) {
         if (!id) {
@@ -132,7 +151,6 @@ app.controller('productCtrl', function ($scope, $http, $window, $location, $sce,
                 console.log("Error details:", error.data); // Log response data for debugging
             });
     };
-    
 
     // Delete a product
     $scope.delete = function (id) {
@@ -159,14 +177,12 @@ app.controller('productCtrl', function ($scope, $http, $window, $location, $sce,
                 alert("An error occurred while deleting the product. Please try again.");
             });
     };
-    
-
 
     $scope.init = function () {
         $scope.list();
         $scope.categorylist();
         $scope.subcategorylist();
-     }
+    };
  
      $scope.categorylist = function () {
          console.log("Fetching product list from:", config.baseurl);
@@ -211,18 +227,7 @@ app.controller('productCtrl', function ($scope, $http, $window, $location, $sce,
                 console.error("Error fetching subcategory list:", error.data);
             });
     };
-
     
-    
-      
-    // Example dataset of subcategories (replace with actual data source)
-    
-    
-   
-   
-    
-
-    //Open the delete modal and bind the selected product data
     $scope.ondelete = function (data) {
         console.log("Delete modal triggered with data:", data);
         $scope.product = angular.copy(data); // Bind the product data to $scope.product

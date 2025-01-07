@@ -13,7 +13,7 @@ app.controller('login-ctrl', function($scope, $http, $window, config) {
             // Check if id exists in local storage
             if ($scope.email) {
                 console.log("User found:", $scope.email);
-                $window.location.href = "product.html"; // Redirect to product page
+                $window.location.href = "/admin/products.html"; // Redirect to product page
             } else {
                 console.error("User not found in local storage. Redirecting to login.");
                 localStorage.clear();
@@ -78,7 +78,7 @@ app.controller('login-ctrl', function($scope, $http, $window, config) {
                         // Remove unnecessary data, such as org_id or isSuperAdmin if not required
 
                         console.log("User stored in local storage:", response.data.email);
-                        $window.location.href = "product.html";  // Redirect to product page
+                        $window.location.href = "/admin/products.html";  // Redirect to product page
                     } else {
                         console.error("Login failed: Invalid credentials.");
                         $scope.message = response.data.message || "Login failed: Please check your credentials.";
