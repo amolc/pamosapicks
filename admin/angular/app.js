@@ -4,8 +4,6 @@ app.config(['storeProvider', function(storeProvider) {
 
 }]);
 
-
-
 app.config(['ChartJsProvider', function (ChartJsProvider) {
     // Configure all charts
     ChartJsProvider.setOptions({
@@ -17,3 +15,14 @@ app.config(['ChartJsProvider', function (ChartJsProvider) {
       showLines: true
     });
   }]);
+
+  app.filter('range', function() {
+    return function(input, total) {
+        total = parseInt(total);
+        for (var i = 0; i < total; i++) {
+            input.push(i);
+        }
+        return input;
+    };
+});
+

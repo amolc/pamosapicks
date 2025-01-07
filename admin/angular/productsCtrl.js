@@ -26,6 +26,23 @@ app.controller('productsCtrl', function ($scope, $http, $window, $location, $sce
         subcategory:'',  
     };
 
+    $scope.navigateToPage = page => {
+        console.log("Navigating to page: ");
+        console.log(page);
+        console.log("Num pages: ");
+        console.log($scope.pagination.num_pages);
+
+        if (page < 1) {
+            return;
+        } else if (page > $scope.pagination.num_pages) {
+            return;
+        }
+
+        const url = new URL(window.location.href);
+        url.searchParams.set('page', page);
+        window.location.assign(url);
+    }
+
     $scope.list = function () {
         console.log("Fetching product list from:", config.baseurl);
         let url = "";
@@ -37,7 +54,7 @@ app.controller('productsCtrl', function ($scope, $http, $window, $location, $sce
             url = `${config.baseurl}product/products?${queryString}`;
         }
 
-        $http.get(`${config.baseurl}product/products/`)
+        $http.get(url)
             .then(function (response) {
                 if (response.data.status === 'false') {
                     console.error("Error fetching product list:", response.data.message);
@@ -50,7 +67,10 @@ app.controller('productsCtrl', function ($scope, $http, $window, $location, $sce
                         current_page: response.data.current_page,
                         num_pages: response.data.num_pages,
                         total_num_items: response.data.total_num_items,
-                    }
+                    };
+
+                    console.log("Pagination fetched: ");
+                    console.log($scope.pagination);
                     console.log("Product list fetched:", $scope.dataset);
                 }
             })

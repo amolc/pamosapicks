@@ -299,6 +299,9 @@ button[type="submit"]:hover {
                 <h5 class="card-title">
                   Products
                 </h5>
+                <div>
+                  {{ pagination.start_index }} to {{ pagination.end_index }} of {{ pagination.total_num_items }}
+                </div>
                 <button style="max-height: 60px; background-color: #4154f1;" type="button" class="btn btn-w-m btn-primary"
                   data-target="#addform" ng-click="addform()">Add Product</button>  
               </div>
@@ -336,32 +339,20 @@ button[type="submit"]:hover {
                   </tr>
                 </tbody>
               </table>
-              <nav ng-cloak aria-label="Page navigation">
-                <ul class="pagination justify-content-center">
-                    <!-- Previous Button -->
-                    <li class="page-item" ng-class="{'disabled': pagination.current_page === 1}">
-                        <a class="page-link" ng-click="goToPage(current_page - 1)" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-            
-                    <!-- Page Numbers -->
-                    <li ng-repeat="page in [].constructor(num_pages) track by $index" 
-                        class="page-item"
-                        ng-class="{'active': pagination.current_page === ($index + 1)}">
-                        <a class="page-link" ng-click="goToPage($index + 1)">{{ $index + 1 }}</a>
-                    </li>
-            
-                    <!-- Next Button -->
-                    <li class="page-item" ng-class="{'disabled': pagination.current_page === num_pages}">
-                        <a class="page-link" ng-click="goToPage(current_page + 1)" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
+              <nav class="w-100 d-flex flex-row justify-content-center align-items-center">
+                <ul class="pagination">
+                  <li class="page-item">
+                    <button class="page-link" ng-click="navigateToPage(pagination.current_page - 1)">Previous</button>
+                  </li>
+                  <li
+                    ng-class="{'active': index + 1 == pagination.current_page }"
+                    ng-repeat="index in [] | range:pagination.num_pages" class="page-item">
+                    <button class="page-link" ng-click="navigateToPage(index + 1)">{{ index + 1 }}</button>
+                  </li>
+                  <li class="page-item">
+                    <button class="page-link" ng-click="navigateToPage(pagination.current_page + 1)">Next</button>
+                  </li>
                 </ul>
-                <div class="text-center mt-3">
-                    Showing {{ pagination.start_index }} to {{ pagination.end_index }} of {{ pagination.total_num_items }} items.
-                </div>
               </nav>
             </div>
           </div>
