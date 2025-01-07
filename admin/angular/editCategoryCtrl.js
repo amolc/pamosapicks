@@ -1,7 +1,7 @@
 app.controller("editCategoryCtrl", function ($scope, $http, $window, config) {
    // Extract `category_id` from the URL
    var urlParams = new URLSearchParams($window.location.search);
-   var categoryId = urlParams.get('category_id'); 
+   var categoryId = urlParams.get('category_id');
 
    $scope.baseurl = config.baseurl;
    $scope.isSubmitting = false;
