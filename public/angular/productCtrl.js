@@ -10,6 +10,8 @@ app.controller(
   function ($scope, $http, $window, $location, config) {
     $scope.init = function () {
       $scope.baseurl = config.baseurl;
+      const isCustomerLoggedIn = localStorage.getItem('isCustomerLoggedIn');
+      $scope.isCustomerLoggedIn = isCustomerLoggedIn === '1';
       
       $scope.urlParams = Object.fromEntries(
         new URLSearchParams(window.location.search)

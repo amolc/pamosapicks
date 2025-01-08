@@ -23,8 +23,18 @@
       <link rel="stylesheet" href="assets/css/icon-dukamarket.css">
       <link rel="stylesheet" href="assets/css/jquery-ui.css">
       <link rel="stylesheet" href="assets/css/main.css">
+
+      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+      <script defer src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+      <script defer src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+      <script defer src="./angular/angular-storage.min.js"></script>
+      <script defer src="./angular/angular-payments.js"></script>
+      <script defer src="./angular/app.js"></script>
+      <script defer src="./angular/service.js"></script>
+      <script defer src="./angular/loginCtrl.js"></script>   
    </head>
-   <body>
+   <body ng-app="website" ng-controller="loginCtrl" ng-init="init()">
       <header>
          <div id="header-sticky" class="header__main-area d-none d-xl-block">
             <div class="container">
@@ -267,26 +277,30 @@
                            <div class="tptrack__id mb-10">
                               <form action="#">
                                  <span><i class="fal fa-user"></i></span>
-                                 <input type="email" placeholder="Email address">
+                                 <input type="email" placeholder="Email" ng-model="data.email">
                               </form>
                            </div>
                            <div class="tptrack__email mb-10">
                               <form action="#">
                                  <span><i class="fal fa-key"></i></span>
-                                 <input type="text" placeholder="Password">
+                                 <input type="password" placeholder="Password" ng-model="data.password">
                               </form>
+                           </div>
+                           <div ng-if="message" class="w-full my-2 alert alert-warning">
+                              {{ message }}
                            </div>
                            <div class="tpsign__remember d-flex align-items-center justify-content-between mb-15">
                               <div class="form-check">
                                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
                                  <label class="form-check-label" for="flexCheckDefault2">Remember me</label>
                               </div>
+                              <!-- Hide for now 
                               <div class="tpsign__pass">
                                  <a href="#">Forget Password</a>
-                              </div>
+                              </div> -->
                            </div>
                            <div class="tptrack__btn">
-                              <button class="tptrack__submition active mb-2">Login Now<i class="fal fa-long-arrow-right"></i></button>
+                              <button type="button" ng-click="login()" class="tptrack__submition active mb-2">Login Now<i class="fal fa-long-arrow-right"></i></button>
                               <a href="/register.html" class="tptrack__submition tpsign__reg">Sign Up</a>
                            </div>
                         </div>

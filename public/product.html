@@ -62,6 +62,9 @@
                            <div class="header__info-search tpcolor__purple ml-10">
                               <button class="tp-search-toggle"><i class="icon-search"></i></button>
                            </div>
+                           <div class="header__info-user tpcolor__yellow ml-10 d-none d-sm-block">
+                              <a href="/login.html"><i class="icon-user"></i></a>
+                           </div>
                            <div class="header__info-cart tpcolor__oasis ml-10 tp-cart-toggle">
                               <button>
                                  <i>
@@ -205,6 +208,9 @@
                         <div class="header__info-search tpcolor__purple ml-10 d-none d-sm-block">
                            <button class="tp-search-toggle"><i class="icon-search"></i></button>
                         </div>
+                        <div class="header__info-user tpcolor__yellow ml-10 d-none d-sm-block">
+                           <a href="/login.html"><i class="icon-user"></i></a>
+                        </div>
                         <div class="header__info-cart tpcolor__oasis ml-10 tp-cart-toggle">
                            <button><i><img src="assets/img/icon/cart-1.svg" alt=""></i>
                               <span>{{ cart.length }}</span>
@@ -222,6 +228,12 @@
          <div class="tpsideinfo">
             <button class="tpsideinfo__close">Close<i class="fal fa-times ml-10"></i></button>
             <div class="tpsideinfo__search text-center pt-35">
+               <div class="tpsideinfo__account-link">							
+                  <a href="/login.html">
+                     <i class="icon-user icons"></i>
+                     <span>Login / Register</span>
+                  </a>
+               </div>
                <span class="tpsideinfo__search-title mb-20">What Are You Looking For?</span>
                <form action="#">
                   <input type="text" name="search" placeholder="Search Products...">

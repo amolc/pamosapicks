@@ -5,6 +5,8 @@ app.controller(
       $scope.init = function () {
         $scope.baseurl = config.baseurl;
         $scope.cartTotal = 100;
+        const isCustomerLoggedIn = localStorage.getItem('isCustomerLoggedIn');
+        $scope.isCustomerLoggedIn = isCustomerLoggedIn === '1';
         
         $scope.urlParams = Object.fromEntries(
           new URLSearchParams(window.location.search)

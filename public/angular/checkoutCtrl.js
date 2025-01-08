@@ -1,5 +1,7 @@
 app.controller('checkoutCtrl', function($scope, $http, $window, config) {
   $scope.init = function() {
+        const isCustomerLoggedIn = localStorage.getItem('isCustomerLoggedIn');
+        $scope.isCustomerLoggedIn = isCustomerLoggedIn === '1';
         $scope.cartTotal = 0;
         $scope.urlParams = Object.fromEntries(
           new URLSearchParams(window.location.search)

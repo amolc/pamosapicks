@@ -1,5 +1,5 @@
 
-app.controller('customerCtrl', function($scope, $http, $window, $location, $sce, $timeout, store, config) {
+app.controller('customersCtrl', function($scope, $http, $window, $location, $sce, $timeout, store, config) {
     $scope.data = {}
     $scope.init =function(req,res){
         // alert("hello");
@@ -49,8 +49,6 @@ app.controller('customerCtrl', function($scope, $http, $window, $location, $sce,
                 }
             }).error(function() {});
     }
-
-   
 
     $scope.delete = function(id) {
         $http.delete(config.baseurl + 'customer/delete-customer/' + id + '/')

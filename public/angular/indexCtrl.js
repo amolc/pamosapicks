@@ -14,6 +14,9 @@ app.controller(
       $scope.search = null;
       $scope.categoryFilter = null;
 
+      const isCustomerLoggedIn = localStorage.getItem('isCustomerLoggedIn');
+      $scope.isCustomerLoggedIn = isCustomerLoggedIn === '1';
+
       $scope.urlParams = Object.fromEntries(
         new URLSearchParams(window.location.search)
       );

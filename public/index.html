@@ -60,6 +60,9 @@
                            <div class="header__info-search tpcolor__purple ml-10">
                               <button class="tp-search-toggle"><i class="icon-search"></i></button>
                            </div>
+                           <div class="header__info-user tpcolor__yellow ml-10 d-none d-sm-block">
+                              <a href="/login.html"><i class="icon-user"></i></a>
+                           </div>
                            <div class="header__info-cart tpcolor__oasis ml-10 tp-cart-toggle">
                               <button>
                                  <i>
@@ -203,13 +206,9 @@
                         <div class="header__info-search tpcolor__purple ml-10 d-none d-sm-block">
                            <button class="tp-search-toggle"><i class="icon-search"></i></button>
                         </div>
-                        <!--
                         <div class="header__info-user tpcolor__yellow ml-10 d-none d-sm-block">
-                           <a href="#"><i class="icon-user"></i></a>
+                           <a href="/login.html"><i class="icon-user"></i></a>
                         </div>
-                        <div class="header__info-wishlist tpcolor__greenish ml-10 d-none d-sm-block">
-                           <a href="#"><i class="icon-heart icons"></i></a>
-                        </div>-->
                         <div class="header__info-cart tpcolor__oasis ml-10 tp-cart-toggle">
                            <button><i><img src="assets/img/icon/cart-1.svg" alt=""></i>
                               <span>{{ cart.length }}</span>
@@ -228,7 +227,10 @@
             <button class="tpsideinfo__close">Close<i class="fal fa-times ml-10"></i></button>
             <div class="tpsideinfo__search text-center pt-35">
                <div class="tpsideinfo__account-link">							
-                  <a href="log-in.html"><i class="icon-user icons"></i> Login / Register</a>
+                  <a href="/login.html">
+                     <i class="icon-user icons"></i>
+                     <span>Login / Register</span>
+                  </a>
                </div>
                <span class="tpsideinfo__search-title mb-20">What Are You Looking For?</span>
                <form action="#">
@@ -460,7 +462,8 @@
                                              <i class="icon-chevrons-left"></i>
                                           </a>
                                        </li>
-                                       <li ng-repeat="index in [] | range:num_pages">
+                                       <li
+                                          ng-repeat="index in [] | range:num_pages">
                                           <span ng-if="current_page === index + 1" class="current">
                                              {{ index + 1 }}
                                           </span>
