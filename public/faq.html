@@ -14,8 +14,7 @@
 </head>
 
     <body ng-controller="BookingDetailsCtrl">
-        <!-- header-area-start -->
-        <header>
+      <header>
          <div id="header-sticky" class="header__main-area d-none d-xl-block">
             <div class="container">
                <div class="header__for-megamenu p-relative">
@@ -36,10 +35,17 @@
                      <div class="offset-6 col-xl-3">
                         <div class="header__info d-flex align-items-center">
                            <div class="header__info-search tpcolor__purple ml-10">
-                              <button class="tp-search-toggle"><i class="icon-search"></i></button>
+                              <button class="tp-search-toggle">
+                                 <i class="icon-search"></i>
+                              </button>
                            </div>
                            <div class="header__info-user tpcolor__yellow ml-10 d-none d-sm-block">
-                              <a href="/login.html"><i class="icon-user"></i></a>
+                              <a ng-if="!isCustomerLoggedIn" href="/login.html">
+                                 <i class="icon-user"></i>
+                              </a>
+                              <a ng-if="isCustomerLoggedIn" href="/account.html">
+                                 <i class="icon-user"></i>
+                              </a>
                            </div>
                            <div class="header__info-cart tpcolor__oasis ml-10 tp-cart-toggle">
                               <button>
@@ -185,7 +191,12 @@
                            <button class="tp-search-toggle"><i class="icon-search"></i></button>
                         </div>
                         <div class="header__info-user tpcolor__yellow ml-10 d-none d-sm-block">
-                           <a href="/login.html"><i class="icon-user"></i></a>
+                           <a ng-if="isCustomerLoggedIn" href="/account.html">
+                              <i class="icon-user"></i>
+                           </a>
+                           <a ng-if="!isCustomerLoggedIn" href="/login.html">
+                              <i class="icon-user"></i>
+                           </a>
                         </div>
                         <div class="header__info-cart tpcolor__oasis ml-10 tp-cart-toggle">
                            <button><i><img src="assets/img/icon/cart-1.svg" alt=""></i>
@@ -205,9 +216,13 @@
             <button class="tpsideinfo__close">Close<i class="fal fa-times ml-10"></i></button>
             <div class="tpsideinfo__search text-center pt-35">
                <div class="tpsideinfo__account-link">							
-                  <a href="/login.html">
+                  <a ng-if="!isCustomerLoggedIn" href="/login.html">
                      <i class="icon-user icons"></i>
                      <span>Login / Register</span>
+                  </a>
+                  <a ng-if="isCustomerLoggedIn" href="/account.html">
+                     <i class="icon-user icons"></i>
+                     <span>Account</span>
                   </a>
                </div>
                <span class="tpsideinfo__search-title mb-20">What Are You Looking For?</span>

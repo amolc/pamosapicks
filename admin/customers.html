@@ -295,29 +295,29 @@
                 <!-- Table with stripped rows -->
                 <table class="table mt-3">
                     <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Full Name</th>
-                        <th>Mobile Number</th>
-                        <th>Email</th>
-                        <th>View</th>
-                    </tr>
+                        <tr>
+                            <th>Id</th>
+                            <th>Full Name</th>
+                            <th>Mobile Number</th>
+                            <th>Email</th>
+                            <th>View</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="data in dataset">
-                        <td>{{data.id}}</td>
-                        <td>{{ data.first_name }} {{ data.last_name }}</td>
-                        <td>
-                            <a href="https://wa.me/{{ data.mobile_number }}" target="_blank" class="d-flex align-items-center" style="color: #25D366;">
-                                <i class="bi bi-whatsapp mr-2" style="color: #25D366;"></i> <!-- Font Awesome WhatsApp Icon -->
-                                {{ data.mobile_number }}
-                            </a>
-                        </td>                        
-                        <td>{{ data.email }}</td>
-                        <td>
-                        <a href="/admin/viewCustomer.html?id={{data.id}}">View</a>
-                        </td>
-                    </tr>
+                        <tr ng-repeat="data in dataset">
+                            <td>{{data.id}}</td>
+                            <td>{{ data.first_name }} {{ data.last_name }}</td>
+                            <td>
+                                <a href="https://wa.me/{{ data.mobile_number }}" target="_blank" class="d-flex align-items-center" style="color: #25D366;">
+                                    <i class="bi bi-whatsapp mr-2" style="color: #25D366;"></i> <!-- Font Awesome WhatsApp Icon -->
+                                    {{ data.mobile_number }}
+                                </a>
+                            </td>                        
+                            <td>{{ data.email }}</td>
+                            <td>
+                                <a href="/admin/viewCustomer.html?id={{data.id}}">View</a>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
                 </div>
