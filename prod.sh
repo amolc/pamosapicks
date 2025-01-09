@@ -1,6 +1,8 @@
 #!/bin/bash
 cp service.server.js  admin/angular/service.js
 cp service.server.js  public/angular/service.js
+cp server.config.js  public/api/config.js
+
 npm install
 echo "killing the freshpicks.js"
 ps -ef | grep "node freshpicks.js" | grep -v runstatic | awk '{print $2}' | xargs kill -9
