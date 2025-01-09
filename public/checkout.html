@@ -313,7 +313,7 @@
                                  <div class="col-md-6">
                                     <div class="checkout-form-list">
                                        <label>Phone <span class="required">*</span></label>
-                                       <input ng-model="order_data.mobile_number" type="text" placeholder="+9912345678" >
+                                       <input ng-model="order_data.mobile_number" type="text" placeholder="" >
                                     </div>
                                  </div>
                                  <div class="col-md-6">
@@ -331,24 +331,25 @@
                                  <div class="col-md-12">
                                     <div class="checkout-form-list">
                                        <label>Address 1<span class="required">*</span></label>
-                                       <input ng-model="order_data.billing_address" type="text" placeholder="Street address" >
+                                       <div class="d-flex flex-row gap-4">
+                                          <input class="mr-2" ng-model="order_data.billing_address" type="text" placeholder="Street address" >
+                                          <input class="ms-2" ng-model="order_data.billing_address_specifier" type="text" placeholder="address_specifier, suite, unit etc. (optional)" >
+                                       </div>
                                     </div>
                                  </div>
-                                 <div class="col-md-12">
-                                    <div class="checkout-form-list">
-                                       <input ng-model="order_data.billing_address_specifier" type="text" placeholder="address_specifier, suite, unit etc. (optional)" >
-                                    </div>
-                                 </div>
-                                 <div class="col-md-12">
+                                 <div class="col-md-12 d-none">
                                     <div class="checkout-form-list">
                                        <label>Address 2 (Optional)</label>
-                                       <input ng-model="order_data.billing_address2" type="text" placeholder="Street address" >
+                                       <div>
+                                          <div class="checkout-form-list">
+                                             <input ng-model="order_data.billing_address2" type="text" placeholder="Street address" >
+                                             <input ng-model="order_data.billing_address2_specifier" type="text" placeholder="address_specifier, suite, unit etc. (optional)" >
+                                          </div>
+                                       </div>
                                     </div>
                                  </div>
-                                 <div class="col-md-12">
-                                    <div class="checkout-form-list">
-                                       <input ng-model="order_data.billing_address2_specifier" type="text" placeholder="address_specifier, suite, unit etc. (optional)" >
-                                    </div>
+                                 <div class="col-md-12 hidden">
+                                    
                                  </div>
                                  <div class="col-md-6">
                                     <div class="country-select">
