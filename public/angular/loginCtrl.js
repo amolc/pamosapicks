@@ -66,11 +66,13 @@ app.controller('loginCtrl', function($scope, $http, $window, config) {
         .then(function(response) {
           if (response.data.status === "success") {
             // Store relevant data in local storage (no agent ID)
+            
             localStorage.setItem('isCustomerLoggedIn', '1');
+            console.log(response.data);
+            
             localStorage.setItem('name', response.data.first_name);
             localStorage.setItem('email', response.data.email);
             localStorage.setItem('phone', response.data.mobile_number);
-            // Remove unnecessary data, such as org_id or isSuperAdmin if not required
 
             console.log("User stored in local storage:", response.data.email);
             $window.location.href = "/";  // Redirect to customer dashboard

@@ -29,6 +29,14 @@ app.controller(
     $scope.cart = JSON.parse(localStorage.getItem("cart")) || [];
     $scope.updateCartTotal();
     };
+
+    $scope.logout = () => {
+      localStorage.removeItem("isCustomerLoggedIn");
+      localStorage.removeItem("name");
+      localStorage.removeItem("phone");
+
+      window.location.assign('/login.html');
+    }
   
     $scope.addToCart = function (id, product_name, qty, price, discount_price, image) {
     qty = Number(qty);
