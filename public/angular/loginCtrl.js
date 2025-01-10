@@ -27,8 +27,8 @@ app.controller('loginCtrl', function($scope, $http, $window, config) {
 
   // Login validation
   $scope.loginvalidate = function(data) {
-    if (!data || !data.email) {
-      $scope.message = "Please provide an email address.";
+    if (!data || !data.mobile_number) {
+      $scope.message = "Please provide a mobile number.";
       return false;
     } else if (!data.password) {
       $scope.message = "Please provide a password.";
@@ -52,7 +52,7 @@ app.controller('loginCtrl', function($scope, $http, $window, config) {
       };
 
       // Check if the necessary parameters exist in $scope.data
-      if (!$scope.data.email || !$scope.data.password) {
+      if (!$scope.data.mobile_number || !$scope.data.password) {
         console.error("Missing required fields: email or password");
         $scope.message = "Please provide both email and password.";
         return;
@@ -62,6 +62,8 @@ app.controller('loginCtrl', function($scope, $http, $window, config) {
       let url = config.baseurl + 'customer/login-customer/';  // Changed from 'admin/get-admin/' to 'customer/get-customer/'
       
       // Make GET request to the server
+      console.log("Making request with data: ");
+      console.log($scope.data);
       $http.post(url, $scope.data)
         .then(function(response) {
           if (response.data.status === "success") {
