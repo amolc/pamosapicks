@@ -8,63 +8,68 @@ app.controller(
       $scope.categoryFilter = null;
 
       const isCustomerLoggedIn = localStorage.getItem('isCustomerLoggedIn');
-      
       $scope.isCustomerLoggedIn = isCustomerLoggedIn === '1';
 
-      $scope.urlParams = Object.fromEntries(
-        new URLSearchParams(window.location.search)
-      );
-
-      if ($scope.urlParams.hasOwnProperty('search')) {
+      if (urlParams.hasOwnProperty('search')) {
         $scope.search = $scope.urlParams.search;
       }
 
-      $scope.productlist();
-      $scope.categorylist();
+      $scope.getProductList();
+      $scope.getCategoryList();
 
       // Initialize cart from localStorage
-      $scope.cart = JSON.parse(localStorage.getItem("cart")) || [];
+      $scope.cart = getCart();
       $scope.updateCartTotal();
     };
 
-    // Fetch the list of products
-    $scope.productlist = function () {
+    $scope.getProductList = () => {
       $scope.fetchingProductList = true;
-
-      let url = '';
-
-      if ($scope.urlParams.length == 0) {
-        url = `${config.baseurl}product/products/`;
-      } else {
-        const queryString = jsonToQueryString($scope.urlParams);
-        url = `${config.baseurl}product/products?${queryString}`;
-      }
-
-      $http.get(url)
-          .then(function (response) {
-              if (response.data.status === 'false') {
-                  console.error("Error fetching product list:", response.data.message);
-              } else {
-                $scope.productdataset = response.data.data;
-                $scope.num_products = $scope.productdataset.length;
-                $scope.num_pages = response.data.num_pages;
-                $scope.start_index = response.data.start_index;
-                $scope.end_index = response.data.end_index;
-                $scope.current_page = response.data.page;
-              }
-          })
-          .catch(function (error) {
-              console.error("Error fetching product list:", error);
-          }).finally(() => {
-            $scope.fetchingProductList = false;
-          });
+      /**
+       * Depends on:
+       *  - lib/common.js
+       *  - lib/products.js
+       */
+      getProductList(config, urlParams, $http).then(productList => {
+        $scope.productdataset = productList.productdataset;
+        $scope.num_pages = productList.num_pages;
+        $scope.num_products = productList.num_products;
+        $scope.start_index = productList.start_index;
+        $scope.end_index = productList.end_index;
+      }).catch(error => {
+        console.error("Error fetching product list:", error);
+      }).finally(() => {
+        $scope.fetchingProductList = false;
+      });
     };
 
-    $scope.navigateToPage = page => {
-      const url = new URL(window.location.href);
-      url.searchParams.set('page', page);
-      window.location.assign(url);
-    }
+    $scope.getCategoryList = () => {
+      $scope.fetchingCategoryList = true;
+      /**
+       * Depends on:
+       *  - lib/common.js
+       *  - lib/products.js
+       */
+      getCategoryList(config, $scope, $http).then(categoryList => {
+        $scope.categorydataset = categoryList.categorydataset;
+        
+        if (urlParams.hasOwnProperty('category_id')) {
+          $scope.categorydataset.forEach(category => {
+            if (category.id === parseInt(urlParams['category_id'])) {
+              $scope.categoryFilter = category.category_name;
+            }
+          });
+        }
+      }).catch(error => {
+        console.error("Error fetching category list:", error);
+      }).finally(() => {
+        $scope.fetchingCategoryList = false;
+      });
+    };
+    /**
+     * Depends on:
+     *  - lib/common.js
+     */
+    $scope.navigateToPage = navigateToPage;
 
     $scope.fetchingCategoryList = true;
     $scope.categorylist = function() {
@@ -91,33 +96,9 @@ app.controller(
           });
     }
 
-    $scope.addToCart = function (id, product_name, qty, price, discount_price, image) {
-      qty = Number(qty);
-      price = Number(price);
-      discount_price = discount_price ? Number(discount_price) : 0;
-
-      const product = {
-        id: id,
-        product_name: product_name,
-        quantity: qty,
-        price: price, // Ensure price is stored as a number
-        discount_price: discount_price,
-        product_image: image,
-        subtotal: price,
-        discount_subtotal: discount_price
-      };
-
-      // Check if the product already exists in the cart
-      let existingProduct = $scope.cart.find((item) => item.id === id);
-
-      if (existingProduct) {
-        existingProduct.quantity += qty; // Increment quantity
-        $scope.updateProductTotal(id);
-      } else {
-        $scope.cart.push(product);
-        localStorage.setItem("cart", JSON.stringify($scope.cart));
-        $scope.updateCartTotal();
-      }
+    $scope.addToCart = (id, productName, productQuantity, productPrice, productDiscountPrice, productImage) => {
+      addToCart(id, productName, productQuantity, productPrice, productDiscountPrice, productImage);
+      $scope.updateCartTotal();
     };
 
     $scope.checkIfProductInCart = id => {
@@ -178,9 +159,12 @@ app.controller(
 
     $scope.initializeHeader = () => {
       /**
-       * Depends on: lib/cart.js.
+       * Depends on: 
+       *  - lib/cart.js.
+       *  - lib/search.js.
        */
       initializeCartElements();
+      initializeSearchElements();
     };
   }
 );

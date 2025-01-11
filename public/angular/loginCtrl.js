@@ -70,7 +70,6 @@ app.controller('loginCtrl', function($scope, $http, $window, config) {
             localStorage.setItem('email', response.data.email);
             localStorage.setItem('phone', response.data.mobile_number);
 
-            console.log("User stored in local storage:", response.data.email);
             $window.location.href = "/";
           } else {
             console.error("Login failed: Invalid credentials.");

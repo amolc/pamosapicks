@@ -1,6 +1,6 @@
 
 const getCart = () => {
-  JSON.parse(localStorage.getItem("cart")) || [];
+  return JSON.parse(localStorage.getItem("cart")) || [];
 };
 
 const addToCart = function (id, product_name, qty, price, discount_price, image) {
@@ -29,8 +29,7 @@ const addToCart = function (id, product_name, qty, price, discount_price, image)
     $scope.updateProductTotal(id);
   } else {
     cart.push(product);
-    localStorage.setItem("cart", JSON.stringify($scope.cart));
-    $scope.updateCartTotal();
+    localStorage.setItem("cart", JSON.stringify(cart));
   }
 };
 
@@ -192,18 +191,7 @@ const initializePlugins = () => {
     }
   }
 
-  // 15 & 16. Header Search and Sidebar toggle functionality
-  $(".header-search").on('click', function () { $(".search-popup-wrap").slideToggle(); });
-  
-  $(".search-close, .search-body-overlay").on("click", function () { $(".search-popup-wrap").slideUp(500); });
-  
-  $(".tp-search-toggle").on("click", function () { $(".tp-sidebar-area").addClass("tp-searchbar-opened"); });
-  
-  $(".tpsearchbar__close, .search-body-overlay").on("click", function () { 
-    $(".tp-sidebar-area").removeClass("tp-searchbar-opened");
-    $(".search-body-overlay").removeClass("opened");
-  });
-  
+  // 15 & 16. Header Search and Sidebar toggle functionality  
   $('[data-countdown]').each(function () {
     var $this = $(this),
     finalDate = $this.data('countdown');

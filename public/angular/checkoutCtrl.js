@@ -147,13 +147,15 @@ $scope.register = async function() {
     await $scope.register();
 
     const url = `${config.baseurl}order/create-order/`;
-    
+
+    console.log('Submitting order.');
+
     $scope.order_data.amount = $scope.cartTotal;
     $scope.order_data.order_items = $scope.buildOrderItemsFromCartData();
 
     $http.post(
-    url,
-    $scope.order_data
+      url,
+      $scope.order_data
     ).then(response => {
     if (response.data.status == "success") {
       const order_data = response.data.data;
