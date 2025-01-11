@@ -58,17 +58,11 @@ app.controller('loginCtrl', function($scope, $http, $window, config) {
         return;
       }
 
-      // Construct the URL for the login request for customers
       let url = config.baseurl + 'customer/login-customer/';  // Changed from 'admin/get-admin/' to 'customer/get-customer/'
       
-      // Make GET request to the server
-      console.log("Making request with data: ");
-      console.log($scope.data);
       $http.post(url, $scope.data)
         .then(function(response) {
           if (response.data.status === "success") {
-            // Store relevant data in local storage (no agent ID)
-            
             localStorage.setItem('isCustomerLoggedIn', '1');
             console.log(response.data);
             
@@ -77,7 +71,7 @@ app.controller('loginCtrl', function($scope, $http, $window, config) {
             localStorage.setItem('phone', response.data.mobile_number);
 
             console.log("User stored in local storage:", response.data.email);
-            $window.location.href = "/";  // Redirect to customer dashboard
+            $window.location.href = "/";
           } else {
             console.error("Login failed: Invalid credentials.");
             $scope.message = response.data.message || "Login failed: Please check your credentials.";
@@ -93,6 +87,5 @@ app.controller('loginCtrl', function($scope, $http, $window, config) {
     }
   };
 
-  // Initialize the login process if necessary
   $scope.init();
 });

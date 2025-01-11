@@ -104,14 +104,14 @@ $scope.register = async function() {
 
   $scope.buildOrderItemsFromCartData = () => {
     const orderItems = $scope.cart.map(item => {
-    return {
-      product: item.id,
-      product_name: item.product_name,
-      product_image: item.product_image,
-      product_qty: item.quantity,
-      product_price: item.price,
-      product_subtotal: item.subtotal,
-    }
+      return {
+        product: item.id,
+        product_name: item.product_name,
+        product_image: item.product_image,
+        product_qty: item.quantity,
+        product_price: item.price,
+        product_subtotal: item.subtotal,
+      }
     });
 
     return orderItems;
@@ -146,10 +146,8 @@ $scope.register = async function() {
 
     await $scope.register();
 
-    console.log("Order data being submitted: ");
-    console.log($scope.order_data);
-    
     const url = `${config.baseurl}order/create-order/`;
+    
     $scope.order_data.amount = $scope.cartTotal;
     $scope.order_data.order_items = $scope.buildOrderItemsFromCartData();
 
