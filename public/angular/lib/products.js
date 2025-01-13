@@ -2,10 +2,10 @@ const getProductList = async (config, urlParams, $http) => {
   let url = '';
 
   if (urlParams.length == 0) {
-    url = `${config.baseurl}product/products/`;
+    url = `${config.baseurl}products/products/`;
   } else {
     const queryString = jsonToQueryString(urlParams);
-    url = `${config.baseurl}product/products?${queryString}`;
+    url = `${config.baseurl}products/products?${queryString}`;
   }
 
   const response = await $http.get(
@@ -28,7 +28,7 @@ const getProductList = async (config, urlParams, $http) => {
 
 const getCategoryList = async (config, urlParams, $http) => {
   const response = await $http.get(
-    `${config.baseurl}category/category/`
+    `${config.baseurl}products/category/`
   );
 
   if (response.data.status === 'false') {

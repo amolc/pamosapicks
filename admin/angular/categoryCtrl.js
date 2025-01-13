@@ -11,7 +11,7 @@ app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce
    // Fetch the list of products
    $scope.list = function () {
       console.log("Fetching product list from:", config.baseurl);
-      $http.get(`${config.baseurl}category/category/?show_inactive=True`)
+      $http.get(`${config.baseurl}products/category/?show_inactive=True`)
       .then(function (response) {
          console.log("Full response:", response);
          if (response.status !== 200) {
@@ -58,7 +58,7 @@ app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce
    $scope.add = function () {
       console.log("Adding category:", $scope.category);
 
-      $http.post(`${config.baseurl}category/category/`, $scope.category)
+      $http.post(`${config.baseurl}products/category/`, $scope.category)
          .then(function (response) {
             if (response.data.status === 'false') {
                console.error("Error adding category:", response.category.message);

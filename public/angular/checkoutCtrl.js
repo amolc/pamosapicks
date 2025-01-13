@@ -260,7 +260,7 @@ $scope.register = async function() {
 
   $scope.fetchingCategoryList = true;
   $scope.categorylist = function() {
-    $http.get(`${config.baseurl}category/category/`)
+    $http.get(`${config.baseurl}products/category/`)
       .then(function (response) {
         if (response.data.status === 'false') {
           console.error("Error fetching category list:", response.data.message);

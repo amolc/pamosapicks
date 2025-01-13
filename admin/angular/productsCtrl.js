@@ -48,10 +48,10 @@ app.controller('productsCtrl', function ($scope, $http, $window, $location, $sce
         let url = "";
 
         if ($scope.urlParams.length == 0) {
-            url = `${config.baseurl}product/products/`;
+            url = `${config.baseurl}products/products/`;
         } else {
             const queryString = jsonToQueryString($scope.urlParams);
-            url = `${config.baseurl}product/products?${queryString}`;
+            url = `${config.baseurl}products/products?${queryString}`;
         }
 
         $http.get(url)

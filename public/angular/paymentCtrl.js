@@ -13,9 +13,9 @@ app.controller('paymentCtrl', function($scope, $http, $window, config) {
           'India',
         ];
 
+        $scope.paymentMethod = 'upi';
         $scope.errorMessage = null;
 
-        // Initialize cart from localStorage
         $scope.cart = JSON.parse(localStorage.getItem("cart")) || [];
         $scope.updateCartTotal();
 
@@ -35,7 +35,13 @@ app.controller('paymentCtrl', function($scope, $http, $window, config) {
         };
 
         $scope.getorderdata();
+
+        $scope.submitPayment();
     };
+
+    $scope.submitPayment = () => {
+      console.log("Submit payment details to backend here.");
+    }
 
     // Fetch the list of products
     $scope.getorderdata = function () {
@@ -83,6 +89,8 @@ app.controller('paymentCtrl', function($scope, $http, $window, config) {
       return orderItems;
     }
     $scope.submitOrder = () => {
+      alert($scope.paymentMethod);
+      return;
       const url = `${config.baseurl}order/create-order/`;
       $scope.order_data.total = $scope.cartTotal;
       $scope.order_data.order_items = $scope.buildOrderItemsFromCartData();

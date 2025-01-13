@@ -272,164 +272,133 @@
    </header>
    <!-- header-area-end -->
     <main>
-        <section class="checkout-area pb-50 mt-30">
-            <div class="container">
-                <div class="row">
-                    <div class="offset-lg-3 col-lg-6 col-md-12 h-100">
-                        <div class="your-order mb-30 mt-auto">
-                            <h3 class="w-100 d-flex justify-content-between">
-                                <span>Payment</span>
-                                <button
-                                    class="fs-5"
-                                    type="button"
-                                    data-toggle="modal"
-                                    data-target="#orderDetailsModal"
-                                    style="text-decoration: underline;">
-                                    View order details
-                                </button>
-                            </h3>
-                            <div class="accordion" id="paymentMethodAccordion">
-                                <div class="accordion-item">
-                                   <h2 class="accordion-header" id="checkoutOne">
-                                      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#bankOne" aria-expanded="true" aria-controls="bankOne">
-                                      Direct Bank Transfer
-                                      </button>
-                                   </h2>
-                                   <div id="bankOne" class="accordion-collapse collapse show" aria-labelledby="checkoutOne" data-bs-parent="#checkoutAccordion">
-                                      <div class="accordion-body">
-                                      Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.
-                                      </div>
-                                   </div>
-                                </div>
-                                <div class="accordion-item">
-                                   <h2 class="accordion-header" id="paymentTwo">
-                                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#payment" aria-expanded="false" aria-controls="payment">
-                                      Cheque Payment
-                                      </button>
-                                   </h2>
-                                   <div id="payment" class="accordion-collapse collapse" aria-labelledby="paymentTwo" data-bs-parent="#checkoutAccordion">
-                                      <div class="accordion-body">
-                                      Please send your cheque to Store Name, Store Street, Store Town, Store
-                                      State / County, Store
-                                      Postcode.
-                                      </div>
-                                   </div>
-                                </div>
-                                <div class="accordion-item">
-                                   <h2 class="accordion-header" id="paypalThree">
-                                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#paypal" aria-expanded="false" aria-controls="paypal">
-                                      PayPal
-                                      </button>
-                                   </h2>
-                                   <div id="paypal" class="accordion-collapse collapse" aria-labelledby="paypalThree" data-bs-parent="#checkoutAccordion">
-                                      <div class="accordion-body">
-                                      Pay via PayPal; you can pay with your credit card if you don’t have a
-                                      PayPal account.
-                                      </div>
-                                   </div>
-                                </div>
-                             </div>
-                            <div class="payment-method">
-                                <div class="order-button-payment mt-20">
-                                    <button
-                                        ng-click="submitOrder()"
-                                        type="button"
-                                        class="tp-btn tp-color-btn w-100">Pay</button>
-                                </div>
-                            </div>
-                        </div>
+      <section class="checkout-area pb-50 mt-30">
+        <div class="container">
+          <div class="row">
+            <div class="offset-lg-3 col-lg-6 col-md-12 h-100">
+              <div class="your-order mb-30 mt-auto">
+                <h3 class="w-100 d-flex justify-content-between">
+                  <span>Payment</span>
+                  <button
+                    class="fs-5"
+                    type="button"
+                    data-toggle="modal"
+                    data-target="#orderDetailsModal"
+                    style="text-decoration: underline;">
+                    View order details
+                  </button>
+                </h3>
+                <div class="payment-method">
+                  <form class="container">
+                    <div class="form-group">
+                      <input id="upi" type="radio" name="payment_method" value="upi" class="form-check-input" ng-model="paymentMethod" />
+                      <label for="upi" className="accordion-button form-check-label">UPI</label>
                     </div>
+                    <div class="form-group">
+                      <input id="cash_on_delivery" type="radio" name="payment_method" value="cash_on_delivery" class="form-check-input" ng-model="paymentMethod" />
+                      <label for="cash_on_delivery" class="form-check-label">Cash On Delivery</label>
+                    </div>
+                  </form>
+                  <div class="order-button-payment mt-20">
+                    <button
+                      ng-click="submitOrder()"
+                      type="button"
+                      class="tp-btn tp-color-btn w-100">Pay</button>
+                  </div>
                 </div>
-                <div class="modal fade" id="orderDetailsModal" tabindex="-1"
-                    role="dialog">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">
-                                    Order details
-                                </h5>
-                                <button
-                                    type="button"
-                                    class="close"
-                                    data-dismiss="modal"
-                                    aria-label="closeOrderDetails">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+              </div>
+            </div>
+          </div>
+          <div class="modal fade" id="orderDetailsModal" tabindex="-1"
+            role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            Order details
+                        </h5>
+                        <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="closeOrderDetails">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="checkbox-form">
+                            <h3>Billing Details</h3>
+                            <div class="row">
+                                  <div class="col-md-6">
+                                      <div class="checkout-form-list">
+                                        <label>Email Address <span class="required">*</span></label>
+                                        <input disabled ng-model="order_data.email" type="email" placeholder="" >
+                                      </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <div class="checkout-form-list">
+                                        <label>Phone <span class="required">*</span></label>
+                                        <input disabled ng-model="order_data.mobile_number" type="text" placeholder="+9912345678" >
+                                      </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <div class="checkout-form-list">
+                                        <label>First Name <span class="required">*</span></label>
+                                        <input disabled ng-model="order_data.first_name" type="text" placeholder="" >
+                                      </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <div class="checkout-form-list">
+                                        <label>Last Name <span class="required">*</span></label>
+                                        <input disabled ng-model="order_data.last_name" type="text" placeholder="" >
+                                      </div>
+                                  </div>
+                                  <div class="col-md-12">
+                                      <div class="country-select">
+                                        <label>Country <span class="required">*</span></label>
+                                        <select
+                                            disabled
+                                            ng-model="order_data.country">
+                                            <option selected value="India">India</option>
+                                        </select>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <div class="checkout-form-list">
+                                        <label>State <span class="required">*</span></label>
+                                        <input disabled ng-model="order_data.state" type="text" placeholder="" >
+                                      </div>
+                                  </div>
+                                  <div class="col-md-12">
+                                      <div class="checkout-form-list">
+                                        <label>Town / City <span class="required">*</span></label>
+                                        <input disabled ng-model="order_data.city" type="text" placeholder="Town / City" >
+                                      </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <div class="checkout-form-list">
+                                        <label>Postcode / Zip <span class="required">*</span></label>
+                                        <input disabled ng-model="order_data.postal_code" type="text" placeholder="Postcode / Zip" >
+                                      </div>
+                                  </div>
+                                  <div class="col-md-12">
+                                      <div class="checkout-form-list">
+                                        <label>Billing Address <span class="required">*</span></label>
+                                        <input disabled ng-model="order_data.billing_address" type="text" placeholder="Street address" >
+                                      </div>
+                                  </div>
+                                  <!-- TEMP: CREATE ACCOUNT -->
                             </div>
-                            <div class="modal-body">
-                                <div class="checkbox-form">
-                                    <h3>Billing Details</h3>
-                                    <div class="row">
-                                          <div class="col-md-6">
-                                             <div class="checkout-form-list">
-                                                <label>Email Address <span class="required">*</span></label>
-                                                <input disabled ng-model="order_data.email" type="email" placeholder="" >
-                                             </div>
-                                          </div>
-                                          <div class="col-md-6">
-                                             <div class="checkout-form-list">
-                                                <label>Phone <span class="required">*</span></label>
-                                                <input disabled ng-model="order_data.mobile_number" type="text" placeholder="+9912345678" >
-                                             </div>
-                                          </div>
-                                          <div class="col-md-6">
-                                             <div class="checkout-form-list">
-                                                <label>First Name <span class="required">*</span></label>
-                                                <input disabled ng-model="order_data.first_name" type="text" placeholder="" >
-                                             </div>
-                                          </div>
-                                          <div class="col-md-6">
-                                             <div class="checkout-form-list">
-                                                <label>Last Name <span class="required">*</span></label>
-                                                <input disabled ng-model="order_data.last_name" type="text" placeholder="" >
-                                             </div>
-                                          </div>
-                                          <div class="col-md-12">
-                                             <div class="country-select">
-                                                <label>Country <span class="required">*</span></label>
-                                                <select
-                                                    disabled
-                                                   ng-model="order_data.country">
-                                                   <option selected value="India">India</option>
-                                                </select>
-                                             </div>
-                                          </div>
-                                          <div class="col-md-6">
-                                             <div class="checkout-form-list">
-                                                <label>State <span class="required">*</span></label>
-                                                <input disabled ng-model="order_data.state" type="text" placeholder="" >
-                                             </div>
-                                          </div>
-                                          <div class="col-md-12">
-                                             <div class="checkout-form-list">
-                                                <label>Town / City <span class="required">*</span></label>
-                                                <input disabled ng-model="order_data.city" type="text" placeholder="Town / City" >
-                                             </div>
-                                          </div>
-                                          <div class="col-md-6">
-                                             <div class="checkout-form-list">
-                                                <label>Postcode / Zip <span class="required">*</span></label>
-                                                <input disabled ng-model="order_data.postal_code" type="text" placeholder="Postcode / Zip" >
-                                             </div>
-                                          </div>
-                                          <div class="col-md-12">
-                                             <div class="checkout-form-list">
-                                                <label>Billing Address <span class="required">*</span></label>
-                                                <input disabled ng-model="order_data.billing_address" type="text" placeholder="Street address" >
-                                             </div>
-                                          </div>
-                                          <!-- TEMP: CREATE ACCOUNT -->
-                                    </div>
-                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                
-                            </div>
-                        </div>
+                          </div>
+                    </div>
+                    <div class="modal-footer">
+                        
                     </div>
                 </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- For modal, this page has its own instance of bootstrap, jquery, popper. Can fix later.-->

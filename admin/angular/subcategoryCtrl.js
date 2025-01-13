@@ -15,9 +15,8 @@ app.controller('subcategoryCtrl', function ($scope, $http, $window, $location, $
     // Fetch the list of products
     $scope.list = function () {
         console.log("Fetching product list from:", config.baseurl);
-        $http.get(`${config.baseurl}subcategory/subcategory/`)
+        $http.get(`${config.baseurl}products/subcategory/`)
         .then(function (response) {
-            console.log("Full response:", response);
             if (response.status !== 200) {
                 console.error("Error fetching subcategory list:", response.statusText);
             } else {
@@ -145,7 +144,7 @@ app.controller('subcategoryCtrl', function ($scope, $http, $window, $location, $
 
     $scope.categorylist = function () {
         console.log("Fetching product list from:", config.baseurl);
-        $http.get(`${config.baseurl}category/category/`)
+        $http.get(`${config.baseurl}products/category/`)
         .then(function (response) {
             console.log("Full response:", response);
             if (response.status !== 200) {
