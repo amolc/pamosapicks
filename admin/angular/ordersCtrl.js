@@ -4,7 +4,7 @@ app.controller('ordersCtrl', function ($scope, $http, $window, $location, $sce, 
 
     $scope.list = function () {
         console.log("Fetching order list from:", config.baseurl);
-        $http.get(`${config.baseurl}order/order/`)
+        $http.get(`${config.baseurl}orders/order/`)
             .then(function (response) {
                 if (response.data.status === 'false') {
                     console.error("Error fetching orders list:", response.data.message);
@@ -25,7 +25,7 @@ app.controller('ordersCtrl', function ($scope, $http, $window, $location, $sce, 
             return;
         }
     
-        $http.get(`${config.baseurl}order/get-order/${order_id}/`)
+        $http.get(`${config.baseurl}orders/get-order/${order_id}/`)
             .then(function (response) {
                 if (response.data.status === 'false') {
                     console.error("Error fetching order:", response.data.message);

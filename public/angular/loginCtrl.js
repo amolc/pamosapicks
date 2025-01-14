@@ -58,19 +58,14 @@ app.controller('loginCtrl', function($scope, $http, $window, config) {
         return;
       }
 
-      let url = config.baseurl + 'customer/login-customer/';  // Changed from 'admin/get-admin/' to 'customer/get-customer/'
+      let url = config.baseurl + 'customers/login-customer/';  // Changed from 'admin/get-admin/' to 'customers/get-customer/'
       
       $http.post(url, $scope.data)
         .then(function(response) {
           if (response.data.status === "success") {
             localStorage.setItem('isCustomerLoggedIn', '1');
-            console.log(response.data);
-            
-            localStorage.setItem('name', response.data.first_name);
-            localStorage.setItem('email', response.data.email);
-            localStorage.setItem('phone', response.data.mobile_number);
-
-            $window.location.href = "/";
+            localStorage.setItem('user', JSON.stringify(response.data));
+            //$window.location.href = "/";
           } else {
             console.error("Login failed: Invalid credentials.");
             $scope.message = response.data.message || "Login failed: Please check your credentials.";

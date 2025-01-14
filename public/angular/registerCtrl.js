@@ -57,7 +57,7 @@ app.controller('registerCtrl', function($scope, $http, $window, config) {
             };
 
             // Construct the URL for the registration request for customers
-            let url = config.baseurl + 'customer/create-customer/';  // Updated URL for registration
+            let url = config.baseurl + 'customers/create-customer/';  // Updated URL for registration
             
             // Make POST request to the server
             $http.post(url, $scope.data, configHeaders)

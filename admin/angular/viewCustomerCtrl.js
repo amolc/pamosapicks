@@ -21,7 +21,7 @@ app.controller('viewCustomerCtrl', function ($scope, $http, $window, $location, 
             return;
         }
 
-        url = `${config.baseurl}customer/get-customer/${$scope.urlParams['id']}`;
+        url = `${config.baseurl}customers/get-customer/${$scope.urlParams['id']}`;
         
         $http.get(url)
             .then(function (response) {
@@ -47,7 +47,7 @@ app.controller('viewCustomerCtrl', function ($scope, $http, $window, $location, 
 
     $scope.submitCustomerStatusChange = () => {
         const id = $scope.customer.id;
-        let url = `${config.baseurl}customer/change-customer-status/${$scope.urlParams['id']}`;
+        let url = `${config.baseurl}customers/change-customer-status/${$scope.urlParams['id']}`;
         let data = JSON.stringify({
             'status': $scope.newCustomerStatus
         });

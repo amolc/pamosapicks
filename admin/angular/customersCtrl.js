@@ -10,7 +10,7 @@ app.controller('customersCtrl', function($scope, $http, $window, $location, $sce
     $scope.list = function(req, res) {
         console.log(config.baseurl);
         
-        $http.get(config.baseurl + 'customer/get-customer/')
+        $http.get(config.baseurl + 'customers/get-customer/')
             .success(function(res) {
                 if (res.status == 'false') {} else {
                     $scope.dataset = res.data;
@@ -22,9 +22,9 @@ app.controller('customersCtrl', function($scope, $http, $window, $location, $sce
 
     $scope.add = function(req, res) {
         console.log($scope.data);
-        console.log(config.baseurl + 'customer/create-customer/');
+        console.log(config.baseurl + 'customers/create-customer/');
         
-        $http.post(config.baseurl + 'customer/create-customer/', $scope.data)
+        $http.post(config.baseurl + 'customers/create-customer/', $scope.data)
             .success(function(res) {
 
                 if (res.status == 'false') {} else {
@@ -39,8 +39,8 @@ app.controller('customersCtrl', function($scope, $http, $window, $location, $sce
 
 
     $scope.update = function(id) {
-        console.log(config.baseurl + 'customer/update-customer/' + id);
-        $http.patch(config.baseurl + 'customer/update-customer/' + id + '/', $scope.data)
+        console.log(config.baseurl + 'customers/update-customer/' + id);
+        $http.patch(config.baseurl + 'customers/update-customer/' + id + '/', $scope.data)
             .success(function(res) {
                 if (res.status == 'false') {} else {
                     $scope.data = res.data;
@@ -51,7 +51,7 @@ app.controller('customersCtrl', function($scope, $http, $window, $location, $sce
     }
 
     $scope.delete = function(id) {
-        $http.delete(config.baseurl + 'customer/delete-customer/' + id + '/')
+        $http.delete(config.baseurl + 'customers/delete-customer/' + id + '/')
             .success(function(res) {
                 if (res.status == 'false') {} else {
                     $scope.list();
@@ -111,11 +111,4 @@ app.controller('customersCtrl', function($scope, $http, $window, $location, $sce
         $scope.update( $scope.data.id);
         $("#editform").modal("hide");
       };
-  
-      //orderCtrl ends
-    
-
-
-
-    //orderCtrl ends
 });

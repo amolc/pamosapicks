@@ -21,7 +21,7 @@ app.controller('viewOrderCtrl', function ($scope, $http, $window, $location, $sc
             return;
         }
 
-        url = `${config.baseurl}order/get-order/${$scope.urlParams['id']}`;
+        url = `${config.baseurl}orders/get-order/${$scope.urlParams['id']}`;
         
         $http.get(url)
             .then(function (response) {
@@ -47,7 +47,7 @@ app.controller('viewOrderCtrl', function ($scope, $http, $window, $location, $sc
 
     $scope.submitOrderStatusChange = () => {
         const id = $scope.order.id;
-        let url = `${config.baseurl}order/change-order-status/${$scope.urlParams['id']}`;
+        let url = `${config.baseurl}orders/change-order-status/${$scope.urlParams['id']}`;
         let data = JSON.stringify({
             'status': $scope.newOrderStatus
         });

@@ -19,7 +19,8 @@ app.controller('checkoutCtrl', function($scope, $http, $window, config) {
     // a select element with ng-bind. The initialization below
     // is a temporary fix.
     $scope.order_data = {
-      country: 'India'
+      country: 'India',
+      organisation: 1,
     };
 
     $scope.useIndependentShippingDetails = false;
@@ -32,11 +33,8 @@ app.controller('checkoutCtrl', function($scope, $http, $window, config) {
   };
 
   // Registration validation
-  $scope.registerValidate = function(data) {
-    if (!data || !data.email) {
-        $scope.message = "Please provide an email address.";
-        return false;
-    } else if (!data.password) {
+  $scope.registerCustomerValidate = function(data) {
+    if (!data.password) {
         $scope.message = "Please provide a password.";
         return false;
     } else if (!data.first_name) {
@@ -50,7 +48,7 @@ app.controller('checkoutCtrl', function($scope, $http, $window, config) {
 };
 
 // Registration function
-$scope.register = async function() {
+$scope.registerCustomer = async function() {
     $scope.message = "";
 
     const userData = {
@@ -61,10 +59,11 @@ $scope.register = async function() {
       last_name: $scope.order_data.last_name,
       city: $scope.order_data.city,
       mobile_number: $scope.order_data.mobile_number,
+      organisation: 1,
     };
 
     // Validate the form data using the registerValidate function
-    if ($scope.registerValidate(userData)) {
+    if ($scope.registerCustomerValidate(userData)) {
         console.log("Validating registration");
 
         const configHeaders = {
@@ -74,7 +73,7 @@ $scope.register = async function() {
         };
 
         // Construct the URL for the registration request for customers
-        let url = config.baseurl + 'customer/create-customer/';  // Updated URL for registration
+        let url = config.baseurl + 'customers/create-customer/';  // Updated URL for registration
         
         // Make POST request to the server
         await $http.post(url, userData, configHeaders)
@@ -134,8 +133,8 @@ $scope.register = async function() {
     };
 
     $scope.order_data = {
-    ...$scope.order_data,
-    ...shippingDetails
+      ...$scope.order_data,
+      ...shippingDetails,
     };
   };
 
@@ -144,9 +143,9 @@ $scope.register = async function() {
       $scope.copyBillingDetailsToShippingDetails();
     }
 
-    await $scope.register();
+    await $scope.registerCustomer();
 
-    const url = `${config.baseurl}order/create-order/`;
+    const url = `${config.baseurl}orders/create-order/`;
 
     console.log('Submitting order.');
 
