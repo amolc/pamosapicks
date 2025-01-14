@@ -13,6 +13,13 @@ app.controller(
     $scope.cartTotal = 100;
     $scope.search = null;
     $scope.categoryFilter = null;
+    $scope.isCustomerLoggedIn = JSON.parse(localStorage.getItem('isCustomerLoggedIn'));
+    $scope.user = JSON.parse(localStorage.getItem('user'));
+    $scope.orders = [];
+
+    if (!($scope.isCustomerLoggedIn === '1')) {
+      window.location.assign('/login');
+    }
   
     const isCustomerLoggedIn = localStorage.getItem('isCustomerLoggedIn');
     $scope.isCustomerLoggedIn = isCustomerLoggedIn === '1';
@@ -39,45 +46,46 @@ app.controller(
     }
   
     $scope.addToCart = function (id, product_name, qty, price, discount_price, image) {
-    qty = Number(qty);
-    price = Number(price);
-    discount_price = discount_price ? Number(discount_price) : 0;
-  
-    const product = {
-      id: id,
-      product_name: product_name,
-      quantity: qty,
-      price: price, // Ensure price is stored as a number
-      discount_price: discount_price,
-      product_image: image,
-      subtotal: price,
-      discount_subtotal: discount_price
-    };
-  
-    // Check if the product already exists in the cart
-    let existingProduct = $scope.cart.find((item) => item.id === id);
-  
-    if (existingProduct) {
-      existingProduct.quantity += qty; // Increment quantity
-      $scope.updateProductTotal(id);
-    } else {
-      $scope.cart.push(product);
-      localStorage.setItem("cart", JSON.stringify($scope.cart));
-      $scope.updateCartTotal();
-    }
+      qty = Number(qty);
+      price = Number(price);
+      discount_price = discount_price ? Number(discount_price) : 0;
+    
+      const product = {
+        id: id,
+        product_name: product_name,
+        quantity: qty,
+        price: price, // Ensure price is stored as a number
+        discount_price: discount_price,
+        product_image: image,
+        subtotal: price,
+        discount_subtotal: discount_price
+      };
+    
+      // Check if the product already exists in the cart
+      let existingProduct = $scope.cart.find((item) => item.id === id);
+    
+      if (existingProduct) {
+        existingProduct.quantity += qty; // Increment quantity
+        $scope.updateProductTotal(id);
+      } else {
+        $scope.cart.push(product);
+        localStorage.setItem("cart", JSON.stringify($scope.cart));
+        $scope.updateCartTotal();
+      }
     };
   
     $scope.checkIfProductInCart = id => {
-    let product = $scope.cart.find((item) => item.id === id);
-  
-    if(product) {
-      return true;
-    }
+      let product = $scope.cart.find((item) => item.id === id);
+    
+      if(product) {
+        return true;
+      }
     };
   
     $scope.clearCart = () => {
+    
     localStorage.setItem("cart", JSON.stringify([]));
-    $scope.updateCartTotal();
+      $scope.updateCartTotal();
     }
   
     $scope.updateQuantity = function (id, delta) {
@@ -110,8 +118,8 @@ app.controller(
       product.discount_subtotal = discount_subtotal;
   
       localStorage.setItem("cart", JSON.stringify($scope.cart));
-      $scope.updateCartTotal();
-    }
+        $scope.updateCartTotal();
+      }
     }
   
     $scope.updateCartTotal = function () {
@@ -122,5 +130,19 @@ app.controller(
     });
     $scope.cartTotal = total;
     };
+
+    $scope.getOrders = () => {
+      $http.get(`${config.baseurl}orders/order/?customer_id=${$scope.user.id}`)
+        .then(function (response) {
+            if (response.data.status === 'false') {
+                console.error("Error fetching orders list:", response.data.message);
+            } else {
+                $scope.orders = response.data.data;
+            }
+        })
+        .catch(function (error) {
+            console.error("Error fetching orders list:", error);
+        });
+    }
   }
 );

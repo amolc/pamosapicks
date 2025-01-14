@@ -32,6 +32,9 @@
       <script defer src="./angular/angular-payments.js"></script>
       <script defer src="./angular/app.js"></script>
       <script defer src="./angular/service.js"></script>
+      <script defer src="./angular/lib/common.js"></script>
+      <script defer src="./angular/lib/cart.js"></script>
+      <script defer src="./angular/lib/search.js"></script>
       <script defer src="./angular/registerCtrl.js"></script>  
    </head>
    <body ng-app="website" ng-controller="registerCtrl" ng-init="init()">
@@ -288,6 +291,12 @@
                              </div>
                           </div>
                           <div class="tptrack__id mb-10">
+                            <form action="#">
+                               <span><i class="fal fa-envelope"></i></span>
+                               <input type="text" placeholder="Mobile Number" ng-model="data.mobile_number">
+                            </form>
+                         </div>
+                          <div class="tptrack__id mb-10">
                              <form action="#">
                                 <span><i class="fal fa-envelope"></i></span>
                                 <input type="email" placeholder="Email address" ng-model="data.email">
@@ -311,12 +320,7 @@
                                  <input type="text" placeholder="City" ng-model="data.city">
                               </form>
                            </div>
-                           <div class="tptrack__id mb-10">
-                              <form action="#">
-                                 <span><i class="fal fa-envelope"></i></span>
-                                 <input type="text" placeholder="Mobile Number" ng-model="data.mobile_number">
-                              </form>
-                           </div>
+                           
                           <div class="tptrack__email mb-10">
                              <form action="#">
                                 <span><i class="fal fa-key"></i></span>
