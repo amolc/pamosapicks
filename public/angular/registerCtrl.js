@@ -3,6 +3,7 @@ app.controller('registerCtrl', function($scope, $http, $window, config) {
 
     // Initialize controller
     $scope.init = function() {
+        $scope.data.organisation = 1;
         const isCustomerLoggedIn = localStorage.getItem('isCustomerLoggedIn');
         // Check if already logged in
         if (isCustomerLoggedIn === '1') {

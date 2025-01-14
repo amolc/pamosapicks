@@ -3,7 +3,8 @@ app.controller('checkoutCtrl', function($scope, $http, $window, config) {
     const isCustomerLoggedIn = localStorage.getItem('isCustomerLoggedIn');
     
     $scope.isCustomerLoggedIn = isCustomerLoggedIn === '1';
-    
+    $scope.user = JSON.parse(localStorage.getItem("user"));
+
     $scope.cartTotal = 0;
     
     $scope.urlParams = Object.fromEntries(
@@ -21,6 +22,8 @@ app.controller('checkoutCtrl', function($scope, $http, $window, config) {
     $scope.order_data = {
       country: 'India',
       organisation: 1,
+      // TODO: Add logic to force customer authentication before completing an order.
+      customer: parseInt($scope.user?.id ?? '2'),
     };
 
     $scope.useIndependentShippingDetails = false;

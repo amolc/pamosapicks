@@ -35,12 +35,11 @@ app.controller('paymentCtrl', function($scope, $http, $window, config) {
         };
 
         $scope.getorderdata();
-
-        $scope.submitPayment();
     };
 
     $scope.submitPayment = () => {
       console.log("Submit payment details to backend here.");
+      alert('Submitting');
     }
 
     // Fetch the list of products
@@ -59,7 +58,7 @@ app.controller('paymentCtrl', function($scope, $http, $window, config) {
         return;
       }
       
-      url = `${config.baseurl}order/get-order/${$scope.urlParams['id']}/`;        
+      url = `${config.baseurl}orders/get-order/${$scope.urlParams['id']}/`;        
       $http.get(url)
           .then(function (response) {
               if (response.data.status === 'false') {
@@ -74,45 +73,7 @@ app.controller('paymentCtrl', function($scope, $http, $window, config) {
             $scope.fetchingBillingData = false;
           });
     };
-
-    $scope.buildOrderItemsFromCartData = () => {
-      const orderItems = $scope.cart.map(item => {
-        return {
-          product: item.id,
-          product_name: item.product_name,
-          product_qty: item.quantity,
-          product_price: item.price,
-          product_subtotal: item.subtotal,
-        }
-      });
-
-      return orderItems;
-    }
-    $scope.submitOrder = () => {
-      alert($scope.paymentMethod);
-      return;
-      const url = `${config.baseurl}order/create-order/`;
-      $scope.order_data.total = $scope.cartTotal;
-      $scope.order_data.order_items = $scope.buildOrderItemsFromCartData();
-
-      $http.post(
-        url,
-        $scope.order_data
-      ).then(response => {
-        if (response.data.status == "success") {
-          const order_data = response.data.data;
-          window.location.assign(`/payment.html?id=${order_data.id}`);
-        } else {
-          $scope.errorMessage = "Couldn't submit order.";
-          const errors = response.data;
-          console.log(errors);
-        }
-      }).catch(error => {
-          $scope.errorMessage = "Couldn't submit order.";
-          console.error(`Error submitting order: ${JSON.stringify(error)}`);
-      });
-    }
-
+  
     $scope.addToCart = function (id, product_name, qty, price, discount_price, image) {
       qty = Number(qty);
       price = Number(price);
