@@ -18,7 +18,7 @@ app.controller(
     $scope.orders = [];
 
     if (!($scope.isCustomerLoggedIn === 1)) {
-      window.location.assign('/login');
+      window.location.assign('/login.html');
     }
   
     const isCustomerLoggedIn = localStorage.getItem('isCustomerLoggedIn');
