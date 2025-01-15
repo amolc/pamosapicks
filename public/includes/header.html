@@ -73,7 +73,7 @@
      <button class="tpcart__close">
         <i class="icon-x"></i>
      </button>
-     <div class="tpcart">
+     <div class="tpcart" style="border:1px solid red;">
         <h4 class="tpcart__title">Your Cart</h4>
         <div class="tpcart__product">
            <div class="tpcart__product-list">
@@ -140,7 +140,7 @@
               </div>
               <div class="tpcart__checkout-btn">
                  <!--<a class="tpcart-btn mb-10" href="cart.html">View Cart</a>-->
-                 <a class="tpcheck-btn" href="checkout.html">Checkout</a>
+                 <a class="tpcheck-btn" href="#" ng-click="checkout()">Checkout</a>
               </div>
            </div>
         </div>
@@ -232,5 +232,44 @@
          </div>
      </div>
   </div> 
+
+
+    <!-- Mobilephone modal starts -->
+    <div class="modal inmodal" id="mobilephoneModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content animated fadeIn custom-modal">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">
+                      <span aria-hidden="true">&times;</span>
+                      <span class="sr-only">Close</span>
+                  </button>
+                  <img src="../assets/img/favicon.png" class="ml-3" alt="Logo">
+                  <h4 class="modal-title fw-bold">Mobile Phone</h4>
+              </div>
+              <div class="modal-body">
+                  <!-- Modal form section starts -->
+                  <div class="form">
+                      <form name="myForm">
+
+                         
+                          <!-- UPIID Input -->
+                          <div class="form-group">
+                              <label for="amount">Mobile Phone:</label>
+                              <input type="text" class="form-control" ng-model="account.mobilephone" name="upiid"
+                                  value="amolch001@oksbi" readonly>
+                          </div>
+                         
+                          <!-- Submit Button -->
+                          <button type="submit" ng-click="onmobilephoneSubmit(deposit)"
+                              class="btn btn-primary block full-width m-b">
+                              Submit
+                          </button>
+                      </form>
+                  </div>
+              </div>
+              <div class="modal-footer"></div>
+          </div>
+      </div>
+  </div>
   <!-- sidebar-menu-area-end -->
 </header>
