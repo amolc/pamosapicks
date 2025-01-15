@@ -22,6 +22,16 @@ app.controller(
       $scope.updateCartTotal();
     };
 
+    $scope.checkout = () => {
+      $scope.mobilephone =  localStorage.getItem('mobilephone');
+
+      if ($scope.currency === "INR") {
+        $location.path('/checkout.html');
+      }else{
+        $("#mobilephoneModal").modal("show");
+      }
+      
+    }
     $scope.getProductList = () => {
       $scope.fetchingProductList = true;
       /**
