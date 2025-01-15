@@ -144,4 +144,14 @@ app.controller('loginCtrl', function($scope, $http, $window, config) {
     });
     $scope.cartTotal = total;
   };
+
+  $scope.initializeHeader = () => {
+    /**
+     * Depends on: 
+     *  - lib/cart.js.
+     *  - lib/search.js.
+     */
+    initializeCartElements();
+    initializeSearchElements();
+  };
 });

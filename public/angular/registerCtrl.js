@@ -1,9 +1,21 @@
 app.controller('registerCtrl', function($scope, $http, $window, config) {
     console.log(config.baseurl);
 
+    $scope.initializeHeader = () => {
+      /**
+       * Depends on: 
+       *  - lib/cart.js.
+       *  - lib/search.js.
+       */
+      initializeCartElements();
+      initializeSearchElements();
+    };
+
     // Initialize controller
     $scope.init = function() {
-        $scope.data.organisation = 1;
+        $scope.data = {
+          organisation: 1
+        };
         const isCustomerLoggedIn = localStorage.getItem('isCustomerLoggedIn');
         // Check if already logged in
         if (isCustomerLoggedIn === '1') {
@@ -69,11 +81,8 @@ app.controller('registerCtrl', function($scope, $http, $window, config) {
                     if (response.data.status === "success") {
                         // Store relevant data in local storage after successful registration
                         localStorage.setItem('isCustomerLoggedIn', '1');
-                        localStorage.setItem('name', response.data.first_name);
-                        localStorage.setItem('email', response.data.email);
-                        localStorage.setItem('phone', response.data.mobile_number);
-
-                        console.log("User registered and stored in local storage:", response.data.email);
+                        localStorage.setItem('user', JSON.stringify(response.data.data.user));
+                        
                         $window.location.href = "/";  // Redirect to customer dashboard after registration
                     } else {
                         console.error("Registration failed:", response.data.message);

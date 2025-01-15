@@ -6,7 +6,11 @@ app.controller('checkoutCtrl', function($scope, $http, $window, config) {
     $scope.user = JSON.parse(localStorage.getItem("user"));
 
     $scope.cartTotal = 0;
-    
+
+    if (!$scope.user) {
+      window.location.assign('/login.html');
+    }
+
     $scope.urlParams = Object.fromEntries(
       new URLSearchParams(window.location.search)
     );
@@ -20,6 +24,7 @@ app.controller('checkoutCtrl', function($scope, $http, $window, config) {
     // a select element with ng-bind. The initialization below
     // is a temporary fix.
     $scope.order_data = {
+      ...$scope.user,
       country: 'India',
       organisation: 1,
       // TODO: Add logic to force customer authentication before completing an order.

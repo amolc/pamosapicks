@@ -128,8 +128,9 @@
                   <span class="heilight-price">₹{{ cartTotal }}</span>
                </div>
                <div class="tpcart__checkout-btn">
-                  <!--<a class="tpcart-btn mb-10" href="cart.html">View Cart</a>-->
-                  <a class="tpcheck-btn" href="#" ng-click="checkout()">Checkout</a>
+                  <a ng-if="user" class="tpcheck-btn" href="/checkout.html">Checkout</a>
+                  <a ng-if="!user" class="tpcart-btn mb-2" href="/login.html">Login and Checkout</a>
+                  <a ng-if="!user" class="tpcheck-btn" href="/register.html">Register and Checkout</a>
                </div>
             </div>
          </div>
@@ -242,7 +243,7 @@
                </div>
                <!-- Logo End -->
                <!-- Description Start -->
-               <h2 class="text-center fw-bold">finish your checkout</h2>
+               <h2 class="text-center fw-bold">Enter your mobile number</h2>
                <!-- Description End -->
                <!-- Modal form section starts -->
                <div class="form">

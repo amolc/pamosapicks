@@ -6,6 +6,7 @@ app.controller(
       $scope.cartTotal = 100;
       $scope.search = null;
       $scope.categoryFilter = null;
+      $scope.user = localStorage.getItem("user") ?? undefined;
 
       const isCustomerLoggedIn = localStorage.getItem('isCustomerLoggedIn');
       $scope.isCustomerLoggedIn = isCustomerLoggedIn === '1';

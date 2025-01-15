@@ -37,6 +37,16 @@ app.controller('paymentCtrl', function($scope, $http, $window, config) {
         $scope.getorderdata();
     };
 
+    $scope.initializeHeader = () => {
+      /**
+       * Depends on: 
+       *  - lib/cart.js.
+       *  - lib/search.js.
+       */
+      initializeCartElements();
+      initializeSearchElements();
+    };
+
     $scope.submitPayment = () => {
       console.log("Submit payment details to backend here.");
       alert('Submitting');

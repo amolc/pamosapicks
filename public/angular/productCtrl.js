@@ -42,7 +42,7 @@ app.controller(
         return;
       }
       
-      url = `${config.baseurl}product/get-product/${$scope.urlParams['id']}/`;
+      url = `${config.baseurl}products/get-product/${$scope.urlParams['id']}/`;
       
       $http.get(url)
           .then(function (response) {
@@ -59,9 +59,19 @@ app.controller(
           });
     };
 
+    $scope.initializeHeader = () => {
+      /**
+       * Depends on: 
+       *  - lib/cart.js.
+       *  - lib/search.js.
+       */
+      initializeCartElements();
+      initializeSearchElements();
+    };
+
   $scope.fetchingCategoryList = true;
   $scope.categorylist = function() {
-    $http.get(`${config.baseurl}category/category/`)
+    $http.get(`${config.baseurl}products/category/`)
         .then(function (response) {
             if (response.data.status === 'false') {
                 console.error("Error fetching category list:", response.data.message);

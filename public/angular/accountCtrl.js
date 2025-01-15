@@ -1,10 +1,3 @@
-// Function to convert JSON object to query string
-function jsonToQueryString(params) {
-  return Object.keys(params)
-    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(params[key]))
-    .join('&');
-}
-
 app.controller(
   "accountCtrl",
   function ($scope, $http, $window, $location, $sce, $timeout, store, config) {
@@ -56,10 +49,21 @@ app.controller(
     $scope.updateCartTotal();
     };
 
+    $scope.initializeHeader = () => {
+      /**
+       * Depends on: 
+       *  - lib/cart.js.
+       *  - lib/search.js.
+       */
+      initializeCartElements();
+      initializeSearchElements();
+    };
+
     $scope.logout = () => {
       localStorage.removeItem("isCustomerLoggedIn");
       localStorage.removeItem("name");
       localStorage.removeItem("phone");
+      localStorage.removeItem("user");
 
       window.location.assign('/login.html');
     }

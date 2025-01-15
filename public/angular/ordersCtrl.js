@@ -17,6 +17,16 @@ app.controller('ordersCtrl', function ($scope, $http, $window, $location, $sce, 
         });
     };
 
+    $scope.initializeHeader = () => {
+      /**
+       * Depends on: 
+       *  - lib/cart.js.
+       *  - lib/search.js.
+       */
+      initializeCartElements();
+      initializeSearchElements();
+    };
+
     // Fetch a single order by ID
     $scope.getOrderbyid = function (id) {
         if (!order_id) {

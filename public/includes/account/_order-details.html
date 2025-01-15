@@ -1,5 +1,23 @@
 <div class="w-100 h-100">
-  <div ng-repeat="order in orders">
-    <p>{{ order.id }}</p>
-  </div>
+  <!-- Table with stripped rows -->
+  <table class="table mt-3">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Customer</th>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="data in dataset">
+        <td>{{data.id}}</td>
+        <td>{{ data.first_name }} {{ data.last_name }}</td>
+        <td>{{ data.created_on }}</td>
+        <td>{{ data.amount }}</td>
+        <td>{{ data.status }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

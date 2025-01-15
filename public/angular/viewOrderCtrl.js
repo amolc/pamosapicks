@@ -2,6 +2,16 @@ app.controller('viewOrderCtrl', function ($scope, $http, $window, $location, $sc
     $scope.order = {};
     $scope.newOrderStatus = '';
 
+    $scope.initializeHeader = () => {
+      /**
+       * Depends on: 
+       *  - lib/cart.js.
+       *  - lib/search.js.
+       */
+      initializeCartElements();
+      initializeSearchElements();
+    };
+    
     $scope.urlParams = Object.fromEntries(
         new URLSearchParams(window.location.search)
     );
