@@ -7728,7 +7728,8 @@ p.checkout-coupon input[type=text]:focus {
   display: none;
 }
 
-.checkbox-form h3 {
+.checkbox-form h3,
+div>h3 {
   border-bottom: 1px solid #eaedff;
   font-size: 24px;
   font-family: var(--tp-ff-jost);
