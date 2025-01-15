@@ -299,12 +299,12 @@
                            <div class="col-md-6">
                               <div class="checkout-form-list">
                                  <label>Phone <span class="required">*</span></label>
-                                 <input ng-model="order_data.mobile_number" type="text" placeholder="">
+                                 <input ng-model="order_data.mobile_number" disabled type="text" placeholder="">
                               </div>
                            </div>
                            <div class="col-md-6">
                               <div class="checkout-form-list">
-                                 <label>Email Address <span class="required">*</span></label>
+                                 <label>Email Address</label>
                                  <input ng-model="order_data.email" type="email" placeholder="">
                               </div>
                            </div>
@@ -328,7 +328,7 @@
                                     <input class="mr-2" ng-model="order_data.billing_address" type="text"
                                        placeholder="Street address">
                                     <input class="ms-2" ng-model="order_data.billing_address_specifier" type="text"
-                                       placeholder="address_specifier, suite, unit etc. (optional)">
+                                       placeholder="Apartment, suite, unit etc. (optional)">
                                  </div>
                               </div>
                            </div>
@@ -381,97 +381,6 @@
                            <label>Order Notes</label>
                            <textarea id="checkout-mess" cols="30" rows="10" ng-model="order_data.notes"
                               placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
-                        </div>
-                     </div>
-                     <div class="different-address">
-                        <div class="ship-different-title">
-                           <h3 class="d-flex align-items-center">
-                              <input style="margin-right: 8px;" id="ship-box" type="checkbox"
-                                 ng-model="useIndependentShippingDetails">
-                              <label>Ship to a different address?</label>
-                           </h3>
-                        </div>
-                        <div id="ship-box-info">
-                           <div class="row">
-                              <div class="col-md-6">
-                                 <div class="checkout-form-list">
-                                    <label>Email Address <span class="required">*</span></label>
-                                    <input ng-model="order_data.shipping_email" type="email" placeholder="">
-                                 </div>
-                              </div>
-                              <div class="col-md-6">
-                                 <div class="checkout-form-list">
-                                    <label>Phone <span class="required">*</span></label>
-                                    <input ng-model="order_data.shipping_mobile_number" type="text"
-                                       placeholder="+9912345678">
-                                 </div>
-                              </div>
-                              <div class="col-md-6">
-                                 <div class="checkout-form-list">
-                                    <label>First Name <span class="required">*</span></label>
-                                    <input ng-model="order_data.shipping_first_name" type="text" placeholder="">
-                                 </div>
-                              </div>
-                              <div class="col-md-6">
-                                 <div class="checkout-form-list">
-                                    <label>Last Name <span class="required">*</span></label>
-                                    <input ng-model="order_data.shipping_last_name" type="text" placeholder="">
-                                 </div>
-                              </div>
-                              <div class="col-md-12">
-                                 <div class="checkout-form-list">
-                                    <label>Address 1<span class="required">*</span></label>
-                                    <input ng-model="order_data.shipping_address" type="text"
-                                       placeholder="Street address">
-                                 </div>
-                              </div>
-                              <div class="col-md-12">
-                                 <div class="checkout-form-list">
-                                    <input ng-model="order_data.shipping_address_specifier" type="text"
-                                       placeholder="address_specifier, suite, unit etc. (optional)">
-                                 </div>
-                              </div>
-                              <div class="col-md-12">
-                                 <div class="checkout-form-list">
-                                    <label>Address 2 (Optional)</label>
-                                    <input ng-model="order_data.shipping_address2" type="text"
-                                       placeholder="Street address">
-                                 </div>
-                              </div>
-                              <div class="col-md-12">
-                                 <div class="checkout-form-list">
-                                    <input ng-model="order_data.shipping_address2_specifier" type="text"
-                                       placeholder="address_specifier, suite, unit etc. (optional)">
-                                 </div>
-                              </div>
-                              <div class="col-md-6">
-                                 <div class="country-select">
-                                    <label>Country <span class="required">*</span></label>
-                                    <select ng-model="order_data.shipping_country">
-                                       <option selected value="India">India</option>
-                                    </select>
-                                 </div>
-                              </div>
-                              <div class="col-md-6">
-                                 <div class="checkout-form-list">
-                                    <label>State <span class="required">*</span></label>
-                                    <input ng-model="order_data.shipping_state" type="text" placeholder="">
-                                 </div>
-                              </div>
-                              <div class="col-md-6">
-                                 <div class="checkout-form-list">
-                                    <label>Town / City <span class="required">*</span></label>
-                                    <input ng-model="order_data.shipping_city" type="text" placeholder="Town / City">
-                                 </div>
-                              </div>
-                              <div class="col-md-6">
-                                 <div class="checkout-form-list">
-                                    <label>Postcode / Zip <span class="required">*</span></label>
-                                    <input ng-model="order_data.shipping_postal_code" type="text"
-                                       placeholder="Postcode / Zip">
-                                 </div>
-                              </div>
-                           </div>
                         </div>
                      </div>
                   </div>

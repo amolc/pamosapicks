@@ -9,7 +9,7 @@ app.controller(
   "accountCtrl",
   function ($scope, $http, $window, $location, $sce, $timeout, store, config) {
     $scope.getLoggedInCustomer = () => {
-      const uer = localStorage.getItem("user");
+      const user = localStorage.getItem("user");
       const url = `${config.baseurl}customers/get-customer/${$scope.user.id}`;
  
       $http.get(url).then(response => {

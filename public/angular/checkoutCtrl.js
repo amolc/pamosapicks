@@ -141,6 +141,23 @@ $scope.registerCustomer = async function() {
     };
   };
 
+  $scope.getLoggedInCustomer = () => {
+    const user = localStorage.getItem("user");
+    const url = `${config.baseurl}customers/get-customer/${$scope.user.id}`;
+
+    $http.get(url).then(response => {
+      if (response.data.status === 'false') {
+        console.error("Error fetching logged in customer:", response.data.message);
+      } else {
+        console.log("Response is: ");
+        console.log(response);
+        $scope.customer = response.data.data;
+      }
+    }).catch(function (error) {
+        console.error("Error fetching logged in customer:", error);
+    });
+  };
+
   $scope.submitOrder = async () => {
     if (!$scope.useIndependentShippingDetails) {
       $scope.copyBillingDetailsToShippingDetails();
