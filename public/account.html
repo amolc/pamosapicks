@@ -281,25 +281,19 @@
             <hr class="mt-0">
           </div>
           <nav class="col-md-3 d-md-flex flex-column p-4">
-            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-              <button class="nav-link active d-flex flex-row align-items-center justify-items-start gap-1" id="personal-details-tab" data-bs-toggle="tab" data-bs-target="#personal-details" type="button" role="tab" aria-controls="personal-details" aria-selected="true">
+            <div class="nav" id="nav-tab" role="tablist">
+              <a href="/account.html" class="nav-link active d-flex flex-row align-items-center justify-items-start gap-1">
                 <svg class="" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
                 </svg>
                 <span>Personal Details</span>
-              </button>
-              <button class="nav-link  d-flex flex-row align-items-center justify-items-start gap-1" data-bs-toggle="tab" data-bs-target="#billing-shipping-details" type="button" role="tab" aria-controls="billing-shipping-details" aria-selected="false" tabindex="-1">
+              </a>
+              <a href="/orders.html" class="nav-link d-flex flex-row align-items-center justify-items-start gap-1">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
                 </svg>
-                <span>Billing/Shipping Details</span>
-              </button>
-              <button class="nav-link  d-flex flex-row align-items-center justify-items-start gap-1" data-bs-toggle="tab" data-bs-target="#order-details" type="button" role="tab" aria-controls="billing-shipping-details" aria-selected="false" tabindex="-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
-                </svg>
-                <span>My Orders</span>
-              </button>
+                <span>Your Orders</span>
+              </a>
               <button ng-click="logout()" class="nav-link  d-flex flex-row align-items-center justify-items-start gap-1">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
@@ -309,14 +303,8 @@
             </div>
           </nav>
           <div class="tab-content col-md-9" id="nav-tabContent">
-            <div class="tab-pane fade active show" id="personal-details" role="tabpanel" aria-labelledby="personal-details-tab" tabindex="0">
-              <p>Personal Details.</p>
-            </div>
-            <div class="tab-pane fade" id="billing-shipping-details" role="tabpanel" aria-labelledby="billing-shipping-details-tab" tabindex="0">
-              <p>Billing Shipping Details</p>
-            </div>
-            <div class="tab-pane fade" id="order-details" role="tabpanel" aria-labelledby="billing-shipping-details-tab" tabindex="0">
-              <ng-include src="account/_order-details.html">
+            <div class="tab-pane active show" id="personal-details" role="tabpanel" aria-labelledby="personal-details-tab" tabindex="0">
+              <ng-include src="'includes/account/_account-details.html'"></ng-include>
             </div>
           </div>
         </div>

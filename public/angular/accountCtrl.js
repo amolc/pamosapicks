@@ -8,6 +8,23 @@ function jsonToQueryString(params) {
 app.controller(
   "accountCtrl",
   function ($scope, $http, $window, $location, $sce, $timeout, store, config) {
+    $scope.getLoggedInCustomer = () => {
+      const uer = localStorage.getItem("user");
+      const url = `${config.baseurl}customers/get-customer/${$scope.user.id}`;
+ 
+      $http.get(url).then(response => {
+        if (response.data.status === 'false') {
+          console.error("Error fetching logged in customer:", response.data.message);
+        } else {
+          console.log("Response is: ");
+          console.log(response);
+          $scope.customer = response.data.data;
+        }
+      }).catch(function (error) {
+          console.error("Error fetching logged in customer:", error);
+      });
+    };
+
     $scope.init = function () {
     $scope.baseurl = config.baseurl;
     $scope.cartTotal = 100;
@@ -16,6 +33,7 @@ app.controller(
     $scope.isCustomerLoggedIn = JSON.parse(localStorage.getItem('isCustomerLoggedIn'));
     $scope.user = JSON.parse(localStorage.getItem('user'));
     $scope.orders = [];
+    $scope.getLoggedInCustomer();
 
     if (!($scope.isCustomerLoggedIn === 1)) {
       window.location.assign('/login.html');
@@ -34,6 +52,7 @@ app.controller(
     
     // Initialize cart from localStorage
     $scope.cart = JSON.parse(localStorage.getItem("cart")) || [];
+    
     $scope.updateCartTotal();
     };
 
