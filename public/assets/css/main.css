@@ -7728,7 +7728,8 @@ p.checkout-coupon input[type=text]:focus {
   display: none;
 }
 
-.checkbox-form h3 {
+.checkbox-form h3,
+div>h3 {
   border-bottom: 1px solid #eaedff;
   font-size: 24px;
   font-family: var(--tp-ff-jost);
@@ -9342,6 +9343,13 @@ only screen and (min-width: 576px) and (max-width: 767px) {
 .checkout-modal .form-control {
   width: 320px;
   margin: 0 auto;
+}
+
+/* Card */
+.custom-card {
+  padding: 8px;
+  box-shadow: 2px 2px 4px rgba(1, 41, 112, 0.1);
+  border-radius: 8px;
 }
 
 /* Responsive Design */
