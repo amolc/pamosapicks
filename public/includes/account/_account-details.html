@@ -1,4 +1,94 @@
 <div class="w-100 h-100">
-  <p>This is the account details include.</p>
-  {{ customer.id }}
+  <div class="checkbox-form">
+    <h3>Billing Details</h3>
+    <div class="row">
+     <div class="col-md-6">
+       <div class="checkout-form-list">
+          <label>Phone Number <span class="required">*</span></label>
+          <input disabled ng-model="customer.mobile_number" type="text" placeholder="" >
+       </div>
+    </div>
+       <div class="col-md-6">
+          <div class="checkout-form-list">
+             <label>Email Address <span class="required">*</span></label>
+             <input disabled ng-model="customer.email" type="email" placeholder="" >
+          </div>
+       </div>
+          
+          <div class="col-md-6">
+             <div class="checkout-form-list">
+                <label>First Name <span class="required">*</span></label>
+                <input disabled ng-model="customer.first_name" type="text" placeholder="" >
+             </div>
+          </div>
+          <div class="col-md-6">
+             <div class="checkout-form-list">
+                <label>Last Name <span class="required">*</span></label>
+                <input disabled ng-model="customer.last_name" type="text" placeholder="" >
+             </div>
+          </div>
+          <div class="col-md-12">
+             <div class="checkout-form-list">
+                <label>Address 1<span class="required">*</span></label>
+                <div class="d-flex flex-row gap-4">
+                   <input class="mr-2" ng-model="customer.billing_address" type="text" placeholder="Street address" >
+                   <input class="ms-2" ng-model="customer.billing_address_specifier" type="text" placeholder="address_specifier, suite, unit etc. (optional)" >
+                </div>
+             </div>
+          </div>
+          <div class="col-md-12 d-none">
+             <div class="checkout-form-list">
+                <label>Address 2 (Optional)</label>
+                <div>
+                   <div class="checkout-form-list">
+                      <input disabled ng-model="customer.billing_address2" type="text" placeholder="Street address" >
+                      <input disabled ng-model="customer.billing_address2_specifier" type="text" placeholder="address_specifier, suite, unit etc. (optional)" >
+                   </div>
+                </div>
+             </div>
+          </div>
+          <div class="col-md-12 hidden">
+             
+          </div>
+          <div class="col-md-6">
+             <div class="country-select">
+                <label>Country <span class="required">*</span></label>
+                <select
+                   ng-model="customer.country">
+                   <option selected value="India">India</option>
+                </select>
+             </div>
+          </div>
+          <div class="col-md-6">
+             <div class="checkout-form-list">
+                <label>State <span class="required">*</span></label>
+                <input disabled ng-model="customer.state" type="text" placeholder="" >
+             </div>
+          </div>
+          <div class="col-md-6">
+             <div class="checkout-form-list">
+                <label>Town / City <span class="required">*</span></label>
+                <input disabled ng-model="customer.city" type="text" placeholder="Town / City" >
+             </div>
+          </div>
+          <div class="col-md-6">
+             <div class="checkout-form-list">
+                <label>Postcode / Zip <span class="required">*</span></label>
+                <input disabled ng-model="customer.postal_code" type="text" placeholder="Postcode / Zip" >
+             </div>
+          </div>
+          <div class="col-md-12">
+             <div class="checkout-form-list create-acc">
+                <input id="cbox" type="checkbox" >
+                <label>Create an account?</label>
+             </div>
+             <div id="cbox_info" class="checkout-form-list create-account">
+                <p>Create an account by entering the information below. If you are a returning
+                      customer please login at the top of the page.</p>
+                <label>Account password <span class="required">*</span></label>
+                <input type="password" placeholder="password" ng-model="password" >
+             </div>
+          </div>
+    </div>
+ </div>
 </div>
