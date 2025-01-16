@@ -168,8 +168,6 @@ $scope.registerCustomer = async function() {
       $scope.copyBillingDetailsToShippingDetails();
     }
 
-    await $scope.registerCustomer();
-
     const url = `${config.baseurl}orders/create-order/`;
 
     console.log('Submitting order.');

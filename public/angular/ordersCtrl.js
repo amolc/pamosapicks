@@ -1,9 +1,10 @@
 app.controller('ordersCtrl', function ($scope, $http, $window, $location, $sce, $timeout, store, config) {
     $scope.data = {};
     $scope.dataset = [];
+    $scope.user = JSON.parse(localStorage.getItem('user'));
 
     $scope.list = function () {
-      $http.get(`${config.baseurl}orders/order/`)
+      $http.get(`${config.baseurl}orders/order/?customer_id=${$scope.user.id}`)
         .then(function (response) {
             if (response.data.status === 'false') {
                 console.error("Error fetching orders list:", response.data.message);
