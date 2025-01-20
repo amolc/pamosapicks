@@ -71,10 +71,10 @@
                               {{ message }}
                            </div>
                            <div class="tpsign__remember d-flex align-items-center justify-content-between mb-15">
-                              <div class="form-check">
+                              <!--<div class="form-check">
                                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
                                  <label class="form-check-label" for="flexCheckDefault2">Remember me</label>
-                              </div>
+                              </div>-->
                               <!-- Hide for now 
                               <div class="tpsign__pass">
                                  <a href="#">Forget Password</a>
@@ -99,26 +99,27 @@
                                  <p>Your personal data will be used to support your experience throughout this website, to manage access to your account.</p>
                               </div>
                            </div>
-                         
                            <div class="tptrack__email mb-10">
                               <form action="#">
-                                 <span><i class="fal fa-key"></i></span>
+                                 <span>
+                                    <i class="fal fa-key"></i>
+                                 </span>
                                  <input type="password" placeholder="Password" ng-model="data.password">
                               </form>
                            </div>
                            <div ng-if="message" class="w-full my-2 alert alert-warning">
                               {{ message }}
                            </div>
-                           <div class="tpsign__remember d-flex align-items-center justify-content-between mb-15">
+                           <!-- <div class="tpsign__remember d-flex align-items-center justify-content-between mb-15">
                               <div class="form-check">
                                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
                                  <label class="form-check-label" for="flexCheckDefault2">Remember me</label>
                               </div>
-                              <!-- Hide for now 
+                              Hide for now 
                               <div class="tpsign__pass">
                                  <a href="#">Forget Password</a>
-                              </div> -->
-                           </div>
+                              </div>
+                           </div> -->
                            <div class="tptrack__btn">
                               <button type="button" ng-click="login()" class="tptrack__submition active mb-2">Login Now<i class="fal fa-long-arrow-right"></i></button>
                               <a href="/register.html" class="tptrack__submition tpsign__reg">Sign Up</a>

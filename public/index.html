@@ -64,9 +64,9 @@
                       <div class="tpshop__category pt-0 pb-2">
                           <div class="swiper-container inner-category-active">
                             <div class="swiper-wrapper">
-                                <div ng-if="fetchingCategoryList">
+                                <!--<div ng-if="fetchingCategoryList">
                                   Loading categories...
-                                </div>
+                                </div>-->
                                 <div ng-repeat="category in categorydataset" class="swiper-slide h-full">
                                   <div class="category__item h-full">
                                       <!-- class="category__thumb fix"--> 
@@ -153,7 +153,7 @@
                       <div class="tab-content" id="nav-tabContent">
                           <!-- TEMPORARILY removed tab-pane class code so products can appear-->
                           <!--  class="tab-pane fade" role="tabpanel" -->
-                          <div ng-if="!fetchingProductList">
+                          <div>
                             <div
                                 id="nav-all" aria-labelledby="nav-all-tab">
                                 <div class="row row-cols-xxl-4 row-cols-xl-4 row-cols-lg-3 row-cols-md-3 row-cols-sm-2 row-cols-1 tpproduct__shop-item">
@@ -269,11 +269,11 @@
                                 </nav>
                             </div>
                           </div>
-                          <div ng-if="fetchingProductList">
+                          <!--<div ng-if="fetchingProductList">
                             <div class="w-full h-full flex flex-col justify-center items-center">
                                 <p class="font-bold">Loading...</p>
                             </div>
-                          </div>
+                          </div>-->
                       </div>
                     </div>
                 </div>

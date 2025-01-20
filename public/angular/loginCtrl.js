@@ -33,11 +33,14 @@ app.controller('loginCtrl', function($scope, $http, $window, config) {
 
 
   $scope.showOtpDiv = function(data) {
-    alert(data);
     $scope.showLogin = false;
     $scope.showOtp = true;
   };
   
+
+  $scope.setLoginMobileNumber = () => {
+
+  };
 
    // 
    $scope.loginvalidate = function(data) {
@@ -79,8 +82,8 @@ app.controller('loginCtrl', function($scope, $http, $window, config) {
 
       // Check if the necessary parameters exist in $scope.data
       if (!$scope.data.mobile_number || !$scope.data.password) {
-        console.error("Missing required fields: email or password");
-        $scope.message = "Please provide both email and password.";
+        console.error("Missing required fields: mobile number or password");
+        $scope.message = "Please provide both mobile number and password.";
         return;
       }
 

@@ -46,6 +46,8 @@ app.controller(
         $scope.num_products = productList.num_products;
         $scope.start_index = productList.start_index;
         $scope.end_index = productList.end_index;
+        console.log("Fetched: ");
+        console.log($scope.productdataset);
       }).catch(error => {
         console.error("Error fetching product list:", error);
       }).finally(() => {
