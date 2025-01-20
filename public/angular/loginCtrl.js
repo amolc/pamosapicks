@@ -26,6 +26,29 @@ app.controller('loginCtrl', function($scope, $http, $window, config) {
 
     $scope.cart = getCart();
     $scope.updateCartTotal();
+    // toggle mobilephone modal and otp
+    $scope.showLogin = true;
+    $scope.showOtp = false;
+  };
+
+
+  $scope.showOtpDiv = function(data) {
+    alert(data);
+    $scope.showLogin = false;
+    $scope.showOtp = true;
+  };
+  
+
+   // 
+   $scope.loginvalidate = function(data) {
+    if (!data || !data.mobile_number) {
+      $scope.message = "Please provide a mobile number.";
+      return false;
+    } else if (!data.password) {
+      $scope.message = "Please provide a password.";
+      return false;
+    }
+    return true;
   };
 
   // Login validation

@@ -5,7 +5,7 @@ cp server.config.js  public/api/config.js
 
 npm install
 echo "killing the freshpicks.js"
-ps -ef | grep "node freshpicks.js" | grep -v runstatic | awk '{print $2}' | xargs kill -9
+lsof -t -i:42000 | xargs -r kill -9 && echo "Service on port 42000 terminated" || echo "No service running on port 42000"
 echo "Restarting Service"
 node freshpicks.js
 echo "freshpicks started at port 42000"

@@ -47,8 +47,8 @@
          <!-- track-area-start -->
          <section class="track-area pt-35">
             <div class="container">
-               <div class="row justify-content-center">
-                  <div class="col-lg-6 col-sm-12">
+               <div class="row justify-content-center" >
+                  <div class="col-lg-6 col-sm-12" style="border:1px solid red;" ng-show="showLogin">
                      <div class="tptrack__product mb-40">
                         <div class="tptrack__content grey-bg">
                            <div class="tptrack__item d-flex mb-20">
@@ -66,6 +66,40 @@
                                  <input type="text" placeholder="Mobile Number" ng-model="data.mobile_number">
                               </form>
                            </div>
+                          
+                           <div ng-if="message" class="w-full my-2 alert alert-warning">
+                              {{ message }}
+                           </div>
+                           <div class="tpsign__remember d-flex align-items-center justify-content-between mb-15">
+                              <div class="form-check">
+                                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
+                                 <label class="form-check-label" for="flexCheckDefault2">Remember me</label>
+                              </div>
+                              <!-- Hide for now 
+                              <div class="tpsign__pass">
+                                 <a href="#">Forget Password</a>
+                              </div> -->
+                           </div>
+                           <div class="tptrack__btn">
+                              <button type="button" ng-click="showOtpDiv()" class="tptrack__submition active mb-2">Login Now<i class="fal fa-long-arrow-right"></i></button>
+                              <a href="/register.html" class="tptrack__submition tpsign__reg">Sign Up</a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-lg-6 col-sm-12" style="border:1px solid blue;" ng-show="showOtp">
+                     <div class="tptrack__product mb-40">
+                        <div class="tptrack__content grey-bg">
+                           <div class="tptrack__item d-flex mb-20">
+                              <div class="tptrack__item-icon">
+                                 <i class="fal fa-user-unlock"></i>
+                              </div>
+                              <div class="tptrack__item-content">
+                                 <h4 class="tptrack__item-title">Login Here</h4>
+                                 <p>Your personal data will be used to support your experience throughout this website, to manage access to your account.</p>
+                              </div>
+                           </div>
+                         
                            <div class="tptrack__email mb-10">
                               <form action="#">
                                  <span><i class="fal fa-key"></i></span>
