@@ -1,15 +1,14 @@
 #!/bin/bash
 
-mydir=$(dirname $0)
-ps -ef | grep "node freshpicks.js" | awk '{print $2}' | xargs kill -9
-
-
-cp service.server.js  web/angular/service.js
 cp service.server.js  admin/angular/service.js
-cp service.server.js  staffadmin/angular/service.js
-cp service.server.js  app/angular/service.js
-cp service.server.js  client/angular/service.js
 cp service.server.js  public/angular/service.js
+cp server.config.js  public/api/config.js
+
+npm install
+echo "killing the freshpicks.js"
+lsof -t -i:42000 | xargs -r kill -9 && echo "Service on port 42000 terminated" || echo "No service running on port 42000"
+echo "Restarting Service"
 node freshpicks.js
+echo "freshpicks started at port 42000"
 
 
