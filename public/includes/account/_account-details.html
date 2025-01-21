@@ -31,23 +31,9 @@
                 <label>Address 1<span class="required">*</span></label>
                 <div class="d-flex flex-row gap-4">
                    <input disabled class="mr-2" ng-model="customer.billing_address" type="text" placeholder="Street address" >
-                   <input disabled class="ms-2" ng-model="customer.billing_address_specifier" type="text" placeholder="address_specifier, suite, unit etc. (optional)" >
+                   <input disabled class="ms-2" ng-model="customer.billing_address2" type="text" placeholder="Street Address 2 (Optional)" >
                 </div>
              </div>
-          </div>
-          <div class="col-md-12 d-none">
-             <div class="checkout-form-list">
-                <label>Address 2 (Optional)</label>
-                <div>
-                   <div class="checkout-form-list">
-                      <input disabled ng-model="customer.billing_address2" type="text" placeholder="Street address" >
-                      <input disabled ng-model="customer.billing_address2_specifier" type="text" placeholder="address_specifier, suite, unit etc. (optional)" >
-                   </div>
-                </div>
-             </div>
-          </div>
-          <div class="col-md-12 hidden">
-             
           </div>
           <div class="col-md-6">
              <div class="country-select">
@@ -62,13 +48,13 @@
           <div class="col-md-6">
              <div class="checkout-form-list">
                 <label>State <span class="required">*</span></label>
-                <input disabled ng-model="customer.state" type="text" placeholder="" >
+                <input disabled ng-model="customer.state" type="text" >
              </div>
           </div>
           <div class="col-md-6">
              <div class="checkout-form-list">
                 <label>Town / City <span class="required">*</span></label>
-                <input disabled ng-model="customer.city" type="text" placeholder="Town / City" >
+                <input disabled ng-model="customer.city" type="text">
              </div>
           </div>
           <div class="col-md-6">

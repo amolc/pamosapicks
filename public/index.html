@@ -64,9 +64,9 @@
                       <div class="tpshop__category pt-0 pb-2">
                           <div class="swiper-container inner-category-active">
                             <div class="swiper-wrapper">
-                                <!--<div ng-if="fetchingCategoryList">
-                                  Loading categories...
-                                </div>-->
+                                <div ng-if="fetchingCategoryList">
+                                  <!-- Leave empty instead of removing to fix certain bug. Troubleshoot later. -->
+                                </div>
                                 <div ng-repeat="category in categorydataset" class="swiper-slide h-full">
                                   <div class="category__item h-full">
                                       <!-- class="category__thumb fix"--> 
@@ -269,11 +269,13 @@
                                 </nav>
                             </div>
                           </div>
-                          <!--<div ng-if="fetchingProductList">
+                          <div ng-if="fetchingProductList">
                             <div class="w-full h-full flex flex-col justify-center items-center">
-                                <p class="font-bold">Loading...</p>
+                                <p class="font-bold">
+                                  <!-- Leave empty to fix certain bug. Troubleshoot later. -->
+                                </p>
                             </div>
-                          </div>-->
+                          </div>
                       </div>
                     </div>
                 </div>

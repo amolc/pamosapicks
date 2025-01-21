@@ -42,14 +42,8 @@ app.controller('registerCtrl', function($scope, $http, $window, config) {
 
     // Registration validation
     $scope.registerValidate = function(data) {
-        if (!data || !data.email) {
-            $scope.message = "Please provide an email address.";
-            return false;
-        } else if (!data.password) {
+        if (!data.password) {
             $scope.message = "Please provide a password.";
-            return false;
-        } else if (!data.first_name) {
-            $scope.message = "Please provide your first name.";
             return false;
         } else if (!data.mobile_number) {
             $scope.message = "Please provide your mobile number.";

@@ -13,7 +13,7 @@ app.controller('loginCtrl', function($scope, $http, $window, config) {
       // Check if email exists in local storage
       if ($scope.email) {
         console.log("User found:", $scope.email);
-        $window.location.href = "/"; // Redirect to customer dashboard
+        $window.location.href = "/checkout.html"; // Redirect to checkout.
       } else {
         console.error("User not found in local storage. Redirecting to login.");
         localStorage.clear();
