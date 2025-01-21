@@ -28,9 +28,4 @@ done
 
 rsync -a --info=NAME,PROGRESS --delete ${rsync_excluded} "$FRONTEND_REPO_DIR/" .
 
-cp service.server.js  web/angular/service.js
-cp service.server.js  web/admin/angular/service.js
-cp service.server.js  superadmin/angular/service.js
-cp service.server.js  client/angular/service.js
-
-pm2 restart prod
+pm2 restart freshprod
