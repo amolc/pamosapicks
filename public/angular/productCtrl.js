@@ -1,10 +1,3 @@
-// Function to convert JSON object to query string
-function jsonToQueryString(params) {
-  return Object.keys(params)
-    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(params[key]))
-    .join('&');
-}
-
 app.controller(
   "productCtrl",
   function ($scope, $http, $window, $location, config) {
