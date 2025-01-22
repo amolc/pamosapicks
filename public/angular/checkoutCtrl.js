@@ -6,6 +6,7 @@ app.controller('checkoutCtrl', function($scope, $http, $window, config) {
     $scope.user = JSON.parse(localStorage.getItem("user"));
 
     $scope.cartTotal = 0;
+    $scope.shippingCharge = 0;
 
     if (!$scope.user) {
       window.location.assign('/login.html');
@@ -282,6 +283,12 @@ $scope.registerCustomer = async function() {
     total += cartItem.subtotal;
     });
     $scope.cartTotal = total;
+
+    if (total > 100) {
+      $scope.shippingCharge = 25;
+    } else {
+      $scope.shippingCharge = 0;
+    }
   };
 
   $scope.fetchingCategoryList = true;
