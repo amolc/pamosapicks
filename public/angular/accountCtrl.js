@@ -152,6 +152,11 @@ app.controller(
       total += cartItem.subtotal;
     });
     $scope.cartTotal = total;
+    if (total > 100) {
+      $scope.shippingCharge = 25;
+    } else {
+      $scope.shippingCharge = 0;
+    }
     };
 
     $scope.getOrders = () => {

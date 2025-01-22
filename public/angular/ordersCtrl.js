@@ -86,6 +86,73 @@ app.controller('ordersCtrl', function ($scope, $http, $window, $location, $sce, 
     $scope.closeaddModal = function () {
         $("#addform").modal("hide");
     };
+
+    $scope.addToCart = (id, productName, productQuantity, productPrice, productDiscountPrice, productImage) => {
+        addToCart(id, productName, productQuantity, productPrice, productDiscountPrice, productImage);
+        $scope.updateCartTotal();
+      };
+  
+      $scope.checkIfProductInCart = id => {
+        let product = $scope.cart.find((item) => item.id === id);
+  
+        if(product) {
+          return true;
+        }
+      };
+  
+      $scope.clearCart = () => {
+        localStorage.setItem("cart", JSON.stringify([]));
+        $scope.updateCartTotal();
+      }
+  
+      $scope.updateQuantity = function (id, delta) {
+        let product = $scope.cart.find((item) => item.id === id);
+        if (product) {
+          product.quantity = Math.max(1, product.quantity + delta); // Ensure quantity doesn't go below 1
+          localStorage.setItem("cart", JSON.stringify($scope.cart));
+  
+          $scope.updateProductTotal(id);
+        }
+      };
+  
+      $scope.removeItem = function (id) {
+        $scope.cart = $scope.cart.filter((item) => item.id !== id);
+        localStorage.setItem("cart", JSON.stringify($scope.cart));
+  
+        $scope.updateCartTotal();
+      };
+  
+      $scope.updateProductTotal = id => {
+        let product = $scope.cart.find((item) => item.id === id);
+        
+        if (product) {
+          const subtotal = product.quantity * product.price;
+          const discount_subtotal = product.discount_price ?
+            product.quantity * product.discount_price :
+            product.discount_subtotal;
+  
+          product.subtotal = subtotal;
+          product.discount_subtotal = discount_subtotal;
+  
+          localStorage.setItem("cart", JSON.stringify($scope.cart));
+          $scope.updateCartTotal();
+        }
+      }
+  
+      $scope.updateCartTotal = function () {
+        $scope.cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let total = 0;
+        $scope.cart.forEach(cartItem => {
+          total += cartItem.subtotal;
+        });
+        $scope.cartTotal = total;
+  
+        if (total > 100) {
+          $scope.shippingCharge = 25;
+        } else {
+          $scope.shippingCharge = 0;
+        }
+      };
 });
     
 function propertyNameFromModelPath(modelPath) {

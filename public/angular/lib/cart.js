@@ -1,6 +1,7 @@
-
 const getCart = () => {
-  return JSON.parse(localStorage.getItem("cart")) || [];
+  return JSON.parse(
+    localStorage.getItem("cart")
+  ) || [];
 };
 
 const addToCart = function (id, product_name, qty, price, discount_price, image) {
@@ -74,7 +75,10 @@ const updateProductTotal = id => {
     product.subtotal = subtotal;
     product.discount_subtotal = discount_subtotal;
 
-    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem(
+      "cart",
+      JSON.stringify(cart)
+    );
   }
 }
 

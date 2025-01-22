@@ -149,7 +149,7 @@
             <div class="tpcart__checkout">
                <div class="tpcart__total-price d-flex justify-content-between align-items-center">
                   <span> Subtotal:</span>
-                  <span class="heilight-price">₹{{ cartTotal }}</span>
+                  <span class="heilight-price">₹{{ cartTotal + shippingCharge }}</span>
                </div>
                <div class="tpcart__checkout-btn">
                   <a ng-if="user" class="tpcheck-btn" href="/checkout.html">Checkout</a>

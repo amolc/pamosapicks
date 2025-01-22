@@ -152,5 +152,11 @@ app.controller('registerCtrl', function($scope, $http, $window, config) {
         total += cartItem.subtotal;
       });
       $scope.cartTotal = total;
+
+      if (total > 100) {
+        $scope.shippingCharge = 25;
+      } else {
+        $scope.shippingCharge = 0;
+      }
     };
 });
