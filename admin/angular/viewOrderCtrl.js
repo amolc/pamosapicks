@@ -66,6 +66,41 @@ app.controller('viewOrderCtrl', function ($scope, $http, $window, $location, $sc
         });
     }
 
+    $scope.showAssignOrderModal = function () {
+        $http.get(`${config.baseurl}staff/get-admin/`)
+            .then(function (response) {
+                $scope.staffList = response.data.data;
+                $("#assignOrderModal").modal("show");
+            })
+            .catch(function (error) {
+                console.error("Error fetching staff list:", error);
+            });
+    };
+
+    $scope.submitAssignOrder = function () {
+        const data = {
+            assigned_to: $scope.newAssignedTo
+        };
+        $http.post(`${config.baseurl}orders/change-order-assigned-to/${$scope.order.id}`, data)
+            .then(function (response) {
+                if (response.data.status === 'success') {
+                    $scope.order = response.data.data;
+                    $("#assignOrderModal").modal("hide");
+                    window.location.reload(); // Reload the order page after successful submission
+                } else {
+                    $scope.assignError = response.data.message;
+                }
+            })
+            .catch(function (error) {
+                console.error("Error assigning order:", error);
+                $scope.assignError = "An error occurred while assigning the order.";
+            });
+    };
+
+    $scope.showAssignChangeHistoryModal = () => {
+        $("#assignChangeHistoryModal").modal('show');
+    };
+
     $scope.init = function () {
         $scope.getOrder();
     }; 

@@ -8,15 +8,19 @@
         <th>Date</th>
         <th>Amount</th>
         <th>Status</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="data in dataset">
         <td>{{data.id}}</td>
         <td>{{ data.first_name }} {{ data.last_name }}</td>
-        <td>{{ data.created_on }}</td>
+        <td>{{ data.created_at }}</td>
         <td>{{ data.amount }}</td>
         <td>{{ data.status }}</td>
+        <td>
+          <a href="viewOrder.html?id={{data.id}}">View</a>
+        </td>
       </tr>
     </tbody>
   </table>
