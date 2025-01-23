@@ -3,7 +3,12 @@ app.controller('ordersCtrl', function ($scope, $http, $window, $location, $sce, 
     $scope.dataset = [];
 
     $scope.list = function () {
-      $http.get(`${config.baseurl}orders/order/`)
+      const status = new URLSearchParams(window.location.search).get('status');
+      let url = `${config.baseurl}orders/order/`;
+      if (status) {
+        url += `?status=${status}`;
+      }
+      $http.get(url)
         .then(function (response) {
             if (response.data.status === 'false') {
                 console.error("Error fetching orders list:", response.data.message);

@@ -259,10 +259,29 @@ button[type="submit"]:hover {
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/admin/orders.html">
+        <a class="nav-link" href="/admin/orders.html" role="button">
           <i class="bi bi-rocket-takeoff"></i>
           <span>Orders</span>
         </a>
+        <div class="collapse show" id="orders-submenu">
+          <ul class="nav flex-column ms-3">
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="/admin/orders.html?status=pending" style="padding-left: 20px;">Pending</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="/admin/orders.html?status=confirmed" style="padding-left: 20px;">Confirmed</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="/admin/orders.html?status=ready_for_delivery" style="padding-left: 20px;">Ready for Delivery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="/admin/orders.html?status=goods_collected" style="padding-left: 20px;">Goods Collected</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="/admin/orders.html?status=delivered" style="padding-left: 20px;">Delivered</a>
+            </li>
+          </ul>
+        </div>
       </li>
       <hr>
       <li class="nav-item">
@@ -308,6 +327,7 @@ button[type="submit"]:hover {
                     <th>Customer</th>
                     <th>Date</th>
                     <th>Amount</th>
+                    <th>Status</th>
                     <th>View</th>
                   </tr>
                 </thead>
@@ -317,6 +337,7 @@ button[type="submit"]:hover {
                     <td>{{ data.first_name }} {{ data.last_name }}</td>
                     <td>{{ data.created_on }}</td>
                     <td>{{data.amount }}</td>
+                    <td>{{data.status_display}}</td>
                     <td>
                       <a href="/admin/viewOrder.html?id={{data.id}}">View</a>
                     </td>

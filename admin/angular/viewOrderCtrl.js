@@ -1,6 +1,7 @@
 app.controller('viewOrderCtrl', function ($scope, $http, $window, $location, $sce, $timeout, store, config) {
     $scope.order = {};
     $scope.newOrderStatus = '';
+    $scope.statusChangeError = '';
 
     $scope.urlParams = Object.fromEntries(
         new URLSearchParams(window.location.search)
@@ -55,11 +56,13 @@ app.controller('viewOrderCtrl', function ($scope, $http, $window, $location, $sc
         $http.post(url, data).then(response => {
             if (response.data.status === 'error') {
                 console.error("Error fetching order:", response.data.message);
+                $scope.statusChangeError = response.data.message;
             } else {
                 window.location.reload();
             }
         }).error(error => {
             console.error("Error fetching orders list:", error);
+            $scope.statusChangeError = "An error occurred while changing the order status.";
         });
     }
 

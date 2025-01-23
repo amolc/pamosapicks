@@ -547,9 +547,17 @@ button[type="submit"]:hover {
                         <select ng-model="newOrderStatus" class="form-select" id="orderStatusSelect" name="order_status">
                             <option value="" selected>Select Status</option>
                             <option value="pending">Pending</option>
-                            <option value="completed">Completed</option>
-                            <option value="cancelled">Cancelled</option>
+                            <option value="confirmed">Confirmed</option>
+                            <option value="ready_for_delivery">Ready for Delivery</option>
+                            <option value="goods_collected">Goods Collected</option>
+                            <option value="delivered">Delivered</option>
                         </select>
+                    </div>
+                    <div class="alert alert-danger" ng-show="statusChangeError">
+                        {{ statusChangeError }}
+                    </div>
+                    <div class="alert alert-info" ng-show="statusChangeError">
+                      Note: The status transitions for an order are as follows: An order starts as "Pending" and can move to "Confirmed". Once confirmed, it can transition to "Ready for Delivery". From "Ready for Delivery", the order can either be marked as "Goods Collected" or "Delivered". Once the order reaches "Goods Collected" or "Delivered", no further transitions are possible.
                     </div>
                 </form>
             </div>
