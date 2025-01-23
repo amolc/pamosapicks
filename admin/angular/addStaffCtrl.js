@@ -1,12 +1,12 @@
 app.controller("addStaffCtrl", function ($scope, $http, $window, $location, config) {
-    $scope.staff = {};
+    $scope.staff = { organisation: 1 };
 
     $scope.init = function () {
         console.log("Initialization of addStaffCtrl");
     };
 
     $scope.submitStaff = function () {
-        if (!$scope.staff.first_name || !$scope.staff.last_name || !$scope.staff.email || !$scope.staff.role) {
+        if (!$scope.staff.first_name || !$scope.staff.last_name || !$scope.staff.email || !$scope.staff.password) {
             alert("All fields are required.");
             return;
         }

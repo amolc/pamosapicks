@@ -85,7 +85,7 @@ app.controller('productsCtrl', function ($scope, $http, $window, $location, $sce
             return;
         }
     
-        $http.get(`${config.baseurl}product/get-products/${product_id}/`)
+        $http.get(`${config.baseurl}products/get-products/${product_id}/`)
             .then(function (response) {
                 if (response.data.status === 'false') {
                     console.error("Error fetching product:", response.data.message);
@@ -118,7 +118,7 @@ app.controller('productsCtrl', function ($scope, $http, $window, $location, $sce
         }
     
         // Make the POST request to add the product
-        $http.post(`${config.baseurl}product/create-products/`, $scope.product)
+        $http.post(`${config.baseurl}products/create-products/`, $scope.product)
             .then(function (response) {
                 if (response.data.status === 'false') {
                     console.error("Error adding product:", response.data.message);
@@ -156,7 +156,7 @@ app.controller('productsCtrl', function ($scope, $http, $window, $location, $sce
     
         console.log("Updating product:", $scope.data);
     
-        $http.patch(`${config.baseurl}product/update-products/${id}/`, $scope.data)
+        $http.patch(`${config.baseurl}products/update-products/${id}/`, $scope.data)
             .then(function (response) {
                 if (response.data.status === 'false') {
                     console.error("Error updating product:", response.data.message);
@@ -182,7 +182,7 @@ app.controller('productsCtrl', function ($scope, $http, $window, $location, $sce
         const confirmDeletion = confirm("Are you sure you want to delete this product?");
         if (!confirmDeletion) return;
     
-        $http.delete(`${config.baseurl}product/delete-products/${id}/`)
+        $http.delete(`${config.baseurl}products/delete-products/${id}/`)
             .then(function (response) {
                 if (response.data.status === 'false') {
                     alert("Failed to delete product: " + response.data.message);
@@ -206,7 +206,7 @@ app.controller('productsCtrl', function ($scope, $http, $window, $location, $sce
  
      $scope.categorylist = function () {
          console.log("Fetching product list from:", config.baseurl);
-         $http.get(`${config.baseurl}category/category/`)
+         $http.get(`${config.baseurl}products/category/`)
          .then(function (response) {
              console.log("Full response:", response);
              if (response.status !== 200) {
@@ -228,7 +228,7 @@ app.controller('productsCtrl', function ($scope, $http, $window, $location, $sce
 
      $scope.subcategorylist = function () {
         console.log("Fetching product list from:", config.baseurl);
-        $http.get(`${config.baseurl}subcategory/subcategory/`)
+        $http.get(`${config.baseurl}products/subcategory/`)
         .then(function (response) {
             console.log("Full response:", response);
             if (response.status !== 200) {

@@ -27,7 +27,7 @@ app.controller("editStaffCtrl", function ($scope, $http, $window, $location, con
     };
 
     $scope.submitStaff = function () {
-        if (!$scope.staff.first_name || !$scope.staff.last_name || !$scope.staff.email || !$scope.staff.role) {
+        if (!$scope.staff.first_name || !$scope.staff.last_name || !$scope.staff.email) {
             alert("All fields are required.");
             return;
         }

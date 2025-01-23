@@ -15,7 +15,7 @@
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,500,500i,600,600i,700,700i"
     rel="stylesheet">
 
   <!-- Vendor CSS Files -->
@@ -315,8 +315,7 @@ button[type="submit"]:hover {
                 <div>
                   {{ pagination.start_index }} to {{ pagination.end_index }} of {{ pagination.total_num_items }}
                 </div>
-                <button style="max-height: 60px; background-color: #4154f1;" type="button" class="btn btn-w-m btn-primary"
-                  data-target="#addform" ng-click="addform()">Add Product</button>  
+                <a href="/admin/addProduct.html" class="btn btn-primary" style="max-height: 60px; background-color: #4154f1;">Add Product</a>
               </div>
               <!-- Table with stripped rows -->
               <table class="table mt-3">
@@ -344,7 +343,7 @@ button[type="submit"]:hover {
                     <td>{{data.price}}</td>
                     <td>{{data.discount_price}}</td>
                     <td>
-                      <a href="#" ng-click="onedit(data)">Edit</a>
+                      <a href="/admin/editProduct.html?id={{data.id}}">Edit</a>
                     </td>
                     <td>
                       <a href="#" ng-click="ondelete(data)">Delete</a>
@@ -372,223 +371,6 @@ button[type="submit"]:hover {
         </div>
       </div>
     </section>
-
-
-    <!-- Modals -->
-      <div class="modal fade" id="editform" tabindex="-1" role="dialog" aria-labelledby="editform"
-        aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content animated fadeIn">
-            <div class="modal-header">
-              <h5 class="modal-title">Edit Product: {{ product.id }}</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body container">
-              <form ng-submit="submitproduct(product)" enctype="multipart/form-data">
-                <div class="form-group">
-                  <label for="product">Name</label>
-                  <input type="text" id="product" placeholder="Enter product name" ng-model="product.product_name" />
-                </div>
-                <div class="form-group">
-                  <label for="category">Category</label>
-                  <select id="category" ng-model="product.category" class="form-control" required>
-                    <option value="{{product.category}}" disabled selected>{{product.category_name}}</option>
-                    <option value="" disabled selected>Select category</option>
-                      <option ng-repeat="category in catagoryset" value="{{category.id}}">
-                          {{category.category_name}}
-                      </option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="subcategory">Subcategory</label>
-                  <select id="subcategory" ng-model="product.subcategory" class="form-control" required>
-                    <option value="{{product.subcategory}}" disabled selected>{{product.subcategory_name}}</option>
-                    <option value="" disabled selected>Select Subcategory</option>
-                      <option ng-repeat="subcategory in subcatagoryset" value="{{subcategory.id}}">
-                          {{subcategory.subcategory_name}}
-                      </option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="description">Description</label>
-                  <textarea id="description" placeholder="Enter description" ng-model="product.product_description" required></textarea>
-                </div>
-                <div class="form-group">
-                  <label for="unit">Unit</label>
-                  <input type="text" id="unit" placeholder="Enter Unit" ng-model="product.unit">
-                </div>
-                <div class="form-group">
-                  <label for="price">Price</label>
-                  <input type="text" id="price" placeholder="Enter Price" ng-model="product.price" required />
-                </div>
-                <div class="form-group">
-                  <label for="discount_price">Discount Price</label>
-                  <input type="text" id="discount_price" placeholder="Enter Discount Price" ng-model="product.discount_price" value="{{product.discount_price}}" />
-                </div>
-                <div class="form-group">
-                  <label for="product_life">Product Life</label>
-                  <input type="number" id="product Life" placeholder="Enter Product Life" ng-model="product.product_life" required></textarea>
-                </div>  
-                <div class="form-group">
-                  <label for="product-image">product Image</label>
-                  <input type="file" id="product-image" accept="image/*"
-                    onchange="convertToBase64('product-image', 'product.product_image')">
-                </div>
-                <div class="form-group">
-                  <label for="availability">Availability</label>
-                  <select class="form-select" id="availability" ng-model="product.availability" required>
-                    <option value="{{product.availability}}" disabled selected>{{product.availability}}</option>
-                    <option value="1">Yes</option>
-                    <option value="0">No</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <button type="submit" ng-disabled="isSubmitting" ng-click="oneditsubmit(product)">Submit</button>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div class="modal-footer">
-          </div>
-        </div>
-      </div>
-
-      <div class="modal fade" id="addform" tabindex="-1" role="dialog" aria-labelledby="addform"
-        aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content animated fadeIn">
-            <div class="modal-header">
-              <img src="./assets/img/iamstockbot.png" class="ml-3">
-              <button type="button" class="close" data-dismiss="modal" ng-click="closeaddModal()"> <i class="fas fa-times" style="color: #000;">*</i></button>
-          
-            </div>
-            <div class="modal-body container" style="border:1px solid red;">
-              <div class="row">
-          
-                <form ng-submit="submitproduct(product)" enctype="multipart/form-data">
-                  <div class="form-group">
-                    <label for="product">Name</label>
-                    <input type="text" id="product" placeholder="Enter product name" ng-model="product.product_name" />
-                  </div>
-                
-                
-
-                      <div class="form-group">
-                        <label for="category">Category</label>
-                        <select id="category" ng-model="product.category" class="form-control" required>
-                            <option value="" disabled selected>Select category</option>
-                            <option ng-repeat="category in catagoryset" value="{{category.id}}">
-                                {{category.category_name}}
-                            </option>
-                        </select>
-                    </div>
-
-                    <!-- Subcategory Field -->
-                    <div class="form-group">
-                        <label for="subcategory">Subcategory</label>
-                        <select id="subcategory" ng-model="product.subcategory" class="form-control" required>
-                            <option value="" disabled selected>Select Subcategory</option>
-                            <option ng-repeat="subcategory in subcatagoryset" value="{{subcategory.id}}">
-                                {{subcategory.subcategory_name}}
-                            </option>
-                        </select>
-                    </div>
-                  <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea id="description" placeholder="Enter description" ng-model="product.product_description" required></textarea>
-                  </div>
-                  <div class="form-group">
-                    <label for="unit">Unit</label>
-                    <input type="text" id="unit" placeholder="Enter unit" ng-model="product.unit" required>
-                  </div>
-                  
-                  <div class="form-group">
-                    <label for="mfg">MFG</label>
-                    <input type="date" id="mfg" placeholder="Enter mfg" ng-model="product.mfg" required></textarea>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="product_life">Product Life</label>
-                    <input type="number" id="product life" placeholder="Enter product Life" ng-model="product.product_life" required></textarea>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="stock_quantity">Quantity</label>
-                    <input type="number" id="stock quantity" placeholder="Enter product quantity" ng-model="product.stock_quantity" required></textarea>
-                  </div>
-                  <div class="form-group">
-                    <label for="price">Price</label>
-                    <input type="number" id="price" placeholder="Enter price" ng-model="product.price" required></textarea>
-                  </div>
-                  <div class="form-group">
-                    <label for="discount_price">Discount Price</label>
-                    <input type="number" id="discount_price" placeholder="Enter discount price" ng-model="product.discount_price" required></textarea>
-                  </div>
-                
-                  <div class="form-group">
-                    <label for="product-image1">product Image1</label>
-                    <input type="file" id="product-image1" accept="image/*"
-                      onchange="convertToBase64('product-image1', 'product.product_image1')">
-                  </div>
-                  <div class="form-group">
-                    <label for="product-image2">product Image2</label>
-                    <input type="file" id="product-image2" accept="image/*"
-                      onchange="convertToBase64('product-image2', 'product.product_image2')">
-                  </div>
-                
-                  <div class="form-group">
-                    <label for="availability">Availability</label>
-                    <select id="availability" ng-model="product.availability" required>
-                      <option value="" disabled selected>Select available status</option>
-                      <option value="1">Yes</option>
-                      <option value="0">No</option>
-                    </select>
-                  </div>
-                
-                  <div class="form-group">
-                    <button type="submit" ng-disabled="isSubmitting" ng-click="onsubmit()">Submit</button>
-                  </div>
-                </form>
-                
-                </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-          </div>
-        </div>
-      </div>
-      
-      <div class="modal fade" id="deleteform" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content animated fadeIn">
-              <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                  <img src="./assets/img/iamstockbot.png" class="ml-3">
-              </div>
-              <div class="modal-body">
-                <div class="form">
-                  <h3>Delete product</h3>
-                  <p>Please confirm if you would like to delete the following product.</p>
-              
-                  <p>product ID: {{product.id}}</p>
-              
-                  <!-- Trigger the delete function with the correct id -->
-                  <button type="submit" ng-click="delete(product.id)" class="btn btn-primary">Submit</button>
-                  <button type="button" class="btn btn-secondary" ng-click="closeModal()">Cancel</button>
-                </div>
-                  
-              </div>
-              </div>
-              <div class="modal-footer">
-                  <!-- You may add footer actions here if needed -->
-              </div>
-          </div>
-      </div>
-    <!-- End Modals -->
-    </div>
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->

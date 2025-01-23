@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>View Product</title>
+  <meta content="Pamosapicks admin panel." name="description">
+  <!-- ...existing code... -->
+</head>
+
+<body ng-app="website" ng-controller="viewProductCtrl" ng-init="init()">
+  <header id="header" class="header fixed-top d-flex flex-row justify-content-between align-items-center">
+    <!-- ...existing code... -->
+  </header>
+  <aside id="sidebar" class="sidebar">
+    <!-- ...existing code... -->
+  </aside>
+  <main id="main" class="main">
+    <div class="pagetitle">
+      <h1>View Product</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/admin/index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="/admin/products.html">Products</a></li>
+          <li class="breadcrumb-item active">View Product</li>
+        </ol>
+      </nav>
+    </div>
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Product Details</h5>
+              <div class="form-group">
+                <label>Product Name:</label>
+                <p>{{product.product_name}}</p>
+              </div>
+              <div class="form-group">
+                <label>Unit:</label>
+                <p>{{product.unit}}</p>
+              </div>
+              <div class="form-group">
+                <label>Quantity:</label>
+                <p>{{product.stock_quantity}}</p>
+              </div>
+              <div class="form-group">
+                <label>Price:</label>
+                <p>{{product.price}}</p>
+              </div>
+              <div class="form-group">
+                <label>Product Type:</label>
+                <p>{{product.product_type}}</p>
+              </div>
+              <div class="form-group">
+                <label>MFG:</label>
+                <p>{{product.mfg}}</p>
+              </div>
+              <div class="form-group">
+                <label>Description:</label>
+                <p>{{product.product_description}}</p>
+              </div>
+              <div class="form-group">
+                <label>Product Life:</label>
+                <p>{{product.product_life}}</p>
+              </div>
+              <div class="form-group">
+                <label>Category:</label>
+                <p>{{product.category}}</p>
+              </div>
+              <div class="form-group">
+                <label>Subcategory:</label>
+                <p>{{product.subcategory}}</p>
+              </div>
+              <div class="form-group">
+                <label>Product Image:</label>
+                <img ng-if="product.product_image" ng-src="{{product.product_image}}" alt="Product Image" style="margin-top: 10px; max-height: 200px;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer id="footer" class="footer">
+    <!-- ...existing code... -->
+  </footer>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- ...existing code... -->
+</body>
+
+</html>

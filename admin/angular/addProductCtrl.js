@@ -12,6 +12,8 @@ app.controller("addproductCtrl", function ($scope, $http, $window, $location, co
   $scope.init = function() {
       console.log("Initialization of addproductCtrl");
       $scope.getAllProducts(); // Call function to fetch products
+      $scope.categorylist();
+      $scope.subcategorylist();
   };
 
   // Function to set the agent ID from local storage
@@ -40,13 +42,59 @@ app.controller("addproductCtrl", function ($scope, $http, $window, $location, co
           },
       };
 
-      $http.get($scope.baseurl + 'product/products/', urlconfig)
+      $http.get($scope.baseurl + 'products/products/', urlconfig)
           .then(function(response) {
               console.log("Fetched products data:", response.data);
               $scope.productList = response.data.data;
           })
           .catch(function(error) {
               console.error("Error fetching products:", error);
+          });
+  };
+
+  // Fetch category list
+  $scope.categorylist = function () {
+      console.log("Fetching category list from:", config.baseurl);
+      $http.get(`${config.baseurl}products/category/`)
+          .then(function (response) {
+              console.log("Full response:", response);
+              if (response.status !== 200) {
+                  console.error("Error fetching category list:", response.statusText);
+              } else {
+                  if (!response.data || response.data.length === 0) {
+                      console.error("Category list is undefined or empty!");
+                      $scope.categorydataset = [];
+                  } else {
+                      $scope.categorydataset = response.data; // Directly assign the array to dataset
+                      console.log("Category list fetched:", $scope.categorydataset);
+                  }
+              }
+          })
+          .catch(function (error) {
+              console.error("Error fetching category list:", error);
+          });
+  };
+
+  // Fetch subcategory list
+  $scope.subcategorylist = function () {
+      console.log("Fetching subcategory list from:", config.baseurl);
+      $http.get(`${config.baseurl}products/subcategory/`)
+          .then(function (response) {
+              console.log("Full response:", response);
+              if (response.status !== 200) {
+                  console.error("Error fetching subcategory list:", response.statusText);
+              } else {
+                  if (!response.data || response.data.length === 0) {
+                      console.error("Subcategory list is undefined or empty!");
+                      $scope.subcategorydataset = [];
+                  } else {
+                      $scope.subcategorydataset = response.data.data; // Directly assign the array to dataset
+                      console.log("Subcategory list fetched:", $scope.subcategorydataset);
+                  }
+              }
+          })
+          .catch(function (error) {
+              console.error("Error fetching subcategory list:", error.data);
           });
   };
 
@@ -84,21 +132,22 @@ app.controller("addproductCtrl", function ($scope, $http, $window, $location, co
         product_name: $scope.product.product_name,
         unit: $scope.product.unit,
         price: $scope.product.price,
-        Quantity: $scope.product.stock_quantity,
-        Product_Life: $scope.product.product_life,
-        MFG: $scope.product.mfg,
-        Category: $scope.product.category,
-        Subcategory: $scope.product.subcategory,
-        id: $scope.product.id  // Ensure agent_id is part of the product data
+        stock_quantity: $scope.product.stock_quantity,
+        product_image1: $scope.product.product_image,
+        product_image2: $scope.product.product_image,
+        product_life: $scope.product.product_life,
+        mfg: $scope.product.mfg,
+        category: $scope.product.category,
+        subcategory: $scope.product.subcategory, // Ensure agent_id is part of the product data
     };
 
     console.log("Final product data:", productData);
 
     // Send product data via POST request
-    $http.post($scope.baseurl + 'product/products/', productData)
+    $http.post($scope.baseurl + 'products/products/', productData)
     .then(function(response) {
         console.log("Product added successful:", response.data);
-        alert("Product successfully created!");
+        window.location.href = '/admin/products.html'; // Redirect after success
         // $scope.isSubmitting = false; // Re-enable the button
     })
     .catch(function(error) {
@@ -106,6 +155,5 @@ app.controller("addproductCtrl", function ($scope, $http, $window, $location, co
         alert("AddProduct failed! Please try again.");
         $scope.isSubmitting = false; // Re-enable the button on error
     });
-}
-}
-);
+  }
+});

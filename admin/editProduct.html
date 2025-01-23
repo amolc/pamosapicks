@@ -15,7 +15,7 @@
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i"
     rel="stylesheet">
 
   <!-- Vendor CSS Files -->
@@ -350,96 +350,138 @@
     </nav><!-- End Icons Navigation -->
   </header><!-- End Header -->
   <aside id="sidebar" class="sidebar">
+  <ul class="sidebar-nav" id="sidebar-nav">
 
-    <ul class="sidebar-nav" id="sidebar-nav">
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="index.html">
+        <i class="bi bi-grid"></i>
+        <span>Dashboard</span>
+      </a>
+    </li>
+    <hr>
+    <li class="nav-item">
+      <a class="nav-link" href="/admin/products.html">
+        <i class="bi bi-bag"></i>
+        <span>Products</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="/admin/category.html">
+        <i class="bi bi-tag"></i>
+        <span>Categories</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="/admin/subcategory.html">
+        <i class="bi bi-tags"></i>
+        <span>Subcategories</span>
+      </a>
+    </li>
+    <hr>
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="/admin/customers.html">
+        <i class="bi bi-person-vcard"></i>
+        <span>Customers</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="/admin/orders.html">
+        <i class="bi bi-rocket-takeoff"></i>
+        <span>Orders</span>
+      </a>
+    </li>
+    <hr>
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="/admin/staff.html">
+        <i class="bi bi-people"></i>
+        <span>Staff</span>
+      </a>
+    </li>
+  </ul>
+</aside>
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="index.html">
-          <i class="bi bi-grid"></i>
-          <span>Dashboard</span>
-        </a>
-      </li><!-- End Dashboard Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Pages</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="components-nav" class="nav-content" data-bs-parent="#sidebar-nav">
-          
-
-          <li>
-            <a href="products.html">
-              <i class="bi bi-circle"></i><span>Product</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="category.html">
-              <i class="bi bi-circle"></i><span>Category</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="subcategory.html">
-              <i class="bi bi-circle"></i><span>Subcategory</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Components Nav -->
-
-      
-
-    </ul>
-
-  </aside>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Data Tables</h1>
+      <h1>Edit Product</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">Tables</li>
-          <li class="breadcrumb-item active">Data</li>
+          <li class="breadcrumb-item"><a href="/admin/index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="/admin/products.html">Products</a></li>
+          <li class="breadcrumb-item active">Edit Product</li>
         </ol>
       </nav>
-    </div>
-    <div class="form-container">
-        <div class="form-header">
-            EDIT PRODUCT
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Edit Product</h5>
+              <form ng-submit="submitProduct()">
+                <div class="form-group">
+                  <label for="product_name">Product Name</label>
+                  <input type="text" class="form-control" id="product_name" ng-model="product.product_name" required>
+                </div>
+                <div class="form-group">
+                  <label for="product_unit">Unit</label>
+                  <input type="text" class="form-control" id="product_unit" ng-model="product.unit" required>
+                </div>
+                <div class="form-group">
+                  <label for="stock_quantity">Quantity</label>
+                  <input type="number" class="form-control" id="stock_quantity" ng-model="product.stock_quantity" required>
+                </div>
+                <div class="form-group">
+                  <label for="price">Price</label>
+                  <input type="number" class="form-control" id="price" ng-model="product.price" required>
+                </div>
+                <div class="form-group">
+                  <label for="product_type">Product Type</label>
+                  <input type="text" class="form-control" id="product_type" ng-model="product.product_type" required>
+                </div>
+                <div class="form-group">
+                  <label for="mfg">MFG</label>
+                  <input type="date" class="form-control" id="mfg" ng-model="product.mfg" required>
+                </div>
+                <div class="form-group">
+                  <label for="product_description">Description</label>
+                  <textarea class="form-control d-inline" id="product_description" ng-model="product.product_description" required></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="product_life">Product Life</label>
+                  <input type="number" class="form-control" id="product_life" ng-model="product.product_life">
+                </div>
+                <div class="form-group">
+                  <label for="category">Category</label>
+                  <select class="form-control" id="category" ng-model="product.category" ng-options="category.id as category.category_name for category in categorydataset" required>
+                    <option value="">Select Category</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="subcategory">Subcategory</label>
+                  <select class="form-control" id="subcategory" ng-model="product.subcategory" ng-options="subcategory.id as subcategory.subcategory_name for subcategory in subcategorydataset" required>
+                    <option value="">Select Subcategory</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="product_image">Product Image</label>
+                  <div class="flex flex-col gap-2">
+                    <img style="max-height: 240px; max-width: 240px;" class="d-block col-12" ng-if="product.product_image1" ng-src="{{product.product_image1}}" alt="Product Image" style="margin-top: 10px; max-height: 200px; aspect-ratio: square;">
+                    <span>Change to: </span>
+                    <input type="file" class="form-control d-block col-6" style="max-height: 40px;" id="product_image" accept="image/*" onchange="convertToBase64('product_image', 'product.product_image')">
+                    <img style="max-height: 240px; max-width: 240px;" class="d-block col-12" ng-if="product.product_image" ng-src="{{product.product_image}}" alt="Product Image" style="margin-top: 10px; max-height: 200px;">
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
         </div>
-        <form ng-submit="submitProduct()">
-            <div class="form-group form-group-full">
-                <input type="text" id="product_name" placeholder="Product Name" ng-model="product.product_name" required />
-                <input type="text" id="product_unit" placeholder="Unit" ng-model="product.unit" required />
-            </div>
-        
-            <div class="form-group">
-                <input type="number" placeholder="Quantity" ng-model="product.stock_quantity" required />
-                <input type="number" placeholder="Price" ng-model="product.price" required />
-            </div>
-        
-            <div class="form-group form-group-full">
-                <input type="text" placeholder="Product Type" ng-model="product.product_type" required />
-                <input type="date" placeholder="MFG" ng-model="product.mfg" required />
-            </div>
-        
-            <div class="form-group form-group-full">
-                <textarea id="description" placeholder="Description" ng-model="product.product_description" required></textarea>
-            </div>
-        
-            <div class="form-group">
-                <input type="number" placeholder="Product Life" ng-model="product.product_life" />
-            </div>
-        
-            <div class="form-group form-group-full">
-                <input type="number" placeholder="Category" ng-model="product.category" required />
-                <input type="number" placeholder="Subcategory" ng-model="product.subcategory" required />
-            </div>
-        
-            <button type="submit" ng-disabled="isSubmitting">Submit</button>
-        </form>
-    </div>
-    <footer id="footer" class="footer">
+      </div>
+    </section>
+  </main><!-- End #main -->
+
+  <footer id="footer" class="footer">
         <div class="copyright">
             &copy; Copyright <strong><span>Pamosapickss</span></strong>. All Rights Reserved
         </div>
@@ -514,6 +556,26 @@
                     });
             };
         });
+        window.convertToBase64 = function(inputId, modelPath) {
+          const fileInput = document.getElementById(inputId);
+          const file = fileInput.files[0];
+      
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+              const base64String = event.target.result;
+      
+              const scope = angular.element(document.querySelector('[ng-controller="editproductCtrl"]')).scope();
+              scope.$apply(function() {
+                const propertyName = modelPath.split('.').pop();
+                scope.product[propertyName] = base64String;
+              });
+            };
+            reader.readAsDataURL(file);
+          } else {
+            console.error("No file selected for:", inputId);
+          }
+        };
     </script>
 
   <!-- Vendor JS Files -->
