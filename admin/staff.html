@@ -15,7 +15,7 @@
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,500,500i,600,600i,700,700i"
     rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
@@ -36,7 +36,7 @@
   <script src="./angular/angular-payments.js"></script>
   <script src="./angular/app.js"></script>
   <script src="./angular/service.js"></script>
-  <script src="./angular/customersCtrl.js"></script>
+  <script src="./angular/staffCtrl.js"></script>
   
   <!-- Mainly scripts -->
   <script src="./assets/js/jquery-3.1.1.min.js"></script>
@@ -151,7 +151,7 @@
     }
     </style>
 </head>
-    <body ng-app="website" ng-controller="customersCtrl" ng-init="init()">
+    <body ng-app="website" ng-controller="staffCtrl" ng-init="init()">
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex flex-row justify-content-between align-items-center">
         <div class="d-flex align-items-center justify-content-between">
@@ -180,7 +180,7 @@
                 <li>
                 <a class="dropdown-item d-flex align-items-center" href="agentprofileupdate.html">
                     <i class="bi bi-person"></i>
-                    <span>My Profil</span>
+                    <span>My Profile</span>
                 </a>
                 </li>
                 <li>
@@ -248,7 +248,7 @@
         </li>
         <hr>
         <li class="nav-item">
-            <a class="nav-link" href="/admin/customers.html">
+            <a class="nav-link collapsed" href="/admin/customers.html">
               <i class="bi bi-person-vcard"></i>
               <span>Customers</span>
             </a>
@@ -261,7 +261,7 @@
         </li>
         <hr>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="/admin/staff.html">
+            <a class="nav-link" href="/admin/staff.html">
               <i class="bi bi-people"></i>
               <span>Staff</span>
             </a>
@@ -272,14 +272,14 @@
 
     <main id="main" class="main">
         <div class="pagetitle">
-        <h1>Customers</h1>
+        <h1>Staff</h1>
         <nav>
             <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href="/admin/index.html">Home</a>
             </li>
             <li class="breadcrumb-item active">
-                Customers
+                Staff
             </li>
             </ol>
         </nav>
@@ -292,8 +292,9 @@
                 <div class="card-body">
                 <div class="w-100 d-flex flex-row flex-nowrap justify-content-between align-items-center">
                     <h5 class="card-title">
-                    Customers
+                    Staff
                     </h5>
+                    <button class="btn btn-primary" ng-click="addform()">Add Staff</button>
                 </div>
                 <!-- Table with stripped rows -->
                 <table class="table mt-3">
@@ -301,8 +302,8 @@
                         <tr>
                             <th>Id</th>
                             <th>Full Name</th>
-                            <th>Mobile Number</th>
                             <th>Email</th>
+                            <th>Role</th>
                             <th>View</th>
                         </tr>
                     </thead>
@@ -310,15 +311,10 @@
                         <tr ng-repeat="data in dataset">
                             <td>{{data.id}}</td>
                             <td>{{ data.first_name }} {{ data.last_name }}</td>
-                            <td>
-                                <a href="https://wa.me/{{ data.mobile_number }}" target="_blank" class="d-flex align-items-center" style="color: #25D366;">
-                                    <i class="bi bi-whatsapp mr-2" style="color: #25D366;"></i> <!-- Font Awesome WhatsApp Icon -->
-                                    {{ data.mobile_number }}
-                                </a>
-                            </td>                        
                             <td>{{ data.email }}</td>
+                            <td>{{ data.role }}</td>
                             <td>
-                                <a href="/admin/viewCustomer.html?id={{data.id}}">View</a>
+                                <a href="/admin/viewStaff.html?id={{data.id}}">View</a>
                             </td>
                         </tr>
                     </tbody>

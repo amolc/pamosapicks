@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Pamosapicks</title>
+  <meta content="Pamosapicks admin panel." name="description">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- jQuery (required for Bootstrap) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Bootstrap JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+  <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+  <script src="./angular/angular-storage.min.js"></script>
+  <script src="./angular/angular-payments.js"></script>
+  <script src="./angular/app.js"></script>
+  <script src="./angular/service.js"></script>
+  <script src="./angular/editStaffCtrl.js"></script>
+  
+  <!-- Mainly scripts -->
+  <script src="./assets/js/jquery-3.1.1.min.js"></script>
+  <script src="./assets/js/popper.min.js"></script>
+  <script src="./assets/js/bootstrap.js"></script>
+  <script src="./assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+  <script src="./assets/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+  <!-- Custom and plugin javascript -->
+  <script src="./assets/js/inspinia.js"></script>
+  <script src="./assets/js/plugins/pace/pace.min.js"></script>
+</head>
+<body ng-app="website" ng-controller="editStaffCtrl" ng-init="init()">
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex flex-row justify-content-between align-items-center">
+        <!-- ...existing code... -->
+    </header><!-- End Header -->
+
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+        <ul class="sidebar-nav" id="sidebar-nav">
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="index.html">
+                    <i class="bi bi-grid"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <hr>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/admin/products.html">
+                    <i class="bi bi-bag"></i>
+                    <span>Products</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/admin/category.html">
+                    <i class="bi bi-tag"></i>
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/admin/subcategory.html">
+                    <i class="bi bi-tags"></i>
+                    <span>Subcategories</span>
+                </a>
+            </li>
+            <hr>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/admin/customers.html">
+                    <i class="bi bi-person-vcard"></i>
+                    <span>Customers</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/admin/orders.html">
+                    <i class="bi bi-rocket-takeoff"></i>
+                    <span>Orders</span>
+                </a>
+            </li>
+            <hr>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/staff.html">
+                    <i class="bi bi-people"></i>
+                    <span>Staff</span>
+                </a>
+            </li>
+        </ul>
+    </aside>
+    <!-- End Sidebar-->
+
+    <main id="main" class="main">
+        <div class="pagetitle">
+        <h1>Edit Staff</h1>
+        <nav>
+            <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/admin/index.html">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="/admin/staff.html">Staff</a>
+            </li>
+            <li class="breadcrumb-item active">
+                Edit Staff
+            </li>
+            </ol>
+        </nav>
+        </div><!-- End Page Title -->
+
+        <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                <h5 class="card-title">Edit Staff</h5>
+                <form ng-submit="submitStaff()">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="form-control" id="firstName" ng-model="staff.first_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" ng-model="staff.last_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" ng-model="staff.email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Role</label>
+                        <input type="text" class="form-control" id="role" ng-model="staff.role" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                </div>
+            </div>
+            </div>
+        </div>
+        </section>
+    </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <!-- ...existing code... -->
+    </footer><!-- End Footer -->
+
+    <!-- Vendor JS Files -->
+    <!-- ...existing code... -->
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

@@ -31,7 +31,7 @@ app.controller("editCategoryCtrl", function ($scope, $http, $window, config) {
          }
       };
    
-      $http.get(`${$scope.baseurl}category/get-category/${categoryId}`, urlconfig)
+      $http.get(`${$scope.baseurl}products/get-category/${categoryId}`, urlconfig)
          .then(function (response) {
             console.log("Category details fetched successfully:", response.data);
    
@@ -71,7 +71,7 @@ app.controller("editCategoryCtrl", function ($scope, $http, $window, config) {
          is_active: $scope.category.is_active
       };
 
-      $http.patch(`${$scope.baseurl}category/get-category/${categoryId}/`, categoryData)
+      $http.patch(`${$scope.baseurl}products/get-category/${categoryId}/`, categoryData)
          .then(function (response) {
             console.log("Category updated successfully:", response.data);
             alert("Category successfully updated!");

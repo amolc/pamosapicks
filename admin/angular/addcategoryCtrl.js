@@ -40,7 +40,7 @@ app.controller("addcategoryCtrl", function ($scope, $http, $window, $location, c
             },
         };
 
-        $http.get($scope.baseurl + 'category/category/', urlconfig)
+        $http.get($scope.baseurl + 'products/category/', urlconfig)
             .then(function (response) {
                 console.log("Fetched category data:", response.data);
                 $scope.categoryList = response.data.data;
@@ -84,7 +84,7 @@ app.controller("addcategoryCtrl", function ($scope, $http, $window, $location, c
         console.log("Final category data:", categoryData);
 
         // Send category data via POST request
-        $http.post($scope.baseurl + 'category/category/', categoryData)
+        $http.post($scope.baseurl + 'products/category/', categoryData)
             .then(function (response) {
                 console.log("Category added successfully:", response.data);
                 alert("Category successfully created!");

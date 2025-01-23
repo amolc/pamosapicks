@@ -28,7 +28,7 @@ app.controller("editsubcategoryCtrl", function ($scope, $http, $window, $locatio
         };
     
         // Ensure the API URL is correct and includes the 'subcategoryId'
-        $http.get($scope.baseurl + `subcategory/get-subcategory/${id}/`, urlconfig)
+        $http.get($scope.baseurl + `products/get-subcategory/${id}/`, urlconfig)
             .then(function (response) {
                 console.log("API Response:", response.data);
     
@@ -72,7 +72,7 @@ app.controller("editsubcategoryCtrl", function ($scope, $http, $window, $locatio
         };
 
         // Update the subcategory using PATCH request
-        $http.patch($scope.baseurl + `subcategory/update-subcategory/${subcategoryId}/`, subcategoryData)
+        $http.patch($scope.baseurl + `products/update-subcategory/${subcategoryId}/`, subcategoryData)
             .then(function (response) {
                 console.log("Subcategory updated successfully:", response.data);
                 alert("Subcategory successfully updated!");
