@@ -2,16 +2,18 @@ app.controller(
   "accountCtrl",
   function ($scope, $http, $window, $location, $sce, $timeout, store, config) {
     $scope.getLoggedInCustomer = () => {
-      const user = localStorage.getItem("user");
-      const url = `${config.baseurl}customers/get-customer/${$scope.user.id}`;
- 
+      const user = JSON.parse(localStorage.getItem("user"));
+      const url = `${config.baseurl}customers/get-customer/${user.id}`;
+
       $http.get(url).then(response => {
         if (response.data.status === 'false') {
           console.error("Error fetching logged in customer:", response.data.message);
         } else {
           console.log("Response is: ");
           console.log(response);
-          $scope.customer = response.data.data;
+          $scope.user = response.data.data;
+          // Update local storage with the new user data
+          localStorage.setItem('user', JSON.stringify($scope.user));
         }
       }).catch(function (error) {
           console.error("Error fetching logged in customer:", error);
@@ -19,34 +21,31 @@ app.controller(
     };
 
     $scope.init = function () {
-    $scope.baseurl = config.baseurl;
-    $scope.cartTotal = 100;
-    $scope.search = null;
-    $scope.categoryFilter = null;
-    $scope.isCustomerLoggedIn = JSON.parse(localStorage.getItem('isCustomerLoggedIn'));
-    $scope.user = JSON.parse(localStorage.getItem('user'));
-    $scope.orders = [];
-    $scope.getLoggedInCustomer();
+      $scope.baseurl = config.baseurl;
+      $scope.cartTotal = 100;
+      $scope.search = null;
+      $scope.categoryFilter = null;
+      $scope.isCustomerLoggedIn = parseInt(JSON.parse(localStorage.getItem('isCustomerLoggedIn')));
+      $scope.orders = [];
+      
+      if (!($scope.isCustomerLoggedIn === 1)) {
+        window.location.assign('/login.html');
+      } else {
+        $scope.getLoggedInCustomer();
+      }
 
-    if (!($scope.isCustomerLoggedIn === 1)) {
-      window.location.assign('/login.html');
-    }
-  
-    const isCustomerLoggedIn = localStorage.getItem('isCustomerLoggedIn');
-    $scope.isCustomerLoggedIn = isCustomerLoggedIn === '1';
-  
-    $scope.urlParams = Object.fromEntries(
-      new URLSearchParams(window.location.search)
-    );
-  
-    if ($scope.urlParams.hasOwnProperty('search')) {
-      $scope.search = $scope.urlParams.search;
-    }
-    
-    // Initialize cart from localStorage
-    $scope.cart = JSON.parse(localStorage.getItem("cart")) || [];
-    
-    $scope.updateCartTotal();
+      $scope.urlParams = Object.fromEntries(
+        new URLSearchParams(window.location.search)
+      );
+
+      if ($scope.urlParams.hasOwnProperty('search')) {
+        $scope.search = $scope.urlParams.search;
+      }
+      
+      // Initialize cart from localStorage
+      $scope.cart = JSON.parse(localStorage.getItem("cart")) || [];
+      
+      $scope.updateCartTotal();
     };
 
     $scope.initializeHeader = () => {

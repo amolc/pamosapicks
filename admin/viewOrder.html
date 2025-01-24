@@ -248,6 +248,10 @@ button[type="submit"]:hover {
                       <span>{{ order.status }}</span>
                     </p>
                     <p>
+                      <span>Expected delivery date:</span>
+                      <span>{{ order.delivery_date }}</span>
+                    </p>
+                    <p>
                       <span>Assigned to:</span>
                         <span>{{ order.assigned_to ? (order.assigned_to.first_name + ' ' + order.assigned_to.last_name + ' - ' + order.assigned_to.email) : 'Not assigned' }}</span>
                     </p>
@@ -259,6 +263,7 @@ button[type="submit"]:hover {
                         ng-click="showStatusChangeHistoryModal()"
                         type="button" style="text-decoration: underline;">View status change history</button>
                       <button ng-click="showAssignOrderModal()" type="button" style="text-decoration: underline;">Assign to</button>
+                      <button ng-click="showChangeDeliveryDateModal()" type="button" style="text-decoration: underline;">Change Delivery Date</button>
                       <!--<button ng-click="showAssignChangeHistoryModal()" type="button" style="text-decoration: underline;">View assignment change history</button> -->
                     </p>
                   </div>
@@ -610,6 +615,33 @@ button[type="submit"]:hover {
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- Modal for Changing Delivery Date -->
+  <div class="modal fade" id="changeDeliveryDateModal" tabindex="-1" aria-labelledby="changeDeliveryDateModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="changeDeliveryDateModalLabel">Change Delivery Date</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="changeDeliveryDateForm">
+                    <div class="mb-3">
+                        <label for="deliveryDateInput" class="form-label">Select Delivery Date</label>
+                        <input type="date" ng-model="newDeliveryDate" class="form-control" id="deliveryDateInput" name="delivery_date">
+                    </div>
+                    <div class="alert alert-danger" ng-show="deliveryDateChangeError">
+                        {{ deliveryDateChangeError }}
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" ng-click="submitDeliveryDateChange()" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
     </div>
   </div>
 

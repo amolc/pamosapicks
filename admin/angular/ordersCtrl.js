@@ -3,23 +3,23 @@ app.controller('ordersCtrl', function ($scope, $http, $window, $location, $sce, 
     $scope.dataset = [];
 
     $scope.list = function () {
-      const status = new URLSearchParams(window.location.search).get('status');
-      let url = `${config.baseurl}orders/order/`;
-      if (status) {
-        url += `?status=${status}`;
-      }
-      $http.get(url)
-        .then(function (response) {
-            if (response.data.status === 'false') {
-                console.error("Error fetching orders list:", response.data.message);
-            } else {
-                $scope.dataset = response.data.data;
-                console.log("Order list fetched:", $scope.dataset);
-            }
-        })
-        .catch(function (error) {
-            console.error("Error fetching orders list:", error);
-        });
+        const status = new URLSearchParams(window.location.search).get('status');
+        let url = `${config.baseurl}orders/order/`;
+        if (status) {
+            url += `?status=${status}`;
+        }
+        $http.get(url)
+            .then(function (response) {
+                if (response.data.status === 'false') {
+                    console.error("Error fetching orders list:", response.data.message);
+                } else {
+                    $scope.dataset = response.data.data;
+                    console.log("Order list fetched:", $scope.dataset);
+                }
+            })
+            .catch(function (error) {
+                console.error("Error fetching orders list:", error);
+            });
     };
 
     // Fetch a single order by ID

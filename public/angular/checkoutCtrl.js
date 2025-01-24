@@ -1,15 +1,41 @@
 app.controller('checkoutCtrl', function($scope, $http, $window, config) {
+  $scope.getLoggedInCustomer = () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const url = `${config.baseurl}customers/get-customer/${user.id}`;
+
+    $http.get(url).then(response => {
+      if (response.data.status === 'false') {
+        console.error("Error fetching logged in customer:", response.data.message);
+      } else {
+        console.log("Response is: ");
+        console.log(response);
+        $scope.user = response.data.data;
+        // Update local storage with the new user data
+        localStorage.setItem('user', JSON.stringify($scope.user));
+
+        $scope.order_data = {
+          ...$scope.user,
+          country: 'India',
+          organisation: 1,
+          // TODO: Add logic to force customer authentication before completing an order.
+          customer: parseInt($scope.user?.id ?? '2'),
+        };
+      }
+    }).catch(function (error) {
+        console.error("Error fetching logged in customer:", error);
+    });
+  };
+
   $scope.init = function() {
-    const isCustomerLoggedIn = localStorage.getItem('isCustomerLoggedIn');
-    
-    $scope.isCustomerLoggedIn = isCustomerLoggedIn === '1';
-    $scope.user = JSON.parse(localStorage.getItem("user"));
+    $scope.isCustomerLoggedIn = parseInt(JSON.parse(localStorage.getItem('isCustomerLoggedIn')))
 
     $scope.cartTotal = 0;
     $scope.shippingCharge = 0;
 
-    if (!$scope.user) {
+    if (!($scope.isCustomerLoggedIn === 1)) {
       window.location.assign('/login.html');
+    } else {
+      $scope.getLoggedInCustomer();
     }
 
     $scope.urlParams = Object.fromEntries(
@@ -149,23 +175,6 @@ $scope.registerCustomer = async function() {
       ...$scope.order_data,
       ...shippingDetails,
     };
-  };
-
-  $scope.getLoggedInCustomer = () => {
-    const user = localStorage.getItem("user");
-    const url = `${config.baseurl}customers/get-customer/${$scope.user.id}`;
-
-    $http.get(url).then(response => {
-      if (response.data.status === 'false') {
-        console.error("Error fetching logged in customer:", response.data.message);
-      } else {
-        console.log("Response is: ");
-        console.log(response);
-        $scope.customer = response.data.data;
-      }
-    }).catch(function (error) {
-        console.error("Error fetching logged in customer:", error);
-    });
   };
 
   $scope.submitOrder = async () => {

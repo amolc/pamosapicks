@@ -4,34 +4,34 @@
      <div class="col-md-6">
        <div class="checkout-form-list">
           <label>Phone Number <span class="required">*</span></label>
-          <input disabled ng-model="customer.mobile_number" type="text" placeholder="" >
+          <input disabled ng-model="user.mobile_number" type="text" placeholder="" >
        </div>
     </div>
        <div class="col-md-6">
           <div class="checkout-form-list">
              <label>Email Address <span class="required">*</span></label>
-             <input disabled ng-model="customer.email" type="email" placeholder="" >
+             <input disabled ng-model="user.email" type="email" placeholder="" >
           </div>
        </div>
           
           <div class="col-md-6">
              <div class="checkout-form-list">
                 <label>First Name <span class="required">*</span></label>
-                <input disabled ng-model="customer.first_name" type="text" placeholder="" >
+                <input disabled ng-model="user.first_name" type="text" placeholder="" >
              </div>
           </div>
           <div class="col-md-6">
              <div class="checkout-form-list">
                 <label>Last Name <span class="required">*</span></label>
-                <input disabled ng-model="customer.last_name" type="text" placeholder="" >
+                <input disabled ng-model="user.last_name" type="text" placeholder="" >
              </div>
           </div>
           <div class="col-md-12">
              <div class="checkout-form-list">
                 <label>Address 1<span class="required">*</span></label>
                 <div class="d-flex flex-row gap-4">
-                   <input disabled class="mr-2" ng-model="customer.billing_address" type="text" placeholder="Street address" >
-                   <input disabled class="ms-2" ng-model="customer.billing_address2" type="text" placeholder="Street Address 2 (Optional)" >
+                   <input disabled class="mr-2" ng-model="user.billing_address" type="text" placeholder="Street address" >
+                   <input disabled class="ms-2" ng-model="user.billing_address2" type="text" placeholder="Street Address 2 (Optional)" >
                 </div>
              </div>
           </div>
@@ -40,7 +40,7 @@
                 <label>Country <span class="required">*</span></label>
                 <select
                   disabled
-                   ng-model="customer.country">
+                   ng-model="user.country">
                    <option selected value="India">India</option>
                 </select>
              </div>
@@ -48,19 +48,19 @@
           <div class="col-md-6">
              <div class="checkout-form-list">
                 <label>State <span class="required">*</span></label>
-                <input disabled ng-model="customer.state" type="text" >
+                <input disabled ng-model="user.state" type="text" >
              </div>
           </div>
           <div class="col-md-6">
              <div class="checkout-form-list">
                 <label>Town / City <span class="required">*</span></label>
-                <input disabled ng-model="customer.city" type="text">
+                <input disabled ng-model="user.city" type="text">
              </div>
           </div>
           <div class="col-md-6">
              <div class="checkout-form-list">
                 <label>Postcode / Zip <span class="required">*</span></label>
-                <input disabled ng-model="customer.postal_code" type="text" placeholder="Postcode / Zip" >
+                <input disabled ng-model="user.postal_code" type="text" placeholder="Postcode / Zip" >
              </div>
           </div>
     </div>

@@ -2,6 +2,8 @@ app.controller('viewOrderCtrl', function ($scope, $http, $window, $location, $sc
     $scope.order = {};
     $scope.newOrderStatus = '';
     $scope.statusChangeError = '';
+    $scope.newDeliveryDate = '';
+    $scope.deliveryDateChangeError = '';
 
     $scope.urlParams = Object.fromEntries(
         new URLSearchParams(window.location.search)
@@ -99,6 +101,30 @@ app.controller('viewOrderCtrl', function ($scope, $http, $window, $location, $sc
 
     $scope.showAssignChangeHistoryModal = () => {
         $("#assignChangeHistoryModal").modal('show');
+    };
+
+    $scope.showChangeDeliveryDateModal = () => {
+        $("#changeDeliveryDateModal").modal('show');
+    };
+
+    $scope.submitDeliveryDateChange = () => {
+        const id = $scope.order.id;
+        let url = `${config.baseurl}orders/change-order-delivery-date/${$scope.urlParams['id']}`;
+        let data = JSON.stringify({
+            'delivery_date': $scope.newDeliveryDate
+        });
+
+        $http.post(url, data).then(response => {
+            if (response.data.status === 'error') {
+                console.error("Error changing delivery date:", response.data.message);
+                $scope.deliveryDateChangeError = response.data.message;
+            } else {
+                window.location.reload();
+            }
+        }).error(error => {
+            console.error("Error changing delivery date:", error);
+            $scope.deliveryDateChangeError = "An error occurred while changing the delivery date.";
+        });
     };
 
     $scope.init = function () {
