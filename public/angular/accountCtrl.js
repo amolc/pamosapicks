@@ -20,9 +20,11 @@ app.controller(
       });
     };
 
+    
+
     $scope.init = function () {
       $scope.baseurl = config.baseurl;
-      $scope.cartTotal = 100;
+      $scope.cartTotal = 0;
       $scope.search = null;
       $scope.categoryFilter = null;
       $scope.isCustomerLoggedIn = parseInt(JSON.parse(localStorage.getItem('isCustomerLoggedIn')));
@@ -47,6 +49,84 @@ app.controller(
       
       $scope.updateCartTotal();
     };
+
+
+
+
+
+    // Update customer function
+    $scope.updateCustomer = async function() {
+      console.log($scope.user['email']);
+      $scope.message = "";
+
+      const userData = {
+        username: $scope.user['email'],
+        email: $scope.user['email'],
+        password: $scope.user['password'],
+        first_name: $scope.user['first_name'],
+        last_name: $scope.user['last_name'],
+        country: $scope.user['country'],
+        state: $scope.user['state'],
+        billing_address: $scope.user['billing_address'],
+        billing_address2: $scope.user['billing_address2'],
+        city: $scope.user['city'],
+        postal_code: $scope.user['postal_code'],
+        organisation: 1,
+      };
+
+      // Validate the form data using the registerValidate function
+      if ($scope.registerCustomerValidate(userData)) {
+          console.log("Validating registration");
+
+          const configHeaders = {
+              headers: {
+                  'Content-Type': 'application/json',
+              }
+          };
+
+          // Construct the URL for the registration request for customers
+          let url = config.baseurl + 'customers/update-customer/' + $scope.user['id'] +'/';  // Updated URL for registration
+          
+          // Make POST request to the server
+          await $http.patch(url, userData, configHeaders)
+              .then(function(response) {
+                  if (response.data.status === "success") {
+                      // Store relevant data in local storage after successful registration
+                      $scope.user = response.data.data;
+                      // Update local storage with the new user data
+                      localStorage.setItem('user', JSON.stringify($scope.user));
+
+                      console.log("User registered and stored in local storage:", response.data.data);
+                  } else {
+                      console.error("Updation failed:", response.data.message);
+                      $scope.message = response.data.message || "Registration failed: Please check your details.";
+                  }
+              })
+              .catch(function(error) {
+                  console.error("Registration error:", error);
+                  $scope.message = error.data?.message || "Registration failed: Unable to connect.";
+              });
+      } else {
+          console.log("Validation error occurred");
+          $scope.message = "Validation failed. Please check the input fields.";  // Provide more details to the user
+      }
+    };
+
+
+
+    $scope.registerCustomerValidate = function(data) {
+      
+      // if (!data.first_name) {
+      //         $scope.message = "Please provide your first name.";
+      //     return false;
+      // } else if (!data.mobile_number) {
+      //     $scope.message = "Please provide your mobile number.";
+      //     return false;
+      // }
+      return true;  
+      
+    };
+
 
     $scope.initializeHeader = () => {
       /**
