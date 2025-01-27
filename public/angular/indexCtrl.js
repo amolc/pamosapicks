@@ -49,18 +49,24 @@ app.controller(
        *  - lib/common.js
        *  - lib/products.js
        */
-      getProductList(config, urlParams, $http).then(productList => {
-        $scope.productdataset = productList.productdataset;
-        $scope.num_pages = productList.num_pages;
-        $scope.num_products = productList.num_products;
-        $scope.start_index = productList.start_index;
-        $scope.end_index = productList.end_index;
-        console.log("Product list Fetched: ",$scope.productdataset);
-        console.log($scope.productdataset);
-      }).catch(error => {
+      getProductList(config, urlParams, $http)
+      .then(productList => {
+        $timeout(() => {
+          $scope.productdataset = productList.productdataset;
+          $scope.num_pages = productList.num_pages;
+          $scope.num_products = productList.num_products;
+          $scope.start_index = productList.start_index;
+          $scope.end_index = productList.end_index;
+          console.log("Product list Fetched: ", $scope.productdataset);
+        });
+      })
+      .catch(error => {
         console.error("Error fetching product list:", error);
-      }).finally(() => {
-        $scope.fetchingProductList = false;
+      })
+      .finally(() => {
+        $timeout(() => {
+          $scope.fetchingProductList = false;
+        });
       });
     };
 
