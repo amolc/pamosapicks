@@ -3,7 +3,10 @@ app.controller(
   function ($scope, $http, $window, $location, $sce, $timeout, store, config) {
     $scope.init = function () {
       $scope.baseurl = config.baseurl;
-      $scope.cartTotal = 100;
+      $scope.staticurl = config.staticurl;
+      console.log( $scope.baseurl);
+      console.log( $scope.staticurl);
+      $scope.cartTotal = 0;
       $scope.search = null;
       $scope.categoryFilter = null;
       $scope.user = localStorage.getItem("user") ?? undefined;
@@ -169,7 +172,7 @@ app.controller(
       });
       $scope.cartTotal = total;
 
-      if (total > 100) {
+      if (total < 100) {
         $scope.shippingCharge = 25;
       } else {
         $scope.shippingCharge = 0;

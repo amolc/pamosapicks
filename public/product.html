@@ -112,10 +112,10 @@
                         <div class="tpproduct-details__nab">
                           <div class="tab-content" id="nav-tabContents">
                             <div class="tab-pane fade show active w-img" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
-                              <img ng-src="{{ product.product_image1 }}" alt="" />
+                              <img ng-src="{{staticurl}}{{ product.product_image1 }}" alt="" />
                             </div>
                             <div class="tab-pane fade w-img" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
-                              <img ng-src="{{ product.product_image2 }}" alt="" />
+                              <img ng-src="{{staticurl}}{{ product.product_image2 }}" alt="" />
                               <div class="tpproduct__info badge">
                                 <span class="tpproduct__info-discount bage__discount">-90%</span>
                                 <span class="tpproduct__info-hot bage__hot">HOT</span>
@@ -131,10 +131,10 @@
                           <nav>
                             <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
                               <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
-                                <img ng-src="{{ product.product_image1 }}" alt="" />
+                                <img ng-src="{{staticurl}}{{ product.product_image1 }}" alt="" />
                               </button>
                               <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
-                                <img ng-src="{{ product.product_image2 }}" alt="" />
+                                <img ng-src="{{staticurl}}{{ product.product_image2 }}" alt="" />
                               </button>
                             </div>
                           </nav>                 

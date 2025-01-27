@@ -174,4 +174,31 @@ app.controller('paymentCtrl', function($scope, $http, $window, config) {
         $scope.shippingCharge = 0;
       }
     };
+
+
+  const initializeCartElements = () => {
+    $(".tp-cart-toggle").on("click", function () {
+      $(".tp-cart-info-area").addClass("tp-sidebar-opened");
+      $(".cartbody-overlay").addClass("opened");
+    });
+    $(".tpcart__close").on("click", function () {
+      $(".tp-cart-info-area").removeClass("tp-sidebar-opened");
+      $(".cartbody-overlay").removeClass("opened");
+    });
+    $(".cartbody-overlay").on("click", function () {
+      $(".tp-cart-info-area").removeClass("tp-sidebar-opened");
+      $(".cartbody-overlay").removeClass("opened");
+    });
+    $('.cart-minus').on('click', function () {
+      var $input = $(this).parent().find('input');
+      var count = Math.max(1, parseInt($input.val()) - 1);
+      $input.val(count).change();
+      return false;
+    });
+    $('.cart-plus').on('click', function () {
+      var $input = $(this).parent().find('input');
+      $input.val(parseInt($input.val()) + 1).change();
+      return false;
+    });
+  }
 });
