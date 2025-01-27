@@ -24,6 +24,7 @@ app.controller(
 
     $scope.init = function () {
       $scope.baseurl = config.baseurl;
+      $scope.staticurl  = config.staticurl;
       $scope.cartTotal = 0;
       $scope.search = null;
       $scope.categoryFilter = null;
