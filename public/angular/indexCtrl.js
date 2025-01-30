@@ -12,7 +12,7 @@ app.controller(
       $scope.isCustomerLoggedIn = isCustomerLoggedIn === '1';
 
       if (urlParams.hasOwnProperty('search')) {
-        $scope.search = $scope.urlParams.search;
+        $scope.search = urlParams.search;
       }
 
       $scope.getProductList();

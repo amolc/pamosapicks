@@ -44,7 +44,6 @@ app.controller(
       
       // Initialize cart from localStorage
       $scope.cart = JSON.parse(localStorage.getItem("cart")) || [];
-      
       $scope.updateCartTotal();
     };
 
@@ -157,19 +156,5 @@ app.controller(
       $scope.shippingCharge = 0;
     }
     };
-
-    $scope.getOrders = () => {
-      $http.get(`${config.baseurl}orders/order/?customer_id=${$scope.user.id}`)
-        .then(function (response) {
-            if (response.data.status === 'false') {
-                console.error("Error fetching orders list:", response.data.message);
-            } else {
-                $scope.orders = response.data.data;
-            }
-        })
-        .catch(function (error) {
-            console.error("Error fetching orders list:", error);
-        });
-    }
   }
 );
