@@ -83,7 +83,7 @@
                                                 border-radius: 50%;
                                             "
                                             class="aspect-square"
-                                            ng-src="{{ category.category_image }}"
+                                            ng-src="{{staticurl}}{{ category.category_image }}"
                                             alt="category-{{ category.category_name }}-thumb">
                                       </a>
                                     </div>
@@ -153,19 +153,21 @@
                         <!-- TEMPORARILY removed tab-pane class code so products can appear-->
                         <!--  class="tab-pane fade" role="tabpanel" -->
                         <div>
+                         
                           <div
-                              id="nav-all" aria-labelledby="nav-all-tab">
+                              id="nav-all" aria-labelledby="nav-all-tab" >
                               <div class="row row-cols-xxl-4 row-cols-xl-4 row-cols-lg-3 row-cols-md-3 row-cols-sm-2 row-cols-1 tpproduct__shop-item">
+                               
                                 <div ng-repeat="product in productdataset" class="col">
                                     <div class="tpproduct p-relative mb-20">
                                       <div class="tpproduct__thumb p-relative text-center">
                                           <a href="product.html?id={{ product.id }}">
                                             <img
                                                 style="height: 240px; object-fit: contain; object-position: center;"
-                                                ng-src="{{ product.product_image1 }}" alt="Primary Image">
+                                                ng-src="{{staticurl}}{{ product.product_image1 }}" alt="Primary Image">
                                           </a>
                                           <a class="tpproduct__thumb-img" href="product.html?id={{ product.id }}">
-                                            <img ng-src="{{ product.product_image2 }}" alt="">
+                                            <img ng-src="{{staticurl}}{{ product.product_image2 }}" alt="">
                                           </a>
                                           <div class="tpproduct__info bage">
                                             <span

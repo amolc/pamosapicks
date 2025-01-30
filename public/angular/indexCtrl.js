@@ -3,10 +3,15 @@ app.controller(
   function ($scope, $http, $window, $location, $sce, $timeout, store, config) {
     $scope.init = function () {
       $scope.baseurl = config.baseurl;
-      $scope.cartTotal = 100;
+      $scope.staticurl  = config.staticurl;
+      console.log( $scope.baseurl);
+      console.log( $scope.staticurl);
+      $scope.cartTotal = 0;
       $scope.search = null;
       $scope.categoryFilter = null;
       $scope.user = localStorage.getItem("user") ?? undefined;
+
+      $scope.urlParams = new URLSearchParams(window.location.search);
 
       const isCustomerLoggedIn = localStorage.getItem('isCustomerLoggedIn');
       $scope.isCustomerLoggedIn = isCustomerLoggedIn === '1';
@@ -14,9 +19,13 @@ app.controller(
       if (urlParams.hasOwnProperty('search')) {
         $scope.search = urlParams.search;
       }
+      if (urlParams.hasOwnProperty('category_id')) {
+        $scope.categoryFilter = $scope.urlParams.category_id;
+      }
 
+      $scope.categorylist();
       $scope.getProductList();
-      $scope.getCategoryList();
+      
 
       // Initialize cart from localStorage
       $scope.cart = getCart();
@@ -40,44 +49,27 @@ app.controller(
        *  - lib/common.js
        *  - lib/products.js
        */
-      getProductList(config, urlParams, $http).then(productList => {
-        $scope.productdataset = productList.productdataset;
-        $scope.num_pages = productList.num_pages;
-        $scope.num_products = productList.num_products;
-        $scope.start_index = productList.start_index;
-        $scope.end_index = productList.end_index;
-        console.log("Fetched: ");
-        console.log($scope.productdataset);
-      }).catch(error => {
+      getProductList(config, urlParams, $http)
+      .then(productList => {
+        $timeout(() => {
+          $scope.productdataset = productList.productdataset;
+          $scope.num_pages = productList.num_pages;
+          $scope.num_products = productList.num_products;
+          $scope.start_index = productList.start_index;
+          $scope.end_index = productList.end_index;
+          console.log("Product list Fetched: ", $scope.productdataset);
+        });
+      })
+      .catch(error => {
         console.error("Error fetching product list:", error);
-      }).finally(() => {
-        $scope.fetchingProductList = false;
+      })
+      .finally(() => {
+        $timeout(() => {
+          $scope.fetchingProductList = false;
+        });
       });
     };
 
-    $scope.getCategoryList = () => {
-      $scope.fetchingCategoryList = true;
-      /**
-       * Depends on:
-       *  - lib/common.js
-       *  - lib/products.js
-       */
-      getCategoryList(config, $scope, $http).then(categoryList => {
-        $scope.categorydataset = categoryList.categorydataset;
-        
-        if (urlParams.hasOwnProperty('category_id')) {
-          $scope.categorydataset.forEach(category => {
-            if (category.id === parseInt(urlParams['category_id'])) {
-              $scope.categoryFilter = category.category_name;
-            }
-          });
-        }
-      }).catch(error => {
-        console.error("Error fetching category list:", error);
-      }).finally(() => {
-        $scope.fetchingCategoryList = false;
-      });
-    };
     /**
      * Depends on:
      *  - lib/common.js
@@ -86,20 +78,13 @@ app.controller(
 
     $scope.fetchingCategoryList = true;
     $scope.categorylist = function() {
+      console.log("Fetching category list from:", config.baseurl+'products/category/');
       $http.get(`${config.baseurl}products/category/`)
           .then(function (response) {
               if (response.data.status === 'false') {
                   console.error("Error fetching category list:", response.data.message);
               } else {
                 $scope.categorydataset = response.data;
-
-                if ($scope.urlParams.hasOwnProperty('category_id')) {
-                  $scope.categorydataset.forEach(category => {
-                    if (category.id === parseInt($scope.urlParams['category_id'])) {
-                      $scope.categoryFilter = category.category_name;
-                    }
-                  });
-                }
               }
           })
           .catch(function (error) {
@@ -169,7 +154,7 @@ app.controller(
       });
       $scope.cartTotal = total;
 
-      if (total > 100) {
+      if (total < 100) {
         $scope.shippingCharge = 25;
       } else {
         $scope.shippingCharge = 0;

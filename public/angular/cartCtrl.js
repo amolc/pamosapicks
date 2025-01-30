@@ -4,6 +4,7 @@ app.controller(
     function ($scope, $http, $window, $location, config) {
       $scope.init = function () {
         $scope.baseurl = config.baseurl;
+        $scope.staticurl  = config.staticurl;
         $scope.cartTotal = 100;
         const isCustomerLoggedIn = localStorage.getItem('isCustomerLoggedIn');
         $scope.isCustomerLoggedIn = isCustomerLoggedIn === '1';

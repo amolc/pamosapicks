@@ -1,8 +1,9 @@
 app.factory('config', function() {
     return {
-        baseurl: "https://api.flipopo.com/1/api/",
-        orgurl: "https://api.flipopo.com/api/",
-        wssurl: "wss://api.flipopo.com/",
+        staticurl: "http://localhost:9999/",
+        baseurl: "http://localhost:9999/1/api/",
+        orgurl: "http://localhost:9999/api/",
+        wssurl: "ws://localhost:9999/",
         orgId: "1"
     };
 })

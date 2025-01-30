@@ -56,7 +56,7 @@
                   <li ng-repeat="cart_item in cart">
                      <div class="tpcart__item position-relative">
                         <div class="tpcart__img">
-                           <img ng-src="{{ cart_item.product_image }}" alt="{{ cart_item.product_name }}">
+                           <img ng-src="{{staticurl}}{{ cart_item.product_image }}" alt="{{ cart_item.product_name }}">
                         </div>
                         <div class="tpcart__content">
                            <span class="tpcart__content-title">
