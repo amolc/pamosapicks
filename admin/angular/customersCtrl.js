@@ -5,8 +5,6 @@ app.controller('customersCtrl', function($scope, $http, $window, $location, $sce
         // alert("hello");
         $scope.list();
     }
-
-
     $scope.list = function(req, res) {
         console.log(config.baseurl);
         

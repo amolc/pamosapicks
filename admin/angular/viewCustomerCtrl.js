@@ -36,32 +36,6 @@ app.controller('viewCustomerCtrl', function ($scope, $http, $window, $location, 
                 console.error("Error fetching customer details:", error);
             });
     };
-    
-    $scope.showChangeCustomerStatusModal = () => {
-        $("#changeCustomerStatusModal").modal('show');
-    };
-
-    $scope.showStatusChangeHistoryModal = () => {
-        $("#statusChangeHistoryModal").modal('show');
-    };
-
-    $scope.submitCustomerStatusChange = () => {
-        const id = $scope.customer.id;
-        let url = `${config.baseurl}customers/change-customer-status/${$scope.urlParams['id']}`;
-        let data = JSON.stringify({
-            'status': $scope.newCustomerStatus
-        });
-
-        $http.post(url, data).then(response => {
-            if (response.data.status === 'error') {
-                console.error("Error changing customer status:", response.data.message);
-            } else {
-                window.location.reload();
-            }
-        }).catch(error => {
-            console.error("Error changing customer status:", error);
-        });
-    }
 
     $scope.init = function () {
         $scope.getCustomer();
