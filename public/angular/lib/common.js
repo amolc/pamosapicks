@@ -1,3 +1,8 @@
+app.constant("config", {
+  baseurl: "http://127.0.0.1:8000/1/api/",
+  staticurl: "http://127.0.0.1:8000/"
+});
+
 const jsonToQueryString = params => {
   return Object.keys(params)
     .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(params[key]))

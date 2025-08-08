@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="website" ng-controller="cartCtrl" ng-init="init()">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Cart - Pamosapicks</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+  <script src="angular/app.js"></script>
+  <script src="angular/lib/common.js"></script>
+  <script src="angular/lib/cart.js"></script>
+</head>
+<body>
+<ng-include src="'includes/header.html'"></ng-include>
+
+<main class="container py-5">
+  <h2>Your Shopping Cart</h2>
+  <div ng-if="cart.length === 0">
+    <p>Your cart is empty.</p>
+    <a href="index.html" class="btn btn-primary">Continue Shopping</a>
+  </div>
+
+  <div ng-if="cart.length > 0">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in cart">
+          <td><img ng-src="{{ staticurl + item.product_image }}" width="60"></td>
+          <td>{{ item.product_name }}</td>
+          <td>
+            <span ng-if="item.discount_price">₹{{ item.discount_price }}</span>
+            <span ng-if="!item.discount_price">₹{{ item.price }}</span>
+          </td>
+          <td>
+            <button ng-click="updateQuantity(item.id, -1)" class="btn btn-sm btn-secondary">-</button>
+            {{ item.quantity }}
+            <button ng-click="updateQuantity(item.id, 1)" class="btn btn-sm btn-secondary">+</button>
+          </td>
+          <td>₹{{ item.discount_price * item.quantity || item.price * item.quantity }}</td>
+          <td><button ng-click="removeItem(item.id)" class="btn btn-sm btn-danger">Remove</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="text-right">
+      <p><strong>Subtotal:</strong> ₹{{ cartTotal }}</p>
+      <p><strong>Shipping:</strong> ₹{{ shippingCharge }}</p>
+      <p><strong>Total:</strong> ₹{{ cartTotal + shippingCharge }}</p>
+      <a href="checkout.html" class="btn btn-success">Proceed to Checkout</a>
+    </div>
+  </div>
+</main>
+
+<ng-include src="'includes/footer.html'"></ng-include>
+
+<script>
+app.controller('cartCtrl', function($scope) {
+  $scope.init = function () {
+    $scope.staticurl = "http://127.0.0.1:8000/"; // or use config.staticurl if injected
+    $scope.cart = JSON.parse(localStorage.getItem("cart")) || [];
+    $scope.updateCartTotal();
+  };
+
+  $scope.updateQuantity = function (id, delta) {
+    let product = $scope.cart.find(item => item.id === id);
+    if (product) {
+      product.quantity = Math.max(1, product.quantity + delta);
+      localStorage.setItem("cart", JSON.stringify($scope.cart));
+      $scope.updateCartTotal();
+    }
+  };
+
+  $scope.removeItem = function (id) {
+    $scope.cart = $scope.cart.filter(item => item.id !== id);
+    localStorage.setItem("cart", JSON.stringify($scope.cart));
+    $scope.updateCartTotal();
+  };
+
+  $scope.updateCartTotal = function () {
+    let total = 0;
+    $scope.cart.forEach(item => {
+      const price = item.discount_price || item.price;
+      total += price * item.quantity;
+    });
+    $scope.cartTotal = total;
+    $scope.shippingCharge = total >= 100 ? 0 : 25;
+  };
+});
+</script>
+</body>
+</html>

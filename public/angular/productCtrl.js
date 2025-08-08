@@ -3,139 +3,138 @@ app.controller(
   function ($scope, $http, $window, $location, config) {
     $scope.init = function () {
       $scope.baseurl = config.baseurl;
-      $scope.staticurl  = config.staticurl;
-      const isCustomerLoggedIn = localStorage.getItem('isCustomerLoggedIn');
-      $scope.isCustomerLoggedIn = isCustomerLoggedIn === '1';
-      
+      $scope.staticurl = config.staticurl;
+      const isCustomerLoggedIn = localStorage.getItem("isCustomerLoggedIn");
+      $scope.isCustomerLoggedIn = isCustomerLoggedIn === "1";
+
       $scope.urlParams = Object.fromEntries(
         new URLSearchParams(window.location.search)
       );
       $scope.product();
       $scope.categorylist();
 
-      $scope.productQuantity = 1; // Default product quantiy.
-      // Initialize cart from localStorage
+      $scope.productQuantity = 1;
+      $scope.showGoToCart = false;
       $scope.cart = JSON.parse(localStorage.getItem("cart")) || [];
       $scope.updateCartTotal();
     };
-    
 
-    // Fetch the list of products
     $scope.product = function () {
       $scope.fetchingProduct = true;
+      let url = "";
 
-      let url = '';
-
-      if ($scope.urlParams.length == 0) {
+      if (!$scope.urlParams.hasOwnProperty("id")) {
         console.error("No ID specified.");
         return;
       }
 
-      if(!$scope.urlParams.hasOwnProperty('id')) {
-        console.error("No ID specified.");
-        return;
-      }
-      
-      url = `${config.baseurl}products/get-product/${$scope.urlParams['id']}/`;
-      
-      $http.get(url)
-          .then(function (response) {
-              if (response.data.status === 'false') {
-                  console.error("Error fetching product:", response.data.message);
-              } else {
-                $scope.product = response.data.data;
-              }
-          })
-          .catch(function (error) {
-              console.error("Error fetching product list:", error);
-          }).finally(() => {
-            $scope.fetchingProductList = false;
-          });
+      url = `${config.baseurl}products/get-product/${$scope.urlParams["id"]}/`;
+
+      $http
+        .get(url)
+        .then(function (response) {
+          if (response.data.status === "false") {
+            console.error("Error fetching product:", response.data.message);
+          } else {
+            $scope.product = response.data.data;
+            $scope.showGoToCart = $scope.checkIfProductInCart($scope.product.id);
+          }
+        })
+        .catch(function (error) {
+          console.error("Error fetching product list:", error);
+        })
+        .finally(() => {
+          $scope.fetchingProductList = false;
+        });
     };
 
     $scope.initializeHeader = () => {
-      /**
-       * Depends on: 
-       *  - lib/cart.js.
-       *  - lib/search.js.
-       */
       initializeCartElements();
       initializeSearchElements();
     };
 
-  $scope.fetchingCategoryList = true;
-  $scope.categorylist = function() {
-    $http.get(`${config.baseurl}products/category/`)
+    $scope.fetchingCategoryList = true;
+    $scope.categorylist = function () {
+      $http
+        .get(`${config.baseurl}products/category/`)
         .then(function (response) {
-            if (response.data.status === 'false') {
-                console.error("Error fetching category list:", response.data.message);
-            } else {
-              $scope.categorydataset = response.data;
+          if (response.data.status === "false") {
+            console.error("Error fetching category list:", response.data.message);
+          } else {
+            $scope.categorydataset = response.data;
 
-              if ($scope.urlParams.hasOwnProperty('category_id')) {
-                $scope.categorydataset.forEach(category => {
-                  if (category.id === parseInt($scope.urlParams['category_id'])) {
-                    $scope.categoryFilter = category.category_name;
-                  }
-                });
-              }
+            if ($scope.urlParams.hasOwnProperty("category_id")) {
+              $scope.categorydataset.forEach((category) => {
+                if (category.id === parseInt($scope.urlParams["category_id"])) {
+                  $scope.categoryFilter = category.category_name;
+                }
+              });
             }
+          }
         })
         .catch(function (error) {
-            console.error("Error fetching category list:", error);
-        }).finally(() => {
+          console.error("Error fetching category list:", error);
+        })
+        .finally(() => {
           $scope.fetchingCategoryList = false;
         });
-    }
+    };
 
-    $scope.addToCart = function (id, product_name, qty, price, discount_price, image) {
+    $scope.addToCart = function (
+      id,
+      product_name,
+      qty,
+      price,
+      discount_price,
+      image
+    ) {
       qty = Number(qty);
       price = Number(price);
       discount_price = discount_price ? Number(discount_price) : 0;
 
       const product = {
-        id: id,
-        product_name: product_name,
+        id,
+        product_name,
         quantity: qty,
-        price: price, // Ensure price is stored as a number
-        discount_price: discount_price,
+        price,
+        discount_price,
         product_image: image,
-        subtotal: price,
-        discount_subtotal: discount_price
+        subtotal: price * qty,
+        discount_subtotal: discount_price * qty,
       };
 
-      // Check if the product already exists in the cart
       let existingProduct = $scope.cart.find((item) => item.id === id);
 
       if (existingProduct) {
-        existingProduct.quantity += qty; // Increment quantity
+        existingProduct.quantity += qty;
         $scope.updateProductTotal(id);
       } else {
         $scope.cart.push(product);
         localStorage.setItem("cart", JSON.stringify($scope.cart));
         $scope.updateCartTotal();
       }
+
+      $scope.showGoToCart = true;
     };
 
-    $scope.checkIfProductInCart = id => {
-      let product = $scope.cart.find((item) => item.id === id);
+    $scope.goToCart = function () {
+      window.location.href = "checkout.html";
+    };
 
-      if(product) {
-        return true;
-      }
+    $scope.checkIfProductInCart = (id) => {
+      return $scope.cart.find((item) => item.id === id) ? true : false;
     };
 
     $scope.clearCart = () => {
       localStorage.setItem("cart", JSON.stringify([]));
       $scope.updateCartTotal();
-    }
+    };
 
     $scope.updateQuantity = function (id, delta) {
       let product = $scope.cart.find((item) => item.id === id);
       if (product) {
-        product.quantity = Math.max(1, product.quantity + delta); // Ensure quantity doesn't go below 1
+        product.quantity = Math.max(1, product.quantity + delta);
         localStorage.setItem("cart", JSON.stringify($scope.cart));
-
         $scope.updateProductTotal(id);
       }
     };
@@ -143,18 +142,16 @@ app.controller(
     $scope.removeItem = function (id) {
       $scope.cart = $scope.cart.filter((item) => item.id !== id);
       localStorage.setItem("cart", JSON.stringify($scope.cart));
-
       $scope.updateCartTotal();
     };
 
-    $scope.updateProductTotal = id => {
+    $scope.updateProductTotal = (id) => {
       let product = $scope.cart.find((item) => item.id === id);
-      
       if (product) {
         const subtotal = product.quantity * product.price;
-        const discount_subtotal = product.discount_price ?
-          product.quantity * product.discount_price :
-          product.discount_subtotal;
+        const discount_subtotal = product.discount_price
+          ? product.quantity * product.discount_price
+          : product.discount_subtotal;
 
         product.subtotal = subtotal;
         product.discount_subtotal = discount_subtotal;
@@ -162,12 +159,12 @@ app.controller(
         localStorage.setItem("cart", JSON.stringify($scope.cart));
         $scope.updateCartTotal();
       }
-    }
+    };
 
     $scope.updateCartTotal = function () {
       $scope.cart = JSON.parse(localStorage.getItem("cart")) || [];
       let total = 0;
-      $scope.cart.forEach(cartItem => {
+      $scope.cart.forEach((cartItem) => {
         total += cartItem.subtotal;
       });
       $scope.cartTotal = total;
@@ -180,4 +177,3 @@ app.controller(
     };
   }
 );
-  
