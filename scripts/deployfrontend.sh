@@ -28,4 +28,4 @@ done
 
 rsync -a --info=NAME,PROGRESS --delete ${rsync_excluded} "$FRONTEND_REPO_DIR/" .
 
-pm2 restart freshprod
+pm2 restart all

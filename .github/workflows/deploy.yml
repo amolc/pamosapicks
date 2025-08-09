@@ -13,14 +13,14 @@ jobs:
       - uses: actions/checkout@v2 
       - name: Build & Deploy
         env:
-            PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
-            HOSTNAME: ${{secrets.HOST_DNS}}
-            USER_NAME: ${{secrets.SSH_USER}}
+            PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+            HOSTNAME: pamosapicks.com
+            USER_NAME: ubuntu
       
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
           ssh -i private_key -o StrictHostKeyChecking=no ${USER_NAME}@${HOSTNAME} << 'EOF'
-            cd  /home/ubuntu/repos/freshpicks
-            ./scripts/deployfrontend.sh freshpicks
+            cd  /home/ubuntu/repos/pamosapicks
+            ./scripts/deployfrontend.sh pamosapicks
           EOF
 
