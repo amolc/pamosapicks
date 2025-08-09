@@ -7,3 +7,5 @@ FRONTEND_REPO_DIR="/home/ubuntu/repos/pamosapicks"
 FRONTEND_REPO_BRANCH="main"
 FRONTEND_EXCLUDE_DIRS="/.git/ /node_modules/"
 FRONTENDSUPERVISORNAME="freshpicks"
+
+# backend config
