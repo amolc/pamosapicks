@@ -30,3 +30,11 @@ app.filter('display_availability', () => {
         }
     }
 });
+
+// Add this to enable HTML5 mode for cleaner URLs (optional)
+app.config(['$locationProvider', function($locationProvider) {
+    $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+    });
+}]);

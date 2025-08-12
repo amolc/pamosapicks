@@ -1,4 +1,4 @@
-app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce, $timeout, store, config) {   
+app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce, $timeout, store, config, categoryService) {   
    $scope.data = {};
    $scope.dataset = [];
    $scope.category = {
@@ -56,21 +56,40 @@ app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce
          }); };
 
    $scope.add = function () {
-      console.log("Adding category:", $scope.category);
-
-      $http.post(`${config.baseurl}products/category/`, $scope.category)
-         .then(function (response) {
-            if (response.data.status === 'false') {
-               console.error("Error adding category:", response.category.message);
-            } else {
-               alert("Category added successfully!");
-               $scope.init(); // Refresh the product list
-               $("#addform").modal("hide");
-            }
-         })
-         .catch(function (error) {
-            console.error("Error adding product:", error);
-         });
+       // Only check required text fields initially
+       if (!$scope.category.category_name || !$scope.category.category_description || !$scope.category.is_active) {
+           alert("Please fill all required fields");
+           return;
+       }
+   
+       // Check if file is selected
+       var fileInput = document.getElementById('category-image');
+       if (!fileInput || !fileInput.files || !fileInput.files[0]) {
+           alert("Please select an image");
+           return;
+       }
+   
+       $scope.isSubmitting = true;
+       console.log("Adding category:", $scope.category);
+       
+       categoryService.createCategory($scope.category)
+           .then(function (response) {
+               $scope.isSubmitting = false;
+               if (response.data.status === 'false') {
+                   console.error("Error adding category:", response.data.message);
+                   alert("Error adding category: " + response.data.message);
+               } else {
+                   alert("Category added successfully!");
+                   $scope.category = {}; // Reset form
+                   $scope.init(); // Refresh the category list
+                   $("#addform").modal("hide");
+               }
+           })
+           .catch(function (error) {
+               $scope.isSubmitting = false;
+               console.error("Error adding category:", error);
+               alert("An error occurred while adding the category. Please try again.");
+           });
    };
 
 

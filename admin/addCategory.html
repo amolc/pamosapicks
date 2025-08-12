@@ -415,26 +415,25 @@
       <div class="form-header">ADD CATEGORY</div>
       <form ng-submit="submitCategory()">
         <div class="form-group form-group-full">
-          <input type="text" id="category" placeholder="Category Name" ng-model="category.category_name" />
-          <!-- <input type="text" id="property_title" placeholder="Unit" ng-model="property.title" /> -->
+          <input type="text" id="category" placeholder="Category Name" ng-model="category.category_name" required />
         </div>
 
 
         <div class="form-group form-group-full">
-          <textarea id="description" placeholder="Description" ng-model="category.description" required></textarea>
+          <textarea id="description" placeholder="Description" ng-model="category.category_description" required></textarea>
         </div>
         <div class="form-group double-input">
-          <input type="file" id="category-image" accept="image/*"
-            onchange="convertToBase64('category-image', 'category.category_image')">
+          <input type="file" id="category-image" accept="image/*" onchange="convertToBase64('category-image', 'category.category_image')">
         </div>
         <div class="form-group">
-          <input type="text" id="state" placeholder="Active" ng-model="category.is_active" required>
+          <select id="isActive" ng-model="category.IsActive" required>
+            <option value="true">Active</option>
+            <option value="false">Inactive</option>
+          </select>
         </div>
 
-    </div>
-    </div>
-    <button type="submit" ng-disabled="isSubmitting" ng-click="submitCategory()">Submit</button>
-    </form>
+        <button type="submit" class="submit-btn" ng-disabled="isSubmitting">Submit</button>
+      </form>
     </div>
   </main>
   <footer id="footer" class="footer">
@@ -460,3 +459,27 @@
 </body>
 
 </html>
+<script>
+  // Attach function to window for global access
+  window.convertToBase64 = function(inputId, modelPath) {
+    const fileInput = document.getElementById(inputId);
+    const file = fileInput.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        const base64String = event.target.result;
+        console.log(`Base64 for ${inputId}:`, base64String);
+
+        // Get AngularJS scope
+        const scope = angular.element(document.querySelector('[ng-controller="addcategoryCtrl"]')).scope();
+        scope.$apply(function() {
+          scope.category.category_image = base64String;
+        });
+      };
+      reader.readAsDataURL(file);
+    } else {
+      console.error("No file selected for:", inputId);
+    }
+  };
+</script>

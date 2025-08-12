@@ -70,7 +70,7 @@ app.controller('registerCtrl', function($scope, $http, $window, config) {
             console.log("this is before post");
             console.log($scope.baseurl);
             console.log($scope.data);
-            $scope.url = $scope.baseurl + 'customer/login'
+            $scope.url = $scope.baseurl + 'customers/login-customer'
             console.log($scope.url)
             $http.post($scope.url, $scope.data)
                 .success(function(response, status, headers, config) {

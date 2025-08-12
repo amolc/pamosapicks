@@ -65,10 +65,10 @@ app.controller("addcategoryCtrl", function ($scope, $http, $window, $location, c
     // Prepare category data and submit
     $scope.submitCategory = function () {
         // Validate category data
-        if (!$scope.category.category_name) { // Fixed syntax issue in validation
+        if (!$scope.category.category_name) {
             console.error("Category name is missing!");
             alert("Category name is required.");
-            return; // Prevent form submission
+            return;
         }
 
         console.log("Category data being sent:", $scope.category);
@@ -76,9 +76,9 @@ app.controller("addcategoryCtrl", function ($scope, $http, $window, $location, c
         // Create category data object for POST request
         var categoryData = {
             category_name: $scope.category.category_name,
-            Description: $scope.category.category_description,
+            category_description: $scope.category.category_description,
             IsActive: $scope.category.IsActive,
-            Category: $scope.category.categoryId,
+            category_image: $scope.category.category_image
         };
 
         console.log("Final category data:", categoryData);
@@ -88,6 +88,7 @@ app.controller("addcategoryCtrl", function ($scope, $http, $window, $location, c
             .then(function (response) {
                 console.log("Category added successfully:", response.data);
                 alert("Category successfully created!");
+                $window.location.href = 'category.html'; // Redirect after success
             })
             .catch(function (error) {
                 console.error("AddCategory failed:", error);

@@ -1,9 +1,9 @@
 app.factory('config', function() {
     return {
-        staticurl: "http://api.pamosapicks.com/",
-        baseurl: "https://api.pamosapicks.com/1/api/",
-        orgurl: "https://api.pamosapicks.com/api/",
-        wssurl: "wss://api.pamosapicks.com/",
+        staticurl: "http://localhost:9999/",
+        baseurl: "http://localhost:9999/1/api/",
+        orgurl: "http://localhost:9999/api/",
+        wssurl: "ws://localhost:9999/",
         orgId: "1"
     };
 })
