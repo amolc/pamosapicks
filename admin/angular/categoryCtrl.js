@@ -64,10 +64,11 @@ app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce
    
        // Check if file is selected
        var fileInput = document.getElementById('category-image');
-       if (!fileInput || !fileInput.files || !fileInput.files[0]) {
-           alert("Please select an image");
-           return;
-       }
+       console.log(fileInput)
+      //  if (!fileInput || !fileInput.files || !fileInput.files[0]) {
+      //      alert("Please select an image");
+      //      return;
+      //  }
    
        $scope.isSubmitting = true;
        console.log("Adding category:", $scope.category);

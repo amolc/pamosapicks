@@ -11,7 +11,7 @@ app.service('categoryService', function($http, config) {
             formData.append('category_image', fileInput.files[0]);
         }
 
-        return $http.post(`${config.baseurl}products/create-category/`, formData, {
+        return $http.post(`${config.baseurl}category/categories/`, formData, {
             transformRequest: angular.identity,
             headers: {
                 'Content-Type': undefined
