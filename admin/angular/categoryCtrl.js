@@ -11,7 +11,7 @@ app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce
    // Fetch the list of products
    $scope.list = function () {
       console.log("Fetching product list from:", config.baseurl);
-      $http.get(`${config.baseurl}products/category/?show_inactive=True`)
+      $http.get(`${config.baseurl}category/get-categories/?show_inactive=True`)
       .then(function (response) {
          console.log("Full response:", response);
          if (response.status !== 200) {
@@ -56,42 +56,46 @@ app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce
          }); };
 
    $scope.add = function () {
-       // Only check required text fields initially
-       if (!$scope.category.category_name || !$scope.category.category_description || !$scope.category.is_active) {
-           alert("Please fill all required fields");
-           return;
-       }
-   
-       // Check if file is selected
-       var fileInput = document.getElementById('category-image');
-       console.log(fileInput)
-      //  if (!fileInput || !fileInput.files || !fileInput.files[0]) {
-      //      alert("Please select an image");
-      //      return;
-      //  }
-   
-       $scope.isSubmitting = true;
-       console.log("Adding category:", $scope.category);
-       
-       categoryService.createCategory($scope.category)
-           .then(function (response) {
-               $scope.isSubmitting = false;
-               if (response.data.status === 'false') {
-                   console.error("Error adding category:", response.data.message);
-                   alert("Error adding category: " + response.data.message);
-               } else {
-                   alert("Category added successfully!");
-                   $scope.category = {}; // Reset form
-                   $scope.init(); // Refresh the category list
-                   $("#addform").modal("hide");
-               }
-           })
-           .catch(function (error) {
-               $scope.isSubmitting = false;
-               console.error("Error adding category:", error);
-               alert("An error occurred while adding the category. Please try again.");
-           });
-   };
+    if (!$scope.category.category_name || !$scope.category.category_description || $scope.category.is_active === '' || $scope.category.is_active === undefined) {
+        alert("Please fill all required fields");
+        return;
+    }
+
+    var fileInput = document.getElementById('category-image');
+    if (!fileInput || !fileInput.files || !fileInput.files[0]) {
+        alert("Please select an image");
+        return;
+    }
+
+    var formData = new FormData();
+    formData.append('category_name', $scope.category.category_name);
+    formData.append('category_description', $scope.category.category_description);
+    formData.append('is_active', $scope.category.is_active);
+    formData.append('category_image', fileInput.files[0]);
+
+    $scope.isSubmitting = true;
+    console.log("Submitting category with FormData...");
+
+    categoryService.createCategory(formData)
+        .then(function (response) {
+            $scope.isSubmitting = false;
+            if (response.data.status === 'false') {
+                console.error("Error adding category:", response.data.message);
+                alert("Error adding category: " + response.data.message);
+            } else {
+                alert("Category added successfully!");
+                $scope.category = { category_name: '', category_description: '', category_image: '', is_active: '' };
+                fileInput.value = '';
+                $scope.init();
+                $("#addform").modal("hide");
+            }
+        })
+        .catch(function (error) {
+            $scope.isSubmitting = false;
+            console.error("Error adding category:", error);
+            alert("An error occurred while adding the category. Please try again.");
+        });
+};
 
 
    // Update a category
@@ -103,7 +107,7 @@ app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce
 
       console.log("Updating category:", $scope.data);
 
-      $http.patch(`${config.baseurl}category/update-category/${id}/`, $scope.data)
+      $http.put(`${config.baseurl}category/update-category/${id}/`, $scope.data)
          .then(function (response) {
             if (response.data.status === 'false') {
                console.error("Error updating category:", response.data.message);
@@ -197,27 +201,7 @@ app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce
    };
 });
 
-// Attach function to window for global access
-window.convertToBase64 = function (inputId, modelPath) {
-   const fileInput = document.getElementById(inputId);
-   const file = fileInput.files[0];
 
-   if (file) {
-      const reader = new FileReader();
-      reader.onload = function (event) {
-      const base64String = event.target.result;
-      console.log(`Base64 for ${inputId}:`, base64String); // Log the Base64 string
-
-      // Get AngularJS scope
-      const scope = angular.element(document.querySelector('[ng-controller="categoryCtrl"]')).scope();
-      scope.category['category_image'] = base64String;
-      
-      };
-      reader.readAsDataURL(file);
-   } else {
-      console.error("No file selected for:", inputId); // Log if no file is selected
-   }
-};
 
 function propertyNameFromModelPath(modelPath) {
    return modelPath.split('.').pop();

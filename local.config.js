@@ -1,28 +1,23 @@
-
 exports.getbusiness = function (req, res) {
-	var business_id = { business_id: 40 };
-	return business_id;
+    var business_id = { business_id: 40 };
+    return business_id;
 };
 
 exports.getbaseurl = function (req, res) {
-	var baseurl = "https://api.flipopo.com/1/api/";
-	// var baseurl = "http://localhost:9999/1/api/"
-	return baseurl;
+    var baseurl = "http://localhost:9999/1/api/";
+    return baseurl;
 };
 
 exports.getConfig = function (req, res) {
     return {
-        baseurl: "https://api.tradeexchange.co/api-mongodb/",
-        orgurl: "https://api.tradeexchange.co/org/",
-        wssurl: "wss://api.tradeexchange.co/",
+        baseurl: "http://localhost:9999/1/api/",
+        orgurl: "http://localhost:9999/1/api/",
+        wssurl: "ws://localhost:9999/",
         orgId: "1"
     };
 };
 
 exports.getimageurl = function (req, res) {
-	var imageURL = "https://api.tradeexchange.co/assets/img/";
-	//var imageURL = "http://localhost:2000/assets/img/"; 
-	return imageURL;
+    var imageURL = "http://localhost:9999/assets/img/";
+    return imageURL;
 };
-
-// Need to work on the base url 
