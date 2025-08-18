@@ -1,0 +1,31 @@
+<form ng-submit="onsubmit()" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="category">Category Name</label>
+        <input type="text" id="category" placeholder="Enter category name" ng-model="category.category_name" required />
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" placeholder="Enter description" ng-model="category.category_description" required></textarea>
+    </div>
+
+    <div class="form-group">
+        <label>Category Image</label>
+        <input type="file" id="category-image" name="category-image" accept="image/*" required>
+    </div>
+
+    <div class="form-group">
+        <label for="is-active">Active</label>
+        <select id="is-active" ng-model="category.is_active" required>
+            <option value="" disabled selected>Select active status</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" ng-disabled="isSubmitting">Submit</button>
+    </div>
+</form>
+<!-- Add this before your other Angular scripts -->
+<script src="../public/api/config.js"></script>

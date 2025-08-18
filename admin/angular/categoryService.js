@@ -1,33 +1,37 @@
-app.service('categoryService', function($http, config) {
+angular.module('website').service('categoryService', function($http, config) {
+    this.getCategories = function () {
+        return $http.get(config.apiurl + "/1/api/categories/");
+    };
 
-    // Create category
     this.createCategory = function(formData) {
-        return $http.post(`${config.baseurl}categories/create-category/`, formData, {
+        return $http({
+            method: 'POST',
+            url: config.apiurl + "/categories/create/",
+            data: formData,
+            headers: {
+                'Content-Type': undefined
+            },
+            transformRequest: angular.identity
+        });
+    };
+
+    this.updateCategory = function (id, categoryData) {
+        var formData = new FormData();
+        formData.append('category_name', categoryData.category_name);
+        formData.append('category_description', categoryData.category_description);
+        formData.append('is_active', categoryData.is_active);
+
+        if (categoryData.category_image) {
+            formData.append('category_image', categoryData.category_image);
+        }
+
+        return $http.put(config.apiurl + "/1/api/categories/update/" + id + "/", formData, {
             transformRequest: angular.identity,
             headers: { 'Content-Type': undefined }
         });
     };
 
-    // List categories
-    this.getCategories = function() {
-        return $http.get(`${config.baseurl}categories/get-categories/`);
-    };
-
-    // Get category by ID
-    this.getCategory = function(id) {
-        return $http.get(`${config.baseurl}categories/get-category/${id}/`);
-    };
-
-    // Delete category
-    this.deleteCategory = function(id) {
-        return $http.delete(`${config.baseurl}categories/delete-category/${id}/`);
-    };
-
-    // Update category
-    this.updateCategory = function(id, formData) {
-        return $http.put(`${config.baseurl}categories/update-category/${id}/`, formData, {
-            transformRequest: angular.identity,
-            headers: { 'Content-Type': undefined }
-        });
+    this.deleteCategory = function (id) {
+        return $http.delete(config.apiurl + "/1/api/categories/delete/" + id + "/");
     };
 });

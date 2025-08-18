@@ -281,6 +281,7 @@
             <div class="modal-body container" style="border:1px solid red;">
               <div class="row">
           
+                <!-- Current edit form -->
                 <form ng-submit="submitCategory()" enctype="multipart/form-data">
                   <div class="form-group">
                     <label for="category">Category Name</label>
@@ -344,8 +345,8 @@
                     </div>
                 
                     <div class="form-group">
-                        <label for="category-image">Category Image</label>
-                        <input type="file" id="category-image-edit" accept="image/*">
+                        <label>Category Image</label>
+                        <input type="file" id="categoryImage" name="categoryImage" ng-model="category.image" accept="image/*" required>
                     </div>
                 
                     <div class="form-group">

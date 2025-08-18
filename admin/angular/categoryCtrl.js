@@ -8,28 +8,23 @@ app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce
       is_active: ''
    };
 
-   // Fetch the list of products
-   $scope.list = function () {
-      console.log("Fetching product list from:", config.baseurl);
-      $http.get(`${config.baseurl}category/get-categories/?show_inactive=True`)
-      .then(function (response) {
-         console.log("Full response:", response);
-         if (response.status !== 200) {
-            console.error("Error fetching category list:", response.statusText);
-         } else {
+   // Fetch the list of categories
+$scope.list = function () {
+    console.log("Fetching category list from:", config.apiurl);
+    categoryService.getCategories()
+        .then(function (response) {
             if (!response.data || response.data.length === 0) {
-               console.error("Category list is undefined or empty!");
-               $scope.dataset = [];
+                console.error("Category list is undefined or empty!");
+                $scope.dataset = [];
             } else {
-               $scope.dataset = response.data; // Directly assign the array to dataset
-               console.log("Category list fetched:", $scope.dataset);
+                $scope.dataset = response.data; // Directly assign the array
+                console.log("Category list fetched:", $scope.dataset);
             }
-            }
-         })
-         .catch(function (error) {
-            console.error("Error fetching product list:", error);
-         });
-   };
+        })
+        .catch(function (error) {
+            console.error("Error fetching category list:", error);
+        });
+};
 
    $scope.getcategorybyid = function (category_id) {
       if (!category_id) {
@@ -37,7 +32,7 @@ app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce
          return;
       }
    
-      $http.get(`${config.baseurl}category/get-category/${category_id}/`)
+      $http.get(`${config.apiurl}/1/api/categories/${category_id}/`)
          .then(function (response) {
             if (response.data.status === 'false') {
                console.error("Error fetching product:", response.data.message);
@@ -56,7 +51,12 @@ app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce
          }); };
 
    $scope.add = function () {
-    if (!$scope.category.category_name || !$scope.category.category_description || $scope.category.is_active === '' || $scope.category.is_active === undefined) {
+    if (
+        !$scope.category.category_name ||
+        !$scope.category.category_description ||
+        $scope.category.is_active === '' ||
+        $scope.category.is_active === undefined
+    ) {
         alert("Please fill all required fields");
         return;
     }
@@ -74,13 +74,12 @@ app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce
     formData.append('category_image', fileInput.files[0]);
 
     $scope.isSubmitting = true;
-    console.log("Submitting category with FormData...");
+    console.log("Submitting category with FormData");
 
     categoryService.createCategory(formData)
         .then(function (response) {
             $scope.isSubmitting = false;
             if (response.data.status === 'false') {
-                console.error("Error adding category:", response.data.message);
                 alert("Error adding category: " + response.data.message);
             } else {
                 alert("Category added successfully!");
@@ -92,34 +91,54 @@ app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce
         })
         .catch(function (error) {
             $scope.isSubmitting = false;
-            console.error("Error adding category:", error);
             alert("An error occurred while adding the category. Please try again.");
+            console.error(error);
         });
 };
 
 
+
    // Update a category
    $scope.update = function (id) {
-      if (!id) {
-         alert("Invalid ID!");
-         return;
-      }
-
-      console.log("Updating category:", $scope.data);
-
-      $http.put(`${config.baseurl}category/update-category/${id}/`, $scope.data)
-         .then(function (response) {
-            if (response.data.status === 'false') {
+       if (!id) {
+           alert("Invalid ID!");
+           return;
+       }
+   
+       if (!$scope.data.category_name || !$scope.data.category_description || 
+           $scope.data.is_active === '' || $scope.data.is_active === undefined) {
+           alert("Please fill all required fields");
+           return;
+       }
+   
+       var fileInput = document.getElementById('category-image');
+       var formData = new FormData();
+       formData.append('category_name', $scope.data.category_name);
+       formData.append('category_description', $scope.data.category_description);
+       formData.append('is_active', $scope.data.is_active);
+       
+       if (fileInput && fileInput.files && fileInput.files[0]) {
+           formData.append('category_image', fileInput.files[0]);
+       }
+   
+       $http.put(`${config.apiurl}/1/api/categories/update/${id}/`, formData, {
+           transformRequest: angular.identity,
+           headers: { 'Content-Type': undefined }
+       })
+       .then(function (response) {
+           if (response.data.status === 'false') {
                console.error("Error updating category:", response.data.message);
-            } else {
+               alert("Error updating category: " + response.data.message);
+           } else {
                alert("Category updated successfully!");
-               $scope.init(); // Refresh the product list
+               $scope.init();
                $("#editform").modal("hide");
-            }
-         })
-         .catch(function (error) {
-            console.error("Error updating category:", error);
-         });
+           }
+       })
+       .catch(function (error) {
+           console.error("Error updating category:", error);
+           alert("An error occurred while updating the category. Please try again.");
+       });
    };
 
    // Delete a product
@@ -133,7 +152,7 @@ app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce
          return;
       }
 
-      $http.delete(`${config.baseurl}category/delete-category/${id}/`)
+      $http.delete(`${config.apiurl}/1/api/categories/delete/${id}/`)
          .then(function (response) {
             if (response.data.status === 'false') {
                alert("Failed to delete category: " + response.data.message);
@@ -144,8 +163,8 @@ app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce
             }
          })
          .catch(function (error) {
-            console.error("Error deleting product:", error);
-            alert("An error occurred while deleting the product. Please try again.");
+            console.error("Error deleting category:", error); // Fixed comment
+            alert("An error occurred while deleting the category. Please try again."); // Fixed message
          });
    };
 
@@ -162,24 +181,54 @@ app.controller('categoryCtrl', function ($scope, $http, $window, $location, $sce
 
    // Open the edit modal
    $scope.onedit = function (data) {
-      $scope.category = angular.copy(data); // Copy data to prevent binding issues
-      console.log($scope.data)
-      $("#editform").modal("show");
+       $scope.data = angular.copy(data); // Use data consistently
+       console.log($scope.data)
+       $("#editform").modal("show");
    };
 
 
 
    // Open the add modal
    $scope.addform = function () {
-      $scope.data = {}; // Reset form for new product
-      $("#addform").modal("show");
+       $scope.category = {
+           category_name: '',
+           category_description: '',
+           category_image: '',
+           is_active: ''
+       }; // Reset form for new category
+       $("#addform").modal("show");
    };
 
    // Add product submit handler
    $scope.onsubmit = function () {
-      $scope.add();
+       var fileInput = document.getElementById('categoryImage');
+       if (!fileInput || !fileInput.files || !fileInput.files[0]) {
+           alert('Please select an image');
+           return;
+       }
+       
+       var formData = new FormData();
+       formData.append('name', $scope.category.name);
+       formData.append('description', $scope.category.description);
+       formData.append('active', $scope.category.active || 'Yes');
+       formData.append('image', fileInput.files[0]);
+       
+       categoryService.createCategory(formData)
+           .then(function (response) {
+               if (response.data.success) {
+                   $('#addform').modal('hide');
+                   $scope.getCategories();
+                   $scope.category = {};
+                   document.getElementById('categoryImage').value = '';
+               } else {
+                   alert(response.data.message || 'Error creating category');
+               }
+           })
+           .catch(function (error) {
+               console.error('Error creating category:', error);
+               alert('Error creating category. Please try again.');
+           });
    };
-
    // Edit product submit handler
    $scope.oneditsubmit = function (data) {
       console.log("are we calling the functon")
